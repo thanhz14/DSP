@@ -1,0 +1,551 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bản dịch tài liệu Nougat</title>
+        
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      }
+    };
+    </script>
+    
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+    <style>
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background: #e0e0e0; }
+        .paper-page { background: white; padding: 60px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-bottom: 30px; position: relative; min-height: 1100px; }
+        .page-number { position: absolute; top: 20px; right: 20px; font-size: 12px; color: #ccc; }
+        .doc_title { font-size: 26px; font-weight: bold; text-align: center; margin-bottom: 25px; color: #000; }
+        .paragraph_title { font-size: 18px; font-weight: bold; margin-top: 20px; margin-bottom: 8px; color: #111; border-bottom: 1px solid #eee; }
+        .figure_title, .table_caption { font-size: 13px; font-weight: bold; text-align: center; margin: 10px 0; font-style: italic; background: #fcfcfc; }
+        .abstract { font-style: italic; margin: 20px 40px; text-align: justify; border-left: 4px solid #ddd; padding-left: 15px; }
+        .abstract::before { content: "Tóm tắt—"; font-weight: bold; font-style: normal; }
+        .text { text-align: justify; margin-bottom: 10px; text-indent: 1.5em; }
+        .aside_text { font-size: 11px; color: #888; }
+        .footnote, .vision_footnote { font-size: 11px; color: #555; border-top: 0.5px solid #eee; }
+        .reference_content { font-size: 12px; margin-bottom: 5px; padding-left: 25px; text-indent: -25px; }
+        .table-container { margin: 20px 0; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; font-size: 12px; }
+        th, td { border: 1px solid #444; padding: 6px; text-align: left; }
+        .image-container, .chart-container { text-align: center; margin: 20px 0; }
+        img { max-width: 100%; height: auto; }
+        .display_formula { text-align: center; margin: 15px 0; }
+    </style>
+    
+    </head>
+    <body>
+        <div class="paper-page" id="page-0">
+<div class="page-number">Trang 1</div>
+<h1 class="doc_title">(Dịch) Nougat: Neural Optical Understanding for Academic Documents</h1>
+<p class="text">(Dịch) Lukas Blecher $ ^{*} $</p>
+<p class="text">Guillem Cucurull</p>
+<p class="text">Thomas Scialom</p>
+<p class="text">Robert Stojnic</p>
+<p class="text">Meta AI</p>
+<h2 class="paragraph_title">(Dịch) Abstract</h2>
+<p class="abstract">(Dịch) Scientific knowledge is predominantly stored in books and scientific journals, often in the form of PDFs. However, the PDF format leads to a loss of semantic information, particularly for mathematical expressions. We propose Nougat (Neural Optical Understanding for Academic Documents), a Visual Transformer model that performs an Optical Character Recognition (OCR) task for processing scientific documents into a markup language, and demonstrate the effectiveness of our model on a new dataset of scientific documents. The proposed approach offers a promising solution to enhance the accessibility of scientific knowledge in the digital age, by bridging the gap between human-readable documents and machine-readable text. We release the models and code to accelerate future work on scientific text recognition.</p>
+<h2 class="paragraph_title">(Dịch) 1 Introduction</h2>
+<p class="text">(Dịch) The majority of scientific knowledge is stored in books or published in scientific journals, most commonly in the Portable Document Format (PDF). Next to HTML, PDFs are the second most prominent data format on the internet, making up 2.4% of common crawl [1]. However, the information stored in these files is very difficult to extract into any other formats. This is especially true for highly specialized documents, such as scientific research papers, where the semantic information of mathematical expressions is lost.</p>
+<p class="text">(Dịch) Existing Optical Character Recognition (OCR) engines, such as Tesseract OCR [2], excel at detecting and classifying individual characters and words in an image, but fail to understand the relationship between them due to their line-by-line approach. This means that they treat superscripts and subscripts in the same way as the surrounding text, which is a significant drawback for mathematical expressions. In mathematical notations like fractions, exponents, and matrices, relative positions of characters are crucial.</p>
+<p class="text">(Dịch) Converting academic research papers into machine-readable text also enables accessibility and searchability of science as a whole. The information of millions of academic papers can not be fully accessed because they are locked behind an unreadable format. Existing corpora, such as the S2ORC dataset [3], capture the text of  $ 12M^{2} $ papers using GROBID [4], but are missing meaningful representations of the mathematical equations.</p>
+<p class="text">(Dịch) To this end, we introduce Nougat, a transformer based model that can convert images of document pages to formatted markup text.</p>
+<p class="text">(Dịch) The primary contributions in this paper are</p>
+<p class="text">(Dịch) - Release of a pre-trained model capable of converting a PDF to a lightweight markup language. We release the code and the model on GitHub $ ^{3} $</p>
+<p class="text">(Dịch) • We introduce a pipeline to create dataset for pairing PDFs to source code</p>
+<p class="text">(Dịch) • Our method is only dependent on the image of a page, allowing access to scanned papers and books</p>
+<p class="aside_text">(Dịch) arXiv:2308.13418v1 [cs.LG] 25 Aug 2023</p>
+<p class="footnote"> $ ^{*} $Correspondence to: lblecher@meta.com</p>
+<p class="footnote">(Dịch)  $ ^{2} $The paper reports 8.1M papers but the authors recently updated the numbers on the GitHub page https://github.com/allenai/s2orc  
+ $ ^{3} $https://github.com/facebookresearch/nougat</p>
+</div>
+<div class="paper-page" id="page-1">
+<div class="page-number">Trang 2</div>
+<h2 class="paragraph_title">(Dịch) 2 Related Work</h2>
+<p class="text">(Dịch) Optical Character Recognition (OCR) is an extensively researched field in computer vision for a variety of applications, such as document digitalization [2, 5], handwriting recognition and scene text recognition [6–8].</p>
+<p class="text">(Dịch) More concretely, recognizing mathematical expressions is a heavily researched subtopic. Grammar based methods [9–11] for handwritten mathematical expressions were improved upon by different encoder-decoder models. The fully convolutional model [12] was succeeded by various RNN decoder models [13–17], both for handwritten and printed formulas. Recently, the decoder [18, 19] as well as the encoder [20] were replaced with the Transformer [21] architecture.</p>
+<p class="text">(Dịch) Visual Document Understanding (VDU) is another related topic of deep learning research and focuses on extracting relevant information of a variety of document types. Previous works depend on pre-trained models that learn to extract information by jointly modeling text and layout information using the Transformer architecture. The LayoutLM model family [22–24] uses masked layout prediction task to capture the spatial relationships between different document elements.</p>
+<p class="text">(Dịch) Open source solutions with a related goal as ours include GROBID [4], which parses digital-born scientific documents to XML with a focus on the bibliographic data and pdf2htmlEX [25], that converts digital-born PDFs to HTML while preserving the layout and appearance of the document. However, both solutions can not recover the semantic information of mathematical expressions.</p>
+<h2 class="paragraph_title">(Dịch) 3 Model</h2>
+<p class="text">(Dịch) Previous VDU methods either rely on OCR text from a third party tool [22, 23, 26] or focus on document types such as receipts, invoices or form-like documents [27]. Recent studies [28, 29] show that an external OCR engine is not necessarily needed to achieve competitive results in VDU.</p>
+<p class="text">(Dịch) The architecture is a encoder-decoder transformer [21] architecture, that allows for an end-to-end training procedure. We build on the Donut [28] architecture. The model does not require any OCR related inputs or modules. The text is recognized implicitly by the network. See Fig. 1 for an overview of the approach.</p>
+<p class="text">(Dịch) Encoder The visual encoder receives a document image  $ x \in \mathbb{R}^{3 \times H_0 \times W_0} $, crops the margins and resizes the image to fit in a fixed rectangle of size  $ (H, W) $. If the image is smaller than the rectangle, additional padding is added to ensure each image has the same dimensionality. We use a Swin Transformer [30], a hierarchical vision transformer [31] that splits the image into non-overlapping windows of fixed size and applies a series of self-attention layers to aggregate information across these windows. The model output a sequence of the embedded patches  $ z \in \mathbb{R}^{d \times N} $ where  $ d $ is the latent dimension and  $ N $ is the number of patches.</p>
+<p class="text">(Dịch) Decoder The encoded image z is decoded into a sequence of tokens using a transformer decoder architecture with cross-attention. The tokens are generated in an auto-regressive manner, using self-attention and cross-attention to attend to different parts of the input sequence and encoder output respectively. Finally, the output is projected to the size of the vocabulary v, yielding the logits  $ \ell \in \mathbb{R}^v $.</p>
+<p class="text">(Dịch) Following Kim et al. [28], we use the implementation of the mBART [32] decoder. We use the same tokenizer as Taylor et al. [33] because their model is also specialized in the scientific text domain.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="image-container"><img src="imgs/img_in_image_box_147_148_1040_334.jpg" alt="image"></div>
+<p class="figure_title">(Dịch) Figure 1: Our simple end-to-end architecture followin Donut [28]. The Swin Transformer encoder takes a document image and converts it into latent embeddings, which are subsequently converted to a sequence of tokens in a autoregressive manner</p>
+<p class="number">2</p>
+</div>
+<div class="paper-page" id="page-2">
+<div class="page-number">Trang 3</div>
+<h2 class="paragraph_title">(Dịch) 3.1 Setup</h2>
+<p class="text">(Dịch) We render the document images at a resolution of 96 DPI. Due to the restrictive possible input dimensions of the Swin Transformer we choose the input size  $ (H, W) = (896, 672) $. The aspect ratio is in between the US letter and Din A4 format  $ \frac{22}{17} < \frac{4}{3} < \sqrt{2} $. The document images are resized and then padded to achieve the desired input size. This input size allows us to use the Swin base model architecture [30]. We initialize the model with the pre-trained weights. The Transformer decoder has a maximal sequence length of  $ S = 4096 $. This relatively large sizing is due to the fact that the text of academic research papers can be dense and the syntax for tables in particular is token intensive. The BART decoder is a decoder-only transformer with 10 layers. The entire architecture has a total of 350M parameters. We also test experiment with a smaller model (250M parameters) with a slightly smaller sequence length of  $ S = 3584 $ and only 4 decoder layers, where we start from the pre-trained base model.</p>
+<p class="text">(Dịch) During inference the text is generated using greedy decoding.</p>
+<p class="text">(Dịch) Training We use an AdamW optimizer [34] to train for 3 epochs with an effective batch size of 192. Due to training instabilities, we choose a learning rate of  $  \text{lr}_{\text{init}} = 5 \cdot 10^{-5}  $ which is reduced by a factor of 0.9996 every 15 updates until it reaches  $  \text{lr}_{\text{end}} = 7.5 \cdot 10^{-6}  $.</p>
+<h2 class="paragraph_title">(Dịch) 3.2 Data Augmentation</h2>
+<p class="text">(Dịch) In image recognition tasks, it is often beneficial to use data augmentation to improve generalization. Since we are only using digital-born academic research papers, we need to employ a number of transformations to simulate the imperfections and variability of scanned documents. These transformations include erosion, dilation, gaussian noise, gaussian blur, bitmap conversion, image compression, grid distortion and elastic transform [35]. Each has a fixed probability of being applied to a given image. The transformations are implemented in the Albumentations [36] library. For an overview of the effect of each transformation, see Fig. 2.</p>
+<p class="text">(Dịch) During training time, we also add perturbations to the ground truth text by randomly replacing tokens. We found this to reduce the collapse into a repeating loop significantly. For more details, see Section 5.4.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="image-container"><img src="imgs/img_in_image_box_139_130_1047_633.jpg" alt="image"></div>
+<p class="figure_title">(Dịch) Figure 2: List of the different image augmentation methods used during training on an example snippet form a sample document.</p>
+<p class="number">3</p>
+</div>
+<div class="paper-page" id="page-3">
+<div class="page-number">Trang 4</div>
+<h2 class="paragraph_title">(Dịch) 4 Datasets</h2>
+<p class="text">(Dịch) To the best of our knowledge there is no paired dataset of PDF pages and corresponding source code out there, so we created our own from the open access articles on arXiv. $ ^{4} $ For layout diversity we also include a subset of the PubMed Central  $ {}^{5} $ (PMC) open access non-commercial dataset. During the pretraining, a portion of the Industry Documents Library  $ {}^{6} $ (IDL) is included. See Table A.1 for the dataset composition.</p>
+<p class="text">(Dịch) arXiv We collected the source code and compiled PDFs from 1,748,201 articles released on arXiv. To ensure consistent formatting, we first process the source files using LaTeXML $ ^{7} $ and convert them into HTML5 files. This step was important as it standardized and removed ambiguity from the LaTeX source code, especially in mathematical expressions. The conversion process included replacing user-defined macros, standardizing whitespace, adding optional brackets, normalizing tables, and replacing references and citations with their correct numbers.</p>
+<p class="text">(Dịch) We then parse the HTML files and convert them into a lightweight markup language that supports various elements such as headings, bold and italic text, algorithms, LaTeX inline and display math and LaTeX tables. This way, we ensure that the source code is properly formatted and ready for further processing.
+The process is visualized in Fig. 3.</p>
+<p class="text">(Dịch) PMC We also processed articles from PMC, where XML files with semantic information are available in addition to the PDF file. We parse these files into the same markup language format as the arXiv articles. We chose to use far fewer articles from PMC because the XML files are not always as rich in semantic information. Often times equations and tables are stored as images and these cases are not trivial to detect, which leads to our decision to limit the use of PMC articles to the pre-training phase.</p>
+<p class="text">(Dịch) The XML files are parsed into the same markup language as described above.</p>
+<p class="text">(Dịch) IDL The IDL is a collection of documents produced by industries that have an impact on public health and is maintained by the University of California, San Francisco Library. Biten et al. [37] provide high quality OCR text for PDFs from the IDL dataset. This does not include text formatting and is only used for pre-training to teach the model basic OCR of scanned documents.</p>
+<h2 class="paragraph_title">(Dịch) 4.1 Splitting the pages</h2>
+<p class="text">(Dịch) We split the markdown files according to the page breaks in the PDF file and rasterize each page as an image to create the final paired dataset. During the compilation, the LaTeX compiler determines the page breaks of the PDF file automatically. Since we are not recompiling the LaTeX sources for each paper, we must heuristically split the source file into parts, which correspond to different pages. To achieve that we are using the embedded text on the PDF page and match it to source text.</p>
+<p class="text">(Dịch) However, figures and tables in the PDF may not correspond to their position in the source code. To address this issue,</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="image-container"><img src="imgs/img_in_image_box_149_148_1039_387.jpg" alt="image"></div>
+<p class="figure_title">(Dịch) b) html</p>
+<p class="figure_title">(Dịch) Figure 3: Data processing. The source file is converted into HTML which is then converted to Markdown. a) The LaTeX source provided by the authors. b) The HTML file computed from the LaTeX source using LaTeXML. c) The Markdown file parsed from the HTML file. d) The PDF file provided by the authors</p>
+<p class="footnote"> $ ^{4} $https://arxiv.org/</p>
+<p class="footnote"> $ ^{5} $https://www.ncbi.nlm.nih.gov/pmc/</p>
+<p class="footnote"> $ ^{6} $https://www.industrydocuments.ucsf.edu/</p>
+<p class="footnote"> $ ^{7} $http://dlmf.nist.gov/LaTeXML/</p>
+<p class="number">4</p>
+</div>
+<div class="paper-page" id="page-4">
+<div class="page-number">Trang 5</div>
+<p class="text">(Dịch) we remove these elements in a pre-processing step using pdffigures2 [38]. The recognized captions are are then compared to the captions in the XML file and matched based on their Levenshtein distance [39]. Once the source document has been split into individual pages, the removed figures and tables are reinserted at the end of each page. For a better matching we also replaced unicode characters in the PDF text with corresponding LaTeX commands using the pylatexenc-library $ ^{8} $.</p>
+<p class="text">(Dịch) Bag of Words matching First we extract the text lines from the PDF using MuPDF $ ^{9} $ and preprocess them to remove page numbers and potential headers/footers. We then use a Bag of Words model [40] with TF-IDF vectorizer and a linear Support Vector Machine classifier. The model is fitted to the PDF lines with the page number as label. Next we split the LaTeX source into paragraphs and predict the page number for each of them.</p>
+<p class="text">(Dịch) Ideally, the predictions will form a stair case function but in practice the signal will be noisy. To find the best boundary points we employ a similar logic as decision trees and minimize a measure based on the Gini impurity</p>
+<div class="display_formula">$$ $$ G_{[a,b]}(i)=(b-a)\cdot\left(1-p_{[a,b]}^{2}(i)-p_{[a,b]}^{2}(i+1)\right), $$ $$</div>
+<p class="text">(Dịch) where  $ p_{[a,b]}(i) $ is the probability of choosing an element with the predicted page number i in the interval  $ [a, b] $ that describes which paragraphs (elements) were considered for the split.
+The best splitting position t in the interval  $ [a, b] $ is then</p>
+<div class="display_formula">$$ $$ \hat{t}_{i}=\arg\min_{t}\left(G_{[a,t]}(i)+G_{[t,b]}(i)\right). $$ $$</div>
+<p class="text">(Dịch) The search process starts with all paragraphs and for each subsequent page break, the lower bound of the search interval is set to the previous split position. See Fig. 4 for a visualization of an example page.</p>
+<p class="text">(Dịch) Fuzzy matching After this first coarse document splitting we try to find the exact position within the paragraph. This is done by comparing the source text within the neighborhood of the predicted splitting position to the last sentences of the previous page of the embedded PDF text, and the first sentences of the next page using the fuzzysearch library $ ^{10} $. If the two dividing points are at the same location in the source text, the page break is considered “accurate” and receives a score of 1. On the other hand, if the splitting positions differ, the one with the smallest normalized Levenshtein distance is selected and given a score of 1 minus the distance. To be included in the dataset, a PDF page must have an average score of at least 0.9 for both page breaks. This results in an acceptance rate of about 47% of all pages.</p>
+<h2 class="paragraph_title">(Dịch) 4.2 Ground truth artifacts</h2>
+<p class="text">(Dịch) Because the dataset was pre-processed by LaTeXML, the markup version of the source code can contain artifacts and commands from unsupported packages. The HTML file may contain subsection titles with numbering even though they are not numbered in the PDF. There may also be instances where figures or tables are missing from the ground truth due to processing errors.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="chart-container"><img src="imgs/img_in_chart_box_373_159_813_419.jpg" alt="chart"></div>
+<p class="figure_title">(Dịch) Figure 4: Example for splitting the paragraphs in the source code into different pages. The points in blue denote the page index predicted by the SVM.</p>
+<p class="footnote"> $ ^{8} $https://github.com/phfaist/pylatexenc</p>
+<p class="footnote"> $ ^{9} $https://mupdf.com/</p>
+<p class="footnote"> $ ^{10} $https://github.com/taleinat/fuzzysearch</p>
+<p class="number">5</p>
+</div>
+<div class="paper-page" id="page-5">
+<div class="page-number">Trang 6</div>
+<p class="text">(Dịch) In addition, the splitting algorithm of the source code will in some cases include text from the previous page or cut off words from the end. This is especially true for “invisible” characters used for formatting, like italic, bold text or section header.</p>
+<p class="text">(Dịch) For PMC papers the inline math is written as Unicode or italic text, while display math equations or tables are often included in image format and will therefore be ignored.</p>
+<p class="text">(Dịch) Each of these issues reduces the overall data quality. However, the large number of training samples compensates for these small errors.</p>
+<h2 class="paragraph_title">(Dịch) 5 Results & Evaluation</h2>
+<div class="display_formula">$$ $$ \frac{R-\rho\cos\theta}{\sin^{2}\theta}=\frac{\alpha}{\pi\Lambda}\Biggl\langle\int_{-\infty}^{\infty}d t\;\exp\left(-\frac{\Delta(t,z)}{2\Lambda^{2}}\right)\left(\kappa-t\right)\Biggr\rangle_{s} $$ $$</div>
+<span class="formula_number">(1)</span>
+<div class="display_formula">$$ $$ 1-\frac{\rho^{2}+R^{2}-2\rho R\cos\theta}{\sin^{2}\theta}=2\alpha\Biggl\langle\int_{-\infty}^{\infty}d t\frac{e^{-\frac{(\alpha-\mu_{0})^{2}}{2}}}{\sqrt{2\pi}\sqrt{1-\rho^{2}}}H\left(\frac{\Gamma(t,z)}{\sqrt{1-\rho^{2}}\Lambda}\right)(\kappa-t)^{2}\Biggr\rangle, $$ $$</div>
+<span class="formula_number">(2)</span>
+<div class="display_formula">$$ $$ \frac{\rho-R\cos\theta}{\sin^{2}\theta}=2\alpha\bigg(\int_{-\infty}^{\infty}dt\frac{e^{-\frac{t-p\alpha}{2(1-p\alpha)^{2}}}}{\sqrt{2\pi}\sqrt{1-p^{2}}}H\bigg(\frac{\Gamma(t,z)}{\sqrt{1-p^{2}}\Lambda}\bigg)\bigg(\frac{z-\rho t}{1-\rho^{2}}\bigg)(\kappa-t) $$ $$</div>
+<div class="display_formula">$$ $$ +\frac{1}{2\pi\Lambda}\exp\left(-\frac{\Delta(t,z)}{2\Lambda^{2}}\right)\left(\frac{\rho R-\cos\theta}{1-\rho^{2}}\right)\left(\kappa-t\right)\Biggr)_{s} $$ $$</div>
+<span class="formula_number">(3)</span>
+<span class="formula_number">(4)</span>
+<p class="text">(Dịch) In this section we discuss the results and performance of the model. For an example see Fig. 5 or go to Sec. B. The model focuses only on the important content relevant features of the page. The box around the equations is skipped.</p>
+<h2 class="paragraph_title">(Dịch) 5.1 Metrics</h2>
+<p class="text">(Dịch) We report the following metrics on our test set.</p>
+<p class="text">(Dịch) Edit distance The edit distance, or Levenshtein distance [39], measures the number of character manipulations (insertions, deletions, substitutions) it takes to get from one string to another. In this work we consider the normalized edit distance, where we divide by the total number of characters.</p>
+<p class="text">(Dịch) BLEU The BLEU [42] metric was originally introduced for measuring the quality of text that has been machine-translated from one language to another. The metric computes a score based on the number of matching n-grams between the candidate and reference sentence.</p>
+<p class="text">(Dịch) METEOR Another machine-translating metric with a focus on recall instead of precision, introduced in [43].</p>
+<p class="text">(Dịch) F-measure We also compute the F1-score and report the precision and recall.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="image-container"><img src="imgs/img_in_image_box_128_416_1040_978.jpg" alt="image"></div>
+<p class="figure_title">(Dịch) Figure 5: Example of a page with many mathematical equations taken from [41]. Left: Image of a page in the document, Right: Model output converted to LaTeX and rendered to back into a PDF. Examples of scanned documents can be found in the appendix B.</p>
+<p class="number">6</p>
+</div>
+<div class="paper-page" id="page-6">
+<div class="page-number">Trang 7</div>
+<h2 class="paragraph_title">(Dịch) 5.2 Text modalities</h2>
+<p class="text">(Dịch) In a scientific research article, there are three distinct types of text: 1) plain text, which comprises the majority of the document, 2) mathematical expressions, and 3) tables. It is important to separately examine each of these components during the evaluation process. This is necessary because in LaTeX, there are multiple ways to express the same mathematical expression. While some variability has been eliminated during the LaTeXML pre-processing step, there still is a significant amount of ambiguity present, like ordering of subscript and superscript, equivalent commands with different notation (stackrel, atop, substack or frac, over), situationally interchangeable commands (bm, mathbf, boldsymbol, bfor\left(,\big(,\,etc.\right),whitespace commands, additional layers of brackets, and more). As a consequence, there can be a discrepancy between prediction and ground truth, even if the rendered formulas appear identical.</p>
+<p class="text">(Dịch) In addition, it is not always possible to determine, where a inline math environment ends and text begins, when writing numbers and punctuation (Example: $\mathrm{H}_{-}\{0\}\$1, vs. H$\_{0}\}1,$\rightarrow H_{0}1, vs. H_{0}1). This ambiguity reduces both math and plain text scores.</p>
+<p class="text">(Dịch) The expected score for mathematical expressions is lower than for plain text.</p>
+<h2 class="paragraph_title">(Dịch) 5.3 Comparison</h2>
+<p class="text">(Dịch) We present our results in Table 1. As expected, the mathematical expressions have the worst agreement with the ground truth. For the plain text, most discrepancies come from formatting ambiguities and missing text due to inline math, as described above. The output format of GROBID is an XML file, which we convert into a compatible markup language, similar to the PMC or arXiv files. To some extent, GROBID provides support for formulas in its output, but it identifies and stores them as the Unicode representations embedded in the PDF. We replace each Unicode symbol with its corresponding LaTeX command to increase the similarity. Additionally, GROBID mislabels small inline expressions as text. For identified formulas, GROBID stores the bounding box coordinates. We modify the program by sending the snippet to the external formula recognition software LaTeX-OCR [20]. This way we can also get a signal for math modality. The reported results in this section are quite poor, primarily due to the amount of missed formulas by GROBID and the equation prediction accuracy is affected by the quality of the bounding boxes. The performance of the embedded PDF text alone is better than GROBID, which is due to formatting differences for the title page or reference section.</p>
+<p class="text">(Dịch) Both Nougat small and base are able to outperform the other approach and achieve high scores in all metrics. We note that the performance of the smaller model is on par with the larger base model.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="table-container"><table><tr><td>Method</td><td>Modality</td><td>Edit distance  $ \downarrow $</td><td>BLEU  $ \uparrow $</td><td>METEOR  $ \uparrow $</td><td>Precision  $ \uparrow $</td><td>Recall  $ \uparrow $</td><td>F1  $ \uparrow $</td></tr><tr><td>PDF</td><td>All</td><td>0.255</td><td>65.8</td><td>82.1</td><td>77.1</td><td>81.4</td><td>79.2</td></tr><tr><td rowspan="2">GROBID</td><td>All</td><td>0.312</td><td>55.6</td><td>71.9</td><td>74.0</td><td>72.1</td><td>73.0</td></tr><tr><td>Tables</td><td>0.626</td><td>25.1</td><td>64.5</td><td>61.4</td><td>80.7</td><td>69.7</td></tr><tr><td rowspan="2">+ LaTeX OCR</td><td>Plain text</td><td>0.363</td><td>57.4</td><td>69.2</td><td>82.1</td><td>70.5</td><td>75.9</td></tr><tr><td>Math</td><td>0.727</td><td>0.3</td><td>5.0</td><td>11.0</td><td>8.6</td><td>9.7</td></tr><tr><td rowspan="4">Nougat small (250M $ ^{*} $)</td><td>All</td><td>0.073</td><td>88.9</td><td>92.8</td><td>93.6</td><td>92.2</td><td>92.9</td></tr><tr><td>Tables</td><td>0.220</td><td>68.5</td><td>78.6</td><td>75.0</td><td>79.8</td><td>77.3</td></tr><tr><td>Plain text</td><td>0.058</td><td>91.0</td><td>94.3</td><td>96.1</td><td>95.3</td><td>95.7</td></tr><tr><td>Math</td><td>0.117</td><td>56.0</td><td>74.7</td><td>77.1</td><td>76.8</td><td>76.9</td></tr><tr><td rowspan="4">Nougat base (350M $ ^{*} $)</td><td>All</td><td>0.071</td><td>89.1</td><td>93.0</td><td>93.5</td><td>92.8</td><td>93.1</td></tr><tr><td>Tables</td><td>0.211</td><td>69.7</td><td>79.1</td><td>75.4</td><td>80.7</td><td>78.0</td></tr><tr><td>Plain text</td><td>0.058</td><td>91.2</td><td>94.6</td><td>96.2</td><td>95.3</td><td>95.7</td></tr><tr><td>Math</td><td>0.128</td><td>56.9</td><td>75.4</td><td>76.5</td><td>76.6</td><td>76.5</td></tr></table></div>
+<p class="figure_title">(Dịch) Table 1: Results on arXiv test set. PDF is the text embedded in the PDF file. The modality “All” refers to the output text without any splitting. *Number of parameters.</p>
+<p class="number">7</p>
+</div>
+<div class="paper-page" id="page-7">
+<div class="page-number">Trang 8</div>
+<h2 class="paragraph_title">(Dịch) 5.4 Repetitions during inference</h2>
+<p class="text">(Dịch) We notice that the model degenerates into repeating the same sentence over and over again. The model can not recover from this state by itself. In its simplest form, the last sentence or paragraph is repeated over and over again. We observed this behavior in 1.5% of pages in the test set, but the frequency increases for out-of-domain documents. Getting stuck in a repetitive loop is a known problem with Transformer-based models, when sampled with greedy decoding [44]. It can also happen that the model alternates between two sentences but sometimes changes some words, so a strict repetition detection will not suffice. Even harder to detect are predictions where the model counts its own repetitions, which sometimes happens in the references section.</p>
+<p class="text">(Dịch) In general we notice this kind behavior after a mistake by the model. The model is not able to recover from the collapse.</p>
+<p class="text">(Dịch) Anti-repetition augmentation Because of that we introduce a random perturbation during training. This helps the model to learn how to handle a wrongly predicted token. For each training example, there is a fixed probability that a random token will be replaced by any other randomly chosen token. This process continues until the newly sampled number is greater than a specified threshold (in this case, 10%). We did not observe a decrease in performance with this approach, but we did notice a significant reduction in repetitions. Particularly for out-of-domain documents, where we saw a 32% decline in failed page conversions.</p>
+<p class="text">(Dịch) Repetition detection Since we are generating a maximum of 4096 tokens the model will stop at some point, however it is very inefficient and resource intensive to wait for a “end of sentence” token, when none will come. To detect the repetition during inference time we look at the largest logit value  $ \ell_i = \max \ell_i $ of the ith token. We found that the logits after a collapse can be separated using the following heuristic. First calculate the variance of the logits for a sliding window of size  $ B = 15 $</p>
+<div class="display_formula">$$ $$ \mathrm{VarWin}_{B}[\ell](x)=\frac{1}{B}\sum_{i=x}^{x+B}\left(\ell_{i}-\frac{1}{B}\sum_{j=x}^{x+B}\ell_{j}\right)^{2}. $$ $$</div>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="chart-container"><img src="imgs/img_in_chart_box_168_160_1026_687.jpg" alt="chart"></div>
+<p class="figure_title">(Dịch) Figure 6: Examples for repetition detection on logits. Top: Sample with repetition, Bottom: Sample without repetition. Left: Highest logit score for each token in the sequence  $ \ell(x) $, Center: Sliding window variance of the logits  $ \text{VarWin}_B[\ell](x) $, Right: Variance of variance from the position to the end  $ \text{VarEnd}_B[\ell](x) $</p>
+<p class="number">8</p>
+</div>
+<div class="paper-page" id="page-8">
+<div class="page-number">Trang 9</div>
+<p class="text">(Dịch) Here  $ \ell $ is the signal of logits and x the index. Using this new signal we compute variances again but this time from the point x to the end of the sequence</p>
+<div class="display_formula">$$ $$ \mathrm{Var}\mathrm{End}_{B}[\ell](x)=\frac{1}{S-x}\sum_{i=x}^{S}\left(\mathrm{Var}\mathrm{Win}_{B}[\ell](i)-\frac{1}{S-x}\sum_{j=x}^{S}\mathrm{Var}\mathrm{Win}_{B}[\ell](i)\right)^{2}. $$ $$</div>
+<p class="text">(Dịch) If this signal drops below a certain threshold (we choose 6.75) and stays below for the remainder of the sequence, we classify the sequence to have repetitions.</p>
+<p class="text">(Dịch) During inference time, it is obviously not possible to compute the to the end of the sequence if our goal is to stop generation at an earlier point in time. So here we work with a subset of the last 200 tokens and a half the threshold. After the generation is finished, the procedure as described above is repeated for the full sequence.</p>
+<h2 class="paragraph_title">(Dịch) 5.5 Limitations & Future work</h2>
+<p class="text">(Dịch) Utility The utility of the model is limited by a number of factors. First, the problem with repetitions outlined in section 5.4. The model is trained on research papers, which means it works particularly well on documents with a similar structure. However, it can still accurately convert other types of documents.</p>
+<p class="text">(Dịch) Nearly every dataset sample is in English. Initial tests on a small sample suggest that the model’s performance with other Latin-based languages is satisfactory, although any special characters from these languages will be replaced with the closest equivalent from the Latin alphabet. Non-Latin script languages result in instant repetitions.</p>
+<p class="text">(Dịch) Generation Speed On a machine with a NVIDIA A10G graphics card with 24GB VRAM we can process 6 pages in parallel. The generation speed depends heavily on the amount of text on any given page. With an average number of tokens of  $ \approx $ 1400 we get an mean generation time of 19.5s per batch for the base model without any inference optimization. Compared to classical approaches (GROBID 10.6 PDF/s [4]) this is very slow, but it is not limited to digital-born PDFs and can correctly parse mathematical expressions.</p>
+<p class="text">(Dịch) Future work The model is trained on one page at a time without knowledge about other pages in the document. This results in inconsistencies across the document. Most notably in the bibliography where the model was trained on different styles or section titles where sometimes numbers are skipped or hallucinated. Though handling each page separately significantly improves parallelization and scalability, it may diminish the quality of the merged document.</p>
+<p class="text">(Dịch) The primary challenge to solve is the tendency for the model to collapse into a repeating loop, which is left for future work.</p>
+<h2 class="paragraph_title">(Dịch) 6 Conclusion</h2>
+<p class="text">(Dịch) In this work, we present Nougat, an end-to-end trainable encoder-decoder transformer based model for converting document pages to markup. We apply recent advances in visual document understanding to a novel OCR task. Distinct from related approaches, our method does not rely on OCR or embedded text representations, instead relying solely on the rasterized document page. Moreover, we have illustrated an automatic and unsupervised dataset generation process that we used to successfully train the model for scientific document to markup conversion. Overall, our approach has shown great potential for not only extracting text from digital-born PDFs but also for converting scanned papers and textbooks. We hope this work can be a starting point for future research in related domains.</p>
+<p class="text">(Dịch) All the code for model evaluation, training and dataset generation can be accessed at https://github.com/facebookresearch/nougat.</p>
+<h2 class="paragraph_title">(Dịch) 7 Acknowledgments</h2>
+<p class="text">(Dịch) Thanks to Ross Taylor, Marcin Kardas, Iliyan Zarov, Kevin Stone, Jian Xiang Kuan, Andrew Poulton and Hugo Touvron for their valuable discussions and feedback.</p>
+<p class="text">(Dịch) Thanks to Faisal Azhar for the support throughout the project.</p>
+<h2 class="paragraph_title">(Dịch) References</h2>
+<p class="reference_content">[1] Sebastian Spiegler. Statistics of the Common Crawl Corpus 2012, June 2013. URL https://docs.google.com/file/d/1_9698uglerxB9nAglvaHkEgU-iZNm1TvVGucW7245-WGvZq47teNpb_uL5N9.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<p class="number">9</p>
+</div>
+<div class="paper-page" id="page-9">
+<div class="page-number">Trang 10</div>
+<p class="reference_content">[2] R. Smith. An Overview of the Tesseract OCR Engine. In Ninth International Conference on Document Analysis and Recognition (ICDAR 2007) Vol 2, pages 629–633, Curitiba, Parana, Brazil, September 2007. IEEE. ISBN 978-0-7695-2822-9. doi: 10.1109/ICDAR.2007.4376991. URL http://ieeexplore.ieee.org/document/4376991/. ISSN: 1520-5363.</p>
+<p class="reference_content">[3] Kyle Lo, Lucy Lu Wang, Mark Neumann, Rodney Kinney, and Daniel Weld. S2ORC: The Semantic Scholar Open Research Corpus. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pages 4969–4983, Online, July 2020. Association for Computational Linguistics. doi: 10.18653/v1/2020.acl-main.447. URL https://aclanthology.org/2020.acl-main.447.</p>
+<p class="reference_content">[4] Patrice Lopez. GROBID, February 2023. URL https://github.com/kermitt2/grobid. original-date: 2012-09-13T15:48:54Z.</p>
+<p class="reference_content">[5] Bastien Moysset, Christopher Kermorvant, and Christian Wolf. Full-Page Text Recognition: Learning Where to Start and When to Stop, April 2017. URL http://arxiv.org/abs/1704.08628. arXiv:1704.08628 [cs].</p>
+<p class="reference_content">[6] Darwin Bautista and Rowel Atienza. Scene Text Recognition with Permuted Autoregressive Sequence Models, July 2022. URL http://arxiv.org/abs/2207.06966. arXiv:2207.06966 [cs] version: 1.</p>
+<p class="reference_content">[7] Minghao Li, Tengchao Lv, Jingye Chen, Lei Cui, Yijuan Lu, Dinei Florencio, Cha Zhang, Zhoujun Li, and Furu Wei. TrOCR: Transformer-based Optical Character Recognition with Pre-trained Models, September 2022. URL http://arxiv.org/abs/2109.10282. arXiv:2109.10282 [cs].</p>
+<p class="reference_content">[8] Daniel Hernandez Diaz, Siyang Qin, Reeve Ingle, Yasuha Fujii, and Alessandro Bissacco. Rethinking Text Line Recognition Models, April 2021. URL http://arxiv.org/abs/2104.07787. arXiv:2104.07787 [cs].</p>
+<p class="reference_content">[9] Scott MacLean and George Labahn. A new approach for recognizing handwritten mathematics using relational grammars and fuzzy sets. International Journal on Document Analysis and Recognition (IJDAR), 16(2):139–163, June 2013. ISSN 1433-2825. doi: 10.1007/s10032-012-0184-x. URL https://doi.org/10.1007/s10032-012-0184-x.</p>
+<p class="reference_content">[10] Ahmad-Montaser Awal, Harold Mouchre, and Christian Viard-Gaudin. A global learning approach for an online handwritten mathematical expression recognition system. Pattern Recognition Letters, 35(C):68–77, January 2014. ISSN 0167-8655.</p>
+<p class="reference_content">[11] Francisco Álvaro, Joan-Andreu Sánchez, and José-Miguel Benedict. Recognition of on-line handwritten mathematical expressions using 2D stochastic context-free grammars and hidden Markov models. Pattern Recognition Letters, 35:58–67, January 2014. ISSN 0167-8655. doi: 10.1016/j.patrec.2012.09.023. URL https://www.sciencedirect.com/science/article/pii/S016786551200308X.</p>
+<p class="reference_content">[12] Zuoyu Yan, Xiaode Zhang, Liangcai Gao, Ke Yuan, and Zhi Tang. ConvMath: A Convolutional Sequence Network for Mathematical Expression Recognition, December 2020. URL http://arxiv.org/abs/2012.12619. arXiv:2012.12619 [cs].</p>
+<p class="reference_content">[13] Yuntian Deng, Anssi Kanervisto, Jeffrey Ling, and Alexander M. Rush. Image-to-Markup Generation with Coarse-to-Fine Attention, September 2016. URL http://arxiv.org/abs/1609.04938. arXiv:1609.04938 [cs] version: 1.</p>
+<p class="reference_content">[14] Anh Duc Le and Masaki Nakagawa. Training an End-to-End System for Handwritten Mathematical Expression Recognition by Generated Patterns. In 2017 14th IAPR International Conference on Document Analysis and Recognition (ICDAR), volume 01, pages 1056–1061, November 2017. doi: 10.1109/ICDAR.2017.175. ISSN: 2379-2140.</p>
+<p class="reference_content">[15] Sumeet S. Singh. Teaching Machines to Code: Neural Markup Generation with Visual Attention, June 2018. URL http://arxiv.org/abs/1802.05415. arXiv:1802.05415 [cs].</p>
+<p class="reference_content">[16] Jianshu Zhang, Jun Du, and Lirong Dai. Multi-Scale Attention with Dense Encoder for Handwritten Mathematical Expression Recognition, January 2018. URL http://arxiv.org/abs/1801.03530. arXiv:1801.03530 [cs].</p>
+<p class="reference_content">[17] Zelun Wang and Jyh-Charn Liu. Translating Math Formula Images to LaTeX Sequences Using Deep Neural Networks with Sequence-level Training, September 2019. URL http://arxiv.org/abs/1908.11415. arXiv:1908.11415 [cs, stat].</p>
+<p class="reference_content">[18] Wenqi Zhao, Liangcai Gao, Zuoyu Yan, Shuai Peng, Lin Du, and Ziyin Zhang. Handwritten Mathematical Expression Recognition with Bidirectionally Trained Transformer, May 2021. URL http://arxiv.org/abs/2105.02412. arXiv:2105.02412 [cs].</p>
+<p class="reference_content">[19] Mahshad Mahdavi, Richard Zanibbi, Harold Mouchere, Christian Viard-Gaudin, and Utpal Garain. ICDAR 2019 CROHME + TFD: Competition on Recognition of Handwritten Mathematical Expressions and Typeset Formula Detection. In 2019 International Conference on Document Analysis and Recognition (ICDAR), pages 1533–1538, Sydney, Australia, September 2019. IEEE. ISBN 978-1-72813-014-9. doi: 10.1109/ICDAR.2019.00247. URL https://ieeexplore.ieee.org/document/8978036/.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<p class="number">10</p>
+</div>
+<div class="paper-page" id="page-10">
+<div class="page-number">Trang 11</div>
+<p class="reference_content">[20] Lukas Blecher. pix2tex - LaTeX OCR, February 2023. URL https://github.com/lukas-blecher/LaTeX-OCR. original-date: 2020-12-11T16:35:13Z.</p>
+<p class="reference_content">[21] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention Is All You Need, December 2017. URL http://arxiv.org/abs/1706.03762. arXiv:1706.03762 [cs].</p>
+<p class="reference_content">[22] Yiheng Xu, Minghao Li, Lei Cui, Shaohan Huang, Furu Wei, and Ming Zhou. LayoutLM: Pre-training of Text and Layout for Document Image Understanding. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining, pages 1192–1200, August 2020. doi: 10.1145/3394486.3403172. URL http://arxiv.org/abs/1912.13318. arXiv:1912.13318 [cs].</p>
+<p class="reference_content">[23] Yang Xu, Yiheng Xu, Tengchao Lv, Lei Cui, Furu Wei, Guoxin Wang, Yijuan Lu, Dinei Florencio, Cha Zhang, Wanxiang Che, Min Zhang, and Lidong Zhou. LayoutLMv2: Multi-modal Pre-training for Visually-Rich Document Understanding, January 2022. URL http://arxiv.org/abs/2012.14740. arXiv:2012.14740 [cs].</p>
+<p class="reference_content">[24] Yupan Huang, Tengchao Lv, Lei Cui, Yutong Lu, and Furu Wei. LayoutLMv3: Pre-training for Document AI with Unified Text and Image Masking, July 2022. URL http://arxiv.org/abs/2204.08387. arXiv:2204.08387 [cs].</p>
+<p class="reference_content">[25] Lu Wang and Wanmin Liu. Online publishing via pdf2htmlEX, 2013. URL https://www.tug.org/TUGboat/tb34-3/tb108wang.pdf.</p>
+<p class="reference_content">[26] Srikar Appalaraju, Bhavan Jasani, Bhargava Urala Kota, Yusheng Xie, and R. Manmatha. DocFormer: End-to-End Transformer for Document Understanding, September 2021. URL http://arxiv.org/abs/2106.11539. arXiv:2106.11539 [cs].</p>
+<p class="reference_content">[27] Bodhisattwa Prasad Majumder, Navneet Potti, Sandeep Tata, James Bradley Wendt, Qi Zhao, and Marc Najork. Representation Learning for Information Extraction from Form-like Documents. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pages 6495–6504, Online, July 2020. Association for Computational Linguistics. doi: 10.18653/v1/2020.acl-main.580. URL https://aclanthology.org/2020.acl-main.580.</p>
+<p class="reference_content">[28] Geewook Kim, Teakgyu Hong, Moonbin Yim, Jeongyeon Nam, Jinyoung Park, Jinyeong Yim, Wonseok Hwang, Sangdoo Yun, Dongyoon Han, and Seunghyun Park. OCR-free Document Understanding Transformer, October 2022. URL http://arxiv.org/abs/2111.15664. arXiv:2111.15664 [cs].</p>
+<p class="reference_content">[29] Brian Davis, Bryan Morse, Bryan Price, Chris Tensmeyer, Curtis Wigington, and Vlad Morariu. End-to-end Document Recognition and Understanding with Dessurt, June 2022. URL http://arxiv.org/abs/2203.16618. arXiv:2203.16618 [cs].</p>
+<p class="reference_content">[30] Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, and Baining Guo. Swin Transformer: Hierarchical Vision Transformer using Shifted Windows, August 2021. URL http://arxiv.org/abs/2103.14030. arXiv:2103.14030 [cs].</p>
+<p class="reference_content">[31] Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, and Neil Houlsby. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale, June 2021. URL http://arxiv.org/abs/2010.11929. arXiv:2010.11929 [cs].</p>
+<p class="reference_content">[32] Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazvininejad, Abdelrahman Mohamed, Omer Levy, Ves Stoyanov, and Luke Zettlemoyer. BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension, October 2019. URL http://arxiv.org/abs/1910.13461. arXiv:1910.13461 [cs, stat].</p>
+<p class="reference_content">[33] Ross Taylor, Marcin Kardas, Guillem Cucurull, Thomas Scialom, Anthony Hartshorn, Elvis Saravia, Andrew Poulton, Viktor Kerkez, and Robert Stojnic. Galactica: A Large Language Model for Science, November 2022. URL http://arxiv.org/abs/2211.09085. arXiv:2211.09085 [cs, stat].</p>
+<p class="reference_content">[34] Ilya Loshchilov and Frank Hutter. Decoupled Weight Decay Regularization, January 2019. URL http://arxiv.org/abs/1711.05101. arXiv:1711.05101 [cs, math] version: 3.</p>
+<p class="reference_content">[35] P.Y. Simard, D. Steinkraus, and J.C. Platt. Best practices for convolutional neural networks applied to visual document analysis. In Seventh International Conference on Document Analysis and Recognition, 2003. Proceedings., volume 1, pages 958–963, Edinburgh, UK, 2003. IEEE Comput. Soc. ISBN 978-0-7695-1960-9. doi:10.1109/ICDAR.2003.1227801. URL http://ieeexplore.ieee.org/document/1227801/.</p>
+<p class="reference_content">[36] Alexander Buslaev, Vladimir I. Iglovikov, Eugene Khvedchenya, Alex Parinov, Mikhail Druzhinin, and Alexandr A. Kalinin. Albumentations: Fast and Flexible Image Augmentations. Information, 11(2):125, February 2020. ISSN 2078-2489. doi: 10.3390/info11020125. URL https://www.mdpi.com/2078-2489/11/2/125.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<p class="number">11</p>
+</div>
+<div class="paper-page" id="page-11">
+<div class="page-number">Trang 12</div>
+<p class="reference_content">[37] Ali Furkan Biten, Rubèn Tito, Lluis Gomez, Ernest Valveny, and Dimosthenis Karatzas. OCR-IDL: OCR Annotations for Industry Document Library Dataset, February 2022. URL http://arxiv.org/abs/2202.12985. arXiv:2202.12985 [cs].</p>
+<p class="reference_content">[38] Christopher Clark and Santosh Divvala. PDFFigures 2.0: Mining Figures from Research Papers. In Proceedings of the 16th ACM/IEEE-CS on Joint Conference on Digital Libraries, pages 143–152, Newark New Jersey USA, June 2016. ACM. ISBN 978-1-4503-4229-2. doi: 10.1145/2910896.2910904. URL https://dl.acm.org/doi/10.1145/2910896.2910904.</p>
+<p class="reference_content">[39] V. Levenshtein. Binary codes capable of correcting deletions, insertions, and reversals. Soviet physics. Doklady, 1965. URL https://www.semanticscholar.org/paper/Binary-codes-capable-of-correcting-deletions%2C-and-Levenshtein/b2f8876482c97e804bb50a5e2433881ae31d0cdd.</p>
+<p class="reference_content">[40] Zellig S. Harris. Distributional Structure. WORD, 10(2-3):146–162, 1954. doi: 10.1080/00437956.1954.11659520. URL https://doi.org/10.1080/00437956.1954.11659520. Publisher: Routledge_eprint: https://doi.org/10.1080/00437956.1954.11659520.</p>
+<p class="reference_content">[41] Ben Sorscher, Robert Geirhos, Shashank Shekhar, Surya Ganguli, and Ari S. Morcos. Beyond neural scaling laws: beating power law scaling via data pruning, November 2022. URL http://arxiv.org/abs/2206.14486. arXiv:2206.14486 [cs, stat].</p>
+<p class="reference_content">[42] Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing Zhu. Bleu: a Method for Automatic Evaluation of Machine Translation. In Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics, pages 311–318, Philadelphia, Pennsylvania, USA, July 2002. Association for Computational Linguistics. doi:10.3115/1073083.1073135. URL https://aclanthology.org/P02-1040.</p>
+<p class="reference_content">[43] Satanjeev Banerjee and Alon Lavie. METEOR: An Automatic Metric for MT Evaluation with Improved Correlation with Human Judgments. In Proceedings of the ACL Workshop on Intrinsic and Extrinsic Evaluation Measures for Machine Translation and/or Summarization, pages 65–72, Ann Arbor, Michigan, June 2005. Association for Computational Linguistics. URL https://aclanthology.org/W05-0909.</p>
+<p class="reference_content">[44] Ari Holtzman, Jan Buys, Li Du, Maxwell Forbes, and Yejin Choi. The Curious Case of Neural Text Degeneration, February 2020. URL http://arxiv.org/abs/1904.09751. arXiv:1904.09751 [cs].</p>
+<p class="reference_content">[45] Herman W. (Herman William) March and Henry C. (Henry Charles) Wolff. Calculus. New York : McGraw-Hill, 1917. URL http://archive.org/details/calculus00marciala.</p>
+<p class="reference_content">[46] Kinetics and Thermodynamics in High-Temperature Gases, January 1970. URL https://ntrs.nasa.gov/citations/19700022795. NTRS Report/Patent Number: N70-32106-116 NTRS Document ID: 19700022795 NTRS Research Center: Glenn Research Center (GRC).</p>
+<p class="reference_content">[47] Angela Fan, Mike Lewis, and Yann Dauphin. Hierarchical Neural Story Generation. In Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 889–898, Melbourne, Australia, July 2018. Association for Computational Linguistics. doi: 10.18653/v1/P18-1082. URL https://aclanthology.org/P18-1082.</p>
+<p class="reference_content">[48] Meet Shah, Xinlei Chen, Marcus Rohrbach, and Devi Parikh. Cycle-Consistency for Robust Visual Question Answering, February 2019. URL http://arxiv.org/abs/1902.05660. arXiv:1902.05660 [cs].</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<p class="number">12</p>
+</div>
+<div class="paper-page" id="page-12">
+<div class="page-number">Trang 13</div>
+<h2 class="paragraph_title">(Dịch) A Dataset</h2>
+<p class="text">(Dịch) The most important data source is arXiv, making up > 91.5% of the corpus. On arXiv most research documents are paired with the LaTeX source code provided by the authors. The LaTeX source offers more information and is left unprocessed, unlike the XML format from PMC where equations and tables are frequently substituted with images. This allows us to select exactly which information we need to build the dataset.</p>
+<h2 class="paragraph_title">(Dịch) B Examples</h2>
+<p class="text">(Dịch) In this section we converted some pages from old text books using the Nougat base model. The text books from the Internet Archive $ ^{11} $ and Project Gutenberg $ ^{12} $ and are in public domain.</p>
+<p class="text">(Dịch) The performance for these scanned pages is noticeable worse than for digital-born documents. However, the model does generate sensible text for each page with few errors. For example see the first row of Fig. B.1. Here the model mistakes the almost illegible exponent n for *. In the second row of the same figure the model falls into a repetitive loop after predicting another comma instead of a dot. Similar problems can be seen in Fig. B.2.</p>
+<p class="text">(Dịch) In Fig. B.3 we present pages, scanned with a mobile device, from a printed master thesis and the Nougat output. The model is robust to the artifacts that arise when hand-scanning a document.</p>
+<p class="text">(Dịch) Explore the examples in this section on the project page: https://facebookresearch.github.io/nougat.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="table-container"><table><tr><td>Name</td><td>Number of Pages</td></tr><tr><td>arXiv</td><td>7,511,745</td></tr><tr><td>PMC</td><td>536,319</td></tr><tr><td>IDL</td><td>446,777</td></tr><tr><td>Total</td><td>8,204,754</td></tr></table></div>
+<p class="figure_title">(Dịch) Table A.1: Dataset composition</p>
+<p class="footnote"> $ ^{11} $https://archive.org/</p>
+<p class="footnote"> $ ^{12} $https://www.gutenberg.org/</p>
+<p class="number">13</p>
+</div>
+<div class="paper-page" id="page-13">
+<div class="page-number">Trang 14</div>
+<h2 class="paragraph_title">(Dịch) THE POWER FUNCTION</h2>
+<p class="text">$35</p>
+<p class="text">(Dịch) and the rule is proved that</p>
+<div class="display_formula">$$ $$ \frac{d u^{s}}{d z}=n u^{s-1}\frac{d u}{d z}, $$ $$</div>
+<p class="text">(Dịch) where n is a positive fraction whose numerator and denominator are integers. This rule has already been used in the solution of numerous exercises.</p>
+<p class="text">(Dịch) 34. The Derivative of a Constant. Let $y = c$, where $c$ is a constant. Corresponding to any $\Delta x$, $\Delta y = 0$, and consequently</p>
+<div class="display_formula">$$ $$ \frac{\Delta y}{\Delta x}=0, $$ $$</div>
+<p class="text">and</p>
+<div class="display_formula">$$ $$ \lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=0, $$ $$</div>
+<p class="text">or</p>
+<div class="display_formula">$$ $$ \frac{d y}{d z}=0. $$ $$</div>
+<p class="text">(Dịch) The derivative of a constant is zero.</p>
+<p class="text">(Dịch) 35. The Derivative of the Sum of Two Functions. Let</p>
+<div class="display_formula">$$ $$ y=u+v, $$ $$</div>
+<p class="text">(Dịch) where u and v are functions of x. Let Δu, Δv, and Δy be the increments of u, v, and y, respectively, corresponding to the increment Δx.</p>
+<div class="display_formula">$$ $$ y+\Delta y=u+\Delta u+v+\Delta v $$ $$</div>
+<div class="display_formula">$$ $$ \Delta y=\Delta u+\Delta v $$ $$</div>
+<div class="display_formula">$$ $$ \frac{\Delta y}{\Delta x}=\frac{\Delta u}{\Delta z}+\frac{\Delta v}{\Delta x} $$ $$</div>
+<div class="display_formula">$$ $$ \frac{a}{b}=\frac{c}{d}+\frac{e}{f} $$ $$</div>
+<div class="display_formula">$$ $$ \frac{dy}{dx}=\frac{du}{dx}+\frac{dv}{dx}, $$ $$</div>
+<p class="text">or</p>
+<div class="display_formula">$$ $$ \frac{\mathrm{d}(\mathrm{u}+\mathrm{v})}{\mathrm{d}\mathrm{x}}=\frac{\mathrm{d}\mathrm{u}}{\mathrm{d}\mathrm{x}}+\frac{\mathrm{d}\mathrm{v}}{\mathrm{d}\mathrm{x}}. $$ $$</div>
+<p class="text">(Dịch) The derivative of the sum of two functions is equal to the sum of their derivatives.</p>
+<h2 class="paragraph_title">(Dịch) CALCULUS</h2>
+<p class="text">(Dịch) the center, the axis of $z$ horizontal and the axis of $y$ positive downward. The element of pressure is</p>
+<p class="text">(Dịch) and the total pressure is</p>
+<div class="display_formula">$$ $$ P=2k\int_{0}^{6}y x dy. $$ $$</div>
+<div class="display_formula">$$ $$ 2k y x d y $$ $$</div>
+<p class="text">(Dịch) z is expressed in terms of y by means of the equation of the ellipse,</p>
+<div class="display_formula">$$ $$ \frac{z^{2}}{64}\div\frac{y^{2}}{36}=1. $$ $$</div>
+<p class="text">(Dịch) 1. Find the pressure on the vertical parabolic gate, Fig. 51: (a) if the edge AB lies in the surface of the water; (b) if the edge AB lies 5 feet below the surface.</p>
+<p class="text">Then</p>
+<p class="text">(Dịch) 2. Find the pressure on a vertical semiecular gate whose diameter, 10 feet long, lies in the surface of the water.</p>
+<p class="text">(Dịch) 73. Arithmetic Mean. The arithmetic mean, A, of a series of n numbers,  $ a_{1}, a_{2}, a_{3}, \cdots, a_{n} $, is defined by the equation</p>
+<p class="text">(Dịch) That is, A is such a number that if each number in the sum</p>
+<h2 class="paragraph_title">(Dịch) and the rule is proved that</h2>
+<p class="text">and</p>
+<h2 class="paragraph_title">(Dịch) 34 The Derivative of a Constant</h2>
+<p class="text">(Dịch) where n is a positive fraction whose numerator and denominator are integers. This rule has already been used in the solution of numerous exercises.</p>
+<p class="text">(Dịch) Let y = c, where c is a constant. Corresponding to any Dz, Dy = 0, and consequently</p>
+<div class="display_formula">$$ $$ \frac{\Delta y}{\Delta x}=0, $$ $$</div>
+<div class="display_formula">$$ $$ \lim_{\Delta x\rightarrow0}\frac{\Delta y}{\Delta x}=0, $$ $$</div>
+<p class="text">(Dịch) 35 The Derivative of the Sum of Two Functions</p>
+<div class="display_formula">$$ $$ \frac{\mathrm{d}y}{\mathrm{d}x}=0. $$ $$</div>
+<p class="text">(Dịch) The derivative of a constant is zero. Interpret this result geometrically.</p>
+<div class="display_formula">$$ $$ \frac{d y}{d x}=\frac{d x}{d x}+\frac{d v}{d x}, $$ $$</div>
+<div class="display_formula">$$ $$ \frac{\Delta y}{\Delta x}=\frac{\Delta x}{\Delta x}+\frac{\Delta v}{\Delta x} $$ $$</div>
+<p class="text">(Dịch) where u and v are functions of x. Let  $ D_u $,  $ D_v $, and  $ D_y $ be the increments of u, v, and y, respectively, corresponding to the increment  $ D_x $.</p>
+<div class="display_formula">$$ $$ \Delta g=\Delta w+\Delta v $$ $$</div>
+<div class="display_formula">$$ $$ \frac{d(u+v)}{dx}=\frac{du}{dx}+\frac{dv}{dx}. $$ $$</div>
+<p class="text">(Dịch)  $ y + \Delta y = u + \Delta u + v + \Delta v $</p>
+<p class="text">(Dịch) The derivative of the sum of two functions is equal to the sum of their derivatives.</p>
+<div class="display_formula">$$ $$ P=2k\int_{0}^{6}y x d y. $$ $$</div>
+<p class="text">(Dịch) z is expressed in terms of y by means of the equation of the ellipse.</p>
+<p class="text">Then</p>
+<div class="display_formula">$$ $$ \frac{x^{2}}{64}+\frac{y^{2}}{36}=1. $$ $$</div>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<p class="number">43</p>
+<div class="image-container"><img src="imgs/img_in_image_box_845_239_898_258.jpg" alt="image"></div>
+<div class="image-container"><img src="imgs/img_in_image_box_831_948_915_969.jpg" alt="image"></div>
+<div class="image-container"><img src="imgs/img_in_image_box_267_996_410_1030.jpg" alt="image"></div>
+<div class="image-container"><img src="imgs/img_in_image_box_243_1092_424_1202.jpg" alt="image"></div>
+<div class="image-container"><img src="imgs/img_in_image_box_251_1287_422_1313.jpg" alt="image"></div>
+<p class="figure_title">(Dịch) Figure B.1: Example of an old calculus text book [45].</p>
+<p class="number">14</p>
+</div>
+<div class="paper-page" id="page-14">
+<div class="page-number">Trang 15</div>
+<p class="text">(Dịch) Here  $ \nu_1 = k_1[H_2] $,  $ \nu_2 = k_2[O_2] $,  $ \nu_3 = k_3[H_2] $,  $ \nu_4 = k_4[O_2][M] $, and  $ \nu_5 = k_5[CO] $. Thus the exponential growth constant  $ \lambda $ depends on the gas composition and the rate constants of reactions I to V. This paper reports measurements on mixtures chosen to permit determinations of the rates of reactions I, II, III, and V. Mixtures were selected by analyzing equation (1).</p>
+<h2 class="paragraph_title">(Dịch) EXPERIMENTAL ASPECTS</h2>
+<p class="text">(Dịch) Growth constants were obtained by measuring the blue carbon monoxide flame band emission behind incident shocks. The intensity of this radiation is proportional to the product of carbon monoxide and oxygen atom concentrations (ref. 3), and since very little carbon monoxide is consumed, the light monitors the increase of oxygen atom concentration with time.</p>
+<p class="text">(Dịch) Gas mixtures contained varying amounts of hydrogen, carbon monoxide, oxygen and in some mixtures carbon dioxide, dilated five to tenfold with argon. Hydrogen, oxygen, and argon were high purity tank gases and were used without further purification. Carbon monoxide was condensed at liquid nitrogen temperature; about one-quarter of the condensate was pumped off and discarded. Dry ice served as a convenient source of carbon dioxide. It was purified by subliming three-quarters of a sample into a liquid nitrogen cooled trap. The first quarter of this trapped fraction was discarded and the middle half used for mixture preparation.</p>
+<p class="text">(Dịch) Recently we showed that boundary layer effects must be considered in analyzing data obtained behind incident shocks; the growing boundary layer causes increases in temperature, density, and residence time with increasing distance behind the shock. Conditions behind the shocks, in the region of the experimental measurements, were obtained from a computer program which integrated the equations of chemical change for a shocked gas accounting for the effects of boundary layer buildup. In general, the extent of chemical reaction was small, and changes in gas properties were brought about largely by the gas dynamics associated with boundary layer growth.</p>
+<p class="text">(Dịch) Exponential growth constants were obtained from plots of the logarithm of observed light intensity against gas time; the relation between gas and laboratory times was obtained from the computer calculations.</p>
+<h2 class="paragraph_title">(Dịch) SELECTION OF GAS MIXTURES</h2>
+<p class="text">(Dịch) Let us turn now to the rationale used to select gas mixtures by analysis of</p>
+<p class="text">(Dịch) Growth constants were obtained by measuring the blue carbon monoxide flame band emission behind incident shocks. The intensity of this radiation is proportional to the product of carbon monoxide and oxygen atom concentrations (ref. 3), and since very little carbon monoxide is consumed, the light monitors the increase of oxygen atom concentration with time.</p>
+<p class="text">(Dịch) Gas mixtures contained varying amounts of hydrogen, carbon monoxide, oxygen and in some mixtures carbon dioxide, diluted five to tenfold with argon. Hydrogen, oxygen, and argon were high purity tank gases and were used without further purification. Carbon monoxide was condensed at liquid nitrogen temperature; about one-quarter of the condensate was pumped off and discarded. Dry ice served as a convenient source of carbon dioxide. It was purified by sub-liming three-quarters of a sample into a liquid nitrogen cooled trap. The first quarter of this trapped fraction was discarded and the middle half used for mixture preparation.</p>
+<p class="text">(Dịch) Recently we showed that boundary layer effects must be considered in analyzing data obtained behind incident shocks; the growing boundary layer causes increases in temperature, density, and residence time with increasing distance behind the shock. Conditions behind the shocks, in the region of the experimental measurements, were obtained from a computer program which integrated the equations of chemical change for a shocked gas accounting for the effects of boundary layer buildup. In general, the extent of chemical reaction was small, and changes in gas properties were brought about largely by the gas dynamics associated with boundary layer growth.</p>
+<p class="text">(Dịch) Here  $ v_1 = k_1[H_2], v_2 = k_2[O_2], v_3 = k_3[H_2], v_4 = k_4[O_2][M] $, and  $ v_5 = k_5[CO] $. Thus the exponential growth constant  $ \lambda $ depends on the gas composition and the rate constants of reactions I to V. This paper reports measurements on mixtures chosen to permit determinations of the rates of reactions I, II, III, and V. Mixtures were selected by analyzing equation (1).</p>
+<h2 class="paragraph_title">(Dịch) EXPERIMENTAL ASPECTS</h2>
+<p class="text">(Dịch) Exponential growth constants were obtained from plots of the logarithm of observed light intensity against gas time; the relation between gas and laboratory times was obtained from the computer calculations.</p>
+<h2 class="paragraph_title">(Dịch) SELECTION OF GAS MIXTURES</h2>
+<p class="text">(Dịch) Let us turn now to the rationale used to select gas mixtures by analysis of</p>
+<p class="text">(Dịch) equation (1). To begin with, under our experimental conditions  $ \nu_{4} $ is generally small in comparison with the other  $ \nu $'s and can be neglected for purposes of a qualitative discussion. Secondly,  $ \lambda $ turns out to be a small positive root - of the order of the smaller  $ \nu $ values and small compared with the larger  $ \nu $ values. Thus, we neglect  $ \lambda^{3} $ in comparison with the other terms and rewrite equation (1):</p>
+<div class="display_formula">$$ $$ \left[(\nu_{1}+\nu_{5})+\nu_{2}+\nu_{3}\right]\lambda^{2}+\nu_{3}(\nu_{1}+\nu_{5})\lambda\equiv2\nu_{2}\nu_{3}(\nu_{1}+\nu_{5}) $$ $$</div>
+<span class="formula_number">(2)</span>
+<p class="text">(Dịch) If the amount of hydrogen in a mixture is large in comparison to oxygen,  $ \nu_1 $ and  $ \nu_3 $ are large and the term involving  $ \lambda^2 $ may be neglected; in this event,</p>
+<div class="display_formula">$$ $$ \lambda\approx2\nu_{2} $$ $$</div>
+<span class="formula_number">(3)</span>
+<p class="text">(Dịch) On the other hand, if only a trace of hydrogen is present,  $ \nu_{3} $ is small, the term involving  $ \lambda $ may be neglected, and</p>
+<div class="display_formula">$$ $$ \lambda^{2}\simeq\frac{2\nu_{2}\nu_{3}(\nu_{1}+\nu_{5})}{\nu_{2}+(\nu_{1}+\nu_{5})} $$ $$</div>
+<span class="formula_number">(4)</span>
+<p class="text">(Dịch) If we choose a mixture with a large amount of carbon monoxide,  $ \nu_{5} $ is large and</p>
+<div class="display_formula">$$ $$ \lambda\sim\sqrt{2\nu_{2}\nu_{3}} $$ $$</div>
+<span class="formula_number">(5)</span>
+<p class="text">(Dịch) Whereas if there is a large amount of oxygen,  $ \nu_{2} $ is large and</p>
+<div class="display_formula">$$ $$ \begin{aligned}&\lambda\sim\sqrt{2\nu_{3}(\nu_{1}+\nu_{5})}\\ &\begin{cases}\\ &{\rightarrow\sqrt{2\nu_{3}\nu_{1}}\quad&[\mathrm{H}_{2}]>[\mathrm{CO}]\\&{\rightarrow\sqrt{2\nu_{3}\nu_{5}}\quad&[\mathrm{CO}]>[\mathrm{H}_{2}]\\ &\end{cases}\\ \end{aligned} $$ $$</div>
+<span class="formula_number">(8)</span>
+<p class="text">(Dịch) This, then, outlines a strategy for obtaining rates of reactions I, II, III, and V. First, a mixture rich in hydrogen is used to determine  $ k_{2} $. Next, with  $ k_{2} $ known, a mixture with a trace of hydrogen and rich in carbon monoxide is used to determine  $ k_{3} $. Finally, with  $ k_{3} $ known, mixtures with excess oxygen and varying pro-</p>
+<p class="text">(Dịch) equation (1). To begin with, under our experimental conditions  $ v_{4} $ is generally small in comparison with the other  $ v_{8} $ and can be neglected for purposes of a qualitative discussion. Secondly,  $ \lambda $ turns out to be a small positive root - of the order of the smaller  $ v $ values and small compared with the larger  $ v $ values. Thus, we neglect  $ \lambda^{2} $ in comparison with the other terms and rewrite equation (1):</p>
+<h2 class="paragraph_title">(Dịch)  $ \left[(v_1 + v_2) + v_2 + v_3\right]\lambda^2 + v_3(v_1 + v_5)\lambda \approx 2v_2v_3(v_1 + v_5) $</h2>
+<p class="text">(Dịch) If the amount of hydrogen in a mixture is large in comparison to oxygen,  $ O_{2} $ and  $ O_{2} $ are large and the term involving  $ A^{2} $ may be neglected; in this event,</p>
+<p class="text">(Dịch) On the other hand, if only a trace of hydrogen is present,  $ a_{2} $ is small, the term involving  $ \lambda $ may be neglected, and</p>
+<p class="text">(Dịch)  $ \lambda^2 = \frac{2v_2v_3(v_1 + v_3)}{v_2 + (v_1 + v_3)} $</p>
+<p class="text">(Dịch) If we choose a mixture with a large amount of carbon monoxide, as is large and</p>
+<div class="display_formula">$$ $$ \lambda\sim\sqrt{2\nu_{2}\nu_{3}} $$ $$</div>
+<p class="text">(Dịch) Whereas if there is a large amount of oxygen,  $ a_{2} $ is large and</p>
+<p class="text">(Dịch)  $ \lambda \sim \sqrt{2\nu_2(v_1 + v_5)} $</p>
+<p class="text">(Dịch)  $ \left[\mathrm{H}_{2}\right] > \left[\mathrm{CO}\right] $</p>
+<div class="display_formula">$$ $$ \left|CO\right|>\left|H_{2}\right| $$ $$</div>
+<p class="text">(Dịch) This, then, outlines a strategy for obtaining rates of reactions I, II, III, and V. First, a mixture rich in hydrogen is used to determine k2. Next, with k2 known, a mixture with a trace of hydrogen and rich in carbon monoxide is used to determine k3. Finally, with k3 known, mixtures with excess oxygen and varying pro</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<p class="figure_title">(Dịch) Figure B.2: A selection of pages from a NASA conference from 1970 [46].</p>
+<p class="number">15</p>
+</div>
+<div class="paper-page" id="page-15">
+<div class="page-number">Trang 16</div>
+<h2 class="paragraph_title">(Dịch) transverse self-polarization or diamagnetic term. $ ^{[24]} $</h2>
+<p class="text">(Dịch) The molecular Hamiltonian describes the vibrational modes as harmonic oscillators which are coupled to each other by a third order anharmonic coupling term. This term is obtained by using a Taylor expansion of the harmonic potential and therefore includes a mediator for the IVR pathways in the model. So the molecular Hamiltonian for two separate modes (q, Q) in the molecular part is described by:</p>
+<div class="display_formula">$$ $$ \hat{H}_{m o l}=\hbar\omega_{q}(\hat{b}^{\dagger}\hat{b})+\hbar\omega_{Q}(\hat{c}^{\dagger}\hat{c})+\sum_{\tau,s}^{3}\eta_{\tau,s}^{e Q}\left(\hat{b}^{\dagger}+\hat{b}\right)^{\tau}\left(\hat{c}^{\dagger}+\hat{c}\right)^{\tau}. $$ $$</div>
+<span class="formula_number">(2.3)</span>
+<p class="text">(Dịch) Here  $ \omega_{i} $ describes the fundamental frequency of the molecular mode  $ q $ which is coupled to the cavity and the respective degrees of freedom are expressed with the ladder operators,  $ \psi $ and  $ \hat{b} $. In the second part, a lower energy vibrational mode  $ Q $ is described with its respective frequency  $ \omega_{Q} $ and the corresponding ladder operators ( $ \hat{c}^{i} $,  $ \hat{c} $). The last term describes the general form of the third order couplings, where  $ n_{k,i} $ describes the anharmonic coupling constants and will be referred to by  $ \hat{W}^{i,j} $. To obtain the corresponding eigenvector for the upper and lower polariton, the Hamiltonian matrix is diagonalized. By doing this one arrives at the following expression for the polaritons:</p>
+<div class="display_formula">$$ $$ |\psi_{(U P,L P)};0\rangle=\frac{|1_{c},0,0\rangle\pm|0_{c},1,0\rangle}{\sqrt{2}}. $$ $$</div>
+<span class="formula_number">(2.4)</span>
+<p class="text">(Dịch) Here the uncoupled states are described by the kets where the first term describes the excitation in the cavity state, the second term describes the excitation in the high frequency mode and the last term is the excitation in the Q mode.</p>
+<p class="text">(Dịch) Under specific symmetry considerations not all intramolecular coupling orders  $ (r, s) $ are relevant. In this specific case only orders with  $ r + s \leq 3 $ are considered. Since all considered coordinates are intramolecular normal modes the bilinear coupling  $ (1, 1) $ is in this case equal to zero. Generally, all terms of the potential energy have to transform according to the totally symmetric representation of the molecules point group. $ ^{[25]} $ Thus according to the following equation:</p>
+<h2 class="paragraph_title">(Dịch) 2.1.2 Anharmonic Coupling Terms</h2>
+<div class="display_formula">$$ $$ \left(\Gamma^{(i)}\right)^{r}\times\left(\Gamma^{(Q)}\right)^{s}\subset\Gamma_{A}. $$ $$</div>
+<p class="text">(Dịch) Since the models discussed in this work modeled after the octahedral W(CO) $ _{6} $ molecule and thus exhibit non-Abelian point group symmetry, the various possible couplings have</p>
+<span class="formula_number">10</span>
+<div class="display_formula">$$ $$ \Psi\left(q_{1},...,q_{f},t\right)=\sum_{j_{1}=1}^{N_{1}}...\sum_{j_{f}=1}^{N_{f}}C_{j_{1}...j_{f}}(t)\prod_{s=1}^{f}\chi_{j_{k}}^{s}\left(q_{s}\right) $$ $$</div>
+<span class="formula_number">(2.6)</span>
+<p class="text">time-independent basis-set functions.</p>
+<p class="text">(Dịch) Hereby, f represents the degrees of freedom (DOF),  $ C_{j_1 \ldots j_t}(t) $ denotes the time-dependent expansion coefficients and  $ N_\kappa $ describes the number of basis functions used for representing the  $ \kappa $th DOF. The orthogonal time-independent primitive basis functions are represented by  $ \chi_{\kappa}^\kappa(g_\kappa) $ and only the time-dependent expansion coefficients are optimized variationally. $ ^{[81,82]} $</p>
+<p class="text">(Dịch) The problem with the standard method is the exponential scaling as the number of coefficients increases with  $ N^{f} $. Therefore, the standard method is only suited for problems with less than 6 DOFs.</p>
+<p class="text">(Dịch) In the multiconfiguration time-dependent Hartree method (MCTDH method) the scaling is softened by introducing a smaller but now time-dependent basis, the so-called single particle functions (SPFs)</p>
+<div class="display_formula">$$ $$ \left|\varphi_{j_{k}}^{n}\left(q_{k},t\right)\right\rangle=\sum_{i_{n}=1}^{N_{n}}c_{i_{n},j_{n}}^{(s)}\left(t\right)\left|\chi_{i_{n}}^{(s)}\left(q_{n}\right)\right\rangle $$ $$</div>
+<p class="text">(Dịch) The SPFs are represented as a linear combination of the time-independent primitive basis functions. The ansatz for MCTDH method can now be written as the following:</p>
+<span class="formula_number">(2.7)</span>
+<div class="display_formula">$$ $$ \begin{align*}\Psi\left(q_{1},\ldots,q_{f},t\right)&=\sum_{j_{1}=1}^{n_{1}}-\sum_{j_{f}=1}^{n_{f}}A_{j_{1}\ldots j_{f}}(t)\prod_{n=1}^{f}\varphi_{jk}^{n}\left(q_{n},t\right)\\&=\sum_{J}A_{J}\Phi_{J}.\end{align*} $$ $$</div>
+<span class="formula_number">(2.8)</span>
+<span class="formula_number">(2.9)</span>
+<p class="text">(Dịch) Where  $ \Phi_{J} $ describes the f-dimensional product of the SPFs, the Hartree product. The complex expansion coefficients  $ A_{J} $ and the basis functions  $ \varphi_{jk}^{s}(q_{k},t) $ are both time-dependent and optimized variations. [31,32]</p>
+<p class="text">(Dịch) Due to the fact that a two layer scheme was used here (the time-dependent SPFs and the primitive basis), the exponential scaling of the DOFs, as  $ n_{k} $, is smaller compared to the layer method like the standard method.</p>
+<p class="text">(Dịch) By now applying the Dirac-Frenchle variational principle to the ansatz (eq. (2.9)), we obtain the respective Equations of Motion and therefore a set of coupled differential</p>
+<h2 class="paragraph_title">(Dịch) 2.1. Molecules in Cavities</h2>
+<p class="text">(Dịch) The molecular Hamiltonian describes the vibrational modes as harmonic oscillators which are coupled to each other by a third order anharmonic coupling term. This term is obtained by using a Taylor expansion of the harmonic potential and therefore includes a mediator for the IVR pathways in the model. So the molecular Hamiltonian for two separate modes (q, Q) in the molecular part is described by:</p>
+<div class="display_formula">$$ $$ \dot{H}_{m o d}=\hbar\omega_{q}(\dot{\hat{b}}^{\dagger}\dot{\hat{b}})+\hbar\omega_{Q}(\dot{c}^{\dagger}\dot{c})+\sum_{n,s}^{s}x_{n,s}^{q Q}\left(\dot{\hat{b}}^{\dagger}+\dot{\hat{b}}\right)^{s}\left(\dot{c}^{\dagger}+\dot{c}\right)^{s}. $$ $$</div>
+<span class="formula_number">(2.3)</span>
+<p class="text">(Dịch) Here  $ \omega_{q} $ describes the fundamental frequency of the molecular mode q which is coupled to the cavity and the respective degrees of freedom are expressed with the ladder operators,  $ \hat{b}^{j} $ and  $ \hat{b}_{k} $. In the second part, a lower energy vibrational mode Q is described with its respective frequency  $ \omega_{Q} $ and the corresponding ladder operators  $ (\hat{c}^{j}, \hat{c}) $. The last term describes the general form of the third order couplings, where  $ \eta_{q} $ describes the anharmonic coupling constants and will be referred to by  $ \hat{W}^{j}[q] $. To obtain the corresponding eigenvector for the upper and lower polariton, the Hamiltonian matrix is diagonalized. By doing this one arrives at the following expression for the polariton: [22, 25]</p>
+<span class="formula_number">(2.5)</span>
+<div class="display_formula">$$ $$ [\psi_{(U P,L P)};0)=\frac{|1_{v},0,0)\pm|0_{v},1,0\rangle}{\sqrt{2}}. $$ $$</div>
+<span class="formula_number">(2.4)</span>
+<p class="text">(Dịch) Here the uncospled states are described by the kots where the first term describes the excitation in the cavity state, the second term describes the excitation in the high frequency mode and the last term is the excitation in the Q mode.</p>
+<h2 class="paragraph_title">(Dịch) 2.1.2. Anharmonic Coupling Terms</h2>
+<p class="text">(Dịch) Under specific symmetry considerations not all intramolecular coupling orders  $ (r, s) $ are relevant. In this specific case only orders with  $ r + s \leq 3 $ are considered. Since all considered coordinates are intramolecular normal modes the bilinear coupling  $ (1, 1) $ is in this case equal to zero. Generally, all terms of the potential energy have to transform according to the totally symmetric representation of the molecules point group. $ ^{[26]} $ Thus according to the following equation:</p>
+<p class="text">(Dịch) Since the models discussed in this work modeled after the octahedral W(CO) $ _{6} $ molecule and thus exhibit non-Abelian point group symmetry, the various possible couplings have</p>
+<div class="display_formula">$$ $$ \left(\Gamma^{(q)}\right)^{r}\times\left(\Gamma^{(Q)}\right)^{s}\subset\Gamma_{A}. $$ $$</div>
+<p class="text">time-independent basis-set functions.</p>
+<div class="display_formula">$$ $$ \Phi\left(\boldsymbol{q}_{1},--,\boldsymbol{q}_{f},t\right)=\sum_{j_{k}=1}^{N_{i}}-\sum_{j_{f}=1}^{N_{f}}C_{j_{k},-j_{f}}\left(t\right)\prod_{n=1}^{f}\chi_{j_{k}}^{n}\left(\boldsymbol{q}_{k}\right) $$ $$</div>
+<span class="formula_number">(2.6)</span>
+<p class="text">(Dịch) Hereby, $f$ represents the degree of freedom (DOF), $C_{2i-j_f}(t)$ denotes the time-dependent expansion coefficients and $N_s$ describes the number of basis functions used for representing the $t$th DOF. The orthonormal time-independent primitive basis functions are represented by $\chi_{2i}^n(q_n)$ and only the time-dependent expansion coefficients are optimized variationally [31, 32].</p>
+<p class="text">(Dịch) The problem with the standard method is the exponential scaling as the number of coefficients increases with  $ N' $. Therefore, the standard method is only suited for problems with less than 6 DOFs.</p>
+<p class="text">(Dịch) In the multiconfiguration time-dependent Hartree method (MCTDH method) the scaling is softened by introducing a smaller but now time-dependent basis, the so-called single particle functions (SPFs)</p>
+<div class="display_formula">$$ $$ \left|\varphi_{2k}^{n}\left(\mathfrak{g}_{k},t\right)\right\rangle=\sum_{i_{k}=1}^{N_{n}}c_{i_{k},j_{k}}^{(n)}\left(t\right)\left|\chi_{i_{k}}^{(n)}\left(\mathfrak{g}_{k}\right)\right\rangle. $$ $$</div>
+<span class="formula_number">(2.7)</span>
+<p class="text">(Dịch) The SPFs are represented as a linear combination of the time-independent primitive basis functions. The anats for MCTDH method can now be written as the following:</p>
+<div class="display_formula">$$ $$ \begin{align*}\Psi\left(q_{1},...,q_{f},t\right)=\sum_{j=1}^{n_{1}}-\sum_{j f=1}^{n f}A_{j1...j f}(t)\prod_{n=1}^{f}\varphi_{2h}^{n}\left(q_{k},t\right)\\=\sum A_{j}\Phi,\end{align*} $$ $$</div>
+<span class="formula_number">(2.8)</span>
+<span class="formula_number">(2.9)</span>
+<p class="text">(Dịch) Where  $ \Phi_{j} $ describes the f-dimensional product of the SPFs, the Hartree product. The complex expansion coefficients  $ A_{j} $ and the basis functions  $ \varphi_{j_{k}}^{n}(q_{k},t) $ are both time-dependent and optimized variationsally [31, 32].</p>
+<p class="reference_content">Due to the fact that a two layer scheme was used here (the time-dependent SPFs and the primitive basis), the exponential scaling of the DOFs, as  $ n_{k} $, is smaller compared to the one layer method like the standard method.</p>
+<p class="reference_content">By now applying the Direct-Frenchle variational principle to the asmatz (eq. (2.9)), we obtain the respective Equations of Motion and therefore a set of coupled differential</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="header">2.1. Molecules in Cavities</div>
+<div class="header">2.2. Multiconfiguration Time-Dependent Hartree</div>
+<p class="figure_title">(Dịch) Figure B.3: Scan of a modern thesis with a mobile device camera, with permission from the author.</p>
+<p class="number">16</p>
+</div>
+<div class="paper-page" id="page-16">
+<div class="page-number">Trang 17</div>
+<p class="text">(Dịch) model won the VQA Challenge in 2017 and achieves 66.25% accuracy on VQA v2.0 test-dev.</p>
+<p class="text">(Dịch) Pythia [41] extends the BUTD model by incorporating co-attention [27] between question and image regions. Pythia uses features extracted from Detector [8] pretrained on Visual Genome. An ensemble of Pythia models won the 2018 VQA Challenge using extra training data from Visual Genome [21] and using Resnet [11] features. In this study, we use Pythia models which do not use Resnet features.</p>
+<p class="text">(Dịch) Bilinear Attention Networks (BAN) [19]  $ {^6} $ combines the idea of bilinear models and co-attention [27] between image regions and words in questions in a residual setting. Similar to [3], it uses Faster-RCNN [33] pretrained on Visual Genome [21] to extract image features. In all our experiments, for a fair comparison, we use BAN models which do not use additional training data from Visual Genome. BAN achieves the current state-of-the-art single-model accuracy of 69.64 % on VQA v2.0 test-dev without using additional training data from Visual Genome.</p>
+<p class="text">(Dịch) Implementation Details For all models trained with our cycle-consistent framework, we use the values  $ T_{times}=0.9 $,  $ \lambda_{G}=1.0 $,  $ \lambda_{C}=0.5 $ and  $ A_{kiter}=5500 $. When reporting results on the validation split and VQA-Rephrasing we train on the training split and when reporting results on the test split we train on both training and validation splits of VQA v2.0. Note that we never explicitly train on the collected VQA-Rephrasing dataset and use it purely for evaluation purposes. We use publicly available implementations of each backbone VQA model.</p>
+<p class="text">(Dịch) We measure the robustness of each of these models on</p>
+<p class="text">http://github.com/gdzkinkun-tqa</p>
+<p class="text">(Dịch) our proposed VQA-Rephrasing dataset using the consensus score (Eq. 2). Table 1 shows the consensus scores at different values of  $ k $ for several VQA models. We see that all models suffer significantly when measured for consistency across rephrasing. For e.g., the performance of Pythia (winner of 2018 VQA challenge) is reduced to a consensus score of 39.49% at  $ k = 4 $. Similar trends are observed for MUTAN, BAN and BUTD. The drop increases with increasing  $ k $, the number of rephrasings used to measure consistency. Models like BUTD, BAN and Pythia which use word-level encodings of the question suffer significant drops. It is interesting to note that even MUTAN which uses skip-thought based sentence encoding [20] suffers a drop when checked for consistency across rephrasings. We observe that BAN + CC model trained with our proposed cycle-consistent training framework outperforms its counterpart BAN and all other models at all values of  $ k $.</p>
+<p class="text">(Dịch) Fig 4 qualitatively compares the textual and visual attention (over image regions) over 4 rephrasings of a question. The top row shows attention and predictions from a Pythia model, while the bottom row shows attention and predictions from the same Pythia model, but trained using our framework. Our model attends at relevant image regions.</p>
+<h2 class="paragraph_title">(Dịch) model from the VQA Challenge in 2007 and achieves 66.25% accuracy on VQA v2.0 test-data.</h2>
+<p class="text">(Dịch) Pythia(41)1 extends the BUTD model by incorporating co-attention [27] between question and image regions. Pythia uses features extracted from Detection [8] performed on Visual Genome. An reasonable of Pythia models were the 2018 VQIA Challenge using vision training data from Visual Genome [21] and using Resnet[11] features. In this study, two use Pythia models which do not use Resnet features.</p>
+<h2 class="paragraph_title">(Dịch) Fourtacte) letters without a five-day-term-to-year-term</h2>
+<p class="text">(Dịch) **Billionaire Allocation Networks (BAN) [19]**+ combines the idea of holistic models and co-attention [27] between image regions and words in questions in a residual setting. Similar to [3], it uses Factor-BLNN [33] pretrained on VisualGamma [21] to extract image features. In all our experiments, for a fair comparison, we use BAN models which do not use additional training data from VisualGamma. BAN achieves the current state-of-the-art single-model accuracy of 89.64 % on VQA v2.0 text-dev without using additional training data from VisualGamma.</p>
+<p class="text">(Dịch) Implementation Details For all models trained with one cycle-consistent framework, we use the values  $ T_{low}=8.9 $,  $ A_{low}=1.0 $,  $ A_{high}=0.5 $, and  $ A_{high}=550 $. When reporting results on the validation split and VQA-Rephasings we train on the training split and when reporting results on the test split we train on both training and validation splits of VQA-v2.0. Note that we never explicitly train on the collected VQA-Rephasings dataset and use it purely for evaluation purposes. We use publicly available implementations of each backbone VQA model.</p>
+<p class="text">(Dịch) We measure the robustness of each of these models on our proposal VQA-Rephases dataset using the common score (Eq. 2). Table 1 shows the common scores at different values of k for several VQA models. We use that all models caffle significantly when measured for consistency across rephases. For e.g., the performance of Pythia (jeanser of 2018 VQA-challenge) is reduced to a common score of 39.69% at k = 4. Similar trends are observed for MUTAN, RAN and RUTD. The drop increases with increasing k, the number of rephases used to measure consistency. Models like RUTD, RAN and Pythia which use a trend-level资格的the-question raffle significant drops. It is interesting to note that even MUTAN which uses skip-thought-based sentence encoding [20] suffers a drop when checked for consistency across rephases. We observe that RAN = CC model trained with our proposed cycle-consistent training framework outperforms its counterpart RAN and all other models at all values of k.</p>
+<p class="text">(Dịch) Fig 4 qualitatively compares the textual and visual attention (error image regions) over 4 replications of a question. The top row shows attention and predictions from a Python model, while the bottom row shows attention and predictions from the same Python model, but trained using our framework. Our model attends at relevant image regions</p>
+<p class="text">(Dịch) Figure 5: Human accuracy at pairing stories with the prompts used to generate them. People find that our fusion model significantly improves the link between the prompt and generated stories.</p>
+<p class="text">(Dịch) duced by beam search tend to be short and generic. Completely random sampling can introduce very unlikely words, which can damage generation as the model has not seen such mistakes at training time. The restriction of sampling from the 10 most likely candidates reduces the risk of these low-probability samples.</p>
+<p class="text">(Dịch) For each model, we tune a temperature parameter for the softmax at generation time. To ease human evaluation, we generate stories of 150 words and do not generate unknown word tokens.</p>
+<p class="text">(Dịch) For prompt generation, we use a self-attentive GCNN language model trained with the same prompt-side vocabulary as the sequence-to-sequence story generation models. The language model to generate prompts has a validation perplexity of 63.06. Prompt generation is conducted using the top-k random sampling from the 10 most likely candidates, and the prompt is completed when the language model generates the end of prompt token.</p>
+<h2 class="paragraph_title">(Dịch) 5.5 Evaluation</h2>
+<p class="text">(Dịch) We propose a number of evaluation metrics to quantify the performance of our models. Many commonly used metrics, such as BLEU for ma</p>
+<p class="text">(Dịch) Figure 7: Accuracy on the prompt/story pairing task vs. number of generated stories. Our generative fusion model can produce many stories without degraded performance, while the KNN can only produce a limited number relevant stories.</p>
+<p class="text">(Dịch) Table 4: Effect of Hierarchical Generation. Human judges prefer stories that were generated hierarchically by first creating a premise and creating a full story based on it with a seq2seq model.</p>
+<p class="text">(Dịch) duced by beam search tend to be short and generic. Completely random sampling can introduce very unlikely words, which can damage generation as the model has not seen such mistakes at training time. The restriction of sampling from the 10 most likely candidates reduces the risk of these low-probability samples.</p>
+<p class="text">(Dịch) For each model, we tune a temperature parameter for the softmax at generation time. To ease human evaluation, we generate stories of 150 words and do not generate unknown word tokens.</p>
+<p class="text">(Dịch) For prompt generation, we use a self-attentive GCNN language model trained with the same prompt-side vocabulary as the sequence-to-sequence story generation models. The language model to generate prompts has a validation perplexity of 63.06. Prompt generation is conducted using the top-k random sampling from the 10 most likely candidates, and the prompt is completed when the language model generates the end of prompt token.</p>
+<h2 class="paragraph_title">(Dịch) Evaluation</h2>
+<p class="text">(Dịch) We propose a number of evaluation metrics to quantify the performance of our models. Many commonly used metrics, such as BLEU for ma</p>
+<p class="text">(Dịch) Table 4: Effect of Hierarchical Generation. Human judges prefer stories that were generated hierarchically by first creating a premise and creating a full story based on it with a seq2seq model.</p>
+<p class="text">(Dịch) Figure 5: Human accuracy at pairing stories with the prompts used to generate them. People find that our fusion model significantly improves the link between the prompt and generated stories.</p>
+<div class="header">Nougat</div>
+<div class="header">Blecher et al.</div>
+<div class="table-container"><table><tr><td>Model</td><td>val</td><td>test-dev</td></tr><tr><td>MUTAN  $ [5] $</td><td>61.04</td><td>63.20</td></tr><tr><td>BUTD  $ [3] $</td><td>65.05</td><td>66.25</td></tr><tr><td>+ Q-consistency</td><td>65.38</td><td>66.83</td></tr><tr><td>+ A-consistency</td><td>60.84</td><td>62.18</td></tr><tr><td>+ Gating</td><td>65.53</td><td>67.55</td></tr><tr><td>Pythia  $ [41] $</td><td>65.78</td><td>68.43</td></tr><tr><td>+ Q-consistency</td><td>65.39</td><td>68.58</td></tr><tr><td>+ A-consistency</td><td>62.08</td><td>63.77</td></tr><tr><td>+ Gating</td><td>66.03</td><td>68.88</td></tr><tr><td>BAN  $ [19] $</td><td>66.04</td><td>69.64</td></tr><tr><td>+ Q-consistency</td><td>66.27</td><td>69.69</td></tr><tr><td>+ A-consistency</td><td>64.96</td><td>66.31</td></tr><tr><td>+ Gating</td><td>66.77</td><td>69.87</td></tr></table></div>
+<div class="table-container"><table><tr><td rowspan="2">Model</td><td colspan="4">CS(k)</td><td colspan="2">VQA Accuracy</td></tr><tr><td>k=1</td><td>k=2</td><td>k=3</td><td>k=4</td><td>ORE</td><td>REP</td></tr><tr><td>MUTAN  $ [5] $</td><td>56.68</td><td>43.63</td><td>38.94</td><td>32.76</td><td>59.08</td><td>46.87</td></tr><tr><td>BUTD  $ [3] $</td><td>60.55</td><td>46.96</td><td>40.54</td><td>34.47</td><td>61.51</td><td>51.22</td></tr><tr><td>BUTD + CC</td><td>61.66</td><td>50.79</td><td>44.68</td><td>42.55</td><td>62.44</td><td>52.58</td></tr><tr><td>Pythia  $ [41] $</td><td>63.43</td><td>52.03</td><td>45.94</td><td>39.49</td><td>64.08</td><td>54.20</td></tr><tr><td>Pythia + CC</td><td>64.36</td><td>55.45</td><td>50.92</td><td>44.30</td><td>64.52</td><td>55.65</td></tr><tr><td>BAN  $ [19] $</td><td>64.88</td><td>53.08</td><td>47.45</td><td>39.87</td><td>64.97</td><td>55.87</td></tr><tr><td>BAN + CC</td><td>65.77</td><td>56.94</td><td>51.76</td><td>48.18</td><td>65.87</td><td>56.99</td></tr></table></div>
+<p class="figure_title">(Dịch) Table 1. Consensus performance on VQA-Rephrasings dataset. CStk) as defined in Eq. 2 is consensus score which is non-zero only if at least k rephrasings are answered correctly, zero otherwise; averaged across all group of questions. ORI represent a split of questions from VQA-Rephrasings which are original questions from VQA v2.0 and their corresponding rephrasings are represented by the split REP. Models trained with our cycle-consistent (CC) framework consistently outperform their baseline counterparts at all values of k.</p>
+<p class="figure_title">(Dịch) Table 2. VQA Performance and ablation studies on VQA v2.0 validation and test-dev splits. Each row in blocks represents a component of our cycle-consistent framework added to the previous row. First row in each block represents the baseline VQA model F. Q-consistency implies addition of a VQG module G to generate rephrasing Q from the image I and the predicted answer A' with an associated VQG loss  $ L_{vgg}(Q, Q') $ A-consistency implies passing all the generated questions Q' to the VQA model F and an associated loss  $ L_{vgg}(A, A') $ Gating implies the use of gating mechanism to filter undesirable generated questions in Q' and passing the remaining to VQA model F. Models trained with our cycle-consistent (last row in each block) framework consistently outperform baselines.</p>
+<div class="table-container"><table><tr><td rowspan="2">Model</td><td colspan="3">CS(k)</td><td colspan="3">VQA Accuracy</td></tr><tr><td>k=1</td><td>k=2</td><td>k=3</td><td>k=4</td><td>ORI</td><td>RCEP</td></tr><tr><td>MU/DAN [5]</td><td>56.68</td><td>43.63</td><td>38.94</td><td>32.76</td><td>59.08</td><td>46.87</td></tr><tr><td>RUTD [3]</td><td>60.55</td><td>46.86</td><td>40.54</td><td>34.47</td><td>61.51</td><td>51.22</td></tr><tr><td>RUTD + CC</td><td>61.66</td><td>50.79</td><td>41.68</td><td>42.88</td><td>62.44</td><td>52.98</td></tr><tr><td>Pythia [40]</td><td>63.43</td><td>52.83</td><td>45.94</td><td>39.49</td><td>64.08</td><td>54.20</td></tr><tr><td>Pythia + CC</td><td>64.36</td><td>58.45</td><td>58.92</td><td>44.38</td><td>64.52</td><td>58.68</td></tr><tr><td>RAN [19]</td><td>64.88</td><td>53.08</td><td>47.45</td><td>39.87</td><td>64.97</td><td>55.87</td></tr><tr><td>RAN + CC</td><td>65.77</td><td>56.94</td><td>51.76</td><td>48.18</td><td>65.87</td><td>56.99</td></tr></table></div>
+<p class="vision_footnote">(Dịch) Table 1: Common performance on VQA-Rephrenings dataset. CSI(k) as defined in Fig. 2 is consistent score which is now zero only if all hours k rephrenings are antirational correctly, zero otherwise, a wronged across all group of questions. OBI represent a split of questions from VQA-Rephrenings which are original questions from VQA v2.0 and their corresponding rephrenings are represented by the split RIP. Models trained with our cycle-consistent (CC) framework consistently outperform those baseline counterparts at all values of k.</p>
+<div class="image-container"><img src="imgs/img_in_image_box_833_540_913_661.jpg" alt="image"></div>
+<p class="vision_footnote">(Dịch) Table 2: VQA Performance and ablation studies on VQA v2.8 validation and text-driven splits. Each step in blocks represents a component of one cycle-consistent framework, added to the previous runs. First step in each block represents the baseline VQA model F. (1) consistency implies addition of a VQA module Q to generate replacements Q from the image I and the predicted anchor A's with an associated VQQ loss  $ C_{ref}(Q, Q) $. A consistency implies passing all the generated questions Q to the VQA model P and an associated loss  $ C_{ref}(A, A) $. Gating implies the use of gating mechanisms to filter undecisable generated questions in Q and passing the remaining to VQA model P. Models trained with one cycle-consistent (last step in each block) framework consistently outperform baselines.</p>
+<div class="table-container"><table><tr><td>Model</td><td># Parameters (mil)</td><td>Valid Perplexity</td><td>Test Perplexity</td></tr><tr><td>GCNN LM</td><td>123.4</td><td>54.50</td><td>54.79</td></tr><tr><td>GCNN + self-attention LM</td><td>126.4</td><td>51.84</td><td>51.18</td></tr><tr><td>LSTM seq2seq</td><td>110.3</td><td>46.83</td><td>46.79</td></tr><tr><td>Conv seq2seq</td><td>113.0</td><td>45.27</td><td>45.54</td></tr><tr><td>Conv seq2seq + self-attention</td><td>134.7</td><td>37.37</td><td>37.94</td></tr><tr><td>Ensemble: Conv seq2seq + self-attention</td><td>270.3</td><td>36.63</td><td>36.93</td></tr><tr><td>Fusion: Conv seq2seq + self-attention</td><td>255.4</td><td>36.08</td><td>36.56</td></tr></table></div>
+<p class="figure_title">(Dịch) Table 3: Perplexity on WRITINGPROMPTS. We dramatically improve over standard seq2seq models.</p>
+<div class="chart-container"><img src="imgs/img_in_chart_box_181_927_334_1017.jpg" alt="chart"></div>
+<div class="chart-container"><img src="imgs/img_in_chart_box_342_933_493_1020.jpg" alt="chart"></div>
+<p class="vision_footnote">(Dịch) Figure 6: Accuracy of prompt ranking. The fusion model most accurately pairs prompt and stories.</p>
+<div class="table-container"><table><tr><td>Model</td><td>Human Preference</td></tr><tr><td>Language model</td><td>32.68%</td></tr><tr><td>Hierarchical Model</td><td>67.32%</td></tr></table></div>
+<div class="chart-container"><img src="imgs/img_in_chart_box_339_1046_496_1146.jpg" alt="chart"></div>
+<div class="table-container"><table><tr><td>Model</td><td># Parameters (mil)</td><td>Valid Perplexity</td><td>Test Perplexity</td></tr><tr><td>GCNN LM</td><td>123.4</td><td>54.50</td><td>54.79</td></tr><tr><td>GCNN + self-attention LM</td><td>126.4</td><td>51.84</td><td>51.18</td></tr><tr><td>LSTM seq2seq</td><td>110.3</td><td>46.83</td><td>46.79</td></tr><tr><td>Conv seq2seq</td><td>113.0</td><td>45.27</td><td>45.54</td></tr><tr><td>Conv seq2seq + self-attention</td><td>134.7</td><td>37.37</td><td>37.94</td></tr><tr><td>Ensemble: Conv seq2seq + self-attention</td><td>270.3</td><td>36.63</td><td>36.93</td></tr><tr><td>Fusion: Conv seq2seq + self-attention</td><td>255.4</td><td>36.08</td><td>36.56</td></tr></table></div>
+<div class="table-container"><table><tr><td>Model</td><td>Human Preference</td></tr><tr><td>Language model</td><td>32.68%</td></tr><tr><td>Hierarchical Model</td><td>67.32%</td></tr></table></div>
+<p class="vision_footnote">(Dịch) Table 3: Perplexity on WritingPrompts. We dramatically improve over standard seq2seq models.</p>
+<p class="figure_title">(Dịch) Figure B.4: Pages with tables. Upper: Fan et al. [47] page 6, Lower: Shah et al. [48] page 6</p>
+<p class="number">17</p>
+</div>
+
+    </body>
+    </html>
+    

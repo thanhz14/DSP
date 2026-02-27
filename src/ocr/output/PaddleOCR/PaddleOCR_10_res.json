@@ -1,0 +1,644 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 10,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "text",
+            "block_content": "precision and enlarging the functional scope. This includes systematically correcting formula representations and line-breaking logic, alongside extending support for education-specific markings like emphasis dots and underlines to capture instructional semantics. Furthermore, the integration of Bengali and China’s Tibetan scripts broadens the model’s linguistic versatility, ensuring robust performance across diverse writing systems and educational contexts.",
+            "block_bbox": [
+                135,
+                173,
+                1057,
+                309
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    173.0
+                ],
+                [
+                    1057.0,
+                    173.0
+                ],
+                [
+                    1057.0,
+                    309.0
+                ],
+                [
+                    135.0,
+                    309.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Formula: Formula dataset incorporates CV-simulated artifacts, such as Gaussian illumination and harmonic moiré, to replicate physical conditions like scanning, warping, screen-capture, and geometric skewing. These samples encompass a wide spectrum of environmental variables, including light fluctuations and complex document distortions encountered in realistic scenarios.",
+            "block_bbox": [
+                136,
+                322,
+                1058,
+                431
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    322.0
+                ],
+                [
+                    1058.0,
+                    322.0
+                ],
+                [
+                    1058.0,
+                    431.0
+                ],
+                [
+                    136.0,
+                    431.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Table: Tables has been expanded to cover an extensive range of scenarios, including financial reports, academic papers, and complex industrial forms. Integration of diverse structures, such as registration and catalog tables. A key focus is placed on the precise recognition of cell-level formulas and multilingual content within dense table environments. These advancements ensure high-fidelity conversion into structured formats, even when handling intricate cell structures and professional notations.",
+            "block_bbox": [
+                133,
+                445,
+                1054,
+                607
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    133.0,
+                    445.0
+                ],
+                [
+                    1054.0,
+                    445.0
+                ],
+                [
+                    1054.0,
+                    607.0
+                ],
+                [
+                    133.0,
+                    607.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "4. Evaluation",
+            "block_bbox": [
+                137,
+                649,
+                306,
+                677
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    649.0
+                ],
+                [
+                    306.0,
+                    649.0
+                ],
+                [
+                    306.0,
+                    677.0
+                ],
+                [
+                    137.0,
+                    677.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To thoroughly assess the effectiveness of PaddleOCR-VL-1.5, we conducted evaluations on the document parsing benchmark OmniDocBench v1.5 and its derived real-world dataset, Real5OmniDocBench. Furthermore, we expanded the evaluation scope by incorporating text spotting and seal recognition tasks to provide a more comprehensive analysis of the model's performance in practical and complex scenarios.",
+            "block_bbox": [
+                135,
+                702,
+                1056,
+                840
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    702.0
+                ],
+                [
+                    1056.0,
+                    702.0
+                ],
+                [
+                    1056.0,
+                    840.0
+                ],
+                [
+                    135.0,
+                    840.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "4.1. Document Parsing",
+            "block_bbox": [
+                136,
+                877,
+                375,
+                904
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    877.0
+                ],
+                [
+                    375.0,
+                    877.0
+                ],
+                [
+                    375.0,
+                    904.0
+                ],
+                [
+                    136.0,
+                    904.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "This section details the evaluation of end-to-end document parsing capabilities using the following two benchmarks, aiming to measure its overall performance in real-world document scenarios.",
+            "block_bbox": [
+                136,
+                922,
+                1055,
+                1002
+            ],
+            "block_id": 6,
+            "block_order": 7,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    922.0
+                ],
+                [
+                    1055.0,
+                    922.0
+                ],
+                [
+                    1055.0,
+                    1002.0
+                ],
+                [
+                    136.0,
+                    1002.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "OmniDocBench v1.5 To comprehensively evaluate the document parsing capabilities, we conducted extensive experiments on the OmniDocBench v1.5 [2] benchmark. It is an expansion of version v1.0, adding 374 new documents for a total of 1,355 document pages. It features a more balanced distribution of data in both Chinese and English, as well as a richer inclusion of formulas and other elements. Compared to version v1.0, the evaluation method has been updated. While text and reading order are still evaluated using Edit Distance, and tables are evaluated using Tree-Edit-Distance-based Similarity (TEDS), formulas are now assessed using the Character Detection Matching (CDM) [23] method. This metric provides a more objective and robust evaluation of the correctness of predicted formulas. The overall metric is a weighted combination of the metrics for text, formulas, and tables.",
+            "block_bbox": [
+                134,
+                1047,
+                1054,
+                1319
+            ],
+            "block_id": 7,
+            "block_order": 8,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    1047.0
+                ],
+                [
+                    1054.0,
+                    1047.0
+                ],
+                [
+                    1054.0,
+                    1319.0
+                ],
+                [
+                    134.0,
+                    1319.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Table 2 demonstrates that PaddleOCR-VL-1.5 achieves SOTA performance, consistently outperforming existing pipeline tools, general VLMs, and specialized document parsing models across all key metrics. Notably, PaddleOCR-VL-1.5 exhibits a substantial performance leap over its predecessor, PaddleOCR-VL, raising the overall score from 92.86% to a top-ranking 94.50%. Specifically, it achieves increases of 2.99%, 1.87%, and 0.1% in the CDM Score, Table-TEDS, and Reading Order scores, respectively. Furthermore, our model establishes new SOTA results in all sub-tasks, including a reduced Text-Edit distance of 0.035, an improved Formula-CDM",
+            "block_bbox": [
+                135,
+                1332,
+                1057,
+                1522
+            ],
+            "block_id": 8,
+            "block_order": 9,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    1332.0
+                ],
+                [
+                    1057.0,
+                    1332.0
+                ],
+                [
+                    1057.0,
+                    1522.0
+                ],
+                [
+                    135.0,
+                    1522.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "11",
+            "block_bbox": [
+                582,
+                1557,
+                608,
+                1577
+            ],
+            "block_id": 9,
+            "block_order": null,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    582.0,
+                    1557.0
+                ],
+                [
+                    607.0,
+                    1557.0
+                ],
+                [
+                    607.0,
+                    1576.0
+                ],
+                [
+                    582.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9300394654273987,
+                "coordinate": [
+                    135,
+                    173,
+                    1057,
+                    309
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        135.0,
+                        173.0
+                    ],
+                    [
+                        1057.0,
+                        173.0
+                    ],
+                    [
+                        1057.0,
+                        309.0
+                    ],
+                    [
+                        135.0,
+                        309.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.7778363227844238,
+                "coordinate": [
+                    136,
+                    322,
+                    1058,
+                    431
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        136.0,
+                        322.0
+                    ],
+                    [
+                        1058.0,
+                        322.0
+                    ],
+                    [
+                        1058.0,
+                        431.0
+                    ],
+                    [
+                        136.0,
+                        431.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.5904645919799805,
+                "coordinate": [
+                    133,
+                    445,
+                    1054,
+                    607
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        133.0,
+                        445.0
+                    ],
+                    [
+                        1054.0,
+                        445.0
+                    ],
+                    [
+                        1054.0,
+                        607.0
+                    ],
+                    [
+                        133.0,
+                        607.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8284149169921875,
+                "coordinate": [
+                    137,
+                    649,
+                    306,
+                    677
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        137.0,
+                        649.0
+                    ],
+                    [
+                        306.0,
+                        649.0
+                    ],
+                    [
+                        306.0,
+                        677.0
+                    ],
+                    [
+                        137.0,
+                        677.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9431988596916199,
+                "coordinate": [
+                    135,
+                    702,
+                    1056,
+                    840
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        135.0,
+                        702.0
+                    ],
+                    [
+                        1056.0,
+                        702.0
+                    ],
+                    [
+                        1056.0,
+                        840.0
+                    ],
+                    [
+                        135.0,
+                        840.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.823635458946228,
+                "coordinate": [
+                    136,
+                    877,
+                    375,
+                    904
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        136.0,
+                        877.0
+                    ],
+                    [
+                        375.0,
+                        877.0
+                    ],
+                    [
+                        375.0,
+                        904.0
+                    ],
+                    [
+                        136.0,
+                        904.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9285531044006348,
+                "coordinate": [
+                    136,
+                    922,
+                    1055,
+                    1002
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        136.0,
+                        922.0
+                    ],
+                    [
+                        1055.0,
+                        922.0
+                    ],
+                    [
+                        1055.0,
+                        1002.0
+                    ],
+                    [
+                        136.0,
+                        1002.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9665769338607788,
+                "coordinate": [
+                    134,
+                    1047,
+                    1054,
+                    1319
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        134.0,
+                        1047.0
+                    ],
+                    [
+                        1054.0,
+                        1047.0
+                    ],
+                    [
+                        1054.0,
+                        1319.0
+                    ],
+                    [
+                        134.0,
+                        1319.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9624560475349426,
+                "coordinate": [
+                    135,
+                    1332,
+                    1057,
+                    1522
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        135.0,
+                        1332.0
+                    ],
+                    [
+                        1057.0,
+                        1332.0
+                    ],
+                    [
+                        1057.0,
+                        1522.0
+                    ],
+                    [
+                        135.0,
+                        1522.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7470394372940063,
+                "coordinate": [
+                    582,
+                    1557,
+                    608,
+                    1577
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        582.0,
+                        1557.0
+                    ],
+                    [
+                        607.0,
+                        1557.0
+                    ],
+                    [
+                        607.0,
+                        1576.0
+                    ],
+                    [
+                        582.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

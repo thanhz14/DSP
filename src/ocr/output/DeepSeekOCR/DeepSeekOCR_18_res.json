@@ -1,0 +1,461 @@
+{
+    "input_path": "/home/bocchi/Downloads/DeepSeekOCR.pdf",
+    "page_index": 18,
+    "page_count": 22,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "chart",
+            "block_content": "",
+            "block_bbox": [
+                158,
+                168,
+                1037,
+                454
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    158.0,
+                    168.0
+                ],
+                [
+                    1037.0,
+                    168.0
+                ],
+                [
+                    1037.0,
+                    454.0
+                ],
+                [
+                    158.0,
+                    454.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure 13 | Forgetting mechanisms constitute one of the most fundamental characteristics of human memory. The contexts optical compression approach can simulate this mechanism by rendering previous rounds of historical text onto images for initial compression, then progressively resizing older images to achieve multi-level compression, where token counts gradually decrease and text becomes increasingly blurred, thereby accomplishing textual forgetting.",
+            "block_bbox": [
+                136,
+                473,
+                1058,
+                611
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    473.0
+                ],
+                [
+                    1058.0,
+                    473.0
+                ],
+                [
+                    1058.0,
+                    611.0
+                ],
+                [
+                    136.0,
+                    611.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "For older contexts, we could progressively downsizing the rendered images to further reduce token consumption. This assumption draws inspiration from the natural parallel between human memory decay over time and visual perception degradation over spatial distance—both exhibit similar patterns of progressive information loss, as shown in Figure 13. By combining these mechanisms, contexts optical compression method enables a form of memory decay that mirrors biological forgetting curves, where recent information maintains high fidelity while distant memories naturally fade through increased compression ratios.",
+            "block_bbox": [
+                133,
+                652,
+                1054,
+                843
+            ],
+            "block_id": 2,
+            "block_order": 1,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    133.0,
+                    652.0
+                ],
+                [
+                    1054.0,
+                    652.0
+                ],
+                [
+                    1054.0,
+                    843.0
+                ],
+                [
+                    133.0,
+                    843.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "While our initial exploration shows potential for scalable ultra-long context processing, where recent contexts preserve high resolution and older contexts consume fewer resources, we acknowledge this is early-stage work that requires further investigation. The approach suggests a path toward theoretically unlimited context architectures that balance information retention with computational constraints, though the practical implications and limitations of such vision-text compression systems warrant deeper study in future research.",
+            "block_bbox": [
+                132,
+                855,
+                1057,
+                1020
+            ],
+            "block_id": 3,
+            "block_order": 2,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    132.0,
+                    855.0
+                ],
+                [
+                    1057.0,
+                    855.0
+                ],
+                [
+                    1057.0,
+                    1020.0
+                ],
+                [
+                    132.0,
+                    1020.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "6. Conclusion",
+            "block_bbox": [
+                137,
+                1061,
+                313,
+                1088
+            ],
+            "block_id": 4,
+            "block_order": 3,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1061.0
+                ],
+                [
+                    313.0,
+                    1061.0
+                ],
+                [
+                    313.0,
+                    1088.0
+                ],
+                [
+                    137.0,
+                    1088.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "In this technical report, we propose DeepSeek-OCR and preliminarily validate the feasibility of contexts optical compression through this model, demonstrating that the model can effectively decode text tokens exceeding 10 times the quantity from a small number of vision tokens. We believe this finding will facilitate the development of VLMs and LLMs in the future. Additionally, DeepSeek-OCR is a highly practical model capable of large-scale pretraining data production, serving as an indispensable assistant for LLMs. Of course, OCR alone is insufficient to fully validate true context optical compression and we will conduct digital-optical text interleaved pretraining, needle-in-a-haystack testing, and other evaluations in the future. From another perspective, optical contexts compression still offers substantial room for research and improvement, representing a promising new direction.",
+            "block_bbox": [
+                134,
+                1112,
+                1058,
+                1388
+            ],
+            "block_id": 5,
+            "block_order": 4,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    1112.0
+                ],
+                [
+                    1058.0,
+                    1112.0
+                ],
+                [
+                    1058.0,
+                    1388.0
+                ],
+                [
+                    134.0,
+                    1388.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "19",
+            "block_bbox": [
+                582,
+                1556,
+                609,
+                1578
+            ],
+            "block_id": 6,
+            "block_order": null,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    582.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1577.0
+                ],
+                [
+                    582.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 3,
+                "label": "chart",
+                "score": 0.8024608492851257,
+                "coordinate": [
+                    158,
+                    168,
+                    1037,
+                    454
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        158.0,
+                        168.0
+                    ],
+                    [
+                        1037.0,
+                        168.0
+                    ],
+                    [
+                        1037.0,
+                        454.0
+                    ],
+                    [
+                        158.0,
+                        454.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9343641996383667,
+                "coordinate": [
+                    136,
+                    473,
+                    1058,
+                    611
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        136.0,
+                        473.0
+                    ],
+                    [
+                        1058.0,
+                        473.0
+                    ],
+                    [
+                        1058.0,
+                        611.0
+                    ],
+                    [
+                        136.0,
+                        611.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9553518295288086,
+                "coordinate": [
+                    133,
+                    652,
+                    1054,
+                    843
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        133.0,
+                        652.0
+                    ],
+                    [
+                        1054.0,
+                        652.0
+                    ],
+                    [
+                        1054.0,
+                        843.0
+                    ],
+                    [
+                        133.0,
+                        843.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9549186825752258,
+                "coordinate": [
+                    132,
+                    855,
+                    1057,
+                    1020
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        132.0,
+                        855.0
+                    ],
+                    [
+                        1057.0,
+                        855.0
+                    ],
+                    [
+                        1057.0,
+                        1020.0
+                    ],
+                    [
+                        132.0,
+                        1020.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.837425172328949,
+                "coordinate": [
+                    137,
+                    1061,
+                    313,
+                    1088
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1061.0
+                    ],
+                    [
+                        313.0,
+                        1061.0
+                    ],
+                    [
+                        313.0,
+                        1088.0
+                    ],
+                    [
+                        137.0,
+                        1088.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9636437892913818,
+                "coordinate": [
+                    134,
+                    1112,
+                    1058,
+                    1388
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        134.0,
+                        1112.0
+                    ],
+                    [
+                        1058.0,
+                        1112.0
+                    ],
+                    [
+                        1058.0,
+                        1388.0
+                    ],
+                    [
+                        134.0,
+                        1388.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.743913471698761,
+                "coordinate": [
+                    582,
+                    1556,
+                    609,
+                    1578
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        582.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1577.0
+                    ],
+                    [
+                        582.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

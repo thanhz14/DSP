@@ -1,0 +1,461 @@
+{
+    "input_path": "/home/bocchi/Downloads/TranslateGemma.pdf",
+    "page_index": 10,
+    "page_count": 12,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "header",
+            "block_content": "TranslateGemma Technical Report",
+            "block_bbox": [
+                472,
+                109,
+                718,
+                129
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    472.0,
+                    109.0
+                ],
+                [
+                    717.0,
+                    109.0
+                ],
+                [
+                    717.0,
+                    128.0
+                ],
+                [
+                    472.0,
+                    128.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "B. Additional synthetic data languages",
+            "block_bbox": [
+                120,
+                169,
+                595,
+                200
+            ],
+            "block_id": 1,
+            "block_order": 1,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    169.0
+                ],
+                [
+                    595.0,
+                    169.0
+                ],
+                [
+                    595.0,
+                    200.0
+                ],
+                [
+                    120.0,
+                    200.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "For the following languages we created synthetic data, in addition to the languages covered by WMT24++:",
+            "block_bbox": [
+                119,
+                224,
+                1070,
+                276
+            ],
+            "block_id": 2,
+            "block_order": 2,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    119.0,
+                    224.0
+                ],
+                [
+                    1070.0,
+                    224.0
+                ],
+                [
+                    1070.0,
+                    276.0
+                ],
+                [
+                    119.0,
+                    276.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "English-Armenian, English-Hawaiian, English-Western Frisian, English-Corsican, English-Hmong, English-Maltese, English-Tajik, English-Samoan, English-Macedonian, English-Mongolian, English-Galician, English-Albanian, English-Uzbek, English-Uyghur, English-Belarusian, English-Sinhala, English-Basque, English-Haitian Creole, English-Bosnian, English-Kyrgyz, English-Kazakh, English-Khmer, English-Scottish Gaelic, English-Lao, English-Irish, English-Luxembourgish, English-Burmese, English-Sundanese, English-Javanese, English-Malay.",
+            "block_bbox": [
+                119,
+                291,
+                1073,
+                456
+            ],
+            "block_id": 3,
+            "block_order": 3,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    119.0,
+                    291.0
+                ],
+                [
+                    1073.0,
+                    291.0
+                ],
+                [
+                    1073.0,
+                    456.0
+                ],
+                [
+                    119.0,
+                    456.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "C. Full list of languages for SFT",
+            "block_bbox": [
+                120,
+                496,
+                508,
+                526
+            ],
+            "block_id": 4,
+            "block_order": 4,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    496.0
+                ],
+                [
+                    508.0,
+                    496.0
+                ],
+                [
+                    508.0,
+                    526.0
+                ],
+                [
+                    120.0,
+                    526.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Table 5 shows the languages paired with English in both directions, Table 6 the languages paired with English as source language and Table 7 the languages pairs not involving English. Together these three tables give the full language coverage of the SFT data used for TranslateGemma.",
+            "block_bbox": [
+                119,
+                549,
+                1070,
+                633
+            ],
+            "block_id": 5,
+            "block_order": 5,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    119.0,
+                    549.0
+                ],
+                [
+                    1070.0,
+                    549.0
+                ],
+                [
+                    1070.0,
+                    633.0
+                ],
+                [
+                    119.0,
+                    633.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "11",
+            "block_bbox": [
+                1046,
+                1560,
+                1068,
+                1579
+            ],
+            "block_id": 6,
+            "block_order": null,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    1046.0,
+                    1560.0
+                ],
+                [
+                    1067.0,
+                    1560.0
+                ],
+                [
+                    1067.0,
+                    1578.0
+                ],
+                [
+                    1046.0,
+                    1578.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.848471462726593,
+                "coordinate": [
+                    472,
+                    109,
+                    718,
+                    129
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        472.0,
+                        109.0
+                    ],
+                    [
+                        717.0,
+                        109.0
+                    ],
+                    [
+                        717.0,
+                        128.0
+                    ],
+                    [
+                        472.0,
+                        128.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8795392513275146,
+                "coordinate": [
+                    120,
+                    169,
+                    595,
+                    200
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        120.0,
+                        169.0
+                    ],
+                    [
+                        595.0,
+                        169.0
+                    ],
+                    [
+                        595.0,
+                        200.0
+                    ],
+                    [
+                        120.0,
+                        200.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9036553502082825,
+                "coordinate": [
+                    119,
+                    224,
+                    1070,
+                    276
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        119.0,
+                        224.0
+                    ],
+                    [
+                        1070.0,
+                        224.0
+                    ],
+                    [
+                        1070.0,
+                        276.0
+                    ],
+                    [
+                        119.0,
+                        276.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9520976543426514,
+                "coordinate": [
+                    119,
+                    291,
+                    1073,
+                    456
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        119.0,
+                        291.0
+                    ],
+                    [
+                        1073.0,
+                        291.0
+                    ],
+                    [
+                        1073.0,
+                        456.0
+                    ],
+                    [
+                        119.0,
+                        456.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8798926472663879,
+                "coordinate": [
+                    120,
+                    496,
+                    508,
+                    526
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        120.0,
+                        496.0
+                    ],
+                    [
+                        508.0,
+                        496.0
+                    ],
+                    [
+                        508.0,
+                        526.0
+                    ],
+                    [
+                        120.0,
+                        526.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9332817792892456,
+                "coordinate": [
+                    119,
+                    549,
+                    1070,
+                    633
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        119.0,
+                        549.0
+                    ],
+                    [
+                        1070.0,
+                        549.0
+                    ],
+                    [
+                        1070.0,
+                        633.0
+                    ],
+                    [
+                        119.0,
+                        633.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6879608035087585,
+                "coordinate": [
+                    1046,
+                    1560,
+                    1068,
+                    1579
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        1046.0,
+                        1560.0
+                    ],
+                    [
+                        1067.0,
+                        1560.0
+                    ],
+                    [
+                        1067.0,
+                        1578.0
+                    ],
+                    [
+                        1046.0,
+                        1578.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

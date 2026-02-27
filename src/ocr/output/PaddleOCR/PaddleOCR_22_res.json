@@ -1,0 +1,339 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 22,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "C. Supported Languages",
+            "block_bbox": [
+                136,
+                170,
+                442,
+                202
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    170.0
+                ],
+                [
+                    442.0,
+                    170.0
+                ],
+                [
+                    442.0,
+                    202.0
+                ],
+                [
+                    136.0,
+                    202.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "PaddleOCR-VL-1.5 supports a total of 111 languages. Compared to PaddleOCR-VL, PaddleOCR-VL-1.5 adds recognition capabilities for China’s Tibetan script and Bengali. Table A7 lists the correspondence between each language category and the specific supported languages/scripts.",
+            "block_bbox": [
+                136,
+                222,
+                1057,
+                307
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    222.0
+                ],
+                [
+                    1057.0,
+                    222.0
+                ],
+                [
+                    1057.0,
+                    307.0
+                ],
+                [
+                    136.0,
+                    307.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Language Category</td><td>Specific Languages</td></tr><tr><td>Chinese</td><td>Chinese</td></tr><tr><td>English</td><td>English</td></tr><tr><td>Korean</td><td>Korean</td></tr><tr><td>Japanese</td><td>Japanese</td></tr><tr><td>Thai</td><td>Thai</td></tr><tr><td>Greek</td><td>Greek</td></tr><tr><td>Tamil</td><td>Tamil</td></tr><tr><td>Telugu</td><td>Telugu</td></tr><tr><td>Bengali $ ^{*} $</td><td>Bengali $ ^{*} $</td></tr><tr><td>China’s Tibetan script $ ^{*} $</td><td>China’s Tibetan script $ ^{*} $</td></tr><tr><td>Arabic</td><td>Arabic, Persian, Uyghur, Urdu, Pashto, Kurdish, Sindhi, Baloch</td></tr><tr><td>Latin</td><td>French, German, Afrikaans, Italian, Spanish, Bosnian, Portuguese, Czech, Welsh, Danish, Estonian, Irish, Croatian, Uzbek, Hungarian, Serbian (Latin), Indonesian, Occitan, Icelandic, Lithuanian, Maori, Malay, Dutch, Norwegian, Polish, Slovak, Slovenian, Albanian, Swedish, Swahili, Tagalog, Turkish, Latin, Azerbaijan, Kurdish, Latvian, Maltese, Pali, Romanian, Vietnamese, Finnish, Basque, Galician, Luxembourg, Romansh, Catalan, Quechua</td></tr><tr><td>Cyrillic</td><td>Russian, Belarusian, Ukrainian, Serbian (Cyrillic), Bulgarian, Mongolian, Abkhazian, Adyghe, Kabardian, Avar, Dargin, Ingush, Chechen, Lak, Lezgin, Tabasaran, Kazakh, Kyrgyz, Tajik, Macedonian, Tatar, Chuvash, Bashkir, Malian, Moldovan, Udmurt, Komi, Ossetian, Buryat, Kalmyk, Tuvan, Sakha, Karakalpak</td></tr><tr><td>Devanagari</td><td>Hindi, Marathi, Nepali, Bihari, Maithili, Angika, Bhojpuri, Magahi, Santali, Newari, Konkani, Sanskrit, Haryanvi</td></tr></table>",
+            "block_bbox": [
+                138,
+                324,
+                1098,
+                1279
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    324.0
+                ],
+                [
+                    1098.0,
+                    324.0
+                ],
+                [
+                    1098.0,
+                    1279.0
+                ],
+                [
+                    138.0,
+                    1279.0
+                ]
+            ]
+        },
+        {
+            "block_label": "vision_footnote",
+            "block_content": "Table A7 | Supported Languages/scripts (*indicates newly added languages/scripts)",
+            "block_bbox": [
+                185,
+                1297,
+                1002,
+                1327
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    185.0,
+                    1297.0
+                ],
+                [
+                    1002.0,
+                    1297.0
+                ],
+                [
+                    1002.0,
+                    1327.0
+                ],
+                [
+                    185.0,
+                    1327.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "23",
+            "block_bbox": [
+                581,
+                1556,
+                609,
+                1578
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    581.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1577.0
+                ],
+                [
+                    581.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8536834716796875,
+                "coordinate": [
+                    136,
+                    170,
+                    442,
+                    202
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        136.0,
+                        170.0
+                    ],
+                    [
+                        442.0,
+                        170.0
+                    ],
+                    [
+                        442.0,
+                        202.0
+                    ],
+                    [
+                        136.0,
+                        202.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9052648544311523,
+                "coordinate": [
+                    136,
+                    222,
+                    1057,
+                    307
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        136.0,
+                        222.0
+                    ],
+                    [
+                        1057.0,
+                        222.0
+                    ],
+                    [
+                        1057.0,
+                        307.0
+                    ],
+                    [
+                        136.0,
+                        307.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9758455157279968,
+                "coordinate": [
+                    138,
+                    324,
+                    1098,
+                    1279
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        138.0,
+                        324.0
+                    ],
+                    [
+                        1098.0,
+                        324.0
+                    ],
+                    [
+                        1098.0,
+                        1279.0
+                    ],
+                    [
+                        138.0,
+                        1279.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.7611389756202698,
+                "coordinate": [
+                    185,
+                    1297,
+                    1002,
+                    1327
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        185.0,
+                        1297.0
+                    ],
+                    [
+                        1002.0,
+                        1297.0
+                    ],
+                    [
+                        1002.0,
+                        1327.0
+                    ],
+                    [
+                        185.0,
+                        1327.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7429994940757751,
+                "coordinate": [
+                    581,
+                    1556,
+                    609,
+                    1578
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        581.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1577.0
+                    ],
+                    [
+                        581.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

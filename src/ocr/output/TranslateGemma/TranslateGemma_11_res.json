@@ -1,0 +1,522 @@
+{
+    "input_path": "/home/bocchi/Downloads/TranslateGemma.pdf",
+    "page_index": 11,
+    "page_count": 12,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "header",
+            "block_content": "TranslateGemma Technical Report",
+            "block_bbox": [
+                472,
+                109,
+                718,
+                129
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    472.0,
+                    109.0
+                ],
+                [
+                    717.0,
+                    109.0
+                ],
+                [
+                    717.0,
+                    128.0
+                ],
+                [
+                    472.0,
+                    128.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table 5 | Languages paired with English in both directions.",
+            "block_bbox": [
+                119,
+                178,
+                683,
+                205
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    119.0,
+                    178.0
+                ],
+                [
+                    683.0,
+                    178.0
+                ],
+                [
+                    683.0,
+                    205.0
+                ],
+                [
+                    119.0,
+                    205.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Abkhaz (ab)</td><td>Acehnese (ace)</td><td>Acholi (ach)</td><td>Afar (aa)</td></tr><tr><td>Afrikaans (af)</td><td>Ahirani (ahr)</td><td>Alur (alz)</td><td>Amharic (am)</td></tr><tr><td>Assamese (as)</td><td>Assyrian Neo-Aramaic (aii)</td><td>Avar (av)</td><td>Awadhi (awa)</td></tr><tr><td>Aymara (ay)</td><td>Badaga (bfq)</td><td>Bagheli (bfy)</td><td>Bagri (bgq)</td></tr><tr><td>Balinese (ban)</td><td>Baluchi (bal)</td><td>Bambara (bm)</td><td>Banjar (Arabic script) (bjn-Arab)</td></tr><tr><td>Banjar (bjn)</td><td>Baoul00e9 (bci)</td><td>Bashkir (ba)</td><td>Batak Karo (btx)</td></tr><tr><td>Batak Simalungun (bts)</td><td>Batak Toba (bbc)</td><td>Bemba (Zambia) (bem)</td><td>Betawi (bew)</td></tr><tr><td>Bhojpuri (bho)</td><td>Bikol (bik)</td><td>Bodo (India) (brx)</td><td>Braj (bra)</td></tr><tr><td>Breton (br)</td><td>Buginese (bug)</td><td>Bundeli (bns)</td><td>Buryat (bua)</td></tr><tr><td>Cantonese (yue)</td><td>Chakma (Latin script) (ccp-Latn)</td><td>Chamorro (ch)</td><td>Chechen (ce)</td></tr><tr><td>Chhattisgarhi (hne)</td><td>Chichewa (ny)</td><td>Chinese (zh-CN)</td><td>Chittagonian (ctg)</td></tr><tr><td>Chuukese (chk)</td><td>Chuvash (cv)</td><td>Crimean Tatar (Cyrillic script) (crh)</td><td>Crimean Tatar (Latin script) (crh-Latn)</td></tr><tr><td>Dari (fa-AF)</td><td>Dhivehi (dv)</td><td>Dhundari (dhd)</td><td>Dinka (din)</td></tr><tr><td>Dogri (doi)</td><td>Dombe (dov)</td><td>Dutch (nl)</td><td>Dyula (dyu)</td></tr><tr><td>Dzongkha (dz)</td><td>East Circassian (kbd)</td><td>Eastern Huasteca Nahuatl (nhe)</td><td>Efik (efi)</td></tr><tr><td>Egyptian Arabic (arz)</td><td>Ewe (ee)</td><td>Faroese (fo)</td><td>Fijian (fj)</td></tr><tr><td>Fon (fon)</td><td>French (fr)</td><td>Friulian (fur)</td><td>Fulani (ff)</td></tr><tr><td>Ga (gaa)</td><td>Garo (Latin script) (grt-Latn)</td><td>German (de)</td><td>Goan Konkani (gom)</td></tr><tr><td>Guarani (gn)</td><td>Hakha Chin (cnh)</td><td>Hausa (ha)</td><td>Hiligaynon (hil)</td></tr><tr><td>Hindi (hi)</td><td>Ho (Warang Chiti script) (hoc-Wara)</td><td>Hunsrik (hrx)</td><td>Iban (iba)</td></tr><tr><td>Igbo (ig)</td><td>Ilocano (ilo)</td><td>Indonesian (id)</td><td>Inuktut (Syllabics) (iu)</td></tr><tr><td>Isoko (iso)</td><td>Italian (it)</td><td>Jamaican Patois (jam)</td><td>Japanese (ja)</td></tr><tr><td>Jingpo (kac)</td><td>K&#x27;iche&#x27; (quc)</td><td>Kalaalisut (kl)</td><td>Kangri (xnr)</td></tr><tr><td>Kanuri (kr)</td><td>Kapampangan (pam)</td><td>Karakalpak (kaa)</td><td>Kashmiri (Devanagari script) (ks-Deva)</td></tr><tr><td>Kashmiri (ks)</td><td>Kedah Malay (meo)</td><td>Khasi (kha)</td><td>Kiga (cgg)</td></tr><tr><td>Kikuyu (ki)</td><td>Kiluba (Luba-Katanga) (lu)</td><td>Kinyarwanda (rw)</td><td>Kituba (DRC) (ktu)</td></tr><tr><td>Kokborok (trp)</td><td>Komi (kv)</td><td>Kongo (kg)</td><td>Korean (ko)</td></tr><tr><td>Krio (kri)</td><td>Kumaoni (kfy)</td><td>Kurdish (Sorani) (ckb)</td><td>Kurukh (kru)</td></tr><tr><td>Lahnda Punjabi (Pakistan) (pa-Arab)</td><td>Latgalian (ltg)</td><td>Lepcha (lep)</td><td>Libyan Arabic (ayl)</td></tr><tr><td>Ligurian (lij)</td><td>Limbu (Limbu script) (lif-Limb)</td><td>Limburgish (li)</td><td>Lingala (ln)</td></tr><tr><td>Lombard (lmo)</td><td>Luganda (lg)</td><td>Luo (luo)</td><td>Madurese (mad)</td></tr><tr><td>Magahi (mag)</td><td>Maithili (mai)</td><td>Makassar (mak)</td><td>Malagasy (mg)</td></tr><tr><td>Malay (Jawi Script) (ms-Arab)</td><td>Mam (mam)</td><td>Mandeali (mil)</td><td>Manx (gv)</td></tr><tr><td>Mapudungun (arn)</td><td>Marshallese (mh)</td><td>Marwadi (mwr)</td><td>Mauritian Creole (mfe)</td></tr><tr><td>Meadow Mari (chm)</td><td>Meiteilon (Manipuri) (mni-Mtei)</td><td>Mewari (mtr)</td><td>Minang (min)</td></tr><tr><td>Mizo (lus)</td><td>Modern Standard Arabic (ar)</td><td>Moor00e9 (mos)</td><td>Morrocan Arabic (ar-MA)</td></tr><tr><td>Mundari (Devanagari script) (unr-Deva)</td><td>NKo (bm-Nkoo)</td><td>Navajo (nv)</td><td>Ndau (ndc-ZW)</td></tr><tr><td>Nepalbasa (Newari) (new)</td><td>Nepali (ne)</td><td>Nigerian Pidgin (pcm)</td><td>Nimadi (noe)</td></tr><tr><td>North Levantine Arabic (apc)</td><td>North Ndebele (nd)</td><td>Northern Sami (se)</td><td>Nuer (nus)</td></tr><tr><td>Occitan (oc)</td><td>Oromo (om)</td><td>Ossetian (os)</td><td>Pangasinan (pag)</td></tr><tr><td>Papiamento (pap)</td><td>Polish (pl)</td><td>Q&#x27;eqchi&#x27; (kek)</td><td>Quechua (qu)</td></tr><tr><td>Rohingya (Latin script) (rhg-Latn)</td><td>Romani (rom)</td><td>Rundi (rn)</td><td>Russian (ru)</td></tr><tr><td>Sambalpuri (spv)</td><td>Sango (sg)</td><td>Sanskrit (sa)</td><td>Santali (Latin Script) (sat-Latn)</td></tr><tr><td>Saralki (skr)</td><td>Sepedi (nso)</td><td>Sesotho (st)</td><td>Seychellois Creole (crs)</td></tr><tr><td>Shan (shn)</td><td>Sherpa (Tibetan script) (xsr-Tibt)</td><td>Shina (sci)</td><td>Shona (sn)</td></tr><tr><td>Sicilian (scn)</td><td>Silesian (szl)</td><td>Sindhi (Devanagari script) (sd-Deva)</td><td>Somali (so)</td></tr><tr><td>South Ndebele (nr)</td><td>Spanish (es)</td><td>Sudanese Arabic (Deprecated BCP) (apd)</td><td>Surgujia (sgj)</td></tr><tr><td>Surjapuri (sjp)</td><td>Susu (sus)</td><td>Swahili (sw)</td><td>Swati (ss)</td></tr><tr><td>Sylheti (syl)</td><td>Tahitian (ty)</td><td>Tamazight (Latin Script) (ber-Latn)</td><td>Tamazight (Tifinagh Script) (ber)</td></tr><tr><td>Tetum (tet)</td><td>Thai (th)</td><td>Tibetan (bo)</td><td>Tigrinya (ti)</td></tr><tr><td>Tiv (tiv)</td><td>Tok Pisin (tpi)</td><td>Tonga (Tonga Islands) (to)</td><td>Tsonga (ts)</td></tr><tr><td>Tswana (tn)</td><td>Tulu (tcy)</td><td>Tumbuka (tum)</td><td>Tunisian Arabic (aeb)</td></tr><tr><td>Turkish (tr)</td><td>Tuvan (tyv)</td><td>Twi (ak)</td><td>Udmurt (udm)</td></tr><tr><td>Venda (ve)</td><td>Venetian (vec)</td><td>Vietnamese (vi)</td><td>Wagdi (wbr)</td></tr><tr><td>Waray (Philippines) (war)</td><td>West Circassian (ady)</td><td>Wolof (wo)</td><td>Xhosa (xh)</td></tr><tr><td>Yakut (sah)</td><td>Yoruba (yo)</td><td>Yucatec Maya (yua)</td><td>Zapotec (zap)</td></tr></table>",
+            "block_bbox": [
+                136,
+                216,
+                1055,
+                1016
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    216.0
+                ],
+                [
+                    1055.0,
+                    216.0
+                ],
+                [
+                    1055.0,
+                    1016.0
+                ],
+                [
+                    136.0,
+                    1016.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table 6 | Languages from English",
+            "block_bbox": [
+                120,
+                1074,
+                441,
+                1102
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    1074.0
+                ],
+                [
+                    441.0,
+                    1074.0
+                ],
+                [
+                    441.0,
+                    1102.0
+                ],
+                [
+                    120.0,
+                    1102.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Albanian (sq)</td><td>Arabic (Egypt) (ar-EG)</td><td>Armenian (hy)</td><td>Bangla (bn)</td><td>Basque (eu)</td></tr><tr><td>Belarusian (be)</td><td>Bosnian (bs)</td><td>Bulgarian (bg)</td><td>Burmese (my)</td><td>Catalan (ca)</td></tr><tr><td>Chinese (Taiwan) (zh-TW)</td><td>Corsican (co)</td><td>Croatian (hr)</td><td>Czech (cs)</td><td>Danish (da)</td></tr><tr><td>Estonian (et)</td><td>Filipino (fil)</td><td>Finnish (fi)</td><td>French (Canada) (fr-CA)</td><td>Galician (gl)</td></tr><tr><td>Greek (el)</td><td>Gujarati (gu)</td><td>Haitian Creole (ht)</td><td>Hawaiian (haw)</td><td>Hebrew (he)</td></tr><tr><td>Hmong (hmn)</td><td>Hungarian (hu)</td><td>Icelandic (is)</td><td>Inuktut (Latin) (iu-Latn)</td><td>Irish (ga)</td></tr><tr><td>Javanese (jv)</td><td>Kannada (kn)</td><td>Kazakh (kk)</td><td>Khmer (km)</td><td>Kyrgyz (ky)</td></tr><tr><td>Lao (lo)</td><td>Latvian (lv)</td><td>Lithuanian (lt)</td><td>Luxembourgish (lb)</td><td>Macedonian (mk)</td></tr><tr><td>Malay (ms)</td><td>Malayalam (ml)</td><td>Maltese (mt)</td><td>Marathi (mr)</td><td>Mongolian (mn)</td></tr><tr><td>Norwegian (no)</td><td>Persian (fa)</td><td>Portuguese (Brazil) (pt-BR)</td><td>Portuguese (Portugal) (pt-PT)</td><td>Punjabi (pa)</td></tr><tr><td>Romanian (ro)</td><td>Samoan (sm)</td><td>Santali (Ol Chiki script) (sat)</td><td>Scottish Gaelic (gd)</td><td>Serbian (Cyrillic) (sr-Cyrl)</td></tr><tr><td>Serbian (Latin) (sr-Latn)</td><td>Sinhala (si)</td><td>Slovak (sk)</td><td>Slovenian (sl)</td><td>Sundanese (su)</td></tr><tr><td>Swahili (Kenya) (sw-KE)</td><td>Swahili (Tanzania) (sw-TZ)</td><td>Swedish (sv)</td><td>Tajik (tg)</td><td>Tamil (ta)</td></tr><tr><td>Telugu (te)</td><td>Tshiluba (Luba-Lulua) (lua)</td><td>Ukrainian (uk)</td><td>Urdu (ur)</td><td>Uyghur (ug)</td></tr></table>",
+            "block_bbox": [
+                168,
+                1116,
+                1021,
+                1326
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    168.0,
+                    1116.0
+                ],
+                [
+                    1021.0,
+                    1116.0
+                ],
+                [
+                    1021.0,
+                    1326.0
+                ],
+                [
+                    168.0,
+                    1326.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table 7 | Non-English language pairs",
+            "block_bbox": [
+                120,
+                1383,
+                474,
+                1411
+            ],
+            "block_id": 5,
+            "block_order": null,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    1383.0
+                ],
+                [
+                    474.0,
+                    1383.0
+                ],
+                [
+                    474.0,
+                    1411.0
+                ],
+                [
+                    120.0,
+                    1411.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Amharic (am)↔Arabic (ar)</td><td>Amharic (am)↔Mandarin Chinese (zh)</td><td>Arabic (ar)↔Swahili (sw)</td></tr><tr><td>Cantonese (yue)↔Mandarin Chinese (zh)</td><td>Cantonese (yue)↔Taiwanese Mandarin (zh-Hant)</td><td>Chinese (zh-CN)→Japanese (ja)</td></tr><tr><td>Czech (cs)→German (de)</td><td>Czech (cs)→Ukrainian (uk)</td><td>Mandarin Chinese (zh)↔Swahili (sw)</td></tr></table>",
+            "block_bbox": [
+                218,
+                1428,
+                972,
+                1479
+            ],
+            "block_id": 6,
+            "block_order": null,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    218.0,
+                    1428.0
+                ],
+                [
+                    972.0,
+                    1428.0
+                ],
+                [
+                    972.0,
+                    1479.0
+                ],
+                [
+                    218.0,
+                    1479.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "12",
+            "block_bbox": [
+                1046,
+                1560,
+                1069,
+                1578
+            ],
+            "block_id": 7,
+            "block_order": null,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    1046.0,
+                    1560.0
+                ],
+                [
+                    1068.0,
+                    1560.0
+                ],
+                [
+                    1068.0,
+                    1577.0
+                ],
+                [
+                    1046.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.855221688747406,
+                "coordinate": [
+                    472,
+                    109,
+                    718,
+                    129
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        472.0,
+                        109.0
+                    ],
+                    [
+                        717.0,
+                        109.0
+                    ],
+                    [
+                        717.0,
+                        128.0
+                    ],
+                    [
+                        472.0,
+                        128.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8643090724945068,
+                "coordinate": [
+                    119,
+                    178,
+                    683,
+                    205
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        119.0,
+                        178.0
+                    ],
+                    [
+                        683.0,
+                        178.0
+                    ],
+                    [
+                        683.0,
+                        205.0
+                    ],
+                    [
+                        119.0,
+                        205.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9782940149307251,
+                "coordinate": [
+                    136,
+                    216,
+                    1055,
+                    1016
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        136.0,
+                        216.0
+                    ],
+                    [
+                        1055.0,
+                        216.0
+                    ],
+                    [
+                        1055.0,
+                        1016.0
+                    ],
+                    [
+                        136.0,
+                        1016.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8428950905799866,
+                "coordinate": [
+                    120,
+                    1074,
+                    441,
+                    1102
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        120.0,
+                        1074.0
+                    ],
+                    [
+                        441.0,
+                        1074.0
+                    ],
+                    [
+                        441.0,
+                        1102.0
+                    ],
+                    [
+                        120.0,
+                        1102.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9549647569656372,
+                "coordinate": [
+                    168,
+                    1116,
+                    1021,
+                    1326
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        168.0,
+                        1116.0
+                    ],
+                    [
+                        1021.0,
+                        1116.0
+                    ],
+                    [
+                        1021.0,
+                        1326.0
+                    ],
+                    [
+                        168.0,
+                        1326.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.7702681422233582,
+                "coordinate": [
+                    120,
+                    1383,
+                    474,
+                    1411
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        120.0,
+                        1383.0
+                    ],
+                    [
+                        474.0,
+                        1383.0
+                    ],
+                    [
+                        474.0,
+                        1411.0
+                    ],
+                    [
+                        120.0,
+                        1411.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.8661559820175171,
+                "coordinate": [
+                    218,
+                    1428,
+                    972,
+                    1479
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        218.0,
+                        1428.0
+                    ],
+                    [
+                        972.0,
+                        1428.0
+                    ],
+                    [
+                        972.0,
+                        1479.0
+                    ],
+                    [
+                        218.0,
+                        1479.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7178322672843933,
+                "coordinate": [
+                    1046,
+                    1560,
+                    1069,
+                    1578
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        1046.0,
+                        1560.0
+                    ],
+                    [
+                        1068.0,
+                        1560.0
+                    ],
+                    [
+                        1068.0,
+                        1577.0
+                    ],
+                    [
+                        1046.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

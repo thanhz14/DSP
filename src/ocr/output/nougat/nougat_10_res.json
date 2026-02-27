@@ -1,0 +1,1284 @@
+{
+    "input_path": "/home/bocchi/Downloads/nougat.pdf",
+    "page_index": 10,
+    "page_count": 17,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "header",
+            "block_content": "Nougat",
+            "block_bbox": [
+                123,
+                70,
+                189,
+                92
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    123.0,
+                    70.0
+                ],
+                [
+                    188.0,
+                    70.0
+                ],
+                [
+                    188.0,
+                    91.0
+                ],
+                [
+                    123.0,
+                    91.0
+                ]
+            ]
+        },
+        {
+            "block_label": "header",
+            "block_content": "Blecher et al.",
+            "block_bbox": [
+                955,
+                71,
+                1065,
+                92
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    955.0,
+                    70.99999237060547
+                ],
+                [
+                    1064.0,
+                    70.99999237060547
+                ],
+                [
+                    1064.0,
+                    90.99999237060547
+                ],
+                [
+                    955.0,
+                    90.99999237060547
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[20] Lukas Blecher. pix2tex - LaTeX OCR, February 2023. URL https://github.com/lukas-blecher/LaTeX-OCR. original-date: 2020-12-11T16:35:13Z.",
+            "block_bbox": [
+                124,
+                147,
+                1069,
+                192
+            ],
+            "block_id": 2,
+            "block_order": 1,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    124,
+                    147
+                ],
+                [
+                    124,
+                    191
+                ],
+                [
+                    1068,
+                    191
+                ],
+                [
+                    1068,
+                    147
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[21] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention Is All You Need, December 2017. URL http://arxiv.org/abs/1706.03762. arXiv:1706.03762 [cs].",
+            "block_bbox": [
+                125,
+                199,
+                1068,
+                264
+            ],
+            "block_id": 3,
+            "block_order": 2,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    199.0
+                ],
+                [
+                    1068.0,
+                    199.0
+                ],
+                [
+                    1068.0,
+                    264.0
+                ],
+                [
+                    125.0,
+                    264.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[22] Yiheng Xu, Minghao Li, Lei Cui, Shaohan Huang, Furu Wei, and Ming Zhou. LayoutLM: Pre-training of Text and Layout for Document Image Understanding. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining, pages 1192–1200, August 2020. doi: 10.1145/3394486.3403172. URL http://arxiv.org/abs/1912.13318. arXiv:1912.13318 [cs].",
+            "block_bbox": [
+                125,
+                274,
+                1066,
+                361
+            ],
+            "block_id": 4,
+            "block_order": 3,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    274.0
+                ],
+                [
+                    1066.0,
+                    274.0
+                ],
+                [
+                    1066.0,
+                    361.0
+                ],
+                [
+                    125.0,
+                    361.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[23] Yang Xu, Yiheng Xu, Tengchao Lv, Lei Cui, Furu Wei, Guoxin Wang, Yijuan Lu, Dinei Florencio, Cha Zhang, Wanxiang Che, Min Zhang, and Lidong Zhou. LayoutLMv2: Multi-modal Pre-training for Visually-Rich Document Understanding, January 2022. URL http://arxiv.org/abs/2012.14740. arXiv:2012.14740 [cs].",
+            "block_bbox": [
+                125,
+                369,
+                1066,
+                437
+            ],
+            "block_id": 5,
+            "block_order": 4,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    369.0
+                ],
+                [
+                    1066.0,
+                    369.0
+                ],
+                [
+                    1066.0,
+                    437.0
+                ],
+                [
+                    125.0,
+                    437.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[24] Yupan Huang, Tengchao Lv, Lei Cui, Yutong Lu, and Furu Wei. LayoutLMv3: Pre-training for Document AI with Unified Text and Image Masking, July 2022. URL http://arxiv.org/abs/2204.08387. arXiv:2204.08387 [cs].",
+            "block_bbox": [
+                125,
+                444,
+                1067,
+                488
+            ],
+            "block_id": 6,
+            "block_order": 5,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    444.0
+                ],
+                [
+                    1067.0,
+                    444.0
+                ],
+                [
+                    1067.0,
+                    488.0
+                ],
+                [
+                    125.0,
+                    488.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[25] Lu Wang and Wanmin Liu. Online publishing via pdf2htmlEX, 2013. URL https://www.tug.org/TUGboat/tb34-3/tb108wang.pdf.",
+            "block_bbox": [
+                125,
+                497,
+                1066,
+                541
+            ],
+            "block_id": 7,
+            "block_order": 6,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    497.0
+                ],
+                [
+                    1066.0,
+                    497.0
+                ],
+                [
+                    1066.0,
+                    541.0
+                ],
+                [
+                    125.0,
+                    541.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[26] Srikar Appalaraju, Bhavan Jasani, Bhargava Urala Kota, Yusheng Xie, and R. Manmatha. DocFormer: End-to-End Transformer for Document Understanding, September 2021. URL http://arxiv.org/abs/2106.11539. arXiv:2106.11539 [cs].",
+            "block_bbox": [
+                125,
+                549,
+                1069,
+                615
+            ],
+            "block_id": 8,
+            "block_order": 7,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    549.0
+                ],
+                [
+                    1069.0,
+                    549.0
+                ],
+                [
+                    1069.0,
+                    615.0
+                ],
+                [
+                    125.0,
+                    615.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[27] Bodhisattwa Prasad Majumder, Navneet Potti, Sandeep Tata, James Bradley Wendt, Qi Zhao, and Marc Najork. Representation Learning for Information Extraction from Form-like Documents. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pages 6495–6504, Online, July 2020. Association for Computational Linguistics. doi: 10.18653/v1/2020.acl-main.580. URL https://aclanthology.org/2020.acl-main.580.",
+            "block_bbox": [
+                124,
+                623,
+                1069,
+                733
+            ],
+            "block_id": 9,
+            "block_order": 8,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    124.0,
+                    623.0
+                ],
+                [
+                    1069.0,
+                    623.0
+                ],
+                [
+                    1069.0,
+                    733.0
+                ],
+                [
+                    124.0,
+                    733.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[28] Geewook Kim, Teakgyu Hong, Moonbin Yim, Jeongyeon Nam, Jinyoung Park, Jinyeong Yim, Wonseok Hwang, Sangdoo Yun, Dongyoon Han, and Seunghyun Park. OCR-free Document Understanding Transformer, October 2022. URL http://arxiv.org/abs/2111.15664. arXiv:2111.15664 [cs].",
+            "block_bbox": [
+                124,
+                741,
+                1068,
+                808
+            ],
+            "block_id": 10,
+            "block_order": 9,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    124.0,
+                    741.0
+                ],
+                [
+                    1068.0,
+                    741.0
+                ],
+                [
+                    1068.0,
+                    808.0
+                ],
+                [
+                    124.0,
+                    808.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[29] Brian Davis, Bryan Morse, Bryan Price, Chris Tensmeyer, Curtis Wigington, and Vlad Morariu. End-to-end Document Recognition and Understanding with Dessurt, June 2022. URL http://arxiv.org/abs/2203.16618. arXiv:2203.16618 [cs].",
+            "block_bbox": [
+                125,
+                816,
+                1067,
+                881
+            ],
+            "block_id": 11,
+            "block_order": 10,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    816.0
+                ],
+                [
+                    1067.0,
+                    816.0
+                ],
+                [
+                    1067.0,
+                    881.0
+                ],
+                [
+                    125.0,
+                    881.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[30] Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, and Baining Guo. Swin Transformer: Hierarchical Vision Transformer using Shifted Windows, August 2021. URL http://arxiv.org/abs/2103.14030. arXiv:2103.14030 [cs].",
+            "block_bbox": [
+                124,
+                890,
+                1066,
+                956
+            ],
+            "block_id": 12,
+            "block_order": 11,
+            "group_id": 12,
+            "block_polygon_points": [
+                [
+                    124.0,
+                    890.0
+                ],
+                [
+                    1066.0,
+                    890.0
+                ],
+                [
+                    1066.0,
+                    956.0
+                ],
+                [
+                    124.0,
+                    956.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[31] Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, and Neil Houlsby. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale, June 2021. URL http://arxiv.org/abs/2010.11929. arXiv:2010.11929 [cs].",
+            "block_bbox": [
+                124,
+                965,
+                1068,
+                1052
+            ],
+            "block_id": 13,
+            "block_order": 12,
+            "group_id": 13,
+            "block_polygon_points": [
+                [
+                    124.0,
+                    965.0
+                ],
+                [
+                    1068.0,
+                    965.0
+                ],
+                [
+                    1068.0,
+                    1052.0
+                ],
+                [
+                    124.0,
+                    1052.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[32] Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazvininejad, Abdelrahman Mohamed, Omer Levy, Ves Stoyanov, and Luke Zettlemoyer. BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension, October 2019. URL http://arxiv.org/abs/1910.13461. arXiv:1910.13461 [cs, stat].",
+            "block_bbox": [
+                125,
+                1059,
+                1069,
+                1149
+            ],
+            "block_id": 14,
+            "block_order": 13,
+            "group_id": 14,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    1059.0
+                ],
+                [
+                    1069.0,
+                    1059.0
+                ],
+                [
+                    1069.0,
+                    1149.0
+                ],
+                [
+                    125.0,
+                    1149.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[33] Ross Taylor, Marcin Kardas, Guillem Cucurull, Thomas Scialom, Anthony Hartshorn, Elvis Saravia, Andrew Poulton, Viktor Kerkez, and Robert Stojnic. Galactica: A Large Language Model for Science, November 2022. URL http://arxiv.org/abs/2211.09085. arXiv:2211.09085 [cs, stat].",
+            "block_bbox": [
+                124,
+                1157,
+                1066,
+                1223
+            ],
+            "block_id": 15,
+            "block_order": 14,
+            "group_id": 15,
+            "block_polygon_points": [
+                [
+                    124.0,
+                    1157.0
+                ],
+                [
+                    1066.0,
+                    1157.0
+                ],
+                [
+                    1066.0,
+                    1223.0
+                ],
+                [
+                    124.0,
+                    1223.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[34] Ilya Loshchilov and Frank Hutter. Decoupled Weight Decay Regularization, January 2019. URL http://arxiv.org/abs/1711.05101. arXiv:1711.05101 [cs, math] version: 3.",
+            "block_bbox": [
+                125,
+                1230,
+                1067,
+                1275
+            ],
+            "block_id": 16,
+            "block_order": 15,
+            "group_id": 16,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    1230.0
+                ],
+                [
+                    1067.0,
+                    1230.0
+                ],
+                [
+                    1067.0,
+                    1275.0
+                ],
+                [
+                    125.0,
+                    1275.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[35] P.Y. Simard, D. Steinkraus, and J.C. Platt. Best practices for convolutional neural networks applied to visual document analysis. In Seventh International Conference on Document Analysis and Recognition, 2003. Proceedings., volume 1, pages 958–963, Edinburgh, UK, 2003. IEEE Comput. Soc. ISBN 978-0-7695-1960-9. doi:10.1109/ICDAR.2003.1227801. URL http://ieeexplore.ieee.org/document/1227801/.",
+            "block_bbox": [
+                125,
+                1283,
+                1068,
+                1371
+            ],
+            "block_id": 17,
+            "block_order": 16,
+            "group_id": 17,
+            "block_polygon_points": [
+                [
+                    125.0,
+                    1283.0
+                ],
+                [
+                    1068.0,
+                    1283.0
+                ],
+                [
+                    1068.0,
+                    1371.0
+                ],
+                [
+                    125.0,
+                    1371.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[36] Alexander Buslaev, Vladimir I. Iglovikov, Eugene Khvedchenya, Alex Parinov, Mikhail Druzhinin, and Alexandr A. Kalinin. Albumentations: Fast and Flexible Image Augmentations. Information, 11(2):125, February 2020. ISSN 2078-2489. doi: 10.3390/info11020125. URL https://www.mdpi.com/2078-2489/11/2/125.",
+            "block_bbox": [
+                124,
+                1380,
+                1067,
+                1444
+            ],
+            "block_id": 18,
+            "block_order": 17,
+            "group_id": 18,
+            "block_polygon_points": [
+                [
+                    124.0,
+                    1380.0
+                ],
+                [
+                    1067.0,
+                    1380.0
+                ],
+                [
+                    1067.0,
+                    1444.0
+                ],
+                [
+                    124.0,
+                    1444.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "11",
+            "block_bbox": [
+                583,
+                1484,
+                606,
+                1504
+            ],
+            "block_id": 19,
+            "block_order": null,
+            "group_id": 19,
+            "block_polygon_points": [
+                [
+                    583.0,
+                    1484.0
+                ],
+                [
+                    605.0,
+                    1484.0
+                ],
+                [
+                    605.0,
+                    1503.0
+                ],
+                [
+                    583.0,
+                    1503.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.8301158547401428,
+                "coordinate": [
+                    123,
+                    70,
+                    189,
+                    92
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        123.0,
+                        70.0
+                    ],
+                    [
+                        188.0,
+                        70.0
+                    ],
+                    [
+                        188.0,
+                        91.0
+                    ],
+                    [
+                        123.0,
+                        91.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.8543898463249207,
+                "coordinate": [
+                    955,
+                    71,
+                    1065,
+                    92
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        955.0,
+                        70.99999237060547
+                    ],
+                    [
+                        1064.0,
+                        70.99999237060547
+                    ],
+                    [
+                        1064.0,
+                        90.99999237060547
+                    ],
+                    [
+                        955.0,
+                        90.99999237060547
+                    ]
+                ]
+            },
+            {
+                "cls_id": 18,
+                "label": "reference",
+                "score": 0.9797907471656799,
+                "coordinate": [
+                    121,
+                    144,
+                    1072,
+                    1444
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        121.0,
+                        144.0
+                    ],
+                    [
+                        1072.0,
+                        144.0
+                    ],
+                    [
+                        1072.0,
+                        1444.0
+                    ],
+                    [
+                        121.0,
+                        1444.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9314215779304504,
+                "coordinate": [
+                    124,
+                    147,
+                    1069,
+                    192
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        124,
+                        147
+                    ],
+                    [
+                        124,
+                        191
+                    ],
+                    [
+                        1068,
+                        191
+                    ],
+                    [
+                        1068,
+                        147
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9567511081695557,
+                "coordinate": [
+                    125,
+                    199,
+                    1068,
+                    264
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        125.0,
+                        199.0
+                    ],
+                    [
+                        1068.0,
+                        199.0
+                    ],
+                    [
+                        1068.0,
+                        264.0
+                    ],
+                    [
+                        125.0,
+                        264.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9581074118614197,
+                "coordinate": [
+                    125,
+                    274,
+                    1066,
+                    361
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        125.0,
+                        274.0
+                    ],
+                    [
+                        1066.0,
+                        274.0
+                    ],
+                    [
+                        1066.0,
+                        361.0
+                    ],
+                    [
+                        125.0,
+                        361.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9417313933372498,
+                "coordinate": [
+                    125,
+                    369,
+                    1066,
+                    437
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        125.0,
+                        369.0
+                    ],
+                    [
+                        1066.0,
+                        369.0
+                    ],
+                    [
+                        1066.0,
+                        437.0
+                    ],
+                    [
+                        125.0,
+                        437.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9299613833427429,
+                "coordinate": [
+                    125,
+                    444,
+                    1067,
+                    488
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        125.0,
+                        444.0
+                    ],
+                    [
+                        1067.0,
+                        444.0
+                    ],
+                    [
+                        1067.0,
+                        488.0
+                    ],
+                    [
+                        125.0,
+                        488.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9212081432342529,
+                "coordinate": [
+                    125,
+                    497,
+                    1066,
+                    541
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        125.0,
+                        497.0
+                    ],
+                    [
+                        1066.0,
+                        497.0
+                    ],
+                    [
+                        1066.0,
+                        541.0
+                    ],
+                    [
+                        125.0,
+                        541.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9463905692100525,
+                "coordinate": [
+                    125,
+                    549,
+                    1069,
+                    615
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        125.0,
+                        549.0
+                    ],
+                    [
+                        1069.0,
+                        549.0
+                    ],
+                    [
+                        1069.0,
+                        615.0
+                    ],
+                    [
+                        125.0,
+                        615.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9635259509086609,
+                "coordinate": [
+                    124,
+                    623,
+                    1069,
+                    733
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        124.0,
+                        623.0
+                    ],
+                    [
+                        1069.0,
+                        623.0
+                    ],
+                    [
+                        1069.0,
+                        733.0
+                    ],
+                    [
+                        124.0,
+                        733.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9546091556549072,
+                "coordinate": [
+                    124,
+                    741,
+                    1068,
+                    808
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        124.0,
+                        741.0
+                    ],
+                    [
+                        1068.0,
+                        741.0
+                    ],
+                    [
+                        1068.0,
+                        808.0
+                    ],
+                    [
+                        124.0,
+                        808.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9577441215515137,
+                "coordinate": [
+                    125,
+                    816,
+                    1067,
+                    881
+                ],
+                "order": 11,
+                "polygon_points": [
+                    [
+                        125.0,
+                        816.0
+                    ],
+                    [
+                        1067.0,
+                        816.0
+                    ],
+                    [
+                        1067.0,
+                        881.0
+                    ],
+                    [
+                        125.0,
+                        881.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9575135707855225,
+                "coordinate": [
+                    124,
+                    890,
+                    1066,
+                    956
+                ],
+                "order": 12,
+                "polygon_points": [
+                    [
+                        124.0,
+                        890.0
+                    ],
+                    [
+                        1066.0,
+                        890.0
+                    ],
+                    [
+                        1066.0,
+                        956.0
+                    ],
+                    [
+                        124.0,
+                        956.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9540027379989624,
+                "coordinate": [
+                    124,
+                    965,
+                    1068,
+                    1052
+                ],
+                "order": 13,
+                "polygon_points": [
+                    [
+                        124.0,
+                        965.0
+                    ],
+                    [
+                        1068.0,
+                        965.0
+                    ],
+                    [
+                        1068.0,
+                        1052.0
+                    ],
+                    [
+                        124.0,
+                        1052.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9525808691978455,
+                "coordinate": [
+                    125,
+                    1059,
+                    1069,
+                    1149
+                ],
+                "order": 14,
+                "polygon_points": [
+                    [
+                        125.0,
+                        1059.0
+                    ],
+                    [
+                        1069.0,
+                        1059.0
+                    ],
+                    [
+                        1069.0,
+                        1149.0
+                    ],
+                    [
+                        125.0,
+                        1149.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9437553286552429,
+                "coordinate": [
+                    124,
+                    1157,
+                    1066,
+                    1223
+                ],
+                "order": 15,
+                "polygon_points": [
+                    [
+                        124.0,
+                        1157.0
+                    ],
+                    [
+                        1066.0,
+                        1157.0
+                    ],
+                    [
+                        1066.0,
+                        1223.0
+                    ],
+                    [
+                        124.0,
+                        1223.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9245617389678955,
+                "coordinate": [
+                    125,
+                    1230,
+                    1067,
+                    1275
+                ],
+                "order": 16,
+                "polygon_points": [
+                    [
+                        125.0,
+                        1230.0
+                    ],
+                    [
+                        1067.0,
+                        1230.0
+                    ],
+                    [
+                        1067.0,
+                        1275.0
+                    ],
+                    [
+                        125.0,
+                        1275.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9528329372406006,
+                "coordinate": [
+                    125,
+                    1283,
+                    1068,
+                    1371
+                ],
+                "order": 17,
+                "polygon_points": [
+                    [
+                        125.0,
+                        1283.0
+                    ],
+                    [
+                        1068.0,
+                        1283.0
+                    ],
+                    [
+                        1068.0,
+                        1371.0
+                    ],
+                    [
+                        125.0,
+                        1371.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9425258040428162,
+                "coordinate": [
+                    124,
+                    1380,
+                    1067,
+                    1444
+                ],
+                "order": 18,
+                "polygon_points": [
+                    [
+                        124.0,
+                        1380.0
+                    ],
+                    [
+                        1067.0,
+                        1380.0
+                    ],
+                    [
+                        1067.0,
+                        1444.0
+                    ],
+                    [
+                        124.0,
+                        1444.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7396125197410583,
+                "coordinate": [
+                    583,
+                    1484,
+                    606,
+                    1504
+                ],
+                "order": 19,
+                "polygon_points": [
+                    [
+                        583.0,
+                        1484.0
+                    ],
+                    [
+                        605.0,
+                        1484.0
+                    ],
+                    [
+                        605.0,
+                        1503.0
+                    ],
+                    [
+                        583.0,
+                        1503.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

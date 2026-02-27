@@ -1,0 +1,644 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 24,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "E. Real-world Samples",
+            "block_bbox": [
+                138,
+                170,
+                420,
+                200
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    170.0
+                ],
+                [
+                    420.0,
+                    170.0
+                ],
+                [
+                    420.0,
+                    200.0
+                ],
+                [
+                    138.0,
+                    200.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "This appendix demonstrates the robustness and versatility of PaddleOCR-VL-1.5 in processing diverse, high-complexity real-world scenarios.",
+            "block_bbox": [
+                136,
+                224,
+                1053,
+                278
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    224.0
+                ],
+                [
+                    1053.0,
+                    224.0
+                ],
+                [
+                    1053.0,
+                    278.0
+                ],
+                [
+                    136.0,
+                    278.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Section E.1 demonstrates the real-world document parsing capability of PaddleOCR-VL-1.5. Figures A1–A5 demonstrate the robust performance of PaddleOCR-VL-1.5 to parse real-world documents across diverse conditions, including varying illumination, geometric skew, screen-to-photo noise, and warped scanned surfaces.",
+            "block_bbox": [
+                135,
+                291,
+                1057,
+                401
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    291.0
+                ],
+                [
+                    1057.0,
+                    291.0
+                ],
+                [
+                    1057.0,
+                    401.0
+                ],
+                [
+                    135.0,
+                    401.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Figures A6–A9 in Section E.2 illustrate the robustness of PaddleOCR-VL-1.5 in layout analysis across challenging real-world conditions, including skewed or curved geometries, screen-to-photo noise, and illumination variations. Furthermore, Figure A10 highlights its extended generalizability to specialized domains—such as comics, CAD drawings, and multi-stamped documents—where earlier version of the model faced limitations.",
+            "block_bbox": [
+                135,
+                413,
+                1057,
+                549
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    413.0
+                ],
+                [
+                    1057.0,
+                    413.0
+                ],
+                [
+                    1057.0,
+                    549.0
+                ],
+                [
+                    135.0,
+                    549.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Section E.3 evaluates the text recognition performance of PaddleOCR-VL-1.5 under diverse constraints. As shown in Figure A11, the model exhibits improved sensitivity to text decorations, including underlines, emphasis marks, and wavy patterns, surpassing its predecessor. Figure A12 and Figure A13 demonstrate enhanced robustness in identifying special characters and long-tail cases, such as vertical orientations and character-level ambiguities.",
+            "block_bbox": [
+                135,
+                562,
+                1056,
+                700
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    562.0
+                ],
+                [
+                    1056.0,
+                    562.0
+                ],
+                [
+                    1056.0,
+                    700.0
+                ],
+                [
+                    135.0,
+                    700.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The model’s table recognition abilities are demonstrated in section E.4. Figure A14 illustrates the robustness of the model in processing complex layouts, including tables from academic textbooks and those containing embedded images or mathematical formulas. The proficiency of the model in multilingual table recognition is presented in Figure A15. Furthermore, Figure A16 demonstrates its extended capability for cross-page table detection and merging, addressing the challenges of multi-page document parsing.",
+            "block_bbox": [
+                135,
+                711,
+                1055,
+                876
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    711.0
+                ],
+                [
+                    1055.0,
+                    711.0
+                ],
+                [
+                    1055.0,
+                    876.0
+                ],
+                [
+                    135.0,
+                    876.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Figures in section E.5 detail the formula recognition performance. As illustrated in Figure A17, the updated model exhibits superior performance in mathematical expression recognition, specifically regarding sub/superscript accuracy, multi-line formula segmentation, and a lower overall error rate.",
+            "block_bbox": [
+                135,
+                888,
+                1056,
+                996
+            ],
+            "block_id": 6,
+            "block_order": 7,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    888.0
+                ],
+                [
+                    1056.0,
+                    888.0
+                ],
+                [
+                    1056.0,
+                    996.0
+                ],
+                [
+                    135.0,
+                    996.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "In section E.6, seal recognition represents a novel capability of this model update. As illustrated in Figures A18–A20, the model accurately extracts content from various types of seals, demonstrating high precision even when faced with complex background interference and cluttered environments.",
+            "block_bbox": [
+                136,
+                1011,
+                1054,
+                1118
+            ],
+            "block_id": 7,
+            "block_order": 8,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    1011.0
+                ],
+                [
+                    1054.0,
+                    1011.0
+                ],
+                [
+                    1054.0,
+                    1118.0
+                ],
+                [
+                    136.0,
+                    1118.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Figure A21 in section E.7 highlights the newly integrated text spotting capability of the model, which enables simultaneous localization and recognition. The results demonstrate superior robustness across challenging layouts, ranging from multi-column magazine pages and complex tables to irregular handwritten content.",
+            "block_bbox": [
+                136,
+                1132,
+                1054,
+                1241
+            ],
+            "block_id": 8,
+            "block_order": 9,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    1132.0
+                ],
+                [
+                    1054.0,
+                    1132.0
+                ],
+                [
+                    1054.0,
+                    1241.0
+                ],
+                [
+                    136.0,
+                    1241.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "25",
+            "block_bbox": [
+                581,
+                1556,
+                609,
+                1578
+            ],
+            "block_id": 9,
+            "block_order": null,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    581.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1577.0
+                ],
+                [
+                    581.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8667468428611755,
+                "coordinate": [
+                    138,
+                    170,
+                    420,
+                    200
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        138.0,
+                        170.0
+                    ],
+                    [
+                        420.0,
+                        170.0
+                    ],
+                    [
+                        420.0,
+                        200.0
+                    ],
+                    [
+                        138.0,
+                        200.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9121959805488586,
+                "coordinate": [
+                    136,
+                    224,
+                    1053,
+                    278
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        136.0,
+                        224.0
+                    ],
+                    [
+                        1053.0,
+                        224.0
+                    ],
+                    [
+                        1053.0,
+                        278.0
+                    ],
+                    [
+                        136.0,
+                        278.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.94292151927948,
+                "coordinate": [
+                    135,
+                    291,
+                    1057,
+                    401
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        135.0,
+                        291.0
+                    ],
+                    [
+                        1057.0,
+                        291.0
+                    ],
+                    [
+                        1057.0,
+                        401.0
+                    ],
+                    [
+                        135.0,
+                        401.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9537513852119446,
+                "coordinate": [
+                    135,
+                    413,
+                    1057,
+                    549
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        135.0,
+                        413.0
+                    ],
+                    [
+                        1057.0,
+                        413.0
+                    ],
+                    [
+                        1057.0,
+                        549.0
+                    ],
+                    [
+                        135.0,
+                        549.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9552019238471985,
+                "coordinate": [
+                    135,
+                    562,
+                    1056,
+                    700
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        135.0,
+                        562.0
+                    ],
+                    [
+                        1056.0,
+                        562.0
+                    ],
+                    [
+                        1056.0,
+                        700.0
+                    ],
+                    [
+                        135.0,
+                        700.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9553605318069458,
+                "coordinate": [
+                    135,
+                    711,
+                    1055,
+                    876
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        135.0,
+                        711.0
+                    ],
+                    [
+                        1055.0,
+                        711.0
+                    ],
+                    [
+                        1055.0,
+                        876.0
+                    ],
+                    [
+                        135.0,
+                        876.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9473784565925598,
+                "coordinate": [
+                    135,
+                    888,
+                    1056,
+                    996
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        135.0,
+                        888.0
+                    ],
+                    [
+                        1056.0,
+                        888.0
+                    ],
+                    [
+                        1056.0,
+                        996.0
+                    ],
+                    [
+                        135.0,
+                        996.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9497939944267273,
+                "coordinate": [
+                    136,
+                    1011,
+                    1054,
+                    1118
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        136.0,
+                        1011.0
+                    ],
+                    [
+                        1054.0,
+                        1011.0
+                    ],
+                    [
+                        1054.0,
+                        1118.0
+                    ],
+                    [
+                        136.0,
+                        1118.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9502705335617065,
+                "coordinate": [
+                    136,
+                    1132,
+                    1054,
+                    1241
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        136.0,
+                        1132.0
+                    ],
+                    [
+                        1054.0,
+                        1132.0
+                    ],
+                    [
+                        1054.0,
+                        1241.0
+                    ],
+                    [
+                        136.0,
+                        1241.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7352780699729919,
+                "coordinate": [
+                    581,
+                    1556,
+                    609,
+                    1578
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        581.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1577.0
+                    ],
+                    [
+                        581.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,644 @@
+{
+    "input_path": "/home/bocchi/Downloads/DeepSeekOCR.pdf",
+    "page_index": 4,
+    "page_count": 22,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "image",
+            "block_content": "",
+            "block_bbox": [
+                142,
+                175,
+                1040,
+                417
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    142.0,
+                    175.0
+                ],
+                [
+                    1040.0,
+                    175.0
+                ],
+                [
+                    1040.0,
+                    417.0
+                ],
+                [
+                    142.0,
+                    417.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure 3 | The architecture of DeepSeek-OCR. DeepSeek-OCR consists of a DeepEncoder and a DeepSeek-3B-MoE decoder. DeepEncoder is the core of DeepSeek-OCR, comprising three components: a SAM [17] for perception dominated by window attention, a CLIP [29] for knowledge with dense global attention, and a 16x token compressor that bridges between them.",
+            "block_bbox": [
+                136,
+                442,
+                1053,
+                553
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    442.0
+                ],
+                [
+                    1053.0,
+                    442.0
+                ],
+                [
+                    1053.0,
+                    553.0
+                ],
+                [
+                    136.0,
+                    553.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3. Methodology",
+            "block_bbox": [
+                136,
+                592,
+                337,
+                623
+            ],
+            "block_id": 2,
+            "block_order": 1,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    592.0
+                ],
+                [
+                    337.0,
+                    592.0
+                ],
+                [
+                    337.0,
+                    623.0
+                ],
+                [
+                    136.0,
+                    623.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3.1. Architecture",
+            "block_bbox": [
+                137,
+                647,
+                313,
+                674
+            ],
+            "block_id": 3,
+            "block_order": 2,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    647.0
+                ],
+                [
+                    313.0,
+                    647.0
+                ],
+                [
+                    313.0,
+                    674.0
+                ],
+                [
+                    137.0,
+                    674.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "As shown in Figure 3, DeepSeek-OCR enjoys a unified end-to-end VLM architecture consisting of an encoder and a decoder. The encoder (namely DeepEncoder) is responsible for extracting image features and tokenizing as well as compressing visual representations. The decoder is used for generating the required result based on image tokens and prompts. DeepEncoder is approximately 380M in parameters, mainly composed of an 80M SAM-base [17] and a 300M CLIP-large [29] connected in series. The decoder adopts a 3B MoE [19, 20] architecture with 570M activated parameters. In the following paragraphs, we will delve into the model components, data engineering, and training skills.",
+            "block_bbox": [
+                133,
+                693,
+                1054,
+                914
+            ],
+            "block_id": 4,
+            "block_order": 3,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    133.0,
+                    693.0
+                ],
+                [
+                    1054.0,
+                    693.0
+                ],
+                [
+                    1054.0,
+                    914.0
+                ],
+                [
+                    133.0,
+                    914.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3.2. DeepEncoder",
+            "block_bbox": [
+                137,
+                949,
+                325,
+                975
+            ],
+            "block_id": 5,
+            "block_order": 4,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    949.0
+                ],
+                [
+                    325.0,
+                    949.0
+                ],
+                [
+                    325.0,
+                    975.0
+                ],
+                [
+                    137.0,
+                    975.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To explore the feasibility of contexts optical compression, we need a vision encoder with the following features: 1. Capable of processing high resolutions; 2. Low activation at high resolutions; 3. Few vision tokens; 4. Support for multiple resolution inputs; 5. Moderate parameter count. However, as described in the Section 2.1, current open-source encoders cannot fully satisfy all these conditions. Therefore, we design a novel vision encoder ourselves, named DeepEncoder.",
+            "block_bbox": [
+                135,
+                993,
+                1056,
+                1131
+            ],
+            "block_id": 6,
+            "block_order": 5,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    993.0
+                ],
+                [
+                    1056.0,
+                    993.0
+                ],
+                [
+                    1056.0,
+                    1131.0
+                ],
+                [
+                    135.0,
+                    1131.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3.2.1. Architecture of DeepEncoder",
+            "block_bbox": [
+                137,
+                1163,
+                482,
+                1190
+            ],
+            "block_id": 7,
+            "block_order": 6,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1163.0
+                ],
+                [
+                    482.0,
+                    1163.0
+                ],
+                [
+                    482.0,
+                    1190.0
+                ],
+                [
+                    137.0,
+                    1190.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "DeepEncoder mainly consists of two components: a visual perception feature extraction component dominated by window attention, and a visual knowledge feature extraction component with dense global attention. To benefit from the pretraining gains of previous works, we use SAM-base (patch-size 16) and CLIP-large as the main architectures for the two components respectively. For CLIP, we remove the first patch embedding layer since its input is no longer images but output tokens from the previous pipeline. Between the two components, we borrow from Vary [36] and use a 2-layer convolutional module to perform 16× downsampling of vision tokens. Each convolutional layer has a kernel size of 3, stride of 2, padding of 1, and channels increase from 256 to 1024. Assuming we input a 1024×1024 image, the DeepEncoder will segment it into 1024/16×1024/16=4096 patch tokens. Since the first half of encoder is dominated by window attention and only 80M, the activation is acceptable. Before entering global attention,",
+            "block_bbox": [
+                134,
+                1208,
+                1057,
+                1508
+            ],
+            "block_id": 8,
+            "block_order": 7,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    1208.0
+                ],
+                [
+                    1057.0,
+                    1208.0
+                ],
+                [
+                    1057.0,
+                    1508.0
+                ],
+                [
+                    134.0,
+                    1508.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "5",
+            "block_bbox": [
+                587,
+                1556,
+                604,
+                1578
+            ],
+            "block_id": 9,
+            "block_order": null,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1556.0
+                ],
+                [
+                    603.0,
+                    1556.0
+                ],
+                [
+                    603.0,
+                    1577.0
+                ],
+                [
+                    587.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9433196783065796,
+                "coordinate": [
+                    142,
+                    175,
+                    1040,
+                    417
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        142.0,
+                        175.0
+                    ],
+                    [
+                        1040.0,
+                        175.0
+                    ],
+                    [
+                        1040.0,
+                        417.0
+                    ],
+                    [
+                        142.0,
+                        417.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9296085238456726,
+                "coordinate": [
+                    136,
+                    442,
+                    1053,
+                    553
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        136.0,
+                        442.0
+                    ],
+                    [
+                        1053.0,
+                        442.0
+                    ],
+                    [
+                        1053.0,
+                        553.0
+                    ],
+                    [
+                        136.0,
+                        553.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.859771192073822,
+                "coordinate": [
+                    136,
+                    592,
+                    337,
+                    623
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        136.0,
+                        592.0
+                    ],
+                    [
+                        337.0,
+                        592.0
+                    ],
+                    [
+                        337.0,
+                        623.0
+                    ],
+                    [
+                        136.0,
+                        623.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8331156969070435,
+                "coordinate": [
+                    137,
+                    647,
+                    313,
+                    674
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        137.0,
+                        647.0
+                    ],
+                    [
+                        313.0,
+                        647.0
+                    ],
+                    [
+                        313.0,
+                        674.0
+                    ],
+                    [
+                        137.0,
+                        674.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9563777446746826,
+                "coordinate": [
+                    133,
+                    693,
+                    1054,
+                    914
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        133.0,
+                        693.0
+                    ],
+                    [
+                        1054.0,
+                        693.0
+                    ],
+                    [
+                        1054.0,
+                        914.0
+                    ],
+                    [
+                        133.0,
+                        914.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.84041827917099,
+                "coordinate": [
+                    137,
+                    949,
+                    325,
+                    975
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        137.0,
+                        949.0
+                    ],
+                    [
+                        325.0,
+                        949.0
+                    ],
+                    [
+                        325.0,
+                        975.0
+                    ],
+                    [
+                        137.0,
+                        975.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9482718110084534,
+                "coordinate": [
+                    135,
+                    993,
+                    1056,
+                    1131
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        135.0,
+                        993.0
+                    ],
+                    [
+                        1056.0,
+                        993.0
+                    ],
+                    [
+                        1056.0,
+                        1131.0
+                    ],
+                    [
+                        135.0,
+                        1131.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8589768409729004,
+                "coordinate": [
+                    137,
+                    1163,
+                    482,
+                    1190
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1163.0
+                    ],
+                    [
+                        482.0,
+                        1163.0
+                    ],
+                    [
+                        482.0,
+                        1190.0
+                    ],
+                    [
+                        137.0,
+                        1190.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9667477011680603,
+                "coordinate": [
+                    134,
+                    1208,
+                    1057,
+                    1508
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        134.0,
+                        1208.0
+                    ],
+                    [
+                        1057.0,
+                        1208.0
+                    ],
+                    [
+                        1057.0,
+                        1508.0
+                    ],
+                    [
+                        134.0,
+                        1508.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7038976550102234,
+                "coordinate": [
+                    587,
+                    1556,
+                    604,
+                    1578
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1556.0
+                    ],
+                    [
+                        603.0,
+                        1556.0
+                    ],
+                    [
+                        603.0,
+                        1577.0
+                    ],
+                    [
+                        587.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,545 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 44,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "seal",
+            "block_content": "",
+            "block_bbox": [
+                285,
+                176,
+                533,
+                463
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    285.0,
+                    176.0
+                ],
+                [
+                    533.0,
+                    176.0
+                ],
+                [
+                    533.0,
+                    463.0
+                ],
+                [
+                    285.0,
+                    463.0
+                ]
+            ]
+        },
+        {
+            "block_label": "image",
+            "block_content": "",
+            "block_bbox": [
+                218,
+                156,
+                964,
+                1413
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    230,
+                    156
+                ],
+                [
+                    230,
+                    1396
+                ],
+                [
+                    958,
+                    1387
+                ],
+                [
+                    958,
+                    156
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "天津市招生委员会\n办公室\n录取专用章",
+            "block_bbox": [
+                687,
+                280,
+                879,
+                367
+            ],
+            "block_id": 2,
+            "block_order": 2,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    687,
+                    280
+                ],
+                [
+                    687,
+                    359
+                ],
+                [
+                    693,
+                    366
+                ],
+                [
+                    873,
+                    366
+                ],
+                [
+                    878,
+                    359
+                ],
+                [
+                    878,
+                    288
+                ],
+                [
+                    873,
+                    280
+                ]
+            ]
+        },
+        {
+            "block_label": "seal",
+            "block_content": "",
+            "block_bbox": [
+                282,
+                480,
+                534,
+                764
+            ],
+            "block_id": 3,
+            "block_order": 3,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    282.0,
+                    480.0
+                ],
+                [
+                    534.0,
+                    480.0
+                ],
+                [
+                    534.0,
+                    764.0
+                ],
+                [
+                    282.0,
+                    764.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "100 YEARS OF PHILATELY IN\nHASTINGS\nROBERTSON ST\n2 NOV 2023\n1923 – 2023",
+            "block_bbox": [
+                621,
+                1179,
+                946,
+                1322
+            ],
+            "block_id": 4,
+            "block_order": 4,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    621.0,
+                    1179.0
+                ],
+                [
+                    946.0,
+                    1179.0
+                ],
+                [
+                    946.0,
+                    1322.0
+                ],
+                [
+                    621.0,
+                    1322.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure A20 | The markdown output for various types of Seals 3.",
+            "block_bbox": [
+                281,
+                1416,
+                906,
+                1448
+            ],
+            "block_id": 5,
+            "block_order": null,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    281.0,
+                    1416.0
+                ],
+                [
+                    906.0,
+                    1416.0
+                ],
+                [
+                    906.0,
+                    1448.0
+                ],
+                [
+                    281.0,
+                    1448.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "45",
+            "block_bbox": [
+                581,
+                1556,
+                609,
+                1578
+            ],
+            "block_id": 6,
+            "block_order": null,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    581.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1577.0
+                ],
+                [
+                    581.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 20,
+                "label": "seal",
+                "score": 0.6698998808860779,
+                "coordinate": [
+                    285,
+                    176,
+                    533,
+                    463
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        285.0,
+                        176.0
+                    ],
+                    [
+                        533.0,
+                        176.0
+                    ],
+                    [
+                        533.0,
+                        463.0
+                    ],
+                    [
+                        285.0,
+                        463.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.7999076843261719,
+                "coordinate": [
+                    218,
+                    156,
+                    964,
+                    1413
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        230,
+                        156
+                    ],
+                    [
+                        230,
+                        1396
+                    ],
+                    [
+                        958,
+                        1387
+                    ],
+                    [
+                        958,
+                        156
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.35644960403442383,
+                "coordinate": [
+                    687,
+                    280,
+                    879,
+                    367
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        687,
+                        280
+                    ],
+                    [
+                        687,
+                        359
+                    ],
+                    [
+                        693,
+                        366
+                    ],
+                    [
+                        873,
+                        366
+                    ],
+                    [
+                        878,
+                        359
+                    ],
+                    [
+                        878,
+                        288
+                    ],
+                    [
+                        873,
+                        280
+                    ]
+                ]
+            },
+            {
+                "cls_id": 20,
+                "label": "seal",
+                "score": 0.5125729441642761,
+                "coordinate": [
+                    282,
+                    480,
+                    534,
+                    764
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        282.0,
+                        480.0
+                    ],
+                    [
+                        534.0,
+                        480.0
+                    ],
+                    [
+                        534.0,
+                        764.0
+                    ],
+                    [
+                        282.0,
+                        764.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.3336414396762848,
+                "coordinate": [
+                    282,
+                    786,
+                    546,
+                    1063
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        282.0,
+                        786.0
+                    ],
+                    [
+                        546.0,
+                        786.0
+                    ],
+                    [
+                        546.0,
+                        1063.0
+                    ],
+                    [
+                        282.0,
+                        1063.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.37278059124946594,
+                "coordinate": [
+                    298,
+                    1138,
+                    521,
+                    1367
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        298.0,
+                        1138.0
+                    ],
+                    [
+                        521.0,
+                        1138.0
+                    ],
+                    [
+                        521.0,
+                        1367.0
+                    ],
+                    [
+                        298.0,
+                        1367.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.37339189648628235,
+                "coordinate": [
+                    621,
+                    1179,
+                    946,
+                    1322
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        621.0,
+                        1179.0
+                    ],
+                    [
+                        946.0,
+                        1179.0
+                    ],
+                    [
+                        946.0,
+                        1322.0
+                    ],
+                    [
+                        621.0,
+                        1322.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8576180934906006,
+                "coordinate": [
+                    281,
+                    1416,
+                    906,
+                    1448
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        281.0,
+                        1416.0
+                    ],
+                    [
+                        906.0,
+                        1416.0
+                    ],
+                    [
+                        906.0,
+                        1448.0
+                    ],
+                    [
+                        281.0,
+                        1448.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7277194261550903,
+                "coordinate": [
+                    581,
+                    1556,
+                    609,
+                    1578
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        581.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1577.0
+                    ],
+                    [
+                        581.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

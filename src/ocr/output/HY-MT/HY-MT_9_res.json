@@ -1,0 +1,1040 @@
+{
+    "input_path": "/home/bocchi/Downloads/HY-MT.pdf",
+    "page_index": 9,
+    "page_count": 13,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "figure_title",
+            "block_content": "Table 4: Translation performance metrics of different quantization schemes. The highest and second-best scores are shown in bold and underlined, respectively.",
+            "block_bbox": [
+                136,
+                138,
+                1053,
+                188
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    138.0
+                ],
+                [
+                    1053.0,
+                    138.0
+                ],
+                [
+                    1053.0,
+                    188.0
+                ],
+                [
+                    136.0,
+                    188.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td rowspan=\"2\">Models</td><td rowspan=\"2\">Metrics</td><td colspan=\"3\">FLORES-200</td></tr><tr><td>ZH  $ \\Leftrightarrow $ XX</td><td>EN  $ \\Leftrightarrow $ XX</td><td>XX  $ \\Leftrightarrow $ XX</td></tr><tr><td rowspan=\"2\">HY-MT1.5-1.8B</td><td>XCOMET-XXL</td><td>0.8361</td><td>0.8942</td><td>0.7840</td></tr><tr><td>CometKiwi</td><td>0.7655</td><td>0.8411</td><td>0.7182</td></tr><tr><td rowspan=\"2\">HY-MT1.5-1.8B-FP8</td><td>XCOMET-XXL</td><td>0.8379</td><td>0.8905</td><td>0.7794</td></tr><tr><td>CometKiwi</td><td>0.7659</td><td>0.8396</td><td>0.7156</td></tr><tr><td rowspan=\"2\">HY-MT1.5-1.8B-Int4</td><td>XCOMET-XXL</td><td>0.8060</td><td>0.8665</td><td>0.7336</td></tr><tr><td>CometKiwi</td><td>0.7462</td><td>0.8234</td><td>0.6884</td></tr></table>",
+            "block_bbox": [
+                245,
+                205,
+                934,
+                430
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    245.0,
+                    205.0
+                ],
+                [
+                    934.0,
+                    205.0
+                ],
+                [
+                    934.0,
+                    430.0
+                ],
+                [
+                    245.0,
+                    430.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "the original model while reducing resource consumption, facilitating application on resource-constrained devices.",
+            "block_bbox": [
+                137,
+                474,
+                1052,
+                520
+            ],
+            "block_id": 2,
+            "block_order": 1,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    474.0
+                ],
+                [
+                    1052.0,
+                    474.0
+                ],
+                [
+                    1052.0,
+                    520.0
+                ],
+                [
+                    137.0,
+                    520.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Future work will focus on three directions: 1) Expanding language coverage to more low-resource and underrepresented languages, enhancing the inclusivity of MT technology; 2) Optimizing the training framework with more efficient knowledge distillation and reinforcement learning to improve the performance-efficiency ratio of small and medium-sized models; 3) Deepening customized translation research by integrating advanced prompt engineering and domain adaptation to better meet industry-specific needs. The HY-MT1.5 models are expected to provide high-quality, efficient, and flexible translation solutions for academic and industrial communities, advancing the development and popularization of MT technology.",
+            "block_bbox": [
+                136,
+                531,
+                1057,
+                710
+            ],
+            "block_id": 3,
+            "block_order": 2,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    531.0
+                ],
+                [
+                    1057.0,
+                    531.0
+                ],
+                [
+                    1057.0,
+                    710.0
+                ],
+                [
+                    136.0,
+                    710.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "5 Contributions",
+            "block_bbox": [
+                137,
+                739,
+                335,
+                766
+            ],
+            "block_id": 4,
+            "block_order": 3,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    739.0
+                ],
+                [
+                    335.0,
+                    739.0
+                ],
+                [
+                    335.0,
+                    766.0
+                ],
+                [
+                    137.0,
+                    766.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "5.1 Core Contributors",
+            "block_bbox": [
+                138,
+                790,
+                355,
+                814
+            ],
+            "block_id": 5,
+            "block_order": 4,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    790.0
+                ],
+                [
+                    355.0,
+                    790.0
+                ],
+                [
+                    355.0,
+                    814.0
+                ],
+                [
+                    138.0,
+                    814.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Mao Zheng, Zheng Li, Tao Chen, Mingyang Song, Di Wang",
+            "block_bbox": [
+                136,
+                831,
+                666,
+                858
+            ],
+            "block_id": 6,
+            "block_order": 5,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    831.0
+                ],
+                [
+                    666.0,
+                    831.0
+                ],
+                [
+                    666.0,
+                    858.0
+                ],
+                [
+                    136.0,
+                    858.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "5.2 Contributors",
+            "block_bbox": [
+                138,
+                882,
+                307,
+                906
+            ],
+            "block_id": 7,
+            "block_order": 6,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    882.0
+                ],
+                [
+                    307.0,
+                    882.0
+                ],
+                [
+                    307.0,
+                    906.0
+                ],
+                [
+                    138.0,
+                    906.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Feng Zhang, Tinghao Yu, Chengcheng Xu, Zhenyu Huang, Liya Zhan, Jun Xia, Jiaqi Zhu, Xingwu Sun, Yufei Wang, Can Xu, Liang Dong, Huxin Peng, Fei Cheng, Zheng Zhang, Liqi He, Huashuo Li, Decheng Wu, Guanghua Yu, Kai Wang, Haozhao Kuang",
+            "block_bbox": [
+                136,
+                924,
+                1054,
+                993
+            ],
+            "block_id": 8,
+            "block_order": 7,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    924.0
+                ],
+                [
+                    1054.0,
+                    924.0
+                ],
+                [
+                    1054.0,
+                    993.0
+                ],
+                [
+                    136.0,
+                    993.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "References",
+            "block_bbox": [
+                138,
+                1024,
+                265,
+                1049
+            ],
+            "block_id": 9,
+            "block_order": 8,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    1024.0
+                ],
+                [
+                    265.0,
+                    1024.0
+                ],
+                [
+                    265.0,
+                    1049.0
+                ],
+                [
+                    138.0,
+                    1049.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "Rishabh Agarwal, Nino Vieillard, Yongchao Zhou, Piotr Stanczyk, Sabela Ramos, Matthieu Geist, and Olivier Bachem. On-policy distillation of language models: Learning from self-generated mistakes, 2024. URL https://arxiv.org/abs/2306.13649.",
+            "block_bbox": [
+                138,
+                1062,
+                1053,
+                1130
+            ],
+            "block_id": 10,
+            "block_order": 9,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    138,
+                    1062
+                ],
+                [
+                    138,
+                    1129
+                ],
+                [
+                    1052,
+                    1129
+                ],
+                [
+                    1052,
+                    1062
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio. Neural machine translation by jointly learning to align and translate. In Yoshua Bengio and Yann LeCun (eds.), 3rd International Conference on Learning Representations, ICLR 2015, San Diego, CA, USA, May 7-9, 2015, Conference Track Proceedings, 2015. URL http://arxiv.org/abs/1409.0473.",
+            "block_bbox": [
+                138,
+                1144,
+                1052,
+                1233
+            ],
+            "block_id": 11,
+            "block_order": 10,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    1144.0
+                ],
+                [
+                    1052.0,
+                    1144.0
+                ],
+                [
+                    1052.0,
+                    1233.0
+                ],
+                [
+                    138.0,
+                    1233.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "Peter F. Brown, John Cocke, Stephen Della Pietra, Vincent J. Della Pietra, Frederick Jelinek, John D. Lafferty, Robert L. Mercer, and Paul S. Roossin. A statistical approach to machine translation. Comput. Linguistics, 16(2):79–85, 1990.",
+            "block_bbox": [
+                139,
+                1247,
+                1052,
+                1316
+            ],
+            "block_id": 12,
+            "block_order": 11,
+            "group_id": 12,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    1247.0
+                ],
+                [
+                    1052.0,
+                    1247.0
+                ],
+                [
+                    1052.0,
+                    1316.0
+                ],
+                [
+                    139.0,
+                    1316.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "Peter F. Brown, Stephen Della Pietra, Vincent J. Della Pietra, and Robert L. Mercer. The mathematics of statistical machine translation: Parameter estimation. Comput. Linguistics, 19(2):263–311, 1993.",
+            "block_bbox": [
+                138,
+                1329,
+                1052,
+                1375
+            ],
+            "block_id": 13,
+            "block_order": 12,
+            "group_id": 13,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    1329.0
+                ],
+                [
+                    1052.0,
+                    1329.0
+                ],
+                [
+                    1052.0,
+                    1375.0
+                ],
+                [
+                    138.0,
+                    1375.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "Shanbo Cheng, Yu Bao, Qian Cao, Luyang Huang, Liyan Kang, Zhicheng Liu, Yu Lu, Wenhao Zhu, Jingwen Chen, Zhichao Huang, Tao Li, Yifu Li, Huiying Lin, Sitong Liu, Ningxin Peng, Shuaijie She, Lu Xu, Nuo Xu, Sen Yang, Runsheng Yu, Yiming Yu, Liehao Zou, Hang Li, Lu Lu, Yuxuan Wang, and Yonghui Wu. Seed-x: Building strong multilingual translation llm with 7b parameters, 2025. URL https://arxiv.org/abs/2507.13618.",
+            "block_bbox": [
+                138,
+                1390,
+                1054,
+                1498
+            ],
+            "block_id": 14,
+            "block_order": 13,
+            "group_id": 14,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    1390.0
+                ],
+                [
+                    1054.0,
+                    1390.0
+                ],
+                [
+                    1054.0,
+                    1498.0
+                ],
+                [
+                    138.0,
+                    1498.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "10",
+            "block_bbox": [
+                583,
+                1586,
+                608,
+                1606
+            ],
+            "block_id": 15,
+            "block_order": null,
+            "group_id": 15,
+            "block_polygon_points": [
+                [
+                    583.0,
+                    1586.0
+                ],
+                [
+                    607.0,
+                    1586.0
+                ],
+                [
+                    607.0,
+                    1605.0
+                ],
+                [
+                    583.0,
+                    1605.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8921278119087219,
+                "coordinate": [
+                    136,
+                    138,
+                    1053,
+                    188
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        136.0,
+                        138.0
+                    ],
+                    [
+                        1053.0,
+                        138.0
+                    ],
+                    [
+                        1053.0,
+                        188.0
+                    ],
+                    [
+                        136.0,
+                        188.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9546464085578918,
+                "coordinate": [
+                    245,
+                    205,
+                    934,
+                    430
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        245.0,
+                        205.0
+                    ],
+                    [
+                        934.0,
+                        205.0
+                    ],
+                    [
+                        934.0,
+                        430.0
+                    ],
+                    [
+                        245.0,
+                        430.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8817816376686096,
+                "coordinate": [
+                    137,
+                    474,
+                    1052,
+                    520
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        137.0,
+                        474.0
+                    ],
+                    [
+                        1052.0,
+                        474.0
+                    ],
+                    [
+                        1052.0,
+                        520.0
+                    ],
+                    [
+                        137.0,
+                        520.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9545444250106812,
+                "coordinate": [
+                    136,
+                    531,
+                    1057,
+                    710
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        136.0,
+                        531.0
+                    ],
+                    [
+                        1057.0,
+                        531.0
+                    ],
+                    [
+                        1057.0,
+                        710.0
+                    ],
+                    [
+                        136.0,
+                        710.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8588963747024536,
+                "coordinate": [
+                    137,
+                    739,
+                    335,
+                    766
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        137.0,
+                        739.0
+                    ],
+                    [
+                        335.0,
+                        739.0
+                    ],
+                    [
+                        335.0,
+                        766.0
+                    ],
+                    [
+                        137.0,
+                        766.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.836936354637146,
+                "coordinate": [
+                    138,
+                    790,
+                    355,
+                    814
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        138.0,
+                        790.0
+                    ],
+                    [
+                        355.0,
+                        790.0
+                    ],
+                    [
+                        355.0,
+                        814.0
+                    ],
+                    [
+                        138.0,
+                        814.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8462505340576172,
+                "coordinate": [
+                    136,
+                    831,
+                    666,
+                    858
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        136.0,
+                        831.0
+                    ],
+                    [
+                        666.0,
+                        831.0
+                    ],
+                    [
+                        666.0,
+                        858.0
+                    ],
+                    [
+                        136.0,
+                        858.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8351234793663025,
+                "coordinate": [
+                    138,
+                    882,
+                    307,
+                    906
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        138.0,
+                        882.0
+                    ],
+                    [
+                        307.0,
+                        882.0
+                    ],
+                    [
+                        307.0,
+                        906.0
+                    ],
+                    [
+                        138.0,
+                        906.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9248477816581726,
+                "coordinate": [
+                    136,
+                    924,
+                    1054,
+                    993
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        136.0,
+                        924.0
+                    ],
+                    [
+                        1054.0,
+                        924.0
+                    ],
+                    [
+                        1054.0,
+                        993.0
+                    ],
+                    [
+                        136.0,
+                        993.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8427022695541382,
+                "coordinate": [
+                    138,
+                    1024,
+                    265,
+                    1049
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        138.0,
+                        1024.0
+                    ],
+                    [
+                        265.0,
+                        1024.0
+                    ],
+                    [
+                        265.0,
+                        1049.0
+                    ],
+                    [
+                        138.0,
+                        1049.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 18,
+                "label": "reference",
+                "score": 0.9113234877586365,
+                "coordinate": [
+                    138,
+                    1064,
+                    1053,
+                    1497
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        138.0,
+                        1064.0
+                    ],
+                    [
+                        1053.0,
+                        1064.0
+                    ],
+                    [
+                        1053.0,
+                        1497.0
+                    ],
+                    [
+                        138.0,
+                        1497.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.910357654094696,
+                "coordinate": [
+                    138,
+                    1062,
+                    1053,
+                    1130
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        138,
+                        1062
+                    ],
+                    [
+                        138,
+                        1129
+                    ],
+                    [
+                        1052,
+                        1129
+                    ],
+                    [
+                        1052,
+                        1062
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9329594373703003,
+                "coordinate": [
+                    138,
+                    1144,
+                    1052,
+                    1233
+                ],
+                "order": 11,
+                "polygon_points": [
+                    [
+                        138.0,
+                        1144.0
+                    ],
+                    [
+                        1052.0,
+                        1144.0
+                    ],
+                    [
+                        1052.0,
+                        1233.0
+                    ],
+                    [
+                        138.0,
+                        1233.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9459604620933533,
+                "coordinate": [
+                    139,
+                    1247,
+                    1052,
+                    1316
+                ],
+                "order": 12,
+                "polygon_points": [
+                    [
+                        139.0,
+                        1247.0
+                    ],
+                    [
+                        1052.0,
+                        1247.0
+                    ],
+                    [
+                        1052.0,
+                        1316.0
+                    ],
+                    [
+                        139.0,
+                        1316.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9214590787887573,
+                "coordinate": [
+                    138,
+                    1329,
+                    1052,
+                    1375
+                ],
+                "order": 13,
+                "polygon_points": [
+                    [
+                        138.0,
+                        1329.0
+                    ],
+                    [
+                        1052.0,
+                        1329.0
+                    ],
+                    [
+                        1052.0,
+                        1375.0
+                    ],
+                    [
+                        138.0,
+                        1375.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9527423977851868,
+                "coordinate": [
+                    138,
+                    1390,
+                    1054,
+                    1498
+                ],
+                "order": 14,
+                "polygon_points": [
+                    [
+                        138.0,
+                        1390.0
+                    ],
+                    [
+                        1054.0,
+                        1390.0
+                    ],
+                    [
+                        1054.0,
+                        1498.0
+                    ],
+                    [
+                        138.0,
+                        1498.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7529827356338501,
+                "coordinate": [
+                    583,
+                    1586,
+                    608,
+                    1606
+                ],
+                "order": 15,
+                "polygon_points": [
+                    [
+                        583.0,
+                        1586.0
+                    ],
+                    [
+                        607.0,
+                        1586.0
+                    ],
+                    [
+                        607.0,
+                        1605.0
+                    ],
+                    [
+                        583.0,
+                        1605.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

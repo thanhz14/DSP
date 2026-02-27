@@ -1,0 +1,339 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 23,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "D. Inference Performance on Different Hardware Configurations",
+            "block_bbox": [
+                137,
+                170,
+                918,
+                200
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    170.0
+                ],
+                [
+                    918.0,
+                    170.0
+                ],
+                [
+                    918.0,
+                    200.0
+                ],
+                [
+                    137.0,
+                    200.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "We evaluated the inference throughput and latency of PaddleOCR-VL-1.5 across multiple hardware configurations, with the detailed results presented in Table A8. In our experiments, all PDF pages are rendered at 72 DPI, which provides a good trade-off between memory efficiency and the visual fidelity required for reliable OCR. We note that the experiments on different hardware platforms were conducted without extensive parameter tuning or system-level optimization; therefore, the reported performance figures should be regarded as conservative and still leave room for further improvement. All models were evaluated using three deployment backends, namely FastDeploy v2.3.0, vLLM v0.10.2, and SGLang v0.5.2. Across these frameworks, PaddleOCR-VL-1.5 consistently delivers high and stable inference efficiency, demonstrating strong generalization across diverse hardware configurations and execution engines, as well as good compatibility with heterogeneous computing environments.",
+            "block_bbox": [
+                133,
+                224,
+                1060,
+                526
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    133.0,
+                    224.0
+                ],
+                [
+                    1060.0,
+                    224.0
+                ],
+                [
+                    1060.0,
+                    526.0
+                ],
+                [
+                    133.0,
+                    526.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Hardware</td><td>Backend</td><td>Total Time (s) $ \\downarrow $</td><td>Pages/s $ \\uparrow $</td><td>Tokens/s $ \\uparrow $</td><td>Avg. VRAM Usage (GB) $ \\downarrow $</td></tr><tr><td rowspan=\"3\">H800</td><td>FastDeploy</td><td>556.4</td><td>2.4320</td><td>3404.5</td><td>64.8</td></tr><tr><td>vLLM</td><td>761.8</td><td>1.7772</td><td>2488.0</td><td>46.2</td></tr><tr><td>SGLang</td><td>868.5</td><td>1.5589</td><td>2185.2</td><td>48.9</td></tr><tr><td rowspan=\"3\">A100</td><td>FastDeploy</td><td>671.3</td><td>2.0160</td><td>2826.0</td><td>62.1</td></tr><tr><td>vLLM</td><td>981.4</td><td>1.3797</td><td>1926.1</td><td>43.5</td></tr><tr><td>SGLang</td><td>1100.9</td><td>1.2301</td><td>1722.5</td><td>48.9</td></tr><tr><td rowspan=\"3\">H20</td><td>FastDeploy</td><td>743.7</td><td>1.8206</td><td>2545.0</td><td>77.2</td></tr><tr><td>vLLM</td><td>796.1</td><td>1.7007</td><td>2382.0</td><td>75.0</td></tr><tr><td>SGLang</td><td>862.2</td><td>1.5702</td><td>2204.5</td><td>74.3</td></tr><tr><td rowspan=\"3\">L20</td><td>FastDeploy</td><td>845.0</td><td>1.6023</td><td>2248.4</td><td>41.0</td></tr><tr><td>vLLM</td><td>998.2</td><td>1.3565</td><td>1890.7</td><td>25.1</td></tr><tr><td>SGLang</td><td>1126.8</td><td>1.2018</td><td>1680.7</td><td>30.2</td></tr><tr><td rowspan=\"3\">A10</td><td>FastDeploy</td><td>1179.9</td><td>1.1477</td><td>1607.8</td><td>21.8</td></tr><tr><td>vLLM</td><td>1245.5</td><td>1.0873</td><td>1520.6</td><td>13.5</td></tr><tr><td>SGLang</td><td>1504.3</td><td>0.9003</td><td>1260.1</td><td>19.0</td></tr><tr><td rowspan=\"2\">RTX 3060</td><td>vLLM</td><td>2531.8</td><td>0.5351</td><td>748.1</td><td>11.8</td></tr><tr><td>SGLang</td><td>2587.7</td><td>0.5235</td><td>730.5</td><td>11.7</td></tr><tr><td rowspan=\"2\">RTX 4090D</td><td>vLLM</td><td>923.5</td><td>1.4667</td><td>2040.1</td><td>16.3</td></tr><tr><td>SGLang</td><td>1079.5</td><td>1.2548</td><td>1750.9</td><td>20.0</td></tr></table>",
+            "block_bbox": [
+                139,
+                544,
+                1087,
+                1286
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    544.0
+                ],
+                [
+                    1087.0,
+                    544.0
+                ],
+                [
+                    1087.0,
+                    1286.0
+                ],
+                [
+                    139.0,
+                    1286.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table A8 | End-to-End Inference Performance",
+            "block_bbox": [
+                372,
+                1305,
+                819,
+                1333
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    372.0,
+                    1305.0
+                ],
+                [
+                    819.0,
+                    1305.0
+                ],
+                [
+                    819.0,
+                    1333.0
+                ],
+                [
+                    372.0,
+                    1333.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "24",
+            "block_bbox": [
+                581,
+                1555,
+                610,
+                1579
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    581.0,
+                    1555.0
+                ],
+                [
+                    609.0,
+                    1555.0
+                ],
+                [
+                    609.0,
+                    1578.0
+                ],
+                [
+                    581.0,
+                    1578.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8770187497138977,
+                "coordinate": [
+                    137,
+                    170,
+                    918,
+                    200
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        137.0,
+                        170.0
+                    ],
+                    [
+                        918.0,
+                        170.0
+                    ],
+                    [
+                        918.0,
+                        200.0
+                    ],
+                    [
+                        137.0,
+                        200.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9601154327392578,
+                "coordinate": [
+                    133,
+                    224,
+                    1060,
+                    526
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        133.0,
+                        224.0
+                    ],
+                    [
+                        1060.0,
+                        224.0
+                    ],
+                    [
+                        1060.0,
+                        526.0
+                    ],
+                    [
+                        133.0,
+                        526.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9769653081893921,
+                "coordinate": [
+                    139,
+                    544,
+                    1087,
+                    1286
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        139.0,
+                        544.0
+                    ],
+                    [
+                        1087.0,
+                        544.0
+                    ],
+                    [
+                        1087.0,
+                        1286.0
+                    ],
+                    [
+                        139.0,
+                        1286.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.7499281764030457,
+                "coordinate": [
+                    372,
+                    1305,
+                    819,
+                    1333
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        372.0,
+                        1305.0
+                    ],
+                    [
+                        819.0,
+                        1305.0
+                    ],
+                    [
+                        819.0,
+                        1333.0
+                    ],
+                    [
+                        372.0,
+                        1333.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.749045729637146,
+                "coordinate": [
+                    581,
+                    1555,
+                    610,
+                    1579
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        581.0,
+                        1555.0
+                    ],
+                    [
+                        609.0,
+                        1555.0
+                    ],
+                    [
+                        609.0,
+                        1578.0
+                    ],
+                    [
+                        581.0,
+                        1578.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

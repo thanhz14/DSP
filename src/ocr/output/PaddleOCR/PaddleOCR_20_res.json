@@ -1,0 +1,491 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 20,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Model Type</td><td>Methods</td><td>Parameters</td><td>Overall $ \\uparrow $</td><td>TextEdit $ \\downarrow $</td><td>FormulaCDM $ \\uparrow $</td><td>TableTEDS $ \\uparrow $</td><td>Reading OrderEdit $ \\downarrow $</td></tr><tr><td rowspan=\"2\">Pipeline Tools</td><td>Maker-1.8.2 [24]</td><td>-</td><td>58.98</td><td>0.349</td><td>72.71</td><td>39.08</td><td>0.390</td></tr><tr><td>PP-StructureV3 [22]</td><td>-</td><td>59.34</td><td>0.376</td><td>68.22</td><td>47.40</td><td>0.261</td></tr><tr><td rowspan=\"5\">General VLMs</td><td>GPT-5.2 [28]</td><td>-</td><td>76.26</td><td>0.239</td><td>80.90</td><td>71.80</td><td>0.165</td></tr><tr><td>Gemini-2.5 Pro [30]</td><td>-</td><td>87.63</td><td>0.092</td><td>86.50</td><td>85.59</td><td>0.109</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>87.77</td><td>0.086</td><td>88.85</td><td>83.06</td><td>0.102</td></tr><tr><td>Gemini-3 Pro [15]</td><td>-</td><td>88.90</td><td>0.086</td><td>88.10</td><td>87.20</td><td>0.087</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [29]</td><td>235B</td><td>89.99</td><td>0.051</td><td>89.06</td><td>85.95</td><td>0.064</td></tr><tr><td rowspan=\"12\">Specialized VLMs</td><td>Dolphin-1.5 [3]</td><td>0.3B</td><td>50.50</td><td>0.383</td><td>47.24</td><td>42.52</td><td>0.309</td></tr><tr><td>Dolphin [3]</td><td>322M</td><td>60.35</td><td>0.316</td><td>61.06</td><td>51.58</td><td>0.247</td></tr><tr><td>Deepseek-OCR [10]</td><td>3B</td><td>67.20</td><td>0.328</td><td>73.59</td><td>60.80</td><td>0.226</td></tr><tr><td>MinerU2-VLM [25]</td><td>0.9B</td><td>73.73</td><td>0.202</td><td>77.72</td><td>63.65</td><td>0.173</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>1.9B</td><td>76.59</td><td>0.196</td><td>78.85</td><td>70.52</td><td>0.221</td></tr><tr><td>MonkeyOCR-3B [1]</td><td>3.7B</td><td>77.27</td><td>0.164</td><td>79.08</td><td>69.18</td><td>0.211</td></tr><tr><td>MonkeyOCR-pro-3B [1]</td><td>3.7B</td><td>78.90</td><td>0.168</td><td>79.55</td><td>73.94</td><td>0.212</td></tr><tr><td>Nanonets-OCR-s [34]</td><td>3B</td><td>83.56</td><td>0.121</td><td>86.24</td><td>76.57</td><td>0.124</td></tr><tr><td>MinerU2.5 [2]</td><td>1.2B</td><td>83.76</td><td>0.154</td><td>85.92</td><td>80.71</td><td>0.104</td></tr><tr><td>PaddleOCR-VL [9]</td><td>0.9B</td><td>85.97</td><td>0.093</td><td>85.45</td><td>81.77</td><td>0.092</td></tr><tr><td>dots.ocr [35]</td><td>3B</td><td>86.01</td><td>0.087</td><td>85.03</td><td>81.74</td><td>0.093</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>91.25</td><td>0.053</td><td>90.94</td><td>88.10</td><td>0.063</td></tr></table>",
+            "block_bbox": [
+                144,
+                169,
+                1050,
+                610
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    144.0,
+                    169.0
+                ],
+                [
+                    1050.0,
+                    169.0
+                ],
+                [
+                    1050.0,
+                    610.0
+                ],
+                [
+                    144.0,
+                    610.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table A3 | Comprehensive evaluation of document parsing on Real5-OmniDocBench-warping.",
+            "block_bbox": [
+                137,
+                629,
+                1052,
+                658
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    629.0
+                ],
+                [
+                    1052.0,
+                    629.0
+                ],
+                [
+                    1052.0,
+                    658.0
+                ],
+                [
+                    137.0,
+                    658.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "In the screen photography scenario presented in Table A4, PaddleOCR-VL-1.5 attains an overall score of 91.76%, demonstrating competitive performance among specialized vision-language models. The model achieves a Formula-CDM score of 90.88%, outperforming MinerU2.5 (87.55%) and dots.ocr (85.34%), and shows effective handling of Moire patterns and reflections typically encountered in screen-captured documents.",
+            "block_bbox": [
+                137,
+                700,
+                1054,
+                837
+            ],
+            "block_id": 2,
+            "block_order": 1,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    700.0
+                ],
+                [
+                    1054.0,
+                    700.0
+                ],
+                [
+                    1054.0,
+                    837.0
+                ],
+                [
+                    137.0,
+                    837.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Model Type</td><td>Methods</td><td>Parameters</td><td>Overall $ \\uparrow $</td><td>TextEdit $ \\downarrow $</td><td>FormulaCDM $ \\uparrow $</td><td>TableTEDS $ \\uparrow $</td><td>Reading OrderEdit $ \\downarrow $</td></tr><tr><td rowspan=\"2\">Pipeline Tools</td><td>Maker-1.8.2 [24]</td><td>-</td><td>63.65</td><td>0.290</td><td>72.73</td><td>47.21</td><td>0.325</td></tr><tr><td>PP-StructureV3 [22]</td><td>-</td><td>66.89</td><td>0.204</td><td>73.26</td><td>47.82</td><td>0.165</td></tr><tr><td rowspan=\"5\">General VLMs</td><td>GPT-5.2 [28]</td><td>-</td><td>76.75</td><td>0.208</td><td>79.27</td><td>71.73</td><td>0.148</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>86.48</td><td>0.100</td><td>87.46</td><td>82.00</td><td>0.102</td></tr><tr><td>Gemini-2.5 Pro [30]</td><td>-</td><td>87.11</td><td>0.103</td><td>85.30</td><td>86.31</td><td>0.117</td></tr><tr><td>Gemini-3 Pro [15]</td><td>-</td><td>88.86</td><td>0.084</td><td>87.33</td><td>87.65</td><td>0.087</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [29]</td><td>235B</td><td>89.27</td><td>0.068</td><td>88.72</td><td>85.85</td><td>0.071</td></tr><tr><td rowspan=\"12\">Specialized VLMs</td><td>Dolphin [3]</td><td>322M</td><td>64.29</td><td>0.232</td><td>58.66</td><td>57.38</td><td>0.195</td></tr><tr><td>Dolphin-1.5 [3]</td><td>0.3B</td><td>69.76</td><td>0.205</td><td>61.80</td><td>68.00</td><td>0.177</td></tr><tr><td>Deepseek-OCR [10]</td><td>3B</td><td>75.31</td><td>0.220</td><td>77.68</td><td>70.26</td><td>0.169</td></tr><tr><td>MinerU2-VLM [25]</td><td>0.9B</td><td>78.77</td><td>0.139</td><td>79.02</td><td>71.17</td><td>0.123</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>1.9B</td><td>80.24</td><td>0.148</td><td>80.78</td><td>74.74</td><td>0.179</td></tr><tr><td>MonkeyOCR-3B [1]</td><td>3.7B</td><td>80.71</td><td>0.122</td><td>81.33</td><td>73.04</td><td>0.177</td></tr><tr><td>MonkeyOCR-pro-3B [1]</td><td>3.7B</td><td>82.44</td><td>0.124</td><td>81.55</td><td>78.13</td><td>0.177</td></tr><tr><td>PaddleOCR-VL [9]</td><td>0.9B</td><td>82.54</td><td>0.103</td><td>83.58</td><td>74.36</td><td>0.107</td></tr><tr><td>Nanonets-OCR-s [34]</td><td>3B</td><td>84.86</td><td>0.112</td><td>86.65</td><td>79.09</td><td>0.117</td></tr><tr><td>dots.ocr [35]</td><td>3B</td><td>87.18</td><td>0.081</td><td>85.34</td><td>84.26</td><td>0.079</td></tr><tr><td>MinerU2.5 [2]</td><td>1.2B</td><td>89.41</td><td>0.062</td><td>87.55</td><td>86.83</td><td>0.053</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>91.76</td><td>0.050</td><td>90.88</td><td>89.38</td><td>0.059</td></tr></table>",
+            "block_bbox": [
+                144,
+                855,
+                1051,
+                1296
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    144.0,
+                    855.0
+                ],
+                [
+                    1051.0,
+                    855.0
+                ],
+                [
+                    1051.0,
+                    1296.0
+                ],
+                [
+                    144.0,
+                    1296.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table A4 | Comprehensive evaluation of document parsing on Real5-OmniDocBench-screen-photography.",
+            "block_bbox": [
+                291,
+                1316,
+                898,
+                1371
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    291.0,
+                    1316.0
+                ],
+                [
+                    898.0,
+                    1316.0
+                ],
+                [
+                    898.0,
+                    1371.0
+                ],
+                [
+                    291.0,
+                    1371.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Table A5 evaluates performance under illumination variations, where PaddleOCR-VL-1.5 reaches an overall score of 92.16%. This result not only marks a significant improvement over the previous PaddleOCR-VL (89.61%) but also surpasses top-tier general VLMs such as Gemini-3 Pro (89.53%). The model's Formula-CDM score of 91.80% and Table-TEDS of 89.33% underscore",
+            "block_bbox": [
+                135,
+                1413,
+                1056,
+                1522
+            ],
+            "block_id": 5,
+            "block_order": 2,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    1413.0
+                ],
+                [
+                    1056.0,
+                    1413.0
+                ],
+                [
+                    1056.0,
+                    1522.0
+                ],
+                [
+                    135.0,
+                    1522.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "21",
+            "block_bbox": [
+                581,
+                1556,
+                608,
+                1578
+            ],
+            "block_id": 6,
+            "block_order": null,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    581.0,
+                    1556.0
+                ],
+                [
+                    607.0,
+                    1556.0
+                ],
+                [
+                    607.0,
+                    1577.0
+                ],
+                [
+                    581.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.972989559173584,
+                "coordinate": [
+                    144,
+                    169,
+                    1050,
+                    610
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        144.0,
+                        169.0
+                    ],
+                    [
+                        1050.0,
+                        169.0
+                    ],
+                    [
+                        1050.0,
+                        610.0
+                    ],
+                    [
+                        144.0,
+                        610.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 15,
+                "label": "inline_formula",
+                "score": 0.3306474983692169,
+                "coordinate": [
+                    667,
+                    173,
+                    723,
+                    195
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        667,
+                        173
+                    ],
+                    [
+                        667,
+                        194
+                    ],
+                    [
+                        722,
+                        194
+                    ],
+                    [
+                        722,
+                        173
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8210650086402893,
+                "coordinate": [
+                    137,
+                    629,
+                    1052,
+                    658
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        137.0,
+                        629.0
+                    ],
+                    [
+                        1052.0,
+                        629.0
+                    ],
+                    [
+                        1052.0,
+                        658.0
+                    ],
+                    [
+                        137.0,
+                        658.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8761477470397949,
+                "coordinate": [
+                    137,
+                    700,
+                    1054,
+                    837
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        137.0,
+                        700.0
+                    ],
+                    [
+                        1054.0,
+                        700.0
+                    ],
+                    [
+                        1054.0,
+                        837.0
+                    ],
+                    [
+                        137.0,
+                        837.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9723517894744873,
+                "coordinate": [
+                    144,
+                    855,
+                    1051,
+                    1296
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        144.0,
+                        855.0
+                    ],
+                    [
+                        1051.0,
+                        855.0
+                    ],
+                    [
+                        1051.0,
+                        1296.0
+                    ],
+                    [
+                        144.0,
+                        1296.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8903138041496277,
+                "coordinate": [
+                    291,
+                    1316,
+                    898,
+                    1371
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        291.0,
+                        1316.0
+                    ],
+                    [
+                        898.0,
+                        1316.0
+                    ],
+                    [
+                        898.0,
+                        1371.0
+                    ],
+                    [
+                        291.0,
+                        1371.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9493950605392456,
+                "coordinate": [
+                    135,
+                    1413,
+                    1056,
+                    1522
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        135.0,
+                        1413.0
+                    ],
+                    [
+                        1056.0,
+                        1413.0
+                    ],
+                    [
+                        1056.0,
+                        1522.0
+                    ],
+                    [
+                        135.0,
+                        1522.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7608619332313538,
+                "coordinate": [
+                    581,
+                    1556,
+                    608,
+                    1578
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        581.0,
+                        1556.0
+                    ],
+                    [
+                        607.0,
+                        1556.0
+                    ],
+                    [
+                        607.0,
+                        1577.0
+                    ],
+                    [
+                        581.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

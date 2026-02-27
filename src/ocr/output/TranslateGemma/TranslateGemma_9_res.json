@@ -1,0 +1,339 @@
+{
+    "input_path": "/home/bocchi/Downloads/TranslateGemma.pdf",
+    "page_index": 9,
+    "page_count": 12,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "header",
+            "block_content": "TranslateGemma Technical Report",
+            "block_bbox": [
+                472,
+                109,
+                719,
+                130
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    472.0,
+                    109.0
+                ],
+                [
+                    718.0,
+                    109.0
+                ],
+                [
+                    718.0,
+                    129.0
+                ],
+                [
+                    472.0,
+                    129.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "A. Automatic metrics per language",
+            "block_bbox": [
+                119,
+                170,
+                548,
+                201
+            ],
+            "block_id": 1,
+            "block_order": 1,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    119.0,
+                    170.0
+                ],
+                [
+                    548.0,
+                    170.0
+                ],
+                [
+                    548.0,
+                    201.0
+                ],
+                [
+                    119.0,
+                    201.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table 4 | Comparison of performance of the TranslateGemma (GT) models with baseline Gemma models (G3) for each language pair in the WMT24++ set using MetricX.",
+            "block_bbox": [
+                119,
+                242,
+                1070,
+                299
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    119.0,
+                    242.0
+                ],
+                [
+                    1070.0,
+                    242.0
+                ],
+                [
+                    1070.0,
+                    299.0
+                ],
+                [
+                    119.0,
+                    299.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td rowspan=\"2\"></td><td colspan=\"3\">TranslateGemma</td><td colspan=\"3\">Gemma 3</td></tr><tr><td>27B</td><td>12B</td><td>4B</td><td>27B</td><td>12B</td><td>4B</td></tr><tr><td>en→ar_EG</td><td>2.54</td><td>2.78</td><td>3.57</td><td>3.32</td><td>3.70</td><td>4.60</td></tr><tr><td>en→ar_SA</td><td>2.42</td><td>2.66</td><td>3.43</td><td>3.19</td><td>3.64</td><td>4.49</td></tr><tr><td>en→bg_BG</td><td>2.80</td><td>3.25</td><td>4.30</td><td>3.90</td><td>4.47</td><td>5.81</td></tr><tr><td>en→bn_IN</td><td>1.88</td><td>2.12</td><td>2.92</td><td>2.56</td><td>2.87</td><td>3.86</td></tr><tr><td>en→ca_ES</td><td>3.18</td><td>3.58</td><td>5.20</td><td>4.07</td><td>4.89</td><td>6.97</td></tr><tr><td>en→cs_CZ</td><td>3.48</td><td>4.03</td><td>5.41</td><td>4.62</td><td>5.32</td><td>7.47</td></tr><tr><td>en→da_DK</td><td>2.11</td><td>2.45</td><td>3.25</td><td>3.00</td><td>3.36</td><td>4.40</td></tr><tr><td>en→de_DE</td><td>1.19</td><td>1.36</td><td>1.93</td><td>1.63</td><td>1.93</td><td>2.72</td></tr><tr><td>en→el_GR</td><td>2.57</td><td>3.34</td><td>4.66</td><td>3.73</td><td>4.34</td><td>6.31</td></tr><tr><td>en→es_MX</td><td>1.88</td><td>2.06</td><td>2.51</td><td>2.54</td><td>2.75</td><td>3.35</td></tr><tr><td>en→et_EE</td><td>4.61</td><td>6.15</td><td>11.03</td><td>6.40</td><td>8.89</td><td>14.78</td></tr><tr><td>en→fa_IR</td><td>1.99</td><td>2.28</td><td>3.34</td><td>2.98</td><td>3.41</td><td>4.77</td></tr><tr><td>en→fi_FI</td><td>3.19</td><td>3.77</td><td>5.68</td><td>4.19</td><td>5.11</td><td>7.54</td></tr><tr><td>en→fil_PH</td><td>2.98</td><td>3.17</td><td>4.20</td><td>3.62</td><td>4.03</td><td>5.22</td></tr><tr><td>en→fr_CA</td><td>2.21</td><td>2.37</td><td>2.92</td><td>2.78</td><td>2.97</td><td>3.76</td></tr><tr><td>en→fr_FR</td><td>2.19</td><td>2.44</td><td>2.97</td><td>2.78</td><td>3.01</td><td>3.90</td></tr><tr><td>en→gu_IN</td><td>4.69</td><td>4.93</td><td>6.32</td><td>5.27</td><td>5.79</td><td>7.67</td></tr><tr><td>en→he_IL</td><td>2.72</td><td>3.12</td><td>4.99</td><td>3.90</td><td>4.41</td><td>6.70</td></tr><tr><td>en→hi_IN</td><td>3.52</td><td>3.69</td><td>4.33</td><td>4.11</td><td>4.36</td><td>5.03</td></tr><tr><td>en→hr_HR</td><td>2.05</td><td>2.31</td><td>3.17</td><td>2.62</td><td>3.08</td><td>4.26</td></tr><tr><td>en→hu_HU</td><td>4.24</td><td>5.00</td><td>7.84</td><td>5.51</td><td>6.79</td><td>10.75</td></tr><tr><td>en→id_ID</td><td>2.07</td><td>2.17</td><td>2.63</td><td>2.72</td><td>2.84</td><td>3.27</td></tr><tr><td>en→is_IS</td><td>5.69</td><td>7.93</td><td>15.54</td><td>8.31</td><td>12.16</td><td>19.22</td></tr><tr><td>en→it_IT</td><td>1.88</td><td>2.17</td><td>2.64</td><td>2.60</td><td>2.84</td><td>3.60</td></tr><tr><td>en→ja_JP</td><td>3.53</td><td>3.82</td><td>4.44</td><td>4.11</td><td>4.30</td><td>5.09</td></tr><tr><td>en→kn_IN</td><td>4.18</td><td>4.78</td><td>7.11</td><td>5.09</td><td>6.82</td><td>10.48</td></tr><tr><td>en→ko_KR</td><td>2.81</td><td>2.97</td><td>3.93</td><td>3.43</td><td>3.79</td><td>4.72</td></tr><tr><td>en→lt_LT</td><td>4.39</td><td>5.41</td><td>9.58</td><td>6.01</td><td>7.71</td><td>13.39</td></tr><tr><td>en→lv_LV</td><td>5.69</td><td>7.22</td><td>12.12</td><td>7.55</td><td>9.90</td><td>15.75</td></tr><tr><td>en→ml_IN</td><td>3.64</td><td>4.30</td><td>7.33</td><td>4.77</td><td>6.84</td><td>11.89</td></tr><tr><td>en→mr_IN</td><td>3.17</td><td>3.47</td><td>4.30</td><td>4.11</td><td>4.60</td><td>5.64</td></tr><tr><td>en→nl_NL</td><td>1.67</td><td>2.01</td><td>2.84</td><td>2.48</td><td>2.82</td><td>3.87</td></tr><tr><td>en→no_NO</td><td>2.09</td><td>2.38</td><td>3.26</td><td>2.94</td><td>3.17</td><td>4.23</td></tr><tr><td>en→pa_IN</td><td>3.67</td><td>4.44</td><td>5.53</td><td>4.40</td><td>5.99</td><td>11.20</td></tr><tr><td>en→pl_PL</td><td>4.14</td><td>4.58</td><td>5.64</td><td>5.17</td><td>5.64</td><td>7.07</td></tr><tr><td>en→pt_BR</td><td>2.13</td><td>2.36</td><td>2.93</td><td>2.90</td><td>3.15</td><td>3.77</td></tr><tr><td>en→pt_PT</td><td>2.55</td><td>2.68</td><td>3.09</td><td>3.39</td><td>3.78</td><td>4.13</td></tr><tr><td>en→ro_RO</td><td>2.86</td><td>3.25</td><td>4.18</td><td>3.99</td><td>4.39</td><td>5.70</td></tr><tr><td>en→ru_RU</td><td>2.18</td><td>2.48</td><td>3.25</td><td>3.01</td><td>3.39</td><td>4.54</td></tr><tr><td>en→sk_SK</td><td>3.81</td><td>4.54</td><td>6.70</td><td>5.04</td><td>5.86</td><td>9.17</td></tr><tr><td>en→sl_SI</td><td>3.55</td><td>4.24</td><td>7.12</td><td>4.56</td><td>5.73</td><td>9.39</td></tr><tr><td>en→sr_RS</td><td>2.78</td><td>2.68</td><td>5.66</td><td>3.75</td><td>3.76</td><td>6.94</td></tr><tr><td>en→sv_SE</td><td>2.00</td><td>2.31</td><td>3.14</td><td>2.73</td><td>3.06</td><td>4.14</td></tr><tr><td>en→sw_KE</td><td>4.45</td><td>5.36</td><td>10.65</td><td>5.92</td><td>7.90</td><td>14.05</td></tr><tr><td>en→sw_TZ</td><td>4.30</td><td>5.25</td><td>10.30</td><td>5.73</td><td>7.85</td><td>13.89</td></tr><tr><td>en→ta_IN</td><td>2.87</td><td>2.98</td><td>3.90</td><td>3.53</td><td>3.83</td><td>5.04</td></tr><tr><td>en→te_IN</td><td>3.76</td><td>3.97</td><td>4.83</td><td>4.41</td><td>4.74</td><td>5.76</td></tr><tr><td>en→th_TH</td><td>2.33</td><td>2.66</td><td>3.49</td><td>2.96</td><td>3.19</td><td>4.14</td></tr><tr><td>en→tr_TR</td><td>4.18</td><td>4.64</td><td>6.17</td><td>5.32</td><td>6.02</td><td>8.03</td></tr><tr><td>en→uk_UA</td><td>2.98</td><td>3.29</td><td>4.16</td><td>3.79</td><td>4.28</td><td>5.40</td></tr><tr><td>en→ur_PK</td><td>3.12</td><td>3.59</td><td>5.67</td><td>3.86</td><td>4.86</td><td>7.80</td></tr><tr><td>en→vi_VN</td><td>1.97</td><td>2.20</td><td>2.87</td><td>2.56</td><td>2.88</td><td>3.62</td></tr><tr><td>en→zh_CN</td><td>1.86</td><td>2.07</td><td>2.66</td><td>2.47</td><td>2.61</td><td>3.27</td></tr><tr><td>en→zh_TW</td><td>2.04</td><td>2.21</td><td>2.77</td><td>2.63</td><td>2.80</td><td>3.62</td></tr><tr><td>en→zu_ZA</td><td>6.99</td><td>10.73</td><td>18.29</td><td>9.05</td><td>14.80</td><td>21.52</td></tr><tr><td></td><td>27B</td><td>12B</td><td>4B</td><td>27B</td><td>12B</td><td>4B</td></tr><tr><td colspan=\"3\">TranslateGemma</td><td colspan=\"4\">Gemma 3</td></tr></table>",
+            "block_bbox": [
+                327,
+                343,
+                863,
+                1511
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    327.0,
+                    343.0
+                ],
+                [
+                    863.0,
+                    343.0
+                ],
+                [
+                    863.0,
+                    1511.0
+                ],
+                [
+                    327.0,
+                    1511.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "10",
+            "block_bbox": [
+                1046,
+                1560,
+                1069,
+                1579
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    1046.0,
+                    1560.0
+                ],
+                [
+                    1068.0,
+                    1560.0
+                ],
+                [
+                    1068.0,
+                    1578.0
+                ],
+                [
+                    1046.0,
+                    1578.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.8584019541740417,
+                "coordinate": [
+                    472,
+                    109,
+                    719,
+                    130
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        472.0,
+                        109.0
+                    ],
+                    [
+                        718.0,
+                        109.0
+                    ],
+                    [
+                        718.0,
+                        129.0
+                    ],
+                    [
+                        472.0,
+                        129.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8630291819572449,
+                "coordinate": [
+                    119,
+                    170,
+                    548,
+                    201
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        119.0,
+                        170.0
+                    ],
+                    [
+                        548.0,
+                        170.0
+                    ],
+                    [
+                        548.0,
+                        201.0
+                    ],
+                    [
+                        119.0,
+                        201.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8922993540763855,
+                "coordinate": [
+                    119,
+                    242,
+                    1070,
+                    299
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        119.0,
+                        242.0
+                    ],
+                    [
+                        1070.0,
+                        242.0
+                    ],
+                    [
+                        1070.0,
+                        299.0
+                    ],
+                    [
+                        119.0,
+                        299.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9699856042861938,
+                "coordinate": [
+                    327,
+                    343,
+                    863,
+                    1511
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        327.0,
+                        343.0
+                    ],
+                    [
+                        863.0,
+                        343.0
+                    ],
+                    [
+                        863.0,
+                        1511.0
+                    ],
+                    [
+                        327.0,
+                        1511.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6887174844741821,
+                "coordinate": [
+                    1046,
+                    1560,
+                    1069,
+                    1579
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        1046.0,
+                        1560.0
+                    ],
+                    [
+                        1068.0,
+                        1560.0
+                    ],
+                    [
+                        1068.0,
+                        1578.0
+                    ],
+                    [
+                        1046.0,
+                        1578.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

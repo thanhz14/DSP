@@ -1,0 +1,232 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bản dịch HY-MT</title>
+        
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      }
+    };
+    </script>
+    
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+    <style>
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background: #e0e0e0; }
+        .paper-page { background: white; padding: 60px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-bottom: 30px; position: relative; min-height: 1100px; }
+        .page-number { position: absolute; top: 20px; right: 20px; font-size: 12px; color: #ccc; }
+        .doc_title { font-size: 26px; font-weight: bold; text-align: center; margin-bottom: 25px; color: #000; }
+        .paragraph_title { font-size: 18px; font-weight: bold; margin-top: 25px; margin-bottom: 10px; color: #111; border-bottom: 1px solid #eee; }
+        .figure_title, .table_caption { font-size: 13px; font-weight: bold; margin: 10px 0; font-style: italic; color: #444; }
+        .abstract { font-style: italic; margin: 20px 40px; text-align: justify; border-left: 4px solid #ddd; padding-left: 15px; background: #fdfdfd; padding: 10px; }
+        .text { text-align: justify; margin-bottom: 10px; text-indent: 1.5em; }
+        .reference_content, .footnote, .vision_footnote { font-size: 12px; margin-bottom: 5px; padding-left: 25px; text-indent: -25px; color: #333; }
+        .table-container { margin: 20px 0; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; font-size: 12px; }
+        th, td { border: 1px solid #444; padding: 6px; text-align: left; }
+        .image-container, .chart-container { margin: 20px 0; }
+        img { max-width: 100%; height: auto; }
+        .display_formula { margin: 15px 0; }
+    </style>
+    
+    </head>
+    <body>
+        <div class="paper-page" id="page-0">
+<div class="page-number">Trang 1</div>
+<p class="header_image"></p>
+<h1 class="doc_title">HY-MT1.5 Technical Report</h1>
+<p class="text">Tencent Hunyuan Team</p>
+<h2 class="paragraph_title">Abstract</h2>
+<div class="abstract">在本报告中，我们介绍了我们最新的机器翻译模型。这些模型采用了先进的约束机制，包括术语干预、上下文感知的翻译以及格式保持。通过广泛的实证评估，可以确认这两种模型都提供了非常具有竞争力、稳健的解决方案，适用于一般和专业的翻译任务，在其各自的参数规模内。</div>
+<p class="text">HY-MT1.5-1.8B: https://huggingface.co/tencent/HY-MT1.5-1.8B</p>
+<p class="text">HY-MT1.5-7B: https://huggingface.co/tencent/HY-MT1.5-7B</p>
+<p class="text">Code Repository: https://github.com/Tencent-Hunyuan/HY-MT</p>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_144_931_1038_1482.jpg" alt="chart"></div>
+<p class="figure_title" style="text-align: center;">चित्र 1: HY-MT1.5 मॉडलों के बेंचमार्क प्रदर्शन। इसके अलावा, HY-MT1.5 मॉडलों के बेंचमार्क प्रदर्शन।</p>
+</div>
+<div class="paper-page" id="page-1">
+<div class="page-number">Trang 2</div>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_611_143_1047_469.jpg" alt="chart"></div>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_140_145_577_468.jpg" alt="chart"></div>
+<p class="figure_title" style="text-align: center;">(a) 모델의 크기와, Flores-200 방식으로 전환된 경우의 번역 품질을 비교하는 것입니다.</p>
+<p class="figure_title" style="text-align: center;">(b) 모델의 크기와 WMT25 번역 품질을 비교합니다. 이 비교는 다양한 규모의 오픈소스 모델들을 대상으로 합니다.</p>
+<p class="figure_title" style="text-align: center;">चित्र 2: Flores-200 एवं WMT25 डेटासेटों के आधार पर, ओपन-सोर्स मॉडलों के आकार एवं अनुवाद की गुणवत्ता के बीच संबंध का विश्लेषण।</p>
+<h2 class="paragraph_title">1 Introduction</h2>
+<p class="text">最先进的闭源模型，例如Gemini-3.0-Pro（DeepMind，2025年），已经展示了接近或超越特定语言对中的专业人类翻译员的能力。</p>
+<p class="text">然而，机器翻译领域仍然存在许多重大挑战。首先，目前的翻译系统主要局限于基本的文本翻译任务，而且缺乏对定制化的翻译需求进行灵活处理的支持。例如，那些具有上下文感知功能的翻译能力，比如能够保持多页文档或长文档在翻译过程中保持连贯性的格式，以及能够保持表格、列表和公式等结构在翻译过程中保持连贯性的格式，这些功能对于实现高效、高质量的机器翻译系统具有重要的意义。</p>
+<p class="text">这两个核心挑战——质量与效率之间的不平衡，以及缺乏足够的定制翻译支持——严重限制了机器翻译技术的进一步发展和广泛应用。因此，迫切需要一些创新的解决方案，这些方案能够同时解决效率、质量和定制化的需求。</p>
+<p class="text">为了直接解决上述两个核心问题，我们提出了HY-MT1.5模型以及相应的技术解决方案。此外，该模型还包含三个关键贡献点，这些贡献点与所面临的痛点和挑战紧密关联。</p>
+<p class="text">在Flores-200数据集上，Team等人于2022年发表的研究表明，HY-MT1.5-7B模型甚至超越了Team等人的研究成果。</p>
+</div>
+<div class="paper-page" id="page-2">
+<div class="page-number">Trang 3</div>
+<p class="text">Language test sets are designed to ensure efficient deployment of these tests. This, in turn, facilitates widespread practical application of these tests.</p>
+<p class="text">2. 全面且有效的训练方案：我们为机器翻译开发了一个量身定制的训练框架。该框架将一般性的预训练、以机器翻译为导向的预训练、监督式微调、基于策略的蒸馏以及强化学习等多种方法整合在一起。通过这种方式，模型能够在一般性和低资源条件下的机器翻译场景中表现出色。这为HY-MT1.5模型的卓越性能奠定了坚实的基础。</p>
+<p class="text">3. 실용적인 특징들: 기존 시스템에서 제공되는 맞춤형 번역 지원이 부족한 문제를 해결하기 위해, HY-MT1.5 모델들은 여러 가지 실용적인 기능들을 갖추고 있습니다. 여기에는 용어 개입, 문맥에 맞는 번역 등이 포함됩니다. 이러한 기능들은 맞춤형 번역을 요구하는 다양한 실제 상황에서 유용하게 사용될 수 있습니다.</p>
+<p class="text">本报告的剩余部分按以下顺序进行说明：首先，我们将详细阐述HY-MT1.5模型的整体训练框架以及其开发细节。随后，我们将通过广泛的实验评估来验证该模型在不同代表性翻译基准上的性能表现。最后，我们将讨论主要发现，并概述未来研究的方向。</p>
+<h2 class="paragraph_title">2 Methodology</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_158_690_1029_1059.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">चित्र 3: HY-MT1.5-1.8B एवं HY-MT1.5-7B के प्रशिक्षण प्रक्रिया।</p>
+<p class="text">我们的培训框架适用于HY-MT1.5-1.8B模型。该培训框架由四个主要阶段组成：以机器学习为导向的预训练阶段、监督式精细调整阶段、基于策略的蒸馏处理阶段，以及强化学习阶段。</p>
+<h2 class="paragraph_title">2.1 MT-oriented Pretraining and Supervised Fine-Tuning</h2>
+<p class="text">我们培训策略的初始阶段，与我们之前在《Hunyuan-MT技术报告》中描述的方法相一致。我们使用HY-1.8B-Base模型和HY-7B-Base模型作为我们的基础模型，从而能够获取HY-MT1.5-1.8B-preview和HY-MT1.5-7B这两种型号的产品。</p>
+<p class="text">• 데이터 전략. 우리는 매우 방대한 데이터셋을 선별합니다. 이 데이터셋에는 고품질의 다국어 및 단일언어 텍스트들이 포함되어 있습니다.</p>
+<p class="text">• 프로세스: 기본 모델은 지속적인 사전 훈련(CPT)을 거칩니다. 그 후에는 감독된 세부적인 훈련(SFT)이 이루어집니다.</p>
+<p class="footnote">$ ^{1} $https://huggingface.co/tencent/Hunyuan-1.8B-Pretrain</p>
+<p class="footnote">$ ^{2} $https://huggingface.co/tencent/Hunyuan-7B-Pretrain</p>
+</div>
+<div class="paper-page" id="page-3">
+<div class="page-number">Trang 4</div>
+<p class="text">• 목표들. 이러한 단계들은 모델의 다국어 분야 지식, 번역 기능, 그리고 번역 지침을 준수하는 능력을 향상시키기 위해 설계된 것입니다. 자세한 내용은 저희의 이전 연구 결과를 참조해 주세요 (Zheng et al., 2025)).</p>
+<h2 class="paragraph_title">2.2 Reinforcement Learning</h2>
+<p class="text">为了进一步使模型符合人类的偏好，同时提高翻译的质量，我们采用了强化学习的方法。我们采用了GRPO算法（Shao等人，2024年），该算法也被用于Hunyuan-MT-7B系统中。GRPO算法能够根据输出结果在各个组之间进行比较，从而简化训练过程，同时保持优化的稳定性。</p>
+<p class="text">我們在HY-MT1.5的RL訓練中，改進了獎勵模型的建模方式。與此相比，我們不再僅依靠一個整體得分來進行評估。相反地，我們引入了一種以評分系統為基礎的評估系統。這種多維度的評估方式，能夠幫助大型語言模型，以更細化的方式來進行評估。</p>
+<p class="text">เราสร้างชุดเกณฑ์การให้คะแนนที่มีโครงสร้างที่ชัดเจน โดยผู้評価จะใช้ LLM เพื่อประเมินผลการแปลต่างๆ ตามปัจจัยสำคัญต่างๆ.</p>
+<p class="text">• 정확성: 번역이 원본의 의미를 충실히 반영하는지 평가합니다. 이를 통해 오류나 잘못된 번역이 없는지 확인할 수 있습니다.</p>
+<p class="text">**Fluency:** This assesses whether the linguistic expression is natural and conforms to the grammar and idiomatic usage of the target language.</p>
+<p class="text">• 일관성: 텍스트 전반에 걸쳐 용어의 사용, 스타일, 그리고 문맥 등이 일관적으로 사용되고 있는지 확인합니다.</p>
+<p class="text">• 문화적適切性：これは、翻訳がターゲット言語の文化的背景や表現習慣に適切に適応しているかどうかを検討するものです。</p>
+<p class="text">Readability: This evaluates how easy it is for readers to understand the text. This ensures that the sentence structures are clear, and that there is a clear hierarchy within the text.</p>
+<p class="text">每個維度都配有特定的評分標準和權重。這些維度中的得分被彙總起來，從而形成最終的獎勵信號。這種細粒度反饋機制，為RL過程提供了更豐富、更精確的信號，從而使得模型能夠在多個方面同時得到改善——最終得到的翻譯結果，不僅是正確的，而且還是自然、連貫且符合文化背景的翻譯結果。</p>
+<h2 class="paragraph_title">2.3 Strong-to-Weak On-Policy Distillation</h2>
+<p class="text">虽然CPT和SFT能够显著改善1.8B模型的性能，但是与我们的更大规模的HY-MT-7B模型相比，仍然存在性能上的差距。为了弥补这一差距，我们采用了基于策略的蒸馏方法。</p>
+<p class="text">最近的研究表明（Agarwal等人，2024年；Gu等人，2025年；Lu和Lab，2025年），在策略上进行的蒸馏方法，比采用非策略的方法更为有效。因此，我们在采用SFT之后，选择采用策略上的蒸馏方法。</p>
+<p class="text">• 선생님 모델. 우리는 완전히 훈련된 HY-MT1.5-7B를 선생님 모델로 사용합니다.</p>
+<p class="text">• डेटा: हम लगभग 1 मिलियन एक-भाषी नमूनों को संग्रहित करते हैं। ये नमूने, 33 समर्थ भाषाओं को शामिल करते हैं। इनमें विशिष्ट जातीय अल्पसंख्यक जनसमूहों की भाषाएँ भी शामिल हैं।</p>
+<p class="text">• 손실 함수. 우리는 각 토큰에 대해 반대 방향의 KL 분산을 사용하여 학생의 출력 분포를 교사의 출력 분포와 일치시키는 방법을 사용합니다. 손실 함수는 다음과 같이 정의됩니다:</p>
+<div class="display_formula" style="text-align: center;">$$$$ KL(\pi_{\theta}\parallel\pi_{teacher})=\mathbb{E}_{x\sim\pi_{\theta}}\left[\log\pi_{\theta}(x_{t+1}\mid x_{1..t})-\log\pi_{teacher}(x_{t+1}\mid x_{1..t})\right] $$$$</div>
+<p class="text">このプロセスにより、1.8Bモデルは、7Bモデルの優れた翻訳性能を受け継ぐことができます。この段階が完了すると、第3段階で使用された同じ強化学習方法を使用して、モデルを最適化します。そして、最終的なモデルが得られます。</p>
+<h2 class="paragraph_title">2.4 Quantization</h2>
+<p class="text">最近，大型语言模型在多个领域的应用取得了显著的成功。这些应用包括对话式聊天机器人、以及创意写作等领域。
+
+然而，随着数据隐私问题的日益严重，人们也越来越需要具备离线功能的能力。此外，大规模云部署的成本也相当高。
+
+因此，为了实现这一目标， quantization技术就变得非常具有前景了。</p>
+</div>
+<div class="paper-page" id="page-4">
+<div class="page-number">Trang 5</div>
+<p class="text">By using representations with lower precision for the model weights, it’s possible to reduce the size of the model and the computational requirements involved in modeling.</p>
+<p class="text">For the HY-MT1.5-1.8B model, adopting the W8A8C8-FP8 quantization strategy is effective. This strategy helps to minimize quantization errors. It does this by processing model weights layer by layer. This process uses a small amount of calibration data. This data is used to minimize the reconstruction error of the quantized weights. This process involves adjusting the weights through an optimization process. This optimization process approximates the inverse Hessian matrix.</p>
+<p class="text">极低位数的量化处理（例如，2位数的量化处理，1.58位数的量化处理）最近引起了研究人员们的极大兴趣。这种处理方式具有很大的潜力。虽然如此，我们还是会在不久的将来发布这些模型的权重值。</p>
+<h2 class="paragraph_title">3 Experiments</h2>
+<h2 class="paragraph_title">3.1 Automatic Metrics</h2>
+<p class="text">为了全面评估该多语言翻译工具的能力，我们进行了广泛的实验。所使用的测试集包括：</p>
+<p class="text">• Flores-200³（Team等人，2022年）。我们从Flores-200数据集中选择出了1,056对语言对。这些语言对被系统地分为三组：中文⇔XX，英语⇔XX，以及XX⇔XX翻译。</p>
+<p class="text">WMT25：$^{4}$ （Kocmi等人，2025年）。我们结合了来自WMT25的人类评估数据，涉及13种语言对（捷克语到德语、乌克兰语和英语到比哈尔语）。</p>
+<p class="text">• Mandarin ⇒ Minority Language Test Set. This test set includes translations between Chinese and minority languages. These minority languages include Tibetan, Mongolian, Uyghur, and Kazakh.</p>
+<p class="text">对于自动评估来说，我们使用的是XCOMET-XXL这个神经网络模型（Guerreiro等人，2023年）。此外，我们还使用了CometKiwi这个神经网络模型（Rei等人，2022年）。这些神经网络模型通常能够与人类的判断结果进行关联。</p>
+<p class="text">如表1所示，我们的实验结果表明，HY-MT1.5-1.8B模型在WMT25基准测试中的得分达到了0.5308。这一成绩优于许多中等到小型的通用模型（例如，Qwen3-32B：0.3605）。</p>
+<p class="text">One particularly noteworthy advantage is the exceptional performance of the HY-MT1.5 models in terms of accuracy and efficiency when translating between different language pairs. This is a crucial task for Chinese-centric multilingual translation.</p>
+<p class="footnote">$ ^{3} $https://huggingface.co/datasets/Muennighoff/flores200</p>
+<p class="footnote">$ ^{4} $https://github.com/wmt-conference/wmt25-general-mt/blob/main/data/wmt25-genmt-humeval.jsonl</p>
+<p class="footnote">$ ^{5} $https://github.com/Tencent-Hunyuan/Hunyuan-MT</p>
+</div>
+<div class="paper-page" id="page-5">
+<div class="page-number">Trang 6</div>
+<p class="figure_title" style="text-align: center;">表1：在Flores-200（Team等人，2022年）、WMT25（Kocmi等人，2025年）的基础上，对相应模型的表现进行了评估。</p>
+<div class="table-container"><table><tr><td rowspan="2">Models</td><td rowspan="2">Metrics</td><td colspan="3">FLORES-200</td><td rowspan="2">WMT25</td><td rowspan="2">Mand. $ \Leftrightarrow $Min.</td></tr><tr><td>ZH $ \Leftrightarrow $XX</td><td>EN $ \Leftrightarrow $XX</td><td>XX $ \Leftrightarrow $XX</td></tr><tr><td rowspan="2">Gemini 3.0 pro (DeepMind, 2025)</td><td>XCOMET-XXL</td><td>0.8982</td><td>0.9413</td><td>0.8773</td><td>0.5505</td><td>0.5921</td></tr><tr><td>CometKiwi</td><td>0.7882</td><td>0.8809</td><td>0.7530</td><td>0.6552</td><td>0.5274</td></tr><tr><td rowspan="2">DeepSeek-V3.2 $ ^{\dagger} $ (DeepSeek-AI et al., 2025)</td><td>XCOMET-XXL</td><td>0.8752</td><td>0.9231</td><td>0.8421</td><td>0.5013</td><td>0.5133</td></tr><tr><td>CometKiwi</td><td>0.7798</td><td>0.8736</td><td>0.7521</td><td>0.6353</td><td>0.5253</td></tr><tr><td rowspan="2">Qwen3-235B-A22B $ ^{\dagger} $ (Team, 2025)</td><td>XCOMET-XXL</td><td>0.8539</td><td>0.9029</td><td>0.8018</td><td>0.4375</td><td>0.4493</td></tr><tr><td>CometKiwi</td><td>0.7651</td><td>0.8586</td><td>0.7313</td><td>0.5820</td><td>0.4456</td></tr><tr><td rowspan="2">Qwen3-32B $ ^{\dagger} $ (Team, 2025)</td><td>XCOMET-XXL</td><td>0.8185</td><td>0.8670</td><td>0.7433</td><td>0.3605</td><td>0.4110</td></tr><tr><td>CometKiwi</td><td>0.7429</td><td>0.8329</td><td>0.6965</td><td>0.5016</td><td>0.3841</td></tr><tr><td rowspan="2">Phi-4-mini-3.8B $ ^{\dagger} $ (Microsoft et al., 2025)</td><td>XCOMET-XXL</td><td>0.5839</td><td>0.6284</td><td>0.4606</td><td>0.2357</td><td>0.3542</td></tr><tr><td>CometKiwi</td><td>0.4327</td><td>0.6182</td><td>0.3482</td><td>0.2819</td><td>0.2003</td></tr><tr><td rowspan="2">Tower-Plus-72B $ ^{\dagger} $ (Rei et al., 2025)</td><td>XCOMET-XXL</td><td>0.7969</td><td>0.8416</td><td>0.7002</td><td>0.4100</td><td>0.3855</td></tr><tr><td>CometKiwi</td><td>0.7182</td><td>0.8113</td><td>0.6553</td><td>0.5554</td><td>0.3540</td></tr><tr><td rowspan="2">Seed-X-PPO-7B $ ^{\dagger} $ (Cheng et al., 2025)</td><td>XCOMET-XXL</td><td>0.7856</td><td>0.8312</td><td>0.6896</td><td>0.4783</td><td>0.4206</td></tr><tr><td>CometKiwi</td><td>0.7145</td><td>0.8160</td><td>0.6436</td><td>0.6623</td><td>0.4861</td></tr><tr><td rowspan="2">GemmaX2-28-2B-v0.1 $ ^{\dagger} $ (Cui et al., 2025)</td><td>XCOMET-XXL</td><td>0.7142</td><td>0.8208</td><td>0.6376</td><td>0.2679</td><td>0.3596</td></tr><tr><td>CometKiwi</td><td>0.6746</td><td>0.8095</td><td>0.6310</td><td>0.3750</td><td>0.3981</td></tr><tr><td rowspan="2">Google-Translator</td><td>XCOMET-XXL</td><td>0.6929</td><td>0.7700</td><td>0.6225</td><td>0.3893</td><td>0.3338</td></tr><tr><td>CometKiwi</td><td>0.6169</td><td>0.7552</td><td>0.5947</td><td>0.5938</td><td>0.3209</td></tr><tr><td rowspan="2">Baidu-Translator</td><td>XCOMET-XXL</td><td>0.7690</td><td>0.8209</td><td>0.6807</td><td>0.2662</td><td>-</td></tr><tr><td>CometKiwi</td><td>0.6789</td><td>0.7770</td><td>0.6369</td><td>0.3284</td><td>-</td></tr><tr><td rowspan="2">iFLYTEK-Translator</td><td>XCOMET-XXL</td><td>0.8196</td><td>0.8397</td><td>0.7467</td><td>0.2742</td><td>0.5011</td></tr><tr><td>CometKiwi</td><td>0.7326</td><td>0.8035</td><td>0.6868</td><td>0.4747</td><td>0.4871</td></tr><tr><td rowspan="2">Doubao-Translator</td><td>XCOMET-XXL</td><td>0.8091</td><td>0.8673</td><td>0.7653</td><td>0.3567</td><td>0.5314 $ ^{*} $</td></tr><tr><td>CometKiwi</td><td>0.7156</td><td>0.8349</td><td>0.6993</td><td>0.5869</td><td>0.4061 $ ^{*} $</td></tr><tr><td rowspan="2">Microsoft-Translator</td><td>XCOMET-XXL</td><td>0.8234</td><td>0.8917</td><td>0.8007</td><td>0.3993</td><td>0.5196</td></tr><tr><td>CometKiwi</td><td>0.7297</td><td>0.8546</td><td>0.7253</td><td>0.5994</td><td>0.3218</td></tr><tr><td rowspan="2">Youdao-Translator (Lite)</td><td>XCOMET-XXL</td><td>0.8474 $ ^{*} $</td><td>0.8930 $ ^{*} $</td><td>0.7840 $ ^{*} $</td><td>0.4499 $ ^{*} $</td><td>0.4525 $ ^{*} $</td></tr><tr><td>CometKiwi</td><td>0.7720 $ ^{*} $</td><td>0.8656 $ ^{*} $</td><td>0.7599 $ ^{*} $</td><td>0.6520 $ ^{*} $</td><td>0.5050 $ ^{*} $</td></tr><tr><td rowspan="2">HY-MT1.0-7B $ ^{\dagger} $</td><td>XCOMET-XXL</td><td>0.8643</td><td>0.9065</td><td>0.7829</td><td>0.6023</td><td>0.6082</td></tr><tr><td>CometKiwi</td><td>0.7913</td><td>0.8610</td><td>0.7210</td><td>0.6735</td><td>0.4162</td></tr><tr><td rowspan="2">HY-MT1.5-1.8B $ ^{\dagger} $</td><td>XCOMET-XXL</td><td>0.8361</td><td>0.8942</td><td>0.7840</td><td>0.5308</td><td>0.5806</td></tr><tr><td>CometKiwi</td><td>0.7655</td><td>0.8411</td><td>0.7182</td><td>0.6195</td><td>0.4084</td></tr><tr><td rowspan="2">HY-MT1.5-7B $ ^{\dagger} $</td><td>XCOMET-XXL</td><td>0.8690</td><td>0.9093</td><td>0.8098</td><td>0.6159</td><td>0.6174</td></tr><tr><td>CometKiwi</td><td>0.7924</td><td>0.8650</td><td>0.7336</td><td>0.6885</td><td>0.4455</td></tr></table></div>
+<p class="text">在这个方向上，该模型取得了0.6174的得分。这一成绩优于所有被评估的基线模型。其中包括像DeepSeek-V3.2（0.5133））这样的超大型模型，以及像iFLYTEK-Translator（0.5011））这样的专门从事翻译的模型。</p>
+<p class="text">HY-MT1.5模型在提供卓越性能的同时，还具备高参数下的高效运行能力。例如，HY-MT1.5-7B（7B参数））的性能优于更大的Tower-Plus-72B（72B））模型。此外，HY-MT1.5-7B（7B参数））的性能也优于其他商业翻译器（例如，Google-Translator）以及较小的通用翻译器。这进一步验证了我们的模型设计是正确的。</p>
+<p class="text">In addition, HY-MT1.5-7B performs better than HY-MT1.5-1.8B in all tasks. The biggest improvement is seen in the percentage of gains, which is 16.0%.</p>
+</div>
+<div class="paper-page" id="page-6">
+<div class="page-number">Trang 7</div>
+<p class="text">WMT25، что означает, что умеренное масштабирование модели способствует повышению качества перевода. Поскольку это открытый исходный код, то они позволяют более широкому использованию в академических и промышленных целях, чему соответствуют такие альтернативы, как Gemini 3.0 Pro.</p>
+<h2 class="paragraph_title">3.2 Human Evaluation</h2>
+<p class="figure_title" style="text-align: center;">표 2: 人間が評価した、中国語から英語への翻訳の品質。最高得点は太字で表示されています。</p>
+<div class="table-container"><table><tr><td>Model</td><td>ZH $ \rightarrow $EN</td><td>EN $ \rightarrow $ZH</td><td>Avg.</td></tr><tr><td>Baidu-Translator</td><td>2.75</td><td>2.46</td><td>2.55</td></tr><tr><td>iFLYTEK-Translator</td><td>2.88</td><td>2.54</td><td>2.65</td></tr><tr><td>Doubao-Translator</td><td>2.97</td><td>2.48</td><td>2.64</td></tr><tr><td>Microsoft-Translator</td><td>2.94</td><td>2.57</td><td>2.69</td></tr><tr><td>Google-Translator</td><td>2.84</td><td>2.10</td><td>2.34</td></tr><tr><td>HY-MT1.5-1.8B</td><td>3.01</td><td>2.61</td><td>2.74</td></tr></table></div>
+<p class="text">为了克服自动评估的局限性（Lavie等人，2025年），我们采用了人工评估的方式。在这个过程中，由多语言专家对翻译结果进行评分，评分范围是从0到4。评分时，会重点关注那些在翻译过程中容易出错的地方。同时，还会考虑翻译的准确性、流畅性以及是否符合当地的语言习惯等因素。</p>
+<p class="text">如表2所示，被评估的模型可以分为两个层次：一个是轻量级的专用模型HY-MT1.5-1.8B；另一个是主流的商业翻译系统。HY-MT1.5-1.8B的得分最高，平均为2.74分。这一成绩优于所有商业翻译系统，这与自动评估的结果是一致的。大多数系统的表现都更好，当从ZH转换为EN时，这种表现会更为明显。这主要是由于中文句法的生成过程相对复杂所导致的。</p>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_278_764_908_1227.jpg" alt="chart"></div>
+<p class="figure_title" style="text-align: center;">चित्र 4: विभिन्न अनुवाद मॉडलों के लिए, औसत प्रतिक्रिया समय एवं अनुवाद की गुणवत्ता का तुलनात्मक विश्लेषण है।</p>
+<h2 class="paragraph_title">3.3 Efficiency of HY-MT1.5 Models</h2>
+<p class="text">To evaluate the translation efficiency of the HY-MT1.5 models, a standardized speed test was conducted. In this test, 100 Chinese texts were used. Each text had an average length of 50 tokens. These texts covered various daily and general business scenarios. After translating these texts into English, the average response time was used as the primary metric for evaluating the translation efficiency of these models.</p>
+<p class="text">如图4所示，HY-MT1.5模型在翻译质量和响应效率之间实现了更好的平衡。具体来说，HY-MT1.5-1.8B模型能够在FLORES-200质量评分的基础上，达到大约78%的质量评分。而0.18秒的即时响应时间则能够消除用户的等待时间。</p>
+</div>
+<div class="paper-page" id="page-7">
+<div class="page-number">Trang 8</div>
+<p class="text">它完全能够满足实时交互的需求。总的来说，HY-MT1.5-1.8B具有极高的效率，这一效率得到了优化模型设计以及推理逻辑的支撑。因此，该设备非常适合用于高吞吐量、实时翻译的场景中，比如即时消息传递、智能客户服务等。</p>
+<p class="text">对于HY-MT1.5-7B模型来说，其翻译质量得分超过了80%。而它的推理速度则非常快，仅为0.45秒。这样的结果表明，HY-MT1.5-7B模型在翻译准确性和推理速度方面都表现得非常出色。因此，这种模型非常适合那些需要同时具备高翻译质量和快速推理能力的应用场景。</p>
+<h2 class="paragraph_title">3.4 Practical Distinctive Features</h2>
+<p class="text">为了克服现有翻译系统的核心局限性——即过度依赖基本的文本翻译功能，以及未能充分满足定制化的需求。我们提出了三个具有特色的解决方案，这些方案已经通过基于情景的案例研究得到了验证。这些解决方案旨在提高术语的准确性、实现上下文感知的消歧处理，以及保持格式的一致性。这些特性对于适应现实世界中的各种场景来说至关重要，不过在当前的技术框架中，这些特性还没有得到充分的探索和应用。</p>
+<p class="text">首先，以术语为引导的翻译方式，能够避免对文化或领域特定术语的不准确翻译。就像在情景1中所展示的那样，术语“混元珠”被翻译为语义上模糊的“Hunyuan”。而使用以术语为引导的翻译方式，就可以得到精确、一致的翻译结果。</p>
+<p class="text">其次，基于上下文的翻译方式，能够减轻在具有上下文线索的任务中出现的词汇歧义问题。当提供电视剧的上下文信息时，模型能够正确识别“试播集”这一术语，从而生成出一个在上下文上连贯一致的结果。</p>
+<p class="text">第三，保持格式翻译能够保留带标签文本的结构完整性。这是通过使用一种受格式限制的提示模板来实现的。在情景3中，模型输出的标签是混乱的（例如，<1>而不是<s1>)。这是因为没有使用格式提示来保持标签的格式。</p>
+<p class="text">In total, these prompt-driven features enable the model to go beyond basic translation tasks. It allows for the delivery of customized solutions, especially in situations where terminology is sensitive, contexts are dependent on certain conditions, or formats are restricted.</p>
+<h2 class="paragraph_title">3.5 Quantization Experiment</h2>
+<p class="text">大型语言模型（LLM）在多种应用中取得了显著的成果。然而，由于大型语言模型对资源的需求较高，因此将其部署在资源有限的边缘设备上时可能会遇到一些困难。
+
+为了解决这些问题，可以采用两种量化策略：Int4和FP8。同时，还可以采用GPTQ算法来进行Post-Training Quantization操作，从而最大限度地减少误差。</p>
+<p class="text">表4展示了不同量化方案在多种翻译任务中的表现。这些表现是通过XCOMET-XXL和CometKiwi这两个指标来评估的。结果显示，FP8量化方案能够保持与原始模型相近的精度（例如，ZH的得分是0.8379，而FP8量化方案的得分则是0.8361）。而Int4量化方案则能够减少模型的大小，但同时也会导致精度的显著下降。</p>
+<h2 class="paragraph_title">4 Conclusion</h2>
+<p class="text">本报告介绍了HY-MT1.5模型（1.8B和7B）以及一种专门用于机器翻译的培训框架。该培训框架能够有效解决两个核心问题：即性能与效率之间的平衡问题，以及对定制翻译需求的支持不足的问题。通过将一般预训练、以机器翻译为导向的预训练、监督式微调、基于策略的蒸馏以及强化学习结合起来，再结合基于评分标准的评估系统，就可以实现性能与效率之间的平衡，同时还能满足定制翻译需求的支持不足的问题。</p>
+<p class="text">The experimental results on key benchmarks (Flores-200, WMT25, Mandarin-minority languages) confirm the competitive nature of HY-MT1.5 models. The 1.8B model outperforms mainstream medium-sized open-source models, as well as commercial APIs. In other words, the performance of the 1.8B model is comparable to that of ultra-large models.</p>
+</div>
+<div class="paper-page" id="page-8">
+<div class="page-number">Trang 9</div>
+<p class="figure_title" style="text-align: center;">ตารางที่ 3: การศึกษา case study ในสถานการณ์ต่างๆ รวมถึงการแปลคำศัพท์ต่างๆ รวมถึงบริบทและรูปแบบการแปลด้วย.</p>
+<div class="table-container"><table><tr><td colspan="2">Scenario 1: Terminology Translation</td></tr><tr><td>Example #1</td><td>孕育出一颗混元珠</td></tr><tr><td>Terminology</td><td>&quot;混元珠&quot;: Chaos Pearl</td></tr><tr><td>Prompt Template</td><td>参考下面的翻译: {terminology} 翻译成 {terminology_target_language} 将以下文本翻译为 {target_language}, 注意只需要输出翻译后的结果, 不要额外解释: {source text}</td></tr><tr><td>Without Terminology</td><td>Give birth to a Hunyuan Pearl</td></tr><tr><td>With Terminology</td><td>Give birth to a Chaos Pearl</td></tr><tr><td colspan="2">Scenario 2: Context Translation</td></tr><tr><td>Example #2</td><td>The Educational and Inspirational Poetics of Pilots</td></tr><tr><td>Prompt Template</td><td>{context} 参考上面的信息, 把下面的文本翻译成 {target_language}, 注意不需要翻译上文, 也不要额外解释: {source text}</td></tr><tr><td>Context</td><td>However, given the rise of the boxed DVD model that enables viewers to consume a series chronologically, viewers are now more likely to start at the beginning of a series, as they recognize that many complex television programs are designed to be watched from the start. For commercial television programs, that start is the unusual entity known as the pilot.</td></tr><tr><td>Without Context</td><td>飞行员们身上的教育与激励性诗歌之美</td></tr><tr><td>With Context</td><td>《试播集: 教育与启示性的诗歌艺术》</td></tr><tr><td colspan="2">Scenario 3: Format Translation</td></tr><tr><td>Example #3</td><td>&lt;s1&gt;The rain it raineth every day, &lt;/s1&gt;&lt;s2&gt;as Shakespeare noted, apparently even on Saturn. The cosmos, it seems, is no comfort at this moment.&lt;/s2&gt;&lt;s3&gt;Adam Gopnik on confronting uncertain times.&lt;/s3&gt;</td></tr><tr><td>Prompt Template</td><td>将以下&lt;source&gt;&lt;/source&gt;之间的文本翻译为中文, 注意只需要输出翻译后的结果, 不要额外解释, 原文中的&lt;sn&gt;&lt;/sn&gt;标签表示标签内文本包含格式信息, 需要在译文中相应的位置尽量保留该标签。输出格式为: &lt;target&gt;str&lt;/target&gt;</td></tr><tr><td>Without Format</td><td>&lt;1&gt;雨天天都在下, &lt;/s1&gt;&lt;s2&gt;正如莎士比亚所言, 显然在土星上也是如此。此刻, 宇宙似乎并不能给人带来任何安慰。&lt;/s2&gt;&lt;s3&gt;亚当·戈普尼克谈如何面对充满不确定性的时代。&lt;/s3&gt;</td></tr><tr><td>With Format</td><td>&lt;target&gt;&lt;s1&gt;雨日日日不停地下着, &lt;/s1&gt;&lt;s2&gt;正如莎士比亚所言, 看来在土星上也是如此。此刻的宇宙似乎并不能带来安慰。&lt;/s2&gt;&lt;s3&gt;亚当·戈普尼克谈面对不确定时代的挑战。&lt;/s3&gt;&lt;/target&gt;</td></tr></table></div>
+<p class="text">像Gemini-3.0-Pro这样的闭源模型，其性能排名在90百分位数左右。而7B模型则进一步提升了性能，其性能表现甚至超过了Gemini-3.0-Pro在WMT25上的表现。而HY-MT1.5-1.8 B模型的平均响应时间则达到了0.18秒。因此，HY-MT1.5-1.8 B模型非常适合用于高吞吐量和实时场景中的应用。</p>
+<p class="text">In addition to their core translation capabilities, these models also possess three practical capabilities: terminology intervention, contextual translation, and formatted translation. These features enable flexible adaptation to customized needs. This approach helps bridge the gap between academic research and industrial applications. Experiments using quantization techniques have confirmed that these techniques have significant potential for application in various fields.</p>
+</div>
+<div class="paper-page" id="page-9">
+<div class="page-number">Trang 10</div>
+<p class="figure_title" style="text-align: center;">ตารางที่ 4: ตัวชี้วัดประสิทธิภาพการแปลของรูปแบบการจำกัดความแตกต่างกันไป. คะแนนที่สูงที่สุดและคะแนนที่สองนั้นถูกแสดงออกมาในรูปแบบที่เด่นชัด และยังมีการแสดงออกมาในรูปแบบที่มีลักษณะเฉพาะตัวอีกด้วย.</p>
+<div class="table-container"><table><tr><td rowspan="2">Models</td><td rowspan="2">Metrics</td><td colspan="3">FLORES-200</td></tr><tr><td>ZH  $ \Leftrightarrow $ XX</td><td>EN  $ \Leftrightarrow $ XX</td><td>XX  $ \Leftrightarrow $ XX</td></tr><tr><td rowspan="2">HY-MT1.5-1.8B</td><td>XCOMET-XXL</td><td>0.8361</td><td>0.8942</td><td>0.7840</td></tr><tr><td>CometKiwi</td><td>0.7655</td><td>0.8411</td><td>0.7182</td></tr><tr><td rowspan="2">HY-MT1.5-1.8B-FP8</td><td>XCOMET-XXL</td><td>0.8379</td><td>0.8905</td><td>0.7794</td></tr><tr><td>CometKiwi</td><td>0.7659</td><td>0.8396</td><td>0.7156</td></tr><tr><td rowspan="2">HY-MT1.5-1.8B-Int4</td><td>XCOMET-XXL</td><td>0.8060</td><td>0.8665</td><td>0.7336</td></tr><tr><td>CometKiwi</td><td>0.7462</td><td>0.8234</td><td>0.6884</td></tr></table></div>
+<p class="text">The original model is still available, but with reduced resource consumption. This makes it easier to use this model on devices that have limited resources.</p>
+<p class="text">未来的研究工作将集中在三个方向：1）扩大语言覆盖范围，以涵盖更多资源匮乏且未被充分使用的语言。这样就能提高机器翻译技术的包容性。2）优化训练框架，通过采用更高效的“知识蒸馏”技术，以及加强领域自适应能力，从而提高机器翻译技术的性能与效率。3）深化定制化的机器翻译研究，通过整合先进的“提示工程”技术，以及加强领域自适应能力，从而提高机器翻译技术的性能与效率。</p>
+<h2 class="paragraph_title">5 Contributions</h2>
+<h2 class="paragraph_title">5.1 Core Contributors</h2>
+<p class="text">Mao Zheng, Zheng Li, Tao Chen, Mingyang Song, Di Wang</p>
+<h2 class="paragraph_title">5.2 Contributors</h2>
+<p class="text">冯张、余廷浩、徐成成、黄振宇、詹利亚娅、夏军、朱家齐、孙星武、王玉菲、徐灿、董亮、彭红新、程飞、张正、何丽琪、李少超</p>
+<h2 class="paragraph_title">References</h2>
+<p class="reference_content">Rishabh Agarwal, Nino Vieillard, Yongchao Zhou, Piotr Stanczyk, Sabela Ramos, Matthieu Geist, and Olivier Bachem. On-policy distillation of language models: Learning from self-generated mistakes, 2024. URL https://arxiv.org/abs/2306.13649.</p>
+<p class="reference_content">Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio. Neural machine translation by jointly learning to align and translate. In Yoshua Bengio and Yann LeCun (eds.), 3rd International Conference on Learning Representations, ICLR 2015, San Diego, CA, USA, May 7-9, 2015, Conference Track Proceedings, 2015. URL http://arxiv.org/abs/1409.0473.</p>
+<p class="reference_content">Peter F. Brown, John Cocke, Stephen Della Pietra, Vincent J. Della Pietra, Frederick Jelinek, John D. Lafferty, Robert L. Mercer, and Paul S. Roossin. A statistical approach to machine translation. Comput. Linguistics, 16(2):79–85, 1990.</p>
+<p class="reference_content">Peter F. Brown, Stephen Della Pietra, Vincent J. Della Pietra, and Robert L. Mercer. The mathematics of statistical machine translation: Parameter estimation. Comput. Linguistics, 19(2):263–311, 1993.</p>
+<p class="reference_content">Shanbo Cheng, Yu Bao, Qian Cao, Luyang Huang, Liyan Kang, Zhicheng Liu, Yu Lu, Wenhao Zhu, Jingwen Chen, Zhichao Huang, Tao Li, Yifu Li, Huiying Lin, Sitong Liu, Ningxin Peng, Shuaijie She, Lu Xu, Nuo Xu, Sen Yang, Runsheng Yu, Yiming Yu, Liehao Zou, Hang Li, Lu Lu, Yuxuan Wang, and Yonghui Wu. Seed-x: Building strong multilingual translation llm with 7b parameters, 2025. URL https://arxiv.org/abs/2507.13618.</p>
+</div>
+<div class="paper-page" id="page-10">
+<div class="page-number">Trang 11</div>
+<p class="reference_content">Menglong Cui, Pengzhi Gao, Wei Liu, Jian Luan, and Bin Wang. Multilingual machine translation with open large language models at practical scale: An empirical study, 2025. URL https://arxiv.org/abs/2502.02481.</p>
+<p class="reference_content">DeepMind. Introducing gemini 3. https://blog.google/products/gemini/gemini-3-collection/, 2025. Accessed: 2025-12-29.</p>
+<p class="text">深调研-3.2：推动开放大型语言模型的边界。</p>
+<p class="text">埃利亚斯·弗兰塔尔、萨利赫·阿什克布奥斯、托尔斯滕·霍夫勒尔，以及丹·阿里斯特哈。Gptq：为生成式预训练变换器提供精确的预训练后的量化处理，2023a。网址：https://arxiv.org/abs/2210.17323。</p>
+<p class="text">埃利亚斯·弗兰塔尔、萨利赫·阿什克布奥斯、托尔斯滕·霍夫勒尔，以及丹·阿里斯特哈。Gptq：为生成式预训练变换器提供精确的预训练后的量化处理，2023b。网址：https://arxiv.org/abs/2210.17323。</p>
+<p class="reference_content">Yuxian Gu, Li Dong, Furu Wei, and Minlie Huang. Minillm: Knowledge distillation of large language models, 2025. URL https://arxiv.org/abs/2306.08543.</p>
+<p class="reference_content">Nuno M. Guerreiro, Ricardo Rei, Daan van Stigt, Luisa Coheur, Pierre Colombo, and André F. T. Martins. xcomet: Transparent machine translation evaluation through fine-grained error detection, 2023. URL https://arxiv.org/abs/2310.10482.</p>
+<p class="text">Tom Kocmi, Philipp Koehn, Christof Monz (eds.), Proceedings of the Ninth Conference on Machine Translation, WMT 2024, Miami, FL, USA, November 15-16, 2024, pp. 1–46. Association for Computational Linguistics, 2024. doi: 10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1/2024.wmt-1.1. URL https://doi.org/10.18653/v1.</p>
+</div>
+<div class="paper-page" id="page-11">
+<div class="page-number">Trang 12</div>
+<p class="reference_content">Tom Kocmi, Ekaterina Artemova, Eleftherios Avramidis, Rachel Bawden, Ondřej Bojar, Konstantin Dranch, Anton Dvorkovich, Sergey Dukanov, Mark Fishel, Markus Freitag, Thamme Gowda, Roman Grundkiewicz, Barry Haddow, Marzena Karpinska, Philipp Koehn, Howard Lakougna, Jessica Lundin, Christof Monz, Kenton Murray, Masaaki Nagata, Stefano Perrella, Lorenzo Proietti, Martin Popel, Maja Popović, Parker Riley, Mariya Shmatova, Steinthór Steingrimsson, Lisa Yankovskaya, and Vilém Zouhar. Findings of the WMT25 general machine translation shared task: Time to stop evaluating on easy test sets. In Barry Haddow, Tom Kocmi, Philipp Koehn, and Christof Monz (eds.), Proceedings of the Tenth Conference on Machine Translation, pp. 355–413, Suzhou, China, November 2025. Association for Computational Linguistics. ISBN 979-8-89176-341-8. doi: 10.18653/v1/2025.wmt-1.22. URL https://aclanthology.org/2025.wmt-1.22/.</p>
+<p class="reference_content">Uday Kulkarni, Abhishek S Hosamani, Abhishek S Masur, Shashank Hegde, Ganesh R Vernekar, and K Siri Chandana. A survey on quantization methods for optimization of deep neural networks. In 2022 International Conference on Automation, Computing and Renewable Systems (ICACRS), pp. 827–834, 2022. doi: 10.1109/ICACRS55517.2022.10028742.</p>
+<p class="reference_content">Alon Lavie, Greg Hanneman, Sweta Agrawal, Diptesh Kanojia, Chi-Kiu Lo, Vilém Zouhar, Frederic Blain, Chrysoula Zerva, Eleftherios Avramidis, Sourabh Deoghare, Archchana Sindhujan, Jiayi Wang, David Ifeoluwa Adelani, Brian Thompson, Tom Kocmi, Markus Freitag, and Daniel Deutsch. Findings of the WMT25 shared task on automated translation evaluation systems: Linguistic diversity is challenging and references still help. In Barry Haddow, Tom Kocmi, Philipp Koehn, and Christof Monz (eds.), Proceedings of the Tenth Conference on Machine Translation, pp. 436–483, Suzhou, China, November 2025. Association for Computational Linguistics. ISBN 979-8-89176-341-8. doi: 10.18653/v1/2025.wmt-1.24. URL https://aclanthology.org/2025.wmt-1.24/.</p>
+<p class="reference_content">Kevin Lu and Thinking Machines Lab. On-policy distillation. Thinking Machines Lab: Connectionism, 2025. doi: 10.64434/tml.20251026. https://thinkingmachines.ai/blog/on-policy-distillation.</p>
+<p class="reference_content">Microsoft, :, Abdelrahman Abouelenin, Atabak Ashfaq, Adam Atkinson, Hany Awadalla, Nguyen Bach, Jianmin Bao, Alon Benhaim, Martin Cai, Vishrav Chaudhary, Congcong Chen, Dong Chen, Dongdong Chen, Junkun Chen, Weizhu Chen, Yen-Chun Chen, Yi Ling Chen, Qi Dai, Xiyang Dai, Ruchao Fan, Mei Gao, Min Gao, Amit Garg, Abhishek Goswami, Junheng Hao, Amr Hendy, Yuxuan Hu, Xin Jin, Mahmoud Khademi, Dongwoo Kim, Young Jin Kim, Gina Lee, Jinyu Li, Yunsheng Li, Chen Liang, Xihui Lin, Zeqi Lin, Mengchen Liu, Yang Liu, Gilsinia Lopez, Chong Luo, Piyush Madan, Vadim Mazalov, Arindam Mitra, Ali Mousavi, Anh Nguyen, Jing Pan, Daniel Perez-Becker, Jacob Platin, Thomas Portet, Kai Qiu, Bo Ren, Liliang Ren, Sambuddha Roy, Ning Shang, Yelong Shen, Saksham Singhal, Subhojit Som, Xia Song, Tetyana Sych, Praneetha Vaddamanu, Shuohang Wang, Yiming Wang, Zhenghao Wang, Haibin Wu, Haoran Xu, Weijian Xu, Yifan Yang, Ziyi Yang, Donghan Yu, Ishmam Zabir, Jianwen Zhang, Li Lyna Zhang, Yunan Zhang, and Xiren Zhou. Phi-4-mini technical report: Compact yet powerful multimodal language models via mixture-of-loras, 2025. URL https://arxiv.org/abs/2503.01743.</p>
+<p class="reference_content">Jianhui Pang, Fanghua Ye, Derek Fai Wong, Dian Yu, Shuming Shi, Zhaopeng Tu, and Longyue Wang. Salute the classic: Revisiting challenges of machine translation in the age of large language models. Trans. Assoc. Comput. Linguistics, 13:73–95, 2025. doi: 10.1162/TACL\_A\_00730. URL https://doi.org/10.1162/tacl\_a\_00730.</p>
+<p class="reference_content">Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing Zhu. Bleu: a method for automatic evaluation of machine translation. In Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics, July 6-12, 2002, Philadelphia, PA, USA, pp. 311–318. ACL, 2002. doi: 10.3115/1073083.1073135. URL https://aclanthology.org/P02-1040/.</p>
+<p class="reference_content">Ricardo Rei, Marcos Treviso, Nuno M. Guerreiro, Chrysoula Zerva, Ana C. Farinha, Christine Maroti, José G. C. de Souza, Taisiya Glushkova, Duarte M. Álves, Alon Lavie, Luisa Coheur, and André F. T. Martins. Cometkiwi: Ist-unbabel 2022 submission for the quality estimation shared task, 2022. URL https://arxiv.org/abs/2209.06243.</p>
+<p class="reference_content">Ricardo Rei, Nuno M. Guerreiro, José Pombal, João Alves, Pedro Teixeirinha, Amin Farajian, and André F. T. Martins. Tower+: Bridging generality and translation specialization in multilingual llms, 2025. URL https://arxiv.org/abs/2506.17080.</p>
+<p class="reference_content">Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Mingchuan Zhang, Y. K. Li, Y. Wu, and Daya Guo. Deepseekmath: Pushing the limits of mathematical reasoning in open language models. CoRR, abs/2402.03300, 2024. doi: 10.48550/ARXIV.2402.03300. URL https://doi.org/10.48550/arXiv.2402.03300.</p>
+</div>
+<div class="paper-page" id="page-12">
+<div class="page-number">Trang 13</div>
+<p class="reference_content">Ilya Sutskever, Oriol Vinyals, and Quoc V. Le. Sequence to sequence learning with neural networks. In Zoubin Ghahramani, Max Welling, Corinna Cortes, Neil D. Lawrence, and Kilian Q. Weinberger (eds.), Advances in Neural Information Processing Systems 27: Annual Conference on Neural Information Processing Systems 2014, December 8-13 2014, Montreal, Quebec, Canada, pp. 3104–3112, 2014. URL https://proceedings.neurips.cc/paper/2014/hash/a14ac55a4f27472c5d894ec1c3c743d2-Abstract.html.</p>
+<p class="reference_content">NLLB Team, Marta R. Costa-jussà, James Cross, Onur Çelebi, Maha Elbayad, Kenneth Heafield, Kevin Heffernan, Elahe Kalbassi, Janice Lam, Daniel Licht, Jean Maillard, Anna Sun, Skyler Wang, Guillaume Wenzek, Al Youngblood, Bapi Akula, Loic Barrault, Gabriel Mejia Gonzalez, Prangthip Hansanti, John Hoffman, Semarley Jarrett, Kaushik Ram Sadagopan, Dirk Rowe, Shannon Spruit, Chau Tran, Pierre Andrews, Necip Fazil Ayan, Shruti Bhosale, Sergey Edunov, Angela Fan, Cynthia Gao, Vedanuj Goswami, Francisco Guzmán, Philipp Koehn, Alexandre Mourachko, Christophe Ropers, Safiyyah Saleem, Holger Schwenk, and Jeff Wang. No language left behind: Scaling human-centered machine translation, 2022. URL https://arxiv.org/abs/2207.04672.</p>
+<p class="reference_content">Qwen Team. Qwen3 technical report, 2025. URL https://arxiv.org/abs/2505.09388.</p>
+<p class="reference_content">Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. Advances in neural information processing systems, 30, 2017.</p>
+<p class="reference_content">Yonghui Wu, Mike Schuster, Zhifeng Chen, Quoc V Le, Mohammad Norouzi, Wolfgang Macherey, Maxim Krikun, Yuan Cao, Qin Gao, Klaus Macherey, et al. Google’s neural machine translation system: Bridging the gap between human and machine translation. arXiv preprint arXiv:1609.08144, 2016.</p>
+<p class="reference_content">Mao Zheng, Zheng Li, Bingxin Qu, Mingyang Song, Yang Du, Mingrui Sun, and Di Wang. Hunyuan-mt technical report, 2025. URL https://arxiv.org/abs/2509.05209.</p>
+<p class="reference_content">Wenhao Zhu, Hongyi Liu, Qingxiu Dong, Jingjing Xu, Shujian Huang, Lingpeng Kong, Jiajun Chen, and Lei Li. Multilingual machine translation with large language models: Empirical results and analysis. In Kevin Duh, Helena Gómez-Adorno, and Steven Bethard (eds.), Findings of the Association for Computational Linguistics: NAACL 2024, Mexico City, Mexico, June 16-21, 2024, pp. 2765–2781. Association for Computational Linguistics, 2024. doi: 10.18653/V1/2024.FINDINGS-NAACL.176. URL https://doi.org/10.18653/v1/2024.findings-naacl.176.</p>
+</div>
+
+    </body>
+    </html>
+    

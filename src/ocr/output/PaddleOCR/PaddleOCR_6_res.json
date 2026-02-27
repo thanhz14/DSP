@@ -1,0 +1,796 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 6,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "2.2.1. Layout Analysis",
+            "block_bbox": [
+                137,
+                172,
+                368,
+                200
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    172.0
+                ],
+                [
+                    368.0,
+                    172.0
+                ],
+                [
+                    368.0,
+                    200.0
+                ],
+                [
+                    137.0,
+                    200.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The training of PP-DocLayoutV3 evolves from the two-stage decoupled process used in PP-DocLayoutV2 [9] to a more sophisticated end-to-end joint optimization strategy. This approach allows the detection, instance segmentation, and reading order modules to share a unified feature representation, leading to better alignment between spatial localization and logical sequencing.",
+            "block_bbox": [
+                135,
+                217,
+                1056,
+                355
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    217.0
+                ],
+                [
+                    1056.0,
+                    217.0
+                ],
+                [
+                    1056.0,
+                    355.0
+                ],
+                [
+                    135.0,
+                    355.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The model is initialized with the pre-trained weights of PP-DocLayout_plus-L [13], we scaled our training corpus to over 38k high-quality document samples. Each sample underwent rigorous manual annotation to provide ground truth, include the coordinates, categorical label and absolute reading order for every layout elements.",
+            "block_bbox": [
+                134,
+                366,
+                1054,
+                476
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    373.9999694824219
+                ],
+                [
+                    1052.9998779296875,
+                    373.9999694824219
+                ],
+                [
+                    1052.9998779296875,
+                    474.9999694824219
+                ],
+                [
+                    134.0,
+                    474.9999694824219
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To achieve the environmental robustness, we designed a specialized Distortion-Aware Data Augmentation pipeline. Unlike standard augmentations, this pipeline specifically simulates complex physical deformations found in real-world mobile photography.",
+            "block_bbox": [
+                134,
+                489,
+                1054,
+                572
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    489.0
+                ],
+                [
+                    1054.0,
+                    489.0
+                ],
+                [
+                    1054.0,
+                    572.0
+                ],
+                [
+                    134.0,
+                    572.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "We utilize the AdamW optimizer with a weight decay of 0.0001. The learning rate is set to a constant  $ 2 \\times 10^{-4} $ to ensure stable convergence of the integrated Global Pointer and Mask heads. The model is trained for 150 epochs with a total batch size of 32.",
+            "block_bbox": [
+                135,
+                584,
+                1054,
+                666
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    584.0
+                ],
+                [
+                    1054.0,
+                    584.0
+                ],
+                [
+                    1054.0,
+                    666.0
+                ],
+                [
+                    135.0,
+                    666.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "In contrast to the previous version, all components—including the RT-DETR backbone and the integrated reading order transformer—are trained simultaneously. This end-to-end supervision ensures that the learned queries in the Transformer decoder capture both the geometric boundaries and the topological relationships of the document elements.",
+            "block_bbox": [
+                136,
+                678,
+                1054,
+                789
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    678.0
+                ],
+                [
+                    1054.0,
+                    678.0
+                ],
+                [
+                    1054.0,
+                    789.0
+                ],
+                [
+                    136.0,
+                    789.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "2.2.2. Element-level Recognition and Text Spotting",
+            "block_bbox": [
+                136,
+                821,
+                640,
+                849
+            ],
+            "block_id": 6,
+            "block_order": 7,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    821.0
+                ],
+                [
+                    640.0,
+                    821.0
+                ],
+                [
+                    640.0,
+                    849.0
+                ],
+                [
+                    136.0,
+                    849.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Building upon the architecture described in Section 2.1.2, PaddleOCR-VL-1.5-0.9B introduces a progressive training paradigm using PaddleFormers [18], which is a high-performance training toolkit for LLMs and VLMs built on the PaddlePaddle framework [19]. While we retain the effective post-adaptation strategy and initialization settings from our previous version, the training methodology has been significantly upgraded to enhance data scale, task diversity, and model robustness. The overview of the three stages is presented in Table 1.",
+            "block_bbox": [
+                134,
+                865,
+                1055,
+                1030
+            ],
+            "block_id": 7,
+            "block_order": 8,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    865.0
+                ],
+                [
+                    1055.0,
+                    865.0
+                ],
+                [
+                    1055.0,
+                    1030.0
+                ],
+                [
+                    134.0,
+                    1030.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Settings</td><td>Pre-training</td><td>Post-training</td></tr><tr><td>Training Samples</td><td>46M</td><td>5.6M</td></tr><tr><td>Max Resolution</td><td>1280  $ \\times $ 28  $ \\times $ 28</td><td>1280  $ \\times $ 28  $ \\times $ 28</td></tr><tr><td>Sequence length</td><td>16384</td><td>16384</td></tr><tr><td>Trainable components</td><td>All</td><td>All</td></tr><tr><td>Batch sizes</td><td>128</td><td>128</td></tr><tr><td>Data Augmentation</td><td>Yes</td><td>Yes</td></tr><tr><td>Maximum LR</td><td>5  $ \\times $ 10 $ ^{-5} $</td><td>8  $ \\times $ 10 $ ^{-6} $</td></tr><tr><td>Epoch</td><td>1</td><td>1</td></tr></table>",
+            "block_bbox": [
+                378,
+                1050,
+                814,
+                1245
+            ],
+            "block_id": 8,
+            "block_order": null,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    378.0,
+                    1050.0
+                ],
+                [
+                    814.0,
+                    1050.0
+                ],
+                [
+                    814.0,
+                    1245.0
+                ],
+                [
+                    378.0,
+                    1245.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table 1 | Training settings for PaddleOCR-VL-1.5-0.9B.",
+            "block_bbox": [
+                327,
+                1267,
+                860,
+                1294
+            ],
+            "block_id": 9,
+            "block_order": null,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    327.0,
+                    1267.0
+                ],
+                [
+                    860.0,
+                    1267.0
+                ],
+                [
+                    860.0,
+                    1294.0
+                ],
+                [
+                    327.0,
+                    1294.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Pre-training: Enhanced Vision-Language Alignment. While the fundamental objective remains aligning visual features with textual semantics, this stage undergoes a substantial data upgrade compared to PaddleOCR-VL-0.9B [9], scaling the pre-training dataset from 29 million to 46 million image-text pairs. This expansion represents a qualitative leap in data distribution rather than a mere quantitative increase. Specifically, to enhance the generalization of the visual backbone and support the newly introduced capabilities, we incorporate a broader spectrum of multilingual documents and complex real-world scenarios. Furthermore, we intentionally inject",
+            "block_bbox": [
+                134,
+                1319,
+                1055,
+                1513
+            ],
+            "block_id": 10,
+            "block_order": 9,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    1319.0
+                ],
+                [
+                    1055.0,
+                    1319.0
+                ],
+                [
+                    1055.0,
+                    1513.0
+                ],
+                [
+                    134.0,
+                    1513.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "7",
+            "block_bbox": [
+                587,
+                1556,
+                604,
+                1578
+            ],
+            "block_id": 11,
+            "block_order": null,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1556.0
+                ],
+                [
+                    603.0,
+                    1556.0
+                ],
+                [
+                    603.0,
+                    1577.0
+                ],
+                [
+                    587.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.868661642074585,
+                "coordinate": [
+                    137,
+                    172,
+                    368,
+                    200
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        137.0,
+                        172.0
+                    ],
+                    [
+                        368.0,
+                        172.0
+                    ],
+                    [
+                        368.0,
+                        200.0
+                    ],
+                    [
+                        137.0,
+                        200.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9525519609451294,
+                "coordinate": [
+                    135,
+                    217,
+                    1056,
+                    355
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        135.0,
+                        217.0
+                    ],
+                    [
+                        1056.0,
+                        217.0
+                    ],
+                    [
+                        1056.0,
+                        355.0
+                    ],
+                    [
+                        135.0,
+                        355.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.944657027721405,
+                "coordinate": [
+                    134,
+                    366,
+                    1054,
+                    476
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        134.0,
+                        373.9999694824219
+                    ],
+                    [
+                        1052.9998779296875,
+                        373.9999694824219
+                    ],
+                    [
+                        1052.9998779296875,
+                        474.9999694824219
+                    ],
+                    [
+                        134.0,
+                        474.9999694824219
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9347622394561768,
+                "coordinate": [
+                    134,
+                    489,
+                    1054,
+                    572
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        134.0,
+                        489.0
+                    ],
+                    [
+                        1054.0,
+                        489.0
+                    ],
+                    [
+                        1054.0,
+                        572.0
+                    ],
+                    [
+                        134.0,
+                        572.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9376829266548157,
+                "coordinate": [
+                    135,
+                    584,
+                    1054,
+                    666
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        135.0,
+                        584.0
+                    ],
+                    [
+                        1054.0,
+                        584.0
+                    ],
+                    [
+                        1054.0,
+                        666.0
+                    ],
+                    [
+                        135.0,
+                        666.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 15,
+                "label": "inline_formula",
+                "score": 0.6719460487365723,
+                "coordinate": [
+                    224,
+                    609,
+                    302,
+                    634
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        224,
+                        609
+                    ],
+                    [
+                        224,
+                        633
+                    ],
+                    [
+                        301,
+                        633
+                    ],
+                    [
+                        301,
+                        609
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9458397030830383,
+                "coordinate": [
+                    136,
+                    678,
+                    1054,
+                    789
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        136.0,
+                        678.0
+                    ],
+                    [
+                        1054.0,
+                        678.0
+                    ],
+                    [
+                        1054.0,
+                        789.0
+                    ],
+                    [
+                        136.0,
+                        789.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8491591215133667,
+                "coordinate": [
+                    136,
+                    821,
+                    640,
+                    849
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        136.0,
+                        821.0
+                    ],
+                    [
+                        640.0,
+                        821.0
+                    ],
+                    [
+                        640.0,
+                        849.0
+                    ],
+                    [
+                        136.0,
+                        849.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9580225348472595,
+                "coordinate": [
+                    134,
+                    865,
+                    1055,
+                    1030
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        134.0,
+                        865.0
+                    ],
+                    [
+                        1055.0,
+                        865.0
+                    ],
+                    [
+                        1055.0,
+                        1030.0
+                    ],
+                    [
+                        134.0,
+                        1030.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9535159468650818,
+                "coordinate": [
+                    378,
+                    1050,
+                    814,
+                    1245
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        378.0,
+                        1050.0
+                    ],
+                    [
+                        814.0,
+                        1050.0
+                    ],
+                    [
+                        814.0,
+                        1245.0
+                    ],
+                    [
+                        378.0,
+                        1245.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8602070808410645,
+                "coordinate": [
+                    327,
+                    1267,
+                    860,
+                    1294
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        327.0,
+                        1267.0
+                    ],
+                    [
+                        860.0,
+                        1267.0
+                    ],
+                    [
+                        860.0,
+                        1294.0
+                    ],
+                    [
+                        327.0,
+                        1294.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9559011459350586,
+                "coordinate": [
+                    134,
+                    1319,
+                    1055,
+                    1513
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        134.0,
+                        1319.0
+                    ],
+                    [
+                        1055.0,
+                        1319.0
+                    ],
+                    [
+                        1055.0,
+                        1513.0
+                    ],
+                    [
+                        134.0,
+                        1513.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7039833664894104,
+                "coordinate": [
+                    587,
+                    1556,
+                    604,
+                    1578
+                ],
+                "order": 11,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1556.0
+                    ],
+                    [
+                        603.0,
+                        1556.0
+                    ],
+                    [
+                        603.0,
+                        1577.0
+                    ],
+                    [
+                        587.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

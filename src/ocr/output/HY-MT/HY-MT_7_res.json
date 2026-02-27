@@ -1,0 +1,949 @@
+{
+    "input_path": "/home/bocchi/Downloads/HY-MT.pdf",
+    "page_index": 7,
+    "page_count": 13,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "text",
+            "block_content": "fully meeting real-time interaction requirements. Overall, HY-MT1.5-1.8B's high efficiency, supported by optimized model design and inference logic, makes it well-suited for high-throughput, real-time translation scenarios such as instant messaging, intelligent customer service, and mobile translation applications.",
+            "block_bbox": [
+                137,
+                143,
+                1053,
+                235
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    143.0
+                ],
+                [
+                    1053.0,
+                    143.0
+                ],
+                [
+                    1053.0,
+                    235.0
+                ],
+                [
+                    137.0,
+                    235.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "For HY-MT1.5-7B, its quality score exceeds 80% (exceeding that of most models in the figure), and its average response time is 0.45 seconds. This response time is comparable to that of Microsoft-Translator, whereas its translation quality is distinctly higher than that of Microsoft-Translator. This result confirms that the HY-MT1.5 models combine high translation accuracy with fast inference speed, making them suitable for scenarios requiring both high-quality translation and real-time responsiveness.",
+            "block_bbox": [
+                136,
+                243,
+                1054,
+                357
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    243.0
+                ],
+                [
+                    1054.0,
+                    243.0
+                ],
+                [
+                    1054.0,
+                    357.0
+                ],
+                [
+                    136.0,
+                    357.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3.4 Practical Distinctive Features",
+            "block_bbox": [
+                137,
+                382,
+                455,
+                406
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    382.0
+                ],
+                [
+                    455.0,
+                    382.0
+                ],
+                [
+                    455.0,
+                    406.0
+                ],
+                [
+                    137.0,
+                    406.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To address the core limitations of existing translation systems—overreliance on basic text translation and inadequate support for customized requirements via flexible prompts—we propose three distinctive features, validated through scenario-based case studies in Table 3. These features target terminology accuracy, context-aware disambiguation, and format preservation, which are critical for real-world scenario adaptation but underexplored in current frameworks.",
+            "block_bbox": [
+                136,
+                423,
+                1054,
+                537
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    423.0
+                ],
+                [
+                    1054.0,
+                    423.0
+                ],
+                [
+                    1054.0,
+                    537.0
+                ],
+                [
+                    136.0,
+                    537.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "First, terminology-guided translation resolves inaccurate rendering of cultural or domain-specific terms via a term-anchored prompt template. As shown in Scenario 1, the term “混元珠” is transliterated as the semantically ambiguous “Hunyuan” without terminology prompts; with the authorized mapping “Chaos Pearl” injected into the prompt, the model generates a precise, consistent translation.",
+            "block_bbox": [
+                136,
+                545,
+                1053,
+                639
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    545.0
+                ],
+                [
+                    1053.0,
+                    545.0
+                ],
+                [
+                    1053.0,
+                    639.0
+                ],
+                [
+                    136.0,
+                    639.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Second, context-aware translation mitigates lexical ambiguity in contextualized tasks using a context-integrated prompt template. For the phrase \"The Educational and Inspirational Poetics of Pilots\" in Scenario 2, the model misinterprets \"pilot\" as \"飞行员\" in the absence of contextual cues; when TV series context is provided, it correctly identifies \"pilot\" as \"试播集\" and produces a contextually coherent result.",
+            "block_bbox": [
+                136,
+                647,
+                1055,
+                744
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    647.0
+                ],
+                [
+                    1055.0,
+                    647.0
+                ],
+                [
+                    1055.0,
+                    744.0
+                ],
+                [
+                    136.0,
+                    744.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Third, format-preserving translation preserves the structural integrity of tagged text by using a format-constrained prompt template. In Scenario 3, the model outputs disorganized tags (e.g., <1>instead of <s1>) without format prompts. With explicit rules to preserve <sn>tags and to wrap outputs in <target>tags, it generates translations that maintain both semantic fidelity and structural consistency.",
+            "block_bbox": [
+                136,
+                752,
+                1054,
+                843
+            ],
+            "block_id": 6,
+            "block_order": 7,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    752.0
+                ],
+                [
+                    1054.0,
+                    752.0
+                ],
+                [
+                    1054.0,
+                    843.0
+                ],
+                [
+                    136.0,
+                    843.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Collectively, these prompt-driven features enable the model to transcend basic translation tasks, delivering customized solutions for terminology-sensitive, context-dependent, and format-constrained scenarios.",
+            "block_bbox": [
+                135,
+                851,
+                1053,
+                898
+            ],
+            "block_id": 7,
+            "block_order": 8,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    851.0
+                ],
+                [
+                    1053.0,
+                    851.0
+                ],
+                [
+                    1053.0,
+                    898.0
+                ],
+                [
+                    135.0,
+                    898.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3.5 Quantization Experiment",
+            "block_bbox": [
+                137,
+                924,
+                421,
+                949
+            ],
+            "block_id": 8,
+            "block_order": 9,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    924.0
+                ],
+                [
+                    421.0,
+                    924.0
+                ],
+                [
+                    421.0,
+                    949.0
+                ],
+                [
+                    137.0,
+                    949.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Large Language Models (LLMs) have achieved significant success across a range of applications, but high resource demands hinder their deployment on resource-constrained edge devices. Quantization, which reduces model size and computational cost by using low-precision weight representations, is a key solution (Kulkarni et al., 2022). For the HY-MT1.5-1.8B model, we tested two quantization strategies (Int4 and FP8) and adopted the GPTQ algorithm (Frantar et al., 2023a) for Post-Training Quantization (PTQ) to minimize errors. GPTQ processes weights layer-wise with small calibration data, avoiding retraining and improving deployment efficiency.",
+            "block_bbox": [
+                135,
+                966,
+                1054,
+                1124
+            ],
+            "block_id": 9,
+            "block_order": 10,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    966.0
+                ],
+                [
+                    1054.0,
+                    966.0
+                ],
+                [
+                    1054.0,
+                    1124.0
+                ],
+                [
+                    135.0,
+                    1124.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Table 4 presents the performance of different quantization schemes (original, Int4, FP8) on multiple translation tasks, evaluated by XCOMET-XXL and CometKiwi metrics. It shows that FP8 quantization preserves accuracy close to the original model (e.g., ZH ⇔ XX XCOMET-XXL score: 0.8379 for FP8 vs. 0.8361 for the original), whereas Int4 quantization reduces model size but causes noticeable accuracy degradation.",
+            "block_bbox": [
+                136,
+                1131,
+                1054,
+                1244
+            ],
+            "block_id": 10,
+            "block_order": 11,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    1131.0
+                ],
+                [
+                    1054.0,
+                    1131.0
+                ],
+                [
+                    1054.0,
+                    1244.0
+                ],
+                [
+                    136.0,
+                    1244.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "4 Conclusion",
+            "block_bbox": [
+                137,
+                1275,
+                305,
+                1300
+            ],
+            "block_id": 11,
+            "block_order": 12,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1275.0
+                ],
+                [
+                    305.0,
+                    1275.0
+                ],
+                [
+                    305.0,
+                    1300.0
+                ],
+                [
+                    137.0,
+                    1300.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "This report introduces the HY-MT1.5 models (1.8B and 7B) and a dedicated machine translation training framework that effectively addresses two core challenges: the quality-efficiency trade-off and inadequate support for customized translation needs. By integrating general pre-training, MT-oriented pre-training, supervised fine-tuning, on-policy distillation, and reinforcement learning with a rubrics-based evaluation system, the models achieve a superior balance of performance and efficiency, as well as strong adaptability to practical scenarios.",
+            "block_bbox": [
+                135,
+                1325,
+                1054,
+                1460
+            ],
+            "block_id": 12,
+            "block_order": 13,
+            "group_id": 12,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    1325.0
+                ],
+                [
+                    1054.0,
+                    1325.0
+                ],
+                [
+                    1054.0,
+                    1460.0
+                ],
+                [
+                    135.0,
+                    1460.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Experimental results on key benchmarks (Flores-200, WMT25, Mandarin-minority languages) confirm the competitiveness of HY-MT1.5 models. The 1.8B model outperforms mainstream medium-sized open-source models and commercial APIs, achieving performance comparable to that of ultra-large",
+            "block_bbox": [
+                136,
+                1468,
+                1054,
+                1539
+            ],
+            "block_id": 13,
+            "block_order": 14,
+            "group_id": 13,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    1468.0
+                ],
+                [
+                    1054.0,
+                    1468.0
+                ],
+                [
+                    1054.0,
+                    1539.0
+                ],
+                [
+                    136.0,
+                    1539.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "8",
+            "block_bbox": [
+                588,
+                1586,
+                603,
+                1605
+            ],
+            "block_id": 14,
+            "block_order": null,
+            "group_id": 14,
+            "block_polygon_points": [
+                [
+                    588.0,
+                    1586.0
+                ],
+                [
+                    602.0,
+                    1586.0
+                ],
+                [
+                    602.0,
+                    1604.0
+                ],
+                [
+                    588.0,
+                    1604.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9376309514045715,
+                "coordinate": [
+                    137,
+                    143,
+                    1053,
+                    235
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        137.0,
+                        143.0
+                    ],
+                    [
+                        1053.0,
+                        143.0
+                    ],
+                    [
+                        1053.0,
+                        235.0
+                    ],
+                    [
+                        137.0,
+                        235.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9485791325569153,
+                "coordinate": [
+                    136,
+                    243,
+                    1054,
+                    357
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        136.0,
+                        243.0
+                    ],
+                    [
+                        1054.0,
+                        243.0
+                    ],
+                    [
+                        1054.0,
+                        357.0
+                    ],
+                    [
+                        136.0,
+                        357.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8461251258850098,
+                "coordinate": [
+                    137,
+                    382,
+                    455,
+                    406
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        137.0,
+                        382.0
+                    ],
+                    [
+                        455.0,
+                        382.0
+                    ],
+                    [
+                        455.0,
+                        406.0
+                    ],
+                    [
+                        137.0,
+                        406.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.946692705154419,
+                "coordinate": [
+                    136,
+                    423,
+                    1054,
+                    537
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        136.0,
+                        423.0
+                    ],
+                    [
+                        1054.0,
+                        423.0
+                    ],
+                    [
+                        1054.0,
+                        537.0
+                    ],
+                    [
+                        136.0,
+                        537.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9410893321037292,
+                "coordinate": [
+                    136,
+                    545,
+                    1053,
+                    639
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        136.0,
+                        545.0
+                    ],
+                    [
+                        1053.0,
+                        545.0
+                    ],
+                    [
+                        1053.0,
+                        639.0
+                    ],
+                    [
+                        136.0,
+                        639.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9425616264343262,
+                "coordinate": [
+                    136,
+                    647,
+                    1055,
+                    744
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        136.0,
+                        647.0
+                    ],
+                    [
+                        1055.0,
+                        647.0
+                    ],
+                    [
+                        1055.0,
+                        744.0
+                    ],
+                    [
+                        136.0,
+                        744.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9337859153747559,
+                "coordinate": [
+                    136,
+                    752,
+                    1054,
+                    843
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        136.0,
+                        752.0
+                    ],
+                    [
+                        1054.0,
+                        752.0
+                    ],
+                    [
+                        1054.0,
+                        843.0
+                    ],
+                    [
+                        136.0,
+                        843.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9014034271240234,
+                "coordinate": [
+                    135,
+                    851,
+                    1053,
+                    898
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        135.0,
+                        851.0
+                    ],
+                    [
+                        1053.0,
+                        851.0
+                    ],
+                    [
+                        1053.0,
+                        898.0
+                    ],
+                    [
+                        135.0,
+                        898.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8472045660018921,
+                "coordinate": [
+                    137,
+                    924,
+                    421,
+                    949
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        137.0,
+                        924.0
+                    ],
+                    [
+                        421.0,
+                        924.0
+                    ],
+                    [
+                        421.0,
+                        949.0
+                    ],
+                    [
+                        137.0,
+                        949.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.956041157245636,
+                "coordinate": [
+                    135,
+                    966,
+                    1054,
+                    1124
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        135.0,
+                        966.0
+                    ],
+                    [
+                        1054.0,
+                        966.0
+                    ],
+                    [
+                        1054.0,
+                        1124.0
+                    ],
+                    [
+                        135.0,
+                        1124.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9520675539970398,
+                "coordinate": [
+                    136,
+                    1131,
+                    1054,
+                    1244
+                ],
+                "order": 11,
+                "polygon_points": [
+                    [
+                        136.0,
+                        1131.0
+                    ],
+                    [
+                        1054.0,
+                        1131.0
+                    ],
+                    [
+                        1054.0,
+                        1244.0
+                    ],
+                    [
+                        136.0,
+                        1244.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8524131178855896,
+                "coordinate": [
+                    137,
+                    1275,
+                    305,
+                    1300
+                ],
+                "order": 12,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1275.0
+                    ],
+                    [
+                        305.0,
+                        1275.0
+                    ],
+                    [
+                        305.0,
+                        1300.0
+                    ],
+                    [
+                        137.0,
+                        1300.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9566707611083984,
+                "coordinate": [
+                    135,
+                    1325,
+                    1054,
+                    1460
+                ],
+                "order": 13,
+                "polygon_points": [
+                    [
+                        135.0,
+                        1325.0
+                    ],
+                    [
+                        1054.0,
+                        1325.0
+                    ],
+                    [
+                        1054.0,
+                        1460.0
+                    ],
+                    [
+                        135.0,
+                        1460.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9396440982818604,
+                "coordinate": [
+                    136,
+                    1468,
+                    1054,
+                    1539
+                ],
+                "order": 14,
+                "polygon_points": [
+                    [
+                        136.0,
+                        1468.0
+                    ],
+                    [
+                        1054.0,
+                        1468.0
+                    ],
+                    [
+                        1054.0,
+                        1539.0
+                    ],
+                    [
+                        136.0,
+                        1539.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7071613073348999,
+                "coordinate": [
+                    588,
+                    1586,
+                    603,
+                    1605
+                ],
+                "order": 15,
+                "polygon_points": [
+                    [
+                        588.0,
+                        1586.0
+                    ],
+                    [
+                        602.0,
+                        1586.0
+                    ],
+                    [
+                        602.0,
+                        1604.0
+                    ],
+                    [
+                        588.0,
+                        1604.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

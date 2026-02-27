@@ -1,0 +1,644 @@
+{
+    "input_path": "/home/bocchi/Downloads/DeepSeekOCR.pdf",
+    "page_index": 11,
+    "page_count": 22,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "text",
+            "block_content": "a feature of the forgetting mechanism. When compressing tokens by nearly 20×, we find that precision can still approach 60%. These results indicate that optical contexts compression is a very promising and worthwhile research direction, and this approach does not bring any overhead because it can leverage VLM infrastructure, as multimodal systems inherently require an additional vision encoder.",
+            "block_bbox": [
+                134,
+                173,
+                1055,
+                308
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    173.0
+                ],
+                [
+                    1055.0,
+                    173.0
+                ],
+                [
+                    1055.0,
+                    308.0
+                ],
+                [
+                    134.0,
+                    308.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table 4 | Edit distances for different categories of documents in OmniDocBench. The results show that some types of documents can achieve good performance with just 64 or 100 vision tokens, while others require Gundam mode.",
+            "block_bbox": [
+                136,
+                325,
+                1054,
+                406
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    325.0
+                ],
+                [
+                    1054.0,
+                    325.0
+                ],
+                [
+                    1054.0,
+                    406.0
+                ],
+                [
+                    136.0,
+                    406.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Mode</td><td>Type</td><td>Book Slides</td><td>Financial Report</td><td>Textbook</td><td>Exam Paper</td><td>Magazine</td><td>Academic Papers</td><td>Notes</td><td>Newspaper</td><td>Overall</td></tr><tr><td>Tiny</td><td>0.147</td><td>0.116</td><td>0.207</td><td>0.173</td><td>0.294</td><td>0.201</td><td>0.395</td><td>0.297</td><td>0.94</td><td>0.32</td></tr><tr><td>Small</td><td>0.085</td><td>0.111</td><td>0.079</td><td>0.147</td><td>0.171</td><td>0.107</td><td>0.131</td><td>0.187</td><td>0.744</td><td>0.205</td></tr><tr><td>Base</td><td>0.037</td><td>0.08</td><td>0.027</td><td>0.1</td><td>0.13</td><td>0.073</td><td>0.052</td><td>0.176</td><td>0.645</td><td>0.156</td></tr><tr><td>Large</td><td>0.038</td><td>0.108</td><td>0.022</td><td>0.084</td><td>0.109</td><td>0.06</td><td>0.053</td><td>0.155</td><td>0.353</td><td>0.117</td></tr><tr><td>Gundam</td><td>0.035</td><td>0.085</td><td>0.289</td><td>0.095</td><td>0.094</td><td>0.059</td><td>0.039</td><td>0.153</td><td>0.122</td><td>0.083</td></tr><tr><td>Guandam-M</td><td>0.052</td><td>0.09</td><td>0.034</td><td>0.091</td><td>0.079</td><td>0.079</td><td>0.048</td><td>0.1</td><td>0.099</td><td>0.077</td></tr></table>",
+            "block_bbox": [
+                150,
+                424,
+                1039,
+                639
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    150.0,
+                    424.0
+                ],
+                [
+                    1039.0,
+                    424.0
+                ],
+                [
+                    1039.0,
+                    639.0
+                ],
+                [
+                    150.0,
+                    639.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "4.2. OCR Practical Performance",
+            "block_bbox": [
+                136,
+                698,
+                461,
+                725
+            ],
+            "block_id": 3,
+            "block_order": 2,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    698.0
+                ],
+                [
+                    461.0,
+                    698.0
+                ],
+                [
+                    461.0,
+                    725.0
+                ],
+                [
+                    136.0,
+                    725.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "DeepSeek-OCR is not only an experimental model; it has strong practical capabilities and can construct data for LLM/VLM pretraining. To quantify OCR performance, we test DeepSeek-OCR on OmniDocBench [27], with results shown in Table 3. Requiring only 100 vision tokens (640×640 resolution), DeepSeek-OCR surpasses GOT-OCR2.0 [38] which uses 256 tokens; with 400 tokens (285 valid tokens, 1280×1280 resolution), it achieves on-par performance with state-of-the-arts on this benchmark. Using fewer than 800 tokens (Gundam mode), DeepSeek-OCR outperforms MinerU2.0 [34] which needs nearly 7,000 vision tokens. These results demonstrate that our DeepSeek-OCR model is powerful in practical applications, and because the higher tokens compression, it enjoys a higher research ceiling.",
+            "block_bbox": [
+                135,
+                743,
+                1056,
+                989
+            ],
+            "block_id": 4,
+            "block_order": 3,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    743.0
+                ],
+                [
+                    1056.0,
+                    743.0
+                ],
+                [
+                    1056.0,
+                    989.0
+                ],
+                [
+                    135.0,
+                    989.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "As shown in Table 4, some categories of documents require very few tokens to achieve satisfactory performance, such as slides which only need 64 vision tokens. For book and report documents, DeepSeek-OCR can achieve good performance with only 100 vision tokens. Combined with the analysis from Section 4.1, this may be because most text tokens in these document categories are within 1,000, meaning the vision-token compression ratio does not exceed 10×. For newspapers, Gundam or even Gundam-master mode is required to achieve acceptable edit distances, because the text tokens in newspapers are 4-5,000, far exceeding the 10× compression of other modes. These experimental results further demonstrate the boundaries of contexts optical compression, which may provide effective references for researches on the vision token optimization in VLMs and context compression, forgetting mechanisms in LLMs.",
+            "block_bbox": [
+                135,
+                1001,
+                1055,
+                1274
+            ],
+            "block_id": 5,
+            "block_order": 4,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    1001.0
+                ],
+                [
+                    1055.0,
+                    1001.0
+                ],
+                [
+                    1055.0,
+                    1274.0
+                ],
+                [
+                    135.0,
+                    1274.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "4.3. Qualitative Study",
+            "block_bbox": [
+                137,
+                1311,
+                367,
+                1338
+            ],
+            "block_id": 6,
+            "block_order": 5,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1311.0
+                ],
+                [
+                    367.0,
+                    1311.0
+                ],
+                [
+                    367.0,
+                    1338.0
+                ],
+                [
+                    137.0,
+                    1338.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "4.3.1. Deep parsing",
+            "block_bbox": [
+                137,
+                1356,
+                334,
+                1384
+            ],
+            "block_id": 7,
+            "block_order": 6,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1356.0
+                ],
+                [
+                    334.0,
+                    1356.0
+                ],
+                [
+                    334.0,
+                    1384.0
+                ],
+                [
+                    137.0,
+                    1384.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "DeepSeek-OCR possesses both layout and OCR 2.0 capabilities, enabling it to further parse images within documents through secondary model calls, a feature we refer to as \"deep parsing\". As shown in Figures 7,8,9,10, our model can perform deep parsing on charts, geometry, chemical formulas, and even natural images, requiring only a unified prompt.",
+            "block_bbox": [
+                136,
+                1400,
+                1055,
+                1510
+            ],
+            "block_id": 8,
+            "block_order": 7,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    1400.0
+                ],
+                [
+                    1055.0,
+                    1400.0
+                ],
+                [
+                    1055.0,
+                    1510.0
+                ],
+                [
+                    136.0,
+                    1510.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "12",
+            "block_bbox": [
+                582,
+                1556,
+                609,
+                1577
+            ],
+            "block_id": 9,
+            "block_order": null,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    582.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1576.0
+                ],
+                [
+                    582.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9513068795204163,
+                "coordinate": [
+                    134,
+                    173,
+                    1055,
+                    308
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        134.0,
+                        173.0
+                    ],
+                    [
+                        1055.0,
+                        173.0
+                    ],
+                    [
+                        1055.0,
+                        308.0
+                    ],
+                    [
+                        134.0,
+                        308.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9233642220497131,
+                "coordinate": [
+                    136,
+                    325,
+                    1054,
+                    406
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        136.0,
+                        325.0
+                    ],
+                    [
+                        1054.0,
+                        325.0
+                    ],
+                    [
+                        1054.0,
+                        406.0
+                    ],
+                    [
+                        136.0,
+                        406.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9598298072814941,
+                "coordinate": [
+                    150,
+                    424,
+                    1039,
+                    639
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        150.0,
+                        424.0
+                    ],
+                    [
+                        1039.0,
+                        424.0
+                    ],
+                    [
+                        1039.0,
+                        639.0
+                    ],
+                    [
+                        150.0,
+                        639.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8542709946632385,
+                "coordinate": [
+                    136,
+                    698,
+                    461,
+                    725
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        136.0,
+                        698.0
+                    ],
+                    [
+                        461.0,
+                        698.0
+                    ],
+                    [
+                        461.0,
+                        725.0
+                    ],
+                    [
+                        136.0,
+                        725.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9607807993888855,
+                "coordinate": [
+                    135,
+                    743,
+                    1056,
+                    989
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        135.0,
+                        743.0
+                    ],
+                    [
+                        1056.0,
+                        743.0
+                    ],
+                    [
+                        1056.0,
+                        989.0
+                    ],
+                    [
+                        135.0,
+                        989.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9661398530006409,
+                "coordinate": [
+                    135,
+                    1001,
+                    1055,
+                    1274
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        135.0,
+                        1001.0
+                    ],
+                    [
+                        1055.0,
+                        1001.0
+                    ],
+                    [
+                        1055.0,
+                        1274.0
+                    ],
+                    [
+                        135.0,
+                        1274.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8466089367866516,
+                "coordinate": [
+                    137,
+                    1311,
+                    367,
+                    1338
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1311.0
+                    ],
+                    [
+                        367.0,
+                        1311.0
+                    ],
+                    [
+                        367.0,
+                        1338.0
+                    ],
+                    [
+                        137.0,
+                        1338.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8441030979156494,
+                "coordinate": [
+                    137,
+                    1356,
+                    334,
+                    1384
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1356.0
+                    ],
+                    [
+                        334.0,
+                        1356.0
+                    ],
+                    [
+                        334.0,
+                        1384.0
+                    ],
+                    [
+                        137.0,
+                        1384.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.946445107460022,
+                "coordinate": [
+                    136,
+                    1400,
+                    1055,
+                    1510
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        136.0,
+                        1400.0
+                    ],
+                    [
+                        1055.0,
+                        1400.0
+                    ],
+                    [
+                        1055.0,
+                        1510.0
+                    ],
+                    [
+                        136.0,
+                        1510.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.750970721244812,
+                "coordinate": [
+                    582,
+                    1556,
+                    609,
+                    1577
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        582.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1576.0
+                    ],
+                    [
+                        582.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

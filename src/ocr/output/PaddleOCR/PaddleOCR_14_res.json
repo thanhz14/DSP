@@ -1,0 +1,530 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 14,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "text",
+            "block_content": "converting PDF pages into images), layout analysis, and VLM inference. Each stage runs in its own dedicated thread, and intermediate results are exchanged between adjacent stages via queue-based buffers. This pipelined architecture enables concurrent execution across stages, thereby increasing parallelism and improving overall throughput. For the VLM inference stage in particular, mini-batches are formed dynamically: a batch is launched either when the queue size reaches a preset capacity or when the oldest queued item has waited longer than a specified time limit. This batching strategy makes it possible to group content blocks from multiple pages into a single inference call, which substantially increases parallel efficiency, especially when processing large collections of documents. In addition, we deploy PaddleOCR-VL-1.5-0.9B on high-performance inference and serving frameworks, i.e., FastDeploy [37], vLLM [38], and SGLang [39]. Key runtime parameters, including max-num-batched-tokens and gpu-memory-utilization, are carefully tuned to strike a balance between maximizing inference throughput and controlling GPU memory usage.",
+            "block_bbox": [
+                134,
+                172,
+                1058,
+                528
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    172.0
+                ],
+                [
+                    1058.0,
+                    172.0
+                ],
+                [
+                    1058.0,
+                    528.0
+                ],
+                [
+                    134.0,
+                    528.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Table 6 summarizes the end-to-end inference efficiency of different OCR methods under various deployment backends on the OmniDocBench v1.5 dataset. PaddleOCR-VL-1.5 achieves the best overall performance across all metrics. With the FastDeploy backend, it reaches 1.4335 pages/s and 2016.6 tokens/s on a single NVIDIA A100 GPU, surpassing its predecessor PaddleOCR-VL by 16.9% and 18.6%, respectively. These results verify that PaddleOCR-VL-1.5 provides state-of-the-art inference speed and throughput, making it well-suited for large-scale, real-world document understanding applications.",
+            "block_bbox": [
+                136,
+                539,
+                1057,
+                730
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    539.0
+                ],
+                [
+                    1057.0,
+                    539.0
+                ],
+                [
+                    1057.0,
+                    730.0
+                ],
+                [
+                    136.0,
+                    730.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Methods</td><td>Backend</td><td>Total Time (s) $ \\downarrow $</td><td>Pages/s $ \\uparrow $</td><td>Tokens/s $ \\uparrow $</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>vLLM (v0.10.2)</td><td>2152.7</td><td>0.6292</td><td>949.8</td></tr><tr><td>dots.ocr [35]</td><td>vLLM (v0.14.0)</td><td>3236.2</td><td>0.2791</td><td>374.3</td></tr><tr><td>MinerU2.5 (mineru=2.5.2) [2]</td><td>vLLM (v0.10.2)</td><td>1356.5</td><td>0.9984</td><td>1415.1</td></tr><tr><td>DeepSeek-OCR [10]</td><td>vLLM (v0.8.5)</td><td>2130.5</td><td>0.6358</td><td>897.4</td></tr><tr><td>PaddleOCR-VL</td><td>vLLM (v0.10.2)</td><td>1325.5</td><td>1.0216</td><td>1419.9</td></tr><tr><td>PaddleOCR-VL</td><td>FastDeploy (v2.3)</td><td>1104.5</td><td>1.2261</td><td>1700.5</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>vLLM (v0.10.2)</td><td>1184.3</td><td>1.1433</td><td>1605.6</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>SGLang (v0.5.2)</td><td>1342.0</td><td>1.0091</td><td>1418.9</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>FastDeploy (v2.3)</td><td>944.4</td><td>1.4335</td><td>2016.6</td></tr></table>",
+            "block_bbox": [
+                235,
+                751,
+                952,
+                967
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    235.0,
+                    751.0
+                ],
+                [
+                    952.0,
+                    751.0
+                ],
+                [
+                    952.0,
+                    967.0
+                ],
+                [
+                    235.0,
+                    967.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table 6 | End-to-End Inference Performance Comparison on OmniDocBench v1.5. PDF documents were processed in batches of 512 on a single NVIDIA A100 GPU. The reported end-to-end runtime includes both PDF rendering and Markdown generation. All methods rely",
+            "block_bbox": [
+                137,
+                988,
+                1054,
+                1072
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    988.0
+                ],
+                [
+                    1054.0,
+                    988.0
+                ],
+                [
+                    1054.0,
+                    1072.0
+                ],
+                [
+                    137.0,
+                    1072.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "on their built-in PDF parsing modules and default DPI settings to reflect out-of-the-box performance. Tokenization and special processing details follow the protocol introduced in [9].",
+            "block_bbox": [
+                137,
+                1070,
+                1053,
+                1125
+            ],
+            "block_id": 4,
+            "block_order": 3,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    137,
+                    1070
+                ],
+                [
+                    137,
+                    1124
+                ],
+                [
+                    1052,
+                    1124
+                ],
+                [
+                    1047,
+                    1086
+                ],
+                [
+                    1023,
+                    1070
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "5. Conclusion",
+            "block_bbox": [
+                137,
+                1174,
+                312,
+                1202
+            ],
+            "block_id": 5,
+            "block_order": 4,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1174.0
+                ],
+                [
+                    312.0,
+                    1174.0
+                ],
+                [
+                    312.0,
+                    1202.0
+                ],
+                [
+                    137.0,
+                    1202.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "This work introduces PaddleOCR-VL-1.5, achieving a record SOTA accuracy of 94.5% on OmniDocBench v1.5 and demonstrating superior general precision in document parsing. A key advancement of this version is its exceptional robustness in unconstrained real-world environments. The model effectively overcomes critical hurdles such as aggressive skewing, non-rigid page warping, and erratic lighting—scenarios where traditional solutions often fail. Furthermore, it expands its functional versatility with the integration of Seal Recognition and Text Spotting. By delivering a high-fidelity data foundation, PaddleOCR-VL-1.5 will significantly enhance the reliability and performance of downstream RAG systems and Large Language Model applications in complex, real-world deployment.",
+            "block_bbox": [
+                134,
+                1227,
+                1058,
+                1474
+            ],
+            "block_id": 6,
+            "block_order": 5,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    1227.0
+                ],
+                [
+                    1058.0,
+                    1227.0
+                ],
+                [
+                    1058.0,
+                    1474.0
+                ],
+                [
+                    134.0,
+                    1474.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "15",
+            "block_bbox": [
+                582,
+                1556,
+                609,
+                1578
+            ],
+            "block_id": 7,
+            "block_order": null,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    582.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1577.0
+                ],
+                [
+                    582.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.964192271232605,
+                "coordinate": [
+                    134,
+                    172,
+                    1058,
+                    528
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        134.0,
+                        172.0
+                    ],
+                    [
+                        1058.0,
+                        172.0
+                    ],
+                    [
+                        1058.0,
+                        528.0
+                    ],
+                    [
+                        134.0,
+                        528.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9336009621620178,
+                "coordinate": [
+                    136,
+                    539,
+                    1057,
+                    730
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        136.0,
+                        539.0
+                    ],
+                    [
+                        1057.0,
+                        539.0
+                    ],
+                    [
+                        1057.0,
+                        730.0
+                    ],
+                    [
+                        136.0,
+                        730.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9542748928070068,
+                "coordinate": [
+                    235,
+                    751,
+                    952,
+                    967
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        235.0,
+                        751.0
+                    ],
+                    [
+                        952.0,
+                        751.0
+                    ],
+                    [
+                        952.0,
+                        967.0
+                    ],
+                    [
+                        235.0,
+                        967.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8120196461677551,
+                "coordinate": [
+                    137,
+                    988,
+                    1054,
+                    1072
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        137.0,
+                        988.0
+                    ],
+                    [
+                        1054.0,
+                        988.0
+                    ],
+                    [
+                        1054.0,
+                        1072.0
+                    ],
+                    [
+                        137.0,
+                        1072.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.5533086061477661,
+                "coordinate": [
+                    137,
+                    1070,
+                    1053,
+                    1125
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        137,
+                        1070
+                    ],
+                    [
+                        137,
+                        1124
+                    ],
+                    [
+                        1052,
+                        1124
+                    ],
+                    [
+                        1047,
+                        1086
+                    ],
+                    [
+                        1023,
+                        1070
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8330768942832947,
+                "coordinate": [
+                    137,
+                    1174,
+                    312,
+                    1202
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1174.0
+                    ],
+                    [
+                        312.0,
+                        1174.0
+                    ],
+                    [
+                        312.0,
+                        1202.0
+                    ],
+                    [
+                        137.0,
+                        1202.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9623045325279236,
+                "coordinate": [
+                    134,
+                    1227,
+                    1058,
+                    1474
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        134.0,
+                        1227.0
+                    ],
+                    [
+                        1058.0,
+                        1227.0
+                    ],
+                    [
+                        1058.0,
+                        1474.0
+                    ],
+                    [
+                        134.0,
+                        1474.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7509770393371582,
+                "coordinate": [
+                    582,
+                    1556,
+                    609,
+                    1578
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        582.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1577.0
+                    ],
+                    [
+                        582.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

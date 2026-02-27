@@ -1,0 +1,569 @@
+<html><head><meta charset='UTF-8'><title>Gemma Translated PaddleOCR</title><script>window.MathJax = {tex: {inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true}};</script><script id='MathJax-script' async src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script>
+    <style>
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background: #e0e0e0; }
+        .paper-page { background: white; padding: 60px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-bottom: 30px; position: relative; min-height: 1100px; }
+        .page-number { position: absolute; top: 20px; right: 20px; font-size: 12px; color: #ccc; }
+        .doc_title { font-size: 26px; font-weight: bold; text-align: center; margin-bottom: 25px; }
+        .paragraph_title { font-size: 18px; font-weight: bold; margin-top: 20px; border-bottom: 1px solid #eee; }
+        .figure_title, .table_caption { font-size: 13px; font-weight: bold; margin: 10px 0; font-style: italic; color: #444; }
+        .abstract { font-style: italic; margin: 20px 40px; text-align: justify; border-left: 4px solid #ddd; padding: 10px; background: #fdfdfd; }
+        .text { text-align: justify; margin-bottom: 10px; text-indent: 1.5em; }
+        .reference_content, .footnote { font-size: 12px; margin-bottom: 5px; padding-left: 25px; text-indent: -25px; }
+        img { max-width: 100%; height: auto; }
+    </style>
+    </head><body><div class="paper-page" id="page-0">
+<div class="page-number">Trang 1</div>
+<h1 class="doc_title">PaddleOCR-VL-1.5: Towards a Multi-Task 0.9B VLM for Robust In-the-Wild Document Parsing</h1>
+<p class="text">Cheng Cui, Ting Sun, Suyin Liang, Tingquan Gao, Zelun Zhang, Jiaxuan Liu, Xueqing Wang, Changda Zhou, Hongen Liu, Manhui Lin, Yue Zhang, Yubo Zhang, Yi Liu, Dianhai Yu, Yanjun Ma</p>
+<p class="text">PaddlePaddle Team, Baidu Inc.
+paddleocr@baidu.com</p>
+<p class="text">Trang web chính thức: https://www.paddleocr.com
+Mã nguồn: https://github.com/PaddlePaddle/PaddleOCR
+Mô hình: https://huggingface.co/PaddlePaddle</p>
+<h2 class="paragraph_title">Abstract</h2>
+<div class="abstract">Chúng tôi giới thiệu PaddleOCR-VL-1.5, một mô hình được nâng cấp, đạt độ chính xác mới đạt mức hàng đầu (SOTA) là 94,5% trên OmniDocBench v1.5. Để đánh giá nghiêm ngặt khả năng chống lại các biến dạng thực tế—bao gồm quét, độ nghiêng, biến dạng, chụp ảnh màn hình và ánh sáng—chúng tôi đề xuất bộ đánh giá Real5-OmniDocBench. Kết quả thử nghiệm cho thấy mô hình được cải tiến này đạt hiệu suất hàng đầu trên bộ đánh giá mới được xây dựng. Hơn nữa, chúng tôi mở rộng khả năng của mô hình bằng cách tích hợp các nhiệm vụ nhận dạng dấu và phát hiện văn bản, đồng thời vẫn duy trì cấu trúc mô hình VLM siêu nhỏ (0,9 tỷ tham số) với hiệu quả cao.</div>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_156_876_1047_939.jpg" alt="chart"></div>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_126_955_1049_1154.jpg" alt="chart"></div>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_138_1156_1049_1287.jpg" alt="chart"></div>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_139_1307_1063_1420.jpg" alt="chart"></div>
+<p class="figure_title" style="text-align: center;">Hình 1 | Hiệu suất của PaddleOCR-VL-1.5 trên OmniDocBench v1.5 và Real5-OmniDocBench.</p>
+</div>
+<div class="paper-page" id="page-1">
+<div class="page-number">Trang 2</div>
+<h2 class="paragraph_title">Contents</h2>
+<p class="content">1 Introduction 3
+2 PaddleOCR-VL-1.5 4
+2.1 Architecture 4
+2.2 Training Recipe 6
+3 Dataset 9
+3.1 Layout Analysis 9
+3.2 PaddleOCR-VL-1.5-0.9B 9
+4 Evaluation 11
+4.1 Document Parsing 11
+4.2 New Capabilities 14
+4.3 Inference Performance 14
+5 Conclusion 15
+A Comparison of PaddleOCR-VL-1.5 and 1.0 Models 19
+B Details of the Real5-OmniDocBench Benchmark 20
+C Supported Languages 23
+D Inference Performance on Different Hardware Configurations 24
+E Real-world Samples 25
+E.1 Real-word Document Parsing 26
+E.2 Layout Analysis 31
+E.3 Text Recognition 36
+E.4 Table Recognition 39
+E.5 Formula Recognition 42
+E.6 Seal Recognition 43
+E.7 Text Spotting 46</p>
+</div>
+<div class="paper-page" id="page-2">
+<div class="page-number">Trang 3</div>
+<h2 class="paragraph_title">1. Introduction</h2>
+<p class="text">Là kho lưu trữ chính của kiến thức con người, số lượng và độ phức tạp của tài liệu đang tăng lên nhanh chóng, điều này đã làm cho việc phân tích tài liệu trở thành một công nghệ then chốt trong thời đại trí tuệ nhân tạo. Mục tiêu cuối cùng của việc phân tích tài liệu [1, 2, 3, 4] không chỉ đơn thuần là nhận dạng văn bản; mục tiêu là tái tạo cấu trúc và ý nghĩa sâu sắc của một tài liệu. Bằng cách phân biệt chính xác các khối văn bản, giải mã các công thức và bảng phức tạp, và suy luận trình tự đọc hợp lý, phân tích nâng cao tạo nền tảng cho các Mô hình Ngôn ngữ Lớn (LLMs) [5, 6, 7]. Quan trọng hơn, khả năng này cho phép các hệ thống Tạo sinh được hỗ trợ bởi truy xuất thông tin (RAG) [8] tiếp thu kiến thức chất lượng cao, từ đó nâng cao độ tin cậy của chúng trong các ứng dụng sau.</p>
+<p class="text">Ngành này đã chứng kiến sự bùng nổ của các giải pháp sáng tạo kể từ tháng 10 năm 2025, với nhiều giải pháp phân tích tài liệu đáng chú ý xuất hiện, nhằm mở rộng khả năng phân tích tài liệu. Đặc biệt, PaddleOCR-VL [9] đã thiết lập một tiêu chuẩn hiệu suất cao, vượt qua các chỉ số hiện tại với chỉ 0,9 tỷ tham số và chứng minh khả năng tổng quát hóa mạnh mẽ trong nhiều tình huống. Đồng thời, DeepSeek-OCR [10] tận dụng phương pháp lập bản đồ quang học 2D để đạt được tỷ lệ nén hình ảnh-văn bản cao, cung cấp khả năng phân tích toàn diện mạnh mẽ. MonkeyOCR v1.5 [11] tiếp tục cải thiện khung phân tích ba giai đoạn, trong khi HunyuanOCR [12] mở rộng khả năng nhận dạng văn bản bằng cách sử dụng một kiến trúc thống nhất hỗ trợ dịch và trích xuất.</p>
+<p class="text">Mặc dù đã có những tiến bộ, vẫn còn một khoảng trống quan trọng: hầu hết các mô hình hiện tại chủ yếu được tối ưu hóa cho các tài liệu "sinh ra từ kỹ thuật số" hoặc được quét một cách sạch sẽ. Các tình huống thực tế liên quan đến các biến dạng vật lý nghiêm trọng – chẳng hạn như độ nghiêng mạnh, biến dạng không đều của trang, các mẫu moiré từ chụp ảnh màn hình và ánh sáng không ổn định – vẫn là những trở ngại lớn mà ngay cả các giải pháp tiên tiến nhất cũng chưa thể vượt qua hoàn toàn.</p>
+<p class="text">Để giải quyết vấn đề này, chúng tôi giới thiệu PaddleOCR-VL-1.5, một giải pháp phân tích tài liệu hiệu suất cao, tiết kiệm tài nguyên, giúp cải thiện đáng kể độ chính xác tổng thể và khả năng ứng dụng thực tế. Dựa trên kiến trúc 0.9B siêu nhỏ đã được chứng minh, PaddleOCR-VL-1.5 giới thiệu một số cải tiến quan trọng:</p>
+<p class="text">• Trước hết, chúng tôi nâng cấp trình điều khiển bố cục lên PP-DocLayoutV3. Khác với các phương pháp phân tích bố cục trước đây (ví dụ: Dolphin [3], MinerU2.5 [2], hoặc thậm chí PP-DocLayoutV2 [13]), PP-DocLayoutV3 được thiết kế đặc biệt để xử lý hình ảnh tài liệu không phẳng. Nó có thể dự đoán trực tiếp các hộp giới hạn đa điểm cho các yếu tố bố cục – trái ngược với các hộp hai điểm tiêu chuẩn – và xác định thứ tự đọc hợp lý cho các bề mặt bị méo hoặc cong trong một lần xử lý duy nhất, từ đó giảm đáng kể các lỗi lan truyền.</p>
+<p class="text">- Thứ hai, chúng tôi mở rộng các khả năng cốt lõi của mô hình. Trong khi vẫn duy trì trình mã hóa độ phân giải động theo phong cách NaViT hiệu quả và kiến trúc ngôn ngữ ERNIE-4.5-0.3B [5], chúng tôi đã tích hợp các nhiệm vụ mới, bao gồm nhận dạng dấu hiệu và nhận dạng văn bản. Các tối ưu hóa hệ thống trong việc nhận dạng văn bản, bảng biểu và công thức đã giúp mô hình đạt được một cột mốc hiệu suất mới.</p>
+<p class="text">- Thứ ba, chúng tôi xây dựng Real5-OmniDocBench để đánh giá khả năng hoạt động trong thực tế. Nhận thấy sự thiếu các bộ dữ liệu đánh giá cho các dạng biến dạng vật lý, chúng tôi đã xây dựng bộ dữ liệu này dựa trên OmniDocBench v1.5 [14]. Bộ dữ liệu này bao gồm năm tình huống khác nhau: quét, biến dạng, chụp ảnh màn hình, ánh sáng và độ nghiêng. Với việc duy trì sự tương ứng chặt chẽ giữa dữ liệu thực tế và nhãn gốc, Real5-OmniDocBench đóng vai trò là một bộ đánh giá nghiêm ngặt để đánh giá khả năng phục hồi của mô hình trong các ứng dụng thực tế.</p>
+<p class="text">Đánh giá toàn diện đã xác nhận rằng PaddleOCR-VL-1.5 đã thiết lập một tiêu chuẩn mới.</p>
+</div>
+<div class="paper-page" id="page-3">
+<div class="page-number">Trang 4</div>
+<p class="text">tiêu chuẩn tiên tiến (SOTA). Trên bộ kiểm tra OmniDocBench v1.5, mô hình của chúng tôi đạt được độ chính xác vượt trội là 94,5%, duy trì vị trí là giải pháp hàng đầu chính thức. Quan trọng hơn, trên bộ kiểm tra Real5-OmniDocBench mới, mô hình đạt được kỷ lục mới với độ chính xác tổng thể là 92,05%. Mặc dù có kích thước nhỏ 0,9B, mô hình này vượt trội hơn đáng kể so với các mô hình VLMs lớn, chẳng hạn như Qwen3-VL-235B [6] và Gemini-3 Pro [15], cho thấy hiệu quả sử dụng tham số đặc biệt. Hơn nữa, mô hình của chúng tôi mở rộng khả năng của mình đến việc nhận dạng văn bản và nhận dạng dấu, đạt được hiệu suất hàng đầu trên nhiều bộ kiểm tra khác nhau và đầy thách thức. Những kết quả này chứng minh rõ ràng tính mạnh mẽ và khả năng tổng quát hóa vượt trội của mô hình trong các tình huống thực tế phức tạp. Phụ lục A chi tiết các nâng cấp và thay đổi cụ thể trong PaddleOCR-VL-1.5 so với phiên bản trước.</p>
+<h2 class="paragraph_title">2. PaddleOCR-VL-1.5</h2>
+<h2 class="paragraph_title">2.1. Architecture</h2>
+<p class="text">PaddleOCR-VL-1.5 giới thiệu một khung hoạt động được cải tiến, có khả năng xử lý cả việc trích xuất thông tin từ tài liệu và phát hiện văn bản, như được minh họa trong Hình 2.</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_159_685_1032_1204.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình 2 | Tổng quan về PaddleOCR-VL-1.5.</p>
+<p class="text">Đối với nhiệm vụ phân tích tài liệu, PaddleOCR-VL-1.5 sử dụng một khung làm việc hai giai đoạn mạnh mẽ. Trong giai đoạn đầu tiên, PP-DocLayoutV3 thực hiện phân tích bố cục phức tạp. Ngoài việc phát hiện theo trục tiêu chuẩn, nó được tối ưu hóa đặc biệt cho sự phức tạp trong thực tế bằng cách sử dụng định vị đa điểm (ví dụ: hình tứ giác hoặc đa giác). Điều này cho phép xác định chính xác ranh giới của các vùng ngữ nghĩa, ngay cả khi có góc nhìn hoặc độ cong vật lý nghiêm trọng, đồng thời thiết lập thứ tự đọc hợp lý. Trong giai đoạn thứ hai, mô hình PaddleOCR-VL-1.5-0.9B sử dụng các vùng đã được điều chỉnh hoặc định vị về mặt hình học này làm đầu vào để thực hiện</p>
+</div>
+<div class="paper-page" id="page-4">
+<div class="page-number">Trang 5</div>
+<p class="text">Nhận dạng chính xác cao trên nhiều loại dữ liệu khác nhau, bao gồm văn bản, bảng phức tạp, công thức toán học, biểu đồ và dấu hiệu. Để hoàn thiện quy trình, một công cụ xử lý hậu kỳ nhẹ nhàng điều phối các kết quả này thành các định dạng có cấu trúc như Markdown và JSON, đồng thời cung cấp các tính năng nâng cao như hợp nhất bảng giữa các trang và tinh chỉnh cấu trúc tiêu đề.</p>
+<p class="text">Đối với nhiệm vụ nhận dạng, khung này đơn giản hóa quy trình bằng cách sử dụng trực tiếp mô hình PaddleOCR-VL-1.5-0.9B để thực hiện nhận dạng và nhận diện văn bản từ đầu đến cuối. Phương pháp này cho phép nhận dạng và nhận diện văn bản toàn diện trên nhiều lĩnh vực khác nhau, từ các tài liệu tiêu chuẩn, thẻ nhận dạng, đến các văn bản cổ, cũng như các tình huống không giới hạn như áp phích quảng cáo, ảnh chụp màn hình hội thoại, biển báo, và văn bản bằng nhiều ngôn ngữ.</p>
+<h2 class="paragraph_title">2.1.1. PP-DocLayoutV3: Unified Layout Analysis</h2>
+<p class="text">Để giải quyết những thách thức liên quan đến các biến dạng hình ảnh phức tạp – bao gồm độ lệch, méo và ánh sáng – và để vượt qua độ trễ cao vốn có trong các Mô hình Thị giác – Ngôn ngữ tự hồi quy (VLMs), chúng tôi giới thiệu PP-DocLayoutV3. Phiên bản này đại diện cho một bước tiến đáng kể trong kiến trúc so với phiên bản trước, bằng cách chuyển từ phát hiện hình dạng chuẩn sang một khung phân đoạn đối tượng mạnh mẽ, đồng thời tích hợp dự đoán thứ tự đọc vào một kiến trúc Transformer toàn diện.</p>
+<p class="text">Dựa trên bộ phát hiện đối tượng RT-DETR hiệu quả cao [16], PP-DocLayoutV3 sử dụng bộ phát hiện dựa trên mặt nạ. Điều này cho phép mô hình dự đoán các mặt nạ chính xác, chi tiết pixel cho các yếu tố bố cục, thay vì chỉ các hộp giới hạn đơn giản. Khả năng này rất quan trọng để cô lập các thành phần của tài liệu trong các tình huống không lý tưởng, chẳng hạn như các trang bị méo hoặc bị biến dạng, nơi các hộp giới hạn theo trục truyền thống thường chồng chéo hoặc ghi lại quá nhiều nhiễu nền.</p>
+<p class="text">Khác với mạng lưới con trỏ không liên kết được sử dụng trong PP-DocLayoutV2 [9], PP-DocLayoutV3 tích hợp trực tiếp dự đoán thứ tự đọc vào các lớp giải mã của Transformer. Bằng cách hợp nhất phát hiện, phân đoạn và sắp xếp thành một mô hình tập trung vào thị giác, PP-DocLayoutV3 loại bỏ nhu cầu xử lý bổ sung và tách các bước trích xuất đặc trưng.</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_150_974_1038_1225.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình 3 | Kiến trúc thống nhất của PP-DocLayoutV3, bao gồm các bộ phận xử lý song song cho phân loại đối tượng và dự đoán thứ tự đọc mối quan hệ.</p>
+<p class="text">Điểm sáng kiến kiến trúc cốt lõi của PP-DocLayoutV3 là tích hợp trực tiếp dự đoán thứ tự đọc vào bộ giải mã Transformer. Cụ thể, mô hình của chúng tôi mở rộng khung RT-DETR để đồng thời tối ưu hóa vị trí hình học và thứ tự logic. Dựa trên phương pháp dựa trên truy vấn, bộ giải mã lặp đi lặp lại tinh chỉnh N truy vấn đối tượng $ Q = \{q_i\}_{i=1}^N \in \mathbb{R}^{N \times d} $. Sau đó, thứ tự đọc được suy ra từ các biểu diễn truy vấn đã được tinh chỉnh của lớp giải mã cuối cùng thông qua Cơ chế Con trỏ Toàn cầu.</p>
+</div>
+<div class="paper-page" id="page-5">
+<div class="page-number">Trang 6</div>
+<p class="text">Chúng tôi đưa các truy vấn đã được tinh chỉnh vào một không gian quan hệ chung để tính toán điểm ưu tiên giữa các cặp $ S_{i,j} $:</p>
+<div class="display_formula" style="text-align: center;">$$$$ S_{i,j}=\frac{f(q_{i},q_{j})-f(q_{j},q_{i})}{\sqrt{d_{h}}},\quad\mathrm{w h e r e}f(q_{i},q_{j})=(W_{q}q_{i})^{\top}(W_{k}q_{j}) $$$$</div>
+<span class="formula_number">(1)</span>
+<p class="text">trong đó $ W_q, W_k \in \mathbb{R}^{d \times d_h} $ là các ma trận chiếu có thể học được và $ d_h $ biểu thị chiều ẩn. Ma trận quan hệ kết quả $ S \in \mathbb{R}^{N \times N} $ được giới hạn để là ma trận phản đối xứng, tức là $ S_{i,j} = -S_{j,i} $, trong đó $ S_{i,j} > 0 $ có nghĩa là phần tử $ i $ đứng trước phần tử $ j $.</p>
+<p class="text">Trong quá trình suy luận, để tạo ra một chuỗi nhất quán trên toàn bộ từ các mối quan hệ đôi, chúng tôi sử dụng chiến lược xếp hạng dựa trên bỏ phiếu. Đầu tiên, chúng tôi áp dụng hàm sigmoid $ \sigma(\cdot) $ cho ma trận mối quan hệ S và ẩn các phần tử trên đường chéo. Số phiếu bầu ưu tiên tuyệt đối $ V_j $ cho mỗi phần tử j được tính bằng cách tổng hợp xác suất của các phần tử khác đứng trước nó:</p>
+<div class="display_formula" style="text-align: center;">$$$$ V_{j}=\sum_{i=1,i\neq j}^{N}\sigma(S_{i,j}). $$$$</div>
+<span class="formula_number">(2)</span>
+<p class="text">Thứ tự đọc cuối cùng được xác định bằng cách sắp xếp các phần tử theo thứ tự tăng dần của tổng số phiếu bầu $V_{j}$. Phương pháp tối ưu hóa này đảm bảo rằng trình tự logic rất nhạy cảm với các đặc điểm của đối tượng, dẫn đến hiệu suất vượt trội trên các bố cục tài liệu phức tạp, nhiều cột và không tiêu chuẩn.</p>
+<p class="text">Bằng cách tích hợp các bước phát hiện, phân đoạn và sắp xếp vào một mô hình tập trung vào thị giác, PP-DocLayoutV3 loại bỏ nhu cầu xử lý hậu kỳ dư thừa và tách biệt quá trình trích xuất đặc trưng. Mô hình này tạo ra cấu trúc tài liệu hoàn chỉnh chỉ trong một lần xử lý, đồng thời cung cấp nhãn phân loại, tọa độ hộp giới hạn, phân đoạn chính xác theo pixel và trình tự đọc hợp lý.</p>
+<h2 class="paragraph_title">2.1.2. PaddleOCR-VL-1.5-0.9B: Element-level Recognition and Text Spotting</h2>
+<p class="text">PaddleOCR-VL-1.5-0.9B kế thừa kiến trúc nhẹ của PaddleOCR-VL-0.9B [9], tích hợp bộ mã hóa hình ảnh độ phân giải gốc [17], bộ kết nối MLP thích ứng, và mô hình ngôn ngữ ERNIE-4.5-0.3B nhẹ [5]. Trong bản cập nhật này, khả năng của mô hình đã được mở rộng để bao gồm nhận dạng dấu hiệu và nhận dạng văn bản. Do đó, mô hình hiện hỗ trợ một bộ sáu nhiệm vụ cốt lõi: nhận dạng văn bản, nhận dạng công thức, nhận dạng bảng, nhận dạng biểu đồ, nhận dạng dấu hiệu, và nhận dạng văn bản.</p>
+<p class="text">So sánh với phiên bản trước, PaddleOCR-VL-1.5-0.9B thể hiện những cải tiến đáng kể về độ chính xác trong việc nhận dạng bảng biểu phức tạp và các công thức toán học. Ngoài ra, mô hình này còn tích hợp các tối ưu hóa chi tiết hơn cho các ký tự hiếm, văn bản Trung Quốc cổ, bảng biểu đa ngôn ngữ và các yếu tố trang trí văn bản như gạch dưới và dấu nhấn.</p>
+<h2 class="paragraph_title">2.2. Training Recipe</h2>
+<p class="text">Các phần sau sẽ giới thiệu chi tiết về đào tạo cho hai mô-đun này: PP-DocLayoutV3 cho phân tích bố cục và PaddleOCR-VL-1.5-0.9B cho nhận dạng thành phần và phát hiện chữ.</p>
+</div>
+<div class="paper-page" id="page-6">
+<div class="page-number">Trang 7</div>
+<h2 class="paragraph_title">2.2.1. Layout Analysis</h2>
+<p class="text">Việc huấn luyện PP-DocLayoutV3 phát triển từ quy trình hai giai đoạn tách biệt được sử dụng trong PP-DocLayoutV2 [9], và chuyển sang một chiến lược tối ưu hóa toàn diện, phức tạp hơn. Phương pháp này cho phép các mô-đun phát hiện, phân đoạn đối tượng và thứ tự đọc chia sẻ một biểu diễn đặc trưng thống nhất, từ đó cải thiện sự phù hợp giữa vị trí không gian và trình tự logic.</p>
+<p class="text">Mô hình được khởi tạo với các trọng số đã được huấn luyện trước từ PP-DocLayout_plus-L [13]. Chúng tôi đã mở rộng bộ dữ liệu huấn luyện của mình lên hơn 38.000 mẫu tài liệu chất lượng cao. Mỗi mẫu đều trải qua quá trình đánh giá thủ công nghiêm ngặt để cung cấp thông tin chính xác, bao gồm tọa độ, nhãn phân loại và thứ tự đọc tuyệt đối cho từng thành phần bố cục.</p>
+<p class="text">Để đạt được tính bền vững về môi trường, chúng tôi đã thiết kế một quy trình tăng cường dữ liệu đặc biệt, tập trung vào việc mô phỏng các biến dạng phức tạp thường gặp trong ảnh chụp bằng điện thoại thông minh. Quy trình này khác với các phương pháp tăng cường thông thường, vì nó đặc biệt mô phỏng các biến dạng vật lý phức tạp trong thực tế.</p>
+<p class="text">Chúng tôi sử dụng trình tối ưu AdamW với hệ số suy giảm trọng số là 0.0001. Tốc độ học được đặt ở mức không đổi là $2 \times 10^{-4}$ để đảm bảo sự hội tụ ổn định của các phần đầu Global Pointer và Mask. Mô hình được huấn luyện trong 150 epochs với kích thước lô tổng là 32.</p>
+<p class="text">Ngược lại với phiên bản trước, tất cả các thành phần – bao gồm cả kiến trúc RT-DETR và bộ chuyển đổi thứ tự đọc tích hợp – đều được huấn luyện đồng thời. Phương pháp này đảm bảo rằng các truy vấn được học trong bộ giải mã Transformer có thể nắm bắt cả ranh giới hình học và mối quan hệ hình học của các thành phần trong tài liệu.</p>
+<h2 class="paragraph_title">2.2.2. Element-level Recognition and Text Spotting</h2>
+<p class="text">Dựa trên kiến trúc được mô tả trong phần 2.1.2, PaddleOCR-VL-1.5-0.9B giới thiệu một phương pháp huấn luyện tiến tiến sử dụng PaddleFormers [18], đây là bộ công cụ huấn luyện hiệu suất cao dành cho các mô hình ngôn ngữ lớn (LLMs) và các mô hình thị giác (VLMs) được xây dựng trên khung PaddlePaddle [19]. Mặc dù chúng tôi vẫn giữ lại chiến lược điều chỉnh và cài đặt khởi tạo hiệu quả từ phiên bản trước, phương pháp huấn luyện đã được nâng cấp đáng kể để tăng cường quy mô dữ liệu, sự đa dạng của nhiệm vụ và độ mạnh mẽ của mô hình. Tổng quan về ba giai đoạn được trình bày trong Bảng 1.</p>
+<div class="table-container"><table><tr><td>Settings</td><td>Pre-training</td><td>Post-training</td></tr><tr><td>Training Samples</td><td>46M</td><td>5.6M</td></tr><tr><td>Max Resolution</td><td>1280  $ \times $ 28  $ \times $ 28</td><td>1280  $ \times $ 28  $ \times $ 28</td></tr><tr><td>Sequence length</td><td>16384</td><td>16384</td></tr><tr><td>Trainable components</td><td>All</td><td>All</td></tr><tr><td>Batch sizes</td><td>128</td><td>128</td></tr><tr><td>Data Augmentation</td><td>Yes</td><td>Yes</td></tr><tr><td>Maximum LR</td><td>5  $ \times $ 10 $ ^{-5} $</td><td>8  $ \times $ 10 $ ^{-6} $</td></tr><tr><td>Epoch</td><td>1</td><td>1</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng 1 | Cài đặt huấn luyện cho PaddleOCR-VL-1.5-0.9B.</p>
+<p class="text">Giai đoạn tiền huấn luyện: Cải thiện sự phù hợp giữa hình ảnh và ngôn ngữ. Mặc dù mục tiêu cơ bản vẫn là liên kết các đặc điểm hình ảnh với ngữ nghĩa của văn bản, giai đoạn này trải qua một sự nâng cấp đáng kể về dữ liệu so với PaddleOCR-VL-0.9B [9], mở rộng bộ dữ liệu tiền huấn luyện từ 29 triệu cặp hình ảnh-văn bản lên 46 triệu. Sự mở rộng này thể hiện một bước tiến vượt bậc về phân phối dữ liệu, chứ không chỉ là sự tăng lên về số lượng. Cụ thể, để cải thiện khả năng tổng quát của phần cốt lõi hình ảnh và hỗ trợ các khả năng mới, chúng tôi tích hợp một loạt các tài liệu đa ngôn ngữ và các tình huống thực tế phức tạp. Hơn nữa, chúng tôi chủ động đưa vào</p>
+</div>
+<div class="paper-page" id="page-7">
+<div class="page-number">Trang 8</div>
+<p class="text">Dữ liệu huấn luyện quy mô lớn liên quan đến nhận dạng con hải cẩu và phát hiện chữ trong giai đoạn điều chỉnh này. Cụ thể, độ phân giải tối đa cho nhiệm vụ phát hiện được tăng lên thành 2048 x 28 x 28 pixel, cho phép mô hình đạt được khả năng định vị và nhận dạng chữ chính xác hơn. Bằng cách giới thiệu các thông tin trước (priors) cụ thể cho từng nhiệm vụ ngay từ đầu trong quy trình huấn luyện, mô hình tạo ra một nền tảng vững chắc, có khả năng nắm bắt các mẫu hình thị giác phức tạp và hỗ trợ hiệu quả các nhiệm vụ định vị và nhận dạng chi tiết trong các giai đoạn tiếp theo.</p>
+<p class="text">Sau khi đào tạo: Tinh chỉnh hướng dẫn với các khả năng mới. Trong giai đoạn này, chúng tôi kế thừa bốn nhiệm vụ hướng dẫn cơ bản từ PaddleOCR-VL-0.9B—Nhận dạng văn bản, bảng biểu, công thức và biểu đồ—đảm bảo khả năng tương thích ngược và hiệu suất cao trên các yếu tố tiêu chuẩn trong tài liệu. Điểm sáng của PaddleOCR-VL-1.5-0.9B nằm ở việc bổ sung thêm hai nhiệm vụ chuyên biệt:</p>
+<p class="text">1. Nhận dạng dấu: Chúng tôi giới thiệu hướng dẫn cụ thể về cách xử lý các dấu và tem chính thức, giải quyết các vấn đề như văn bản cong, hình ảnh mờ và nhiễu nền.</p>
+<p class="text">2. Nhận diện văn bản (OCR dựa trên ngữ cảnh): Khác với OCR thông thường, chỉ đơn thuần xuất ra nội dung văn bản, nhiệm vụ nhận diện văn bản yêu cầu mô hình dự đoán văn bản và vị trí chính xác của nó theo thứ tự đọc tự nhiên. Để đáp ứng với bố cục phức tạp thường gặp trong thực tế (ví dụ: văn bản xoay, cảnh thường hoặc biểu mẫu dày đặc), chúng tôi sử dụng biểu diễn hình tứ giác 4 điểm thay vì hộp giới hạn truyền thống 2 điểm. Biểu diễn 4 điểm định nghĩa một vùng văn bản bằng bốn đỉnh: Góc trên bên trái (TL), Góc trên bên phải (TR), Góc dưới bên phải (BR) và Góc dưới bên trái (BL). Phương pháp này mang lại sự linh hoạt vượt trội trong việc xác định các hình dạng văn bản nghiêng và không đều, mà một hình chữ nhật theo trục thông thường không thể bao bọc chặt chẽ.</p>
+<p class="text">Về mặt kỹ thuật, đối với một đoạn văn cụ thể, chuỗi mục tiêu được xây dựng bằng cách thêm tám từ chỉ vị trí vào các từ của đoạn văn.</p>
+<div class="display_formula" style="text-align: center;">$$$$ Y=Text\oplus<LOC\_{x}_{TL}><LOC\_{y}_{TL}>\cdots<LOC\_{y}_{BL}> $$$$</div>
+<span class="formula_number">(3)</span>
+<p class="text">Ở đây, chúng tôi giới thiệu một tập hợp các token { $ <LOC\_0> $,...,  $ <LOC\_1000> $} vào từ vựng của mô hình để biểu diễn tọa độ đã được chuẩn hóa. Thay vì coi tọa độ như một chuỗi số đơn thuần, các token đặc biệt này cho phép mô hình học các biểu diễn cụ thể cho thông tin không gian và ngăn chặn việc phân tách token.</p>
+<p class="text">Ví dụ, một ví dụ được công nhận của từ "DREAM" được biểu diễn như sau:</p>
+<div class="display_formula" style="text-align: center;">$$$$ \begin{array}{l} DREAM<LOC\_{2}53><LOC\_{2}86><LOC\_{3}46><LOC\_{2}98><LOC\_{3}45><LOC\_{3}39><LOC\_{2}52>\\<LOC\_{3}30>\end{array} $$$$</div>
+<p class="text">Cách biểu diễn thống nhất này cho phép mô hình thực hiện nhận dạng và định vị chi tiết trong một lần xử lý duy nhất.</p>
+<p class="text">Để tăng cường khả năng tổng quát và thống nhất các kiểu nhãn khác nhau, chúng tôi giới thiệu một giai đoạn Học tăng cường sử dụng Tối ưu hóa Chính sách Tương đối Nhóm (Group Relative Policy Optimization - GRPO) [20]. Bằng cách thực hiện các lần thử song song và tính toán lợi thế tương đối trong mỗi nhóm, GRPO giúp cập nhật chính sách một cách mạnh mẽ và giảm thiểu sự không nhất quán về kiểu. Quá trình này được hỗ trợ bởi một giao thức sàng lọc dữ liệu động, ưu tiên các mẫu khó với tiềm năng phần thưởng và sự không chắc chắn về entropy cao, đảm bảo mô hình tập trung vào các trường hợp học tập phức tạp và có giá trị.</p>
+</div>
+<div class="paper-page" id="page-8">
+<div class="page-number">Trang 9</div>
+<h2 class="paragraph_title">3. Dataset</h2>
+<h2 class="paragraph_title">3.1. Layout Analysis</h2>
+<p class="text">Để đảm bảo hiệu suất hoạt động mạnh mẽ của mô hình trên nhiều tình huống thực tế với các loại tài liệu khác nhau, chúng tôi đã xây dựng một bộ dữ liệu nội bộ cho phân tích bố cục. Các nguồn dữ liệu bao gồm 38.000 hình ảnh tài liệu thuộc nhiều lĩnh vực khác nhau, bao gồm các bài báo học thuật, sách giáo khoa, phân tích thị trường, báo cáo tài chính, slide, báo, tài liệu giảng dạy bổ sung, đề kiểm tra, và nhiều hóa đơn và biên lai khác. Bộ dữ liệu này bao gồm các chú thích thủ công tỉ mỉ trên 25 danh mục thành phần khác nhau: Tiêu đề đoạn văn, hình ảnh, văn bản, số, tóm tắt, nội dung, tiêu đề hình, công thức hiển thị, bảng, tài liệu tham khảo, tiêu đề tài liệu, ghi chú, tiêu đề, thuật toán, ghi chú cuối, dấu, biểu đồ, số công thức, nội dung phụ, hình ảnh tiêu đề, hình ảnh ghi chú, công thức trực tiếp, văn bản dọc, và ghi chú thị giác. Tất cả các tài liệu đều được chú thích thủ công với ranh giới chi tiết và thứ tự đọc tương ứng, giúp cho việc huấn luyện và đánh giá hiệu quả cho cả việc phát hiện các thành phần bố cục và khôi phục thứ tự đọc. Bộ dữ liệu chất lượng cao này đảm bảo rằng mô hình có thể tái tạo chính xác cả cấu trúc không gian và luồng logic của các tài liệu phức tạp.</p>
+<p class="text">Quy trình quản lý dữ liệu bao gồm các chiến lược khai thác dữ liệu cụ thể, nhằm mở rộng sự đa dạng của bộ dữ liệu và xác định các trường hợp đặc biệt để cải thiện độ mạnh mẽ của mô hình. Quy trình này bắt đầu bằng việc lấy mẫu dựa trên phân cụm, áp dụng cho một bộ dữ liệu nội bộ rộng lớn, sử dụng các đặc điểm hình ảnh để đảm bảo sự phân bố đại diện và giảm thiểu sự trùng lặp. Sau đó, quy trình khai thác các trường hợp đặc biệt được thực hiện bằng PP-DocLayoutV2 [9] để suy luận với hai ngưỡng. Các mẫu có sự khác biệt đáng kể về mật độ phát hiện giữa hai ngưỡng độ tin cậy cao và thấp được phân loại là các trường hợp không ổn định. Phương pháp này giúp khám phá một cách có hệ thống các cấu trúc bố cục không thông thường—bao gồm truyện tranh, bản vẽ CAD và ảnh chụp màn hình có tỷ lệ khung hình cao—những cấu trúc này khác biệt so với các định dạng tài liệu tiêu chuẩn. Các trường hợp này được tinh chỉnh thêm thông qua quy trình có sự tham gia của con người. Việc tích hợp các kịch bản đa dạng này vào bộ dữ liệu mở rộng khả năng biểu diễn các đặc điểm của mô hình và nâng cao khả năng thích ứng của nó trong các lĩnh vực tài liệu phức tạp trong thực tế.</p>
+<h2 class="paragraph_title">3.2. PaddleOCR-VL-1.5-0.9B</h2>
+<p class="text">Chiến lược xây dựng dữ liệu cho PaddleOCR-VL-1.5-0.9B dựa trên hai mục tiêu chính: tăng cường khả năng của mô hình trên các mẫu dữ liệu khó và mở rộng phạm vi các khả năng được hỗ trợ. Do đó, quy trình chuẩn bị dữ liệu của chúng tôi được chia thành hai phần riêng biệt: (1) Tìm kiếm các mẫu dữ liệu khó (Phần 3.2.1), tập trung vào việc xác định và đánh trọng các mẫu có độ không chắc chắn cao để tinh chỉnh các ranh giới quyết định của mô hình; và (2) Xây dựng dữ liệu cho các khả năng mới (Phần 3.2.2), bao gồm việc xây dựng các bộ dữ liệu chuyên biệt để khai thác các kỹ năng mới như nhận dạng văn bản, nhận dạng dấu, và hỗ trợ đa ngôn ngữ nâng cao.</p>
+<h2 class="paragraph_title">3.2.1. Data Selection Strategy: Uncertainty-Aware Cluster Sampling</h2>
+<p class="text">Để tối đa hóa hiệu quả của giai đoạn tinh chỉnh hướng dẫn (Giai đoạn 2), chúng tôi đề xuất một chiến lược quản lý dữ liệu được thiết kế để cân bằng giữa sự đa dạng về hình ảnh và độ khó của mẫu. Thay vì lấy mẫu ngẫu nhiên đồng đều, chúng tôi sử dụng cơ chế "Lấy mẫu theo mức độ không chắc chắn" (UACS). Phương pháp này đảm bảo rằng dữ liệu huấn luyện bao gồm nhiều kịch bản hình ảnh khác nhau, đồng thời phân bổ thêm ngân sách huấn luyện cho các trường hợp "khó", nơi mà mô hình thể hiện mức độ không chắc chắn cao.</p>
+<p class="text">1. Phân nhóm các đặc điểm hình ảnh. Đầu tiên, để đảm bảo sự đa dạng trong bố cục hình ảnh trên sáu nhiệm vụ (OCR, bảng biểu, công thức, biểu đồ, dấu hiệu và nhận dạng), chúng tôi sử dụng bộ mã hóa hình ảnh CLIP [21] để</p>
+</div>
+<div class="paper-page" id="page-9">
+<div class="page-number">Trang 10</div>
+<p class="text">trích xuất các biểu diễn ngữ nghĩa đa chiều cho tất cả các hình ảnh tiềm năng. Đối với mỗi nhiệm vụ, chúng tôi áp dụng thuật toán K-Means để phân chia tập dữ liệu D thành K cụm hình ảnh riêng biệt $\{C_1, C_2, \ldots, C_K\}$. Bước này nhóm các mẫu có cấu trúc hình ảnh tương tự (ví dụ: bảng có đường kẻ liên tục so với bảng không dây) lại với nhau.</p>
+<p class="text">2. Ước tính mức độ không chắc chắn. Đối với mỗi cụm $ C_i $, chúng tôi ước tính độ khó của nó bằng cách đo mức độ không chắc chắn trong dự đoán của mô hình. Cụ thể, chúng tôi lấy một tập hợp ngẫu nhiên các hình ảnh từ $ C_i $ và thực hiện nhiều lần suy luận bằng cách sử dụng mô hình đã được huấn luyện trước từ giai đoạn 1 với giải mã ngẫu nhiên. Chúng tôi tính toán một điểm số không chắc chắn $ S_i $ dựa trên sự khác biệt giữa các kết quả được tạo ra. Điểm số $ S_i $ cao hơn cho thấy rằng mô hình không nhất quán hoặc thiếu tự tin đối với các mẫu trong cụm này.</p>
+<p class="text">3. Kế hoạch lấy mẫu có trọng số. Dựa trên điểm số không chắc chắn, chúng tôi xây dựng một kế hoạch lấy mẫu để xác định số lượng mẫu $ N_i $ cần lấy từ mỗi cụm $ C_i $. Dựa trên nguyên tắc khai thác các ví dụ khó, chúng tôi áp dụng một phương pháp trọng số đa thức để tăng cường sự tập trung vào các cụm khó hơn. Cụ thể, số lượng mẫu được phân bổ cho cụm $ C_i $ được xác định bởi:</p>
+<div class="display_formula" style="text-align: center;">$$$$ N_{i}=\min\left(\left\lfloor\frac{(S_{i}+\alpha)^{\beta}}{\sum_{j=1}^{K}(S_{j}+\alpha)^{\beta}}\times N_{total}\right\rfloor,\left|C_{i}\right|\right) $$$$</div>
+<span class="formula_number">(4)</span>
+<p class="text">trong đó $S_i$ là điểm số độ không chắc chắn trung bình của cụm $C_i$, và $|C_i|$ biểu thị tổng số mẫu có sẵn trong cụm đó. Các tham số $\alpha$ và $\beta$ lần lượt là các hệ số làm mịn và cường độ (được đặt là $\alpha = 1.0$, $\beta = 2.0$ dựa trên quan sát thực nghiệm). $N_{\text{total}}$ biểu thị tổng ngân sách lấy mẫu. Chiến lược này cho phép chúng tôi động lực tăng cường mẫu cho các tình huống phức tạp (ví dụ: hình dạng bị méo, bảng xếp chồng), đồng thời duy trì một cơ sở tham chiếu đại diện cho các trường hợp đơn giản.</p>
+<p class="text">Như đã được trình bày trong phần trước, chúng tôi sử dụng chiến lược "Lấy mẫu phân nhóm có ý thức về sự không chắc chắn" (Uncertainty-Aware Cluster Sampling - UACS) để chọn các mẫu huấn luyện hiệu quả nhất dựa trên phân nhóm hình ảnh và sự biến động của suy luận.</p>
+<h2 class="paragraph_title">3.2.2. Data Construction for New Capabilities</h2>
+<p class="text">Ngoài việc kiểm soát chất lượng dữ liệu, chúng tôi đã mở rộng khả năng của VLM bằng cách tích hợp dữ liệu từ nhiều nhiệm vụ, ngôn ngữ và loại tài liệu khác nhau. Sự mở rộng này tập trung vào các khía cạnh chính sau: Nhận dạng, Văn bản chuyên biệt (dấu), Cải thiện nhận dạng văn bản bằng công nghệ OCR, và Bảng tính, công thức và biểu đồ phức tạp.</p>
+<p class="text">Thu thập dữ liệu: Chúng tôi đã thu thập một bộ dữ liệu lớn và đa dạng, bao gồm nhiều loại hình ảnh khác nhau, bao gồm báo cáo nghiên cứu tài chính, tài liệu dạng bảng, tài liệu viết tay, văn bản cổ điển và các hình ảnh tài liệu và cảnh tự nhiên phức tạp khác. Trong quá trình đánh dấu, chúng tôi đã sử dụng PP-OCRv5 [22] để tạo ra kết quả nhận dạng ban đầu, sau đó áp dụng chiến lược lọc chéo dựa trên IoU để loại bỏ các mẫu chất lượng kém và không nhất quán. Đối với một số mẫu có nhãn mơ hồ hoặc không chính xác, chúng tôi đã sử dụng thêm các mô hình đa phương thức, bao gồm PaddleOCR-VL [9] và Qwen3-VL [6], để tinh chỉnh nhãn, từ đó cải thiện đáng kể chất lượng và độ tin cậy tổng thể của bộ dữ liệu.</p>
+<p class="text">Dấu: Chúng tôi đã kết hợp hình ảnh tổng hợp và hình ảnh thực tế của hợp đồng, hóa đơn và dấu kỷ niệm để xây dựng một bộ dữ liệu chất lượng cao. Nhãn được tạo ra bằng Qwen3-VL [6] và được tinh chỉnh thông qua quy trình gắn nhãn lại dựa trên tinh chỉnh. Các trường hợp khó khăn đã được sửa thủ công để đảm bảo độ chính xác và độ tin cậy của việc gắn nhãn cuối cùng.</p>
+<p class="text">OCR: Chúng tôi đã cải thiện đáng kể khả năng của mô hình bằng cách tinh chỉnh bộ dữ liệu.</p>
+</div>
+<div class="paper-page" id="page-10">
+<div class="page-number">Trang 11</div>
+<p class="text">tính chính xác và mở rộng phạm vi chức năng. Điều này bao gồm việc sửa đổi một cách có hệ thống các biểu diễn công thức và logic phân dòng, đồng thời mở rộng hỗ trợ cho các ký hiệu đặc biệt dành cho giáo dục, chẳng hạn như dấu nhấn và gạch dưới, để nắm bắt ý nghĩa hướng dẫn. Hơn nữa, việc tích hợp chữ Bengali và chữ tiếng Trung (Tibet) mở rộng tính linh hoạt ngôn ngữ của mô hình, đảm bảo hiệu suất mạnh mẽ trên nhiều hệ thống viết và bối cảnh giáo dục khác nhau.</p>
+<p class="text">Công thức: Bộ dữ liệu "Formula" bao gồm các mẫu mô phỏng từ CV, chẳng hạn như ánh sáng Gaussian và hiện tượng moiré hài, để tái tạo các điều kiện vật lý như quét, biến dạng, chụp ảnh màn hình và biến dạng hình học. Các mẫu này bao gồm một loạt các biến số môi trường, bao gồm cả sự thay đổi ánh sáng và các biến dạng phức tạp của tài liệu thường gặp trong các tình huống thực tế.</p>
+<p class="text">Bảng: Chức năng bảng đã được mở rộng để bao gồm nhiều tình huống khác nhau, bao gồm báo cáo tài chính, các bài nghiên cứu học thuật và các biểu mẫu công nghiệp phức tạp. Tích hợp các cấu trúc đa dạng, chẳng hạn như bảng đăng ký và bảng danh mục. Điểm nhấn chính là khả năng nhận dạng chính xác các công thức ở cấp tế bào và nội dung đa ngôn ngữ trong các môi trường bảng phức tạp. Những cải tiến này đảm bảo chuyển đổi chính xác sang các định dạng có cấu trúc, ngay cả khi xử lý các cấu trúc tế bào phức tạp và các ghi chú chuyên nghiệp.</p>
+<h2 class="paragraph_title">4. Evaluation</h2>
+<p class="text">Để đánh giá đầy đủ hiệu quả của PaddleOCR-VL-1.5, chúng tôi đã tiến hành đánh giá trên bộ kiểm thử phân tích tài liệu OmniDocBench v1.5 và bộ dữ liệu thực tế được tạo ra từ đó, Real5OmniDocBench. Hơn nữa, chúng tôi đã mở rộng phạm vi đánh giá bằng cách thêm các nhiệm vụ phát hiện văn bản và nhận dạng dấu, nhằm cung cấp một phân tích toàn diện hơn về hiệu suất của mô hình trong các tình huống thực tế và phức tạp.</p>
+<h2 class="paragraph_title">4.1. Document Parsing</h2>
+<p class="text">Phần này trình bày đánh giá khả năng phân tích tài liệu toàn diện, sử dụng hai bộ tiêu chí sau, nhằm đo lường hiệu suất tổng thể trong các tình huống thực tế liên quan đến tài liệu.</p>
+<p class="text">OmniDocBench v1.5 Để đánh giá toàn diện khả năng phân tích tài liệu, chúng tôi đã tiến hành các thử nghiệm rộng rãi trên bộ kiểm thử OmniDocBench v1.5 [2]. Đây là một phiên bản mở rộng của phiên bản v1.0, bổ sung thêm 374 tài liệu mới, tổng cộng là 1.355 trang tài liệu. Bộ kiểm thử này có sự phân bố dữ liệu cân bằng hơn cả tiếng Trung và tiếng Anh, cũng như bao gồm nhiều công thức và các yếu tố khác. So với phiên bản v1.0, phương pháp đánh giá đã được cập nhật. Mặc dù vẫn sử dụng khoảng cách chỉnh sửa để đánh giá văn bản và thứ tự đọc, và sử dụng độ tương đồng dựa trên khoảng cách Tree-Edit-Distance (TEDS) để đánh giá bảng, các công thức hiện được đánh giá bằng phương pháp So khớp Detections Chữ (CDM) [23]. Chỉ số này cung cấp một đánh giá khách quan và mạnh mẽ hơn về tính chính xác của các công thức dự đoán. Chỉ số tổng thể là sự kết hợp có trọng số của các chỉ số cho văn bản, công thức và bảng.</p>
+<p class="text">Bảng 2 cho thấy PaddleOCR-VL-1.5 đạt được hiệu suất hàng đầu (SOTA), liên tục vượt trội so với các công cụ xử lý hình ảnh hiện có, các mô hình VLM chung và các mô hình phân tích tài liệu chuyên dụng trên tất cả các chỉ số quan trọng. Đặc biệt, PaddleOCR-VL-1.5 thể hiện sự cải thiện đáng kể so với phiên bản trước, PaddleOCR-VL, nâng tổng điểm từ 92,86% lên mức hàng đầu là 94,50%. Cụ thể, nó đạt được sự tăng lên là 2,99%, 1,87% và 0,1% trong các chỉ số CDM Score, Table-TEDS và Thứ tự đọc, tương ứng. Hơn nữa, mô hình của chúng tôi đạt được kết quả hàng đầu mới trong tất cả các nhiệm vụ con, bao gồm khoảng cách Text-Edit giảm 0,035 và cải thiện chỉ số Formula-CDM.</p>
+</div>
+<div class="paper-page" id="page-11">
+<div class="page-number">Trang 12</div>
+<div class="table-container"><table><tr><td>Model Type</td><td>Methods</td><td>Parameters</td><td>Overall $ \uparrow $</td><td>TextEdit $ \downarrow $</td><td>FormulaCDM $ \uparrow $</td><td>TableTEDS $ \uparrow $</td><td>TableTEDS-3 $ \uparrow $</td><td>Reading OrderEdit $ \downarrow $</td></tr><tr><td rowspan="3">Pipeline Tools</td><td>Marker-1.8.2 [24]</td><td>-</td><td>71.30</td><td>0.206</td><td>76.66</td><td>57.88</td><td>71.17</td><td>0.250</td></tr><tr><td>Mineru2-pipeline [25]</td><td>-</td><td>75.51</td><td>0.209</td><td>76.55</td><td>70.90</td><td>79.11</td><td>0.225</td></tr><tr><td>PP-StructureV3 [22]</td><td>-</td><td>86.73</td><td>0.073</td><td>85.79</td><td>81.68</td><td>89.48</td><td>0.073</td></tr><tr><td rowspan="8">General VLMs</td><td>GPT-4o [7]</td><td>-</td><td>75.02</td><td>0.217</td><td>79.70</td><td>67.07</td><td>76.09</td><td>0.148</td></tr><tr><td>InternVL3-76B [26]</td><td>76B</td><td>80.33</td><td>0.131</td><td>83.42</td><td>70.64</td><td>77.74</td><td>0.113</td></tr><tr><td>InternVL3.5-241B [27]</td><td>241B</td><td>82.67</td><td>0.142</td><td>87.23</td><td>75.00</td><td>81.28</td><td>0.125</td></tr><tr><td>GPT-5.2 [28]</td><td>-</td><td>85.50</td><td>0.123</td><td>86.11</td><td>82.66</td><td>87.35</td><td>0.099</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>87.02</td><td>0.094</td><td>88.27</td><td>82.15</td><td>86.22</td><td>0.102</td></tr><tr><td>Gemini-2.5 Pro [30]</td><td>-</td><td>88.03</td><td>0.075</td><td>85.82</td><td>85.71</td><td>90.29</td><td>0.097</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [6]</td><td>235B</td><td>89.15</td><td>0.069</td><td>88.14</td><td>86.21</td><td>90.55</td><td>0.068</td></tr><tr><td>Gemini-3 Pro [15]</td><td>-</td><td>90.33</td><td>0.065</td><td>89.18</td><td>88.28</td><td>90.29</td><td>0.071</td></tr><tr><td rowspan="16">Specialized VLMs</td><td>Dolphin [3]</td><td>0.3B</td><td>74.67</td><td>0.125</td><td>67.85</td><td>68.70</td><td>77.77</td><td>0.124</td></tr><tr><td>OCRFlux-3B [31]</td><td>3B</td><td>74.82</td><td>0.193</td><td>68.03</td><td>75.75</td><td>80.23</td><td>0.202</td></tr><tr><td>Mistral OCR [32]</td><td>-</td><td>78.83</td><td>0.164</td><td>82.84</td><td>70.03</td><td>78.04</td><td>0.144</td></tr><tr><td>POINTS-Reader [4]</td><td>3B</td><td>80.98</td><td>0.134</td><td>79.20</td><td>77.13</td><td>81.66</td><td>0.145</td></tr><tr><td>olmOCR-7B [33]</td><td>7B</td><td>81.79</td><td>0.096</td><td>86.04</td><td>68.92</td><td>74.77</td><td>0.121</td></tr><tr><td>Dolphin-1.5 [3]</td><td>0.3B</td><td>83.21</td><td>0.092</td><td>80.78</td><td>78.06</td><td>84.10</td><td>0.080</td></tr><tr><td>MinerU2-VLM [25]</td><td>0.9B</td><td>85.56</td><td>0.078</td><td>80.95</td><td>83.54</td><td>87.66</td><td>0.086</td></tr><tr><td>Nanonets-OCR-s [34]</td><td>3B</td><td>85.59</td><td>0.093</td><td>85.90</td><td>80.14</td><td>85.57</td><td>0.108</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>1.9B</td><td>86.96</td><td>0.084</td><td>85.02</td><td>84.24</td><td>89.02</td><td>0.130</td></tr><tr><td>Deepseek-OCR [10]</td><td>3B</td><td>87.01</td><td>0.073</td><td>83.37</td><td>84.97</td><td>88.80</td><td>0.086</td></tr><tr><td>MonkeyOCR-3B [1]</td><td>3.7B</td><td>87.13</td><td>0.075</td><td>87.45</td><td>81.39</td><td>85.92</td><td>0.129</td></tr><tr><td>dots.ocr [35]</td><td>3B</td><td>88.41</td><td>0.048</td><td>83.22</td><td>86.78</td><td>90.62</td><td>0.053</td></tr><tr><td>MonkeyOCR-pro-3B [1]</td><td>3.7B</td><td>88.85</td><td>0.075</td><td>87.25</td><td>86.78</td><td>90.63</td><td>0.128</td></tr><tr><td>MinerU2.5 [2]</td><td>1.2B</td><td>90.67</td><td>0.047</td><td>88.46</td><td>88.22</td><td>92.38</td><td>0.044</td></tr><tr><td>PaddleOCR-VL [9]</td><td>0.9B</td><td>92.86</td><td>0.035</td><td>91.22</td><td>90.89</td><td>94.76</td><td>0.043</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>94.50</td><td>0.035</td><td>94.21</td><td>92.76</td><td>95.79</td><td>0.042</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng 2 | Đánh giá toàn diện về OmniDocBench v1.5. Các chỉ số hiệu suất được trích từ bảng xếp hạng chính thức [14], ngoại trừ Gemini-3 Pro, GPT-5.2.</p>
+<p class="figure_title" style="text-align: center;">Qwen3-VL-235B-A22B-Instruct và mô hình của chúng tôi, được đánh giá độc lập.</p>
+<p class="text">Điểm đạt được là 94,21%, và đạt điểm cao nhất lần lượt là 92,76% và 95,79% trong bảng Table-TEDS và bảng Table-TEDS-S, tương ứng. Những cải tiến này, đặc biệt là trong việc duy trì điểm đánh giá thứ tự đọc cao là 0,042, cho thấy khả năng nhận dạng văn bản, trích xuất công thức và phân tích cấu trúc bảng phức tạp của mô hình đã được nâng cao đáng kể.</p>
+<p class="text">Real5-OmniDocBench: Real5-OmniDocBench là một bộ tiêu chuẩn mới, tập trung vào các tình huống thực tế, được chúng tôi xây dựng dựa trên bộ dữ liệu OmniDocBench v1.5. Bộ dữ liệu này bao gồm năm tình huống khác nhau: quét, chỉnh sửa hình ảnh, chụp ảnh màn hình, chiếu sáng và độ lệch. Ngoài danh mục "Quét", tất cả các hình ảnh đều được thu thập thủ công thông qua thiết bị di động cầm tay để mô phỏng sát các điều kiện thực tế. Mỗi tập dữ liệu đều tương ứng trực tiếp với bộ dữ liệu gốc OmniDocBench, tuân thủ nghiêm ngặt các chú thích và quy trình đánh giá của nó. Nhờ tính chất thực nghiệm và tính chân thực, bộ dữ liệu này đóng vai trò là một bộ tiêu chuẩn nghiêm ngặt để đánh giá khả năng chống chịu của các mô hình phân tích tài liệu trong các ứng dụng thực tế. Hình 4 minh họa hình ảnh đại diện từ bộ dữ liệu được đề xuất.</p>
+<p class="text">Như được minh họa trong Bảng 3, PaddleOCR-VL-1.5 thể hiện sự vượt trội nhất quán trong tất cả các tình huống đánh giá, thiết lập kỷ lục mới với độ chính xác tổng thể là 92,05%. Mặc dù có kích thước tham số chỉ 0,9B, mô hình này vượt trội hơn đáng kể so với các mô hình VLM (Vision-Language Model) lớn, chẳng hạn như Qwen3-VL-235B và Gemini-3 Pro, cho thấy hiệu quả sử dụng tham số đặc biệt cho các tác vụ tập trung vào tài liệu. Đặc biệt, trong danh mục "Skewing" đầy thách thức, PaddleOCR-VL-1.5 đạt được độ chính xác là 91,66%, thể hiện sự cải thiện tuyệt đối là 14,19% so với</p>
+<p class="footnote">$ ^{1} $https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench</p>
+</div>
+<div class="paper-page" id="page-12">
+<div class="page-number">Trang 13</div>
+<p class="text">người tiền nhiệm. Sự cải tiến đáng kể này cho thấy khả năng chống lại các biến dạng hình học cực đoan vượt trội và xác nhận tính tin cậy của nó trong việc xử lý tài liệu phức tạp trong môi trường không giới hạn. Các so sánh chi tiết giữa các thành phần khác nhau, bao gồm văn bản, công thức, bảng biểu và thứ tự đọc, có thể được tìm thấy trong Phụ lục B.</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_159_314_1040_799.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình 4 | Các mẫu từ Real5-OmniDocBench.</p>
+<div class="table-container"><table><tr><td>Model Type</td><td>Methods</td><td>Parameters</td><td>Overall↑</td><td>Scanning↑</td><td>Warping↑</td><td>Screen Photography↑</td><td>Illumination↑</td><td>Skew↑</td></tr><tr><td rowspan="2">Pipeline Tools</td><td>Maker-1.8.2 [24]</td><td>-</td><td>60.10</td><td>70.27</td><td>58.98</td><td>63.65</td><td>66.31</td><td>41.27</td></tr><tr><td>PP-StructureV3 [22]</td><td>-</td><td>64.45</td><td>84.68</td><td>59.34</td><td>66.89</td><td>73.38</td><td>37.98</td></tr><tr><td rowspan="5">General VLMs</td><td>GPT-5.2 [28]</td><td>-</td><td>78.66</td><td>84.43</td><td>76.26</td><td>76.75</td><td>80.88</td><td>75.00</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>86.92</td><td>86.19</td><td>87.77</td><td>86.48</td><td>87.25</td><td>86.90</td></tr><tr><td>Gemini-2.5 Pro [30]</td><td>-</td><td>88.21</td><td>89.25</td><td>87.63</td><td>87.11</td><td>87.97</td><td>89.07</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [6]</td><td>235B</td><td>88.904</td><td>89.43</td><td>89.99</td><td>89.27</td><td>89.27</td><td>86.56</td></tr><tr><td>Gemini-3 Pro [15]</td><td>-</td><td>89.24</td><td>89.47</td><td>88.90</td><td>88.86</td><td>89.53</td><td>89.45</td></tr><tr><td rowspan="12">Specialized VLMs</td><td>Dolphin-1.5 [3]</td><td>0.3B</td><td>61.48</td><td>83.39</td><td>50.50</td><td>69.76</td><td>75.61</td><td>28.16</td></tr><tr><td>Dolphin [3]</td><td>0.3B</td><td>61.78</td><td>72.16</td><td>60.35</td><td>64.29</td><td>67.29</td><td>44.83</td></tr><tr><td>Deepseek-OCR [10]</td><td>3B</td><td>73.99</td><td>86.17</td><td>67.20</td><td>75.31</td><td>78.10</td><td>63.01</td></tr><tr><td>MinerU2-VLM [25]</td><td>0.9B</td><td>76.95</td><td>83.60</td><td>73.73</td><td>78.77</td><td>80.51</td><td>68.16</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>1.9B</td><td>77.15</td><td>84.64</td><td>76.59</td><td>80.24</td><td>82.11</td><td>62.18</td></tr><tr><td>MonkeyOCR-3B [1]</td><td>3.7B</td><td>78.29</td><td>84.65</td><td>77.27</td><td>80.71</td><td>83.16</td><td>65.67</td></tr><tr><td>MonkeyOCR-pro-3B [1]</td><td>3.7B</td><td>79.49</td><td>86.94</td><td>78.90</td><td>82.44</td><td>84.71</td><td>64.47</td></tr><tr><td>Nanonets-OCR-s [34]</td><td>3B</td><td>84.19</td><td>85.52</td><td>83.56</td><td>84.86</td><td>85.01</td><td>81.98</td></tr><tr><td>PaddleOCR-VL [9]</td><td>0.9B</td><td>85.54</td><td>92.11</td><td>85.97</td><td>82.54</td><td>89.61</td><td>77.47</td></tr><tr><td>MinerU2.5 [2]</td><td>1.2B</td><td>85.61</td><td>90.06</td><td>83.76</td><td>89.41</td><td>89.57</td><td>75.24</td></tr><tr><td>dots.ocr [35]</td><td>3B</td><td>86.38</td><td>86.87</td><td>86.01</td><td>87.18</td><td>87.57</td><td>84.27</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>92.05</td><td>93.43</td><td>91.25</td><td>91.76</td><td>92.16</td><td>91.66</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng 3 | Đánh giá toàn diện về xử lý văn bản trên Real5-OmniDocBench. Phụ lục B cung cấp các chỉ số chi tiết hơn về bộ dữ liệu này.</p>
+</div>
+<div class="paper-page" id="page-13">
+<div class="page-number">Trang 14</div>
+<h2 class="paragraph_title">4.2. New Capabilities</h2>
+<h2 class="paragraph_title">4.2.1. Text Spotting</h2>
+<p class="text">Để đánh giá toàn diện khả năng nhận dạng văn bản của mô hình (phát hiện + nhận dạng), chúng tôi thiết lập một bộ tiêu chuẩn OCR toàn diện, bao gồm 10 khía cạnh chính. Ngoài các cài đặt tiêu chuẩn như các cảnh thường (Common) và nhận dạng đa ngôn ngữ (tiếng Nhật), bộ tiêu chuẩn này được thiết kế để phản ánh những thách thức thực tế trong việc triển khai, bằng cách chọn các trường hợp khó hơn, bao gồm hình ảnh bị mờ hoặc chất lượng kém (Blur), chữ viết biến đổi cao trong cả tiếng Trung và tiếng Anh (Handwrite_ch/en), nội dung bảng có cấu trúc và nhạy cảm với bố cục (Table), và các tài liệu lịch sử có ý nghĩa văn hóa như các văn bản cổ và tiếng Trung truyền thống (Ancient). Như đã tóm tắt trong Bảng 4, mô hình của chúng tôi đạt độ chính xác cao nhất trên tất cả 9 khía cạnh, liên tục vượt trội so với các mô hình tham chiếu mạnh mẽ và chứng minh khả năng tổng quát hóa tốt trong các điều kiện và phong cách văn bản khác nhau. Những kết quả này cho thấy rằng phương pháp được đề xuất vẫn đáng tin cậy không chỉ trong các tình huống tài liệu thông thường mà còn trong các tình huống thực tế đầy thách thức, đòi hỏi khả năng xác định chính xác và sao chép chính xác.</p>
+<div class="table-container"><table><tr><td>Dataset</td><td>Overall</td><td>Ancient</td><td>Blur</td><td>Common</td><td>Handwrite  $ \_{c} $</td><td>Handwrite  $ \_{e} $</td><td>Printing  $ \_{c} $</td><td>Printing  $ \_{e} $</td><td>Table</td><td>Japanese</td></tr><tr><td>HunyuanOCR [12]</td><td>0.6290</td><td>0.6164</td><td>0.6392</td><td>0.5222</td><td>0.7984</td><td>0.7665</td><td>0.6213</td><td>0.5956</td><td>0.4419</td><td>0.6593</td></tr><tr><td>Rex-Omni [36]</td><td>0.6682</td><td>0.4251</td><td>0.6936</td><td>0.6112</td><td>0.8147</td><td>0.7812</td><td>0.6961</td><td>0.6088</td><td>0.7185</td><td>0.6642</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.8621</td><td>0.8523</td><td>0.8422</td><td>0.7713</td><td>0.8952</td><td>0.9163</td><td>0.8669</td><td>0.8689</td><td>0.8993</td><td>0.8461</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng 4 | So sánh hiệu suất nhận dạng văn bản trên bộ dữ liệu thử nghiệm nội bộ. "Tổng thể" thể hiện độ chính xác trung bình trên tất cả 9 tiêu chí đánh giá.</p>
+<h2 class="paragraph_title">4.2.2. Seal Recognition</h2>
+<p class="text">Để đánh giá hiệu quả của mô hình trong các nhiệm vụ nhận dạng dấu hiệu phức tạp, chúng tôi đã xây dựng một bộ dữ liệu thử nghiệm chuyên biệt, bao gồm 300 hình ảnh chất lượng cao. Bộ dữ liệu này bao gồm nhiều hình dạng dấu hiệu khác nhau (ví dụ: hình tròn, hình bầu dục và hình chữ nhật) và các tình huống thực tế đầy thách thức, chẳng hạn như văn bản chồng chéo, in ấn có độ tương phản thấp và nền bị méo. Chúng tôi sử dụng khoảng cách chỉnh sửa chuẩn hóa (NED) làm chỉ số đánh giá chính để đánh giá độ chính xác nhận dạng ở mức ký tự.</p>
+<p class="text">Như được minh họa trong Bảng 5, PaddleOCR-VL-1.5 thể hiện ưu thế rõ rệt trong việc nhận dạng dấu. Mặc dù có kích thước nhỏ (0,9 tỷ tham số), nó đạt được độ chính xác NED là 0,138, vượt trội so với mô hình Qwen3-VL với 235 tỷ tham số (0,382). Điều này cho thấy hiệu quả của mô hình trong việc xử lý các yếu tố đặc biệt trong tài liệu.</p>
+<div class="table-container"><table><tr><td>Model</td><td>Parameters</td><td>NED ( $ \downarrow $)</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>0.396</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [6]</td><td>235B</td><td>0.382</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>0.138</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng 5 | So sánh hiệu suất nhận dạng dấu trên bộ dữ liệu thử nghiệm nội bộ.</p>
+<h2 class="paragraph_title">4.3. Inference Performance</h2>
+<p class="text">Để tăng tốc độ xử lý, chúng tôi tối ưu hóa quy trình thực hiện của PaddleOCR-VL-1.5 bằng cách sử dụng thiết kế đa luồng và không đồng bộ, tương tự như chiến lược đã được sử dụng trong PaddleOCR-VL. Toàn bộ quy trình được chia thành ba giai đoạn liên tiếp: chuẩn bị đầu vào (chủ yếu là</p>
+</div>
+<div class="paper-page" id="page-14">
+<div class="page-number">Trang 15</div>
+<p class="text">(chuyển đổi các trang PDF thành hình ảnh), phân tích bố cục và suy luận VLM. Mỗi giai đoạn chạy trên một luồng riêng, và kết quả trung gian được trao đổi giữa các giai đoạn liền kề thông qua bộ đệm dựa trên hàng đợi. Kiến trúc này cho phép thực hiện đồng thời trên các giai đoạn, từ đó tăng cường khả năng song song và cải thiện hiệu suất tổng thể. Đặc biệt, trong giai đoạn suy luận VLM, các mini-batch được tạo ra một cách động: một batch được khởi chạy khi kích thước hàng đợi đạt đến một dung lượng đã định trước hoặc khi mục tiêu cũ nhất trong hàng đợi đã chờ lâu hơn một thời gian giới hạn. Chiến lược này cho phép nhóm các khối nội dung từ nhiều trang thành một lần suy luận duy nhất, từ đó tăng đáng kể hiệu quả song song, đặc biệt khi xử lý các bộ sưu tập tài liệu lớn. Ngoài ra, chúng tôi triển khai PaddleOCR-VL-1.5-0.9B trên các khung inference và phục vụ hiệu suất cao, chẳng hạn như FastDeploy [37], vLLM [38] và SGLang [39]. Các tham số thời gian chạy quan trọng, bao gồm max-num-batched-tokens và gpu-memory-utilization, được điều chỉnh cẩn thận để cân bằng giữa việc tối đa hóa hiệu suất suy luận và kiểm soát việc sử dụng bộ nhớ GPU.</p>
+<p class="text">Bảng 6 tóm tắt hiệu quả nhận dạng toàn diện của các phương pháp OCR khác nhau trên bộ dữ liệu OmniDocBench v1.5, khi sử dụng các nền tảng triển khai khác nhau. PaddleOCR-VL-1.5 đạt hiệu suất tốt nhất trên tất cả các tiêu chí. Với nền tảng FastDeploy, nó đạt được 1,4335 trang/giây và 2016,6 token/giây trên một GPU NVIDIA A100 duy nhất, vượt trội hơn so với phiên bản trước, PaddleOCR-VL, lần lượt là 16,9% và 18,6%. Kết quả này chứng minh rằng PaddleOCR-VL-1.5 cung cấp tốc độ và hiệu suất nhận dạng tiên tiến, phù hợp cho các ứng dụng hiểu tài liệu quy mô lớn trong thực tế.</p>
+<div class="table-container"><table><tr><td>Methods</td><td>Backend</td><td>Total Time (s) $ \downarrow $</td><td>Pages/s $ \uparrow $</td><td>Tokens/s $ \uparrow $</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>vLLM (v0.10.2)</td><td>2152.7</td><td>0.6292</td><td>949.8</td></tr><tr><td>dots.ocr [35]</td><td>vLLM (v0.14.0)</td><td>3236.2</td><td>0.2791</td><td>374.3</td></tr><tr><td>MinerU2.5 (mineru=2.5.2) [2]</td><td>vLLM (v0.10.2)</td><td>1356.5</td><td>0.9984</td><td>1415.1</td></tr><tr><td>DeepSeek-OCR [10]</td><td>vLLM (v0.8.5)</td><td>2130.5</td><td>0.6358</td><td>897.4</td></tr><tr><td>PaddleOCR-VL</td><td>vLLM (v0.10.2)</td><td>1325.5</td><td>1.0216</td><td>1419.9</td></tr><tr><td>PaddleOCR-VL</td><td>FastDeploy (v2.3)</td><td>1104.5</td><td>1.2261</td><td>1700.5</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>vLLM (v0.10.2)</td><td>1184.3</td><td>1.1433</td><td>1605.6</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>SGLang (v0.5.2)</td><td>1342.0</td><td>1.0091</td><td>1418.9</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>FastDeploy (v2.3)</td><td>944.4</td><td>1.4335</td><td>2016.6</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng 6 | So sánh hiệu suất suy luận toàn diện trên OmniDocBench v1.5. Các tài liệu PDF được xử lý theo lô 512 trên một GPU NVIDIA A100 duy nhất. Thời gian thực hiện được báo cáo bao gồm cả việc hiển thị PDF và tạo Markdown. Tất cả các phương pháp đều dựa trên</p>
+<p class="text">sử dụng các mô-đun phân tích PDF tích hợp và cài đặt DPI mặc định để phản ánh hiệu suất ngay khi khởi động. Các chi tiết về phân loại và xử lý đặc biệt tuân theo quy trình được giới thiệu trong [9].</p>
+<h2 class="paragraph_title">5. Conclusion</h2>
+<p class="text">Công trình này giới thiệu PaddleOCR-VL-1.5, đạt độ chính xác hàng đầu (SOTA) là 94,5% trên OmniDocBench v1.5 và chứng minh khả năng phân tích tài liệu tổng thể vượt trội. Một bước tiến quan trọng của phiên bản này là khả năng hoạt động mạnh mẽ trong môi trường thực tế không bị giới hạn. Mô hình này hiệu quả vượt qua những thách thức quan trọng như độ nghiêng mạnh, biến dạng trang không cố định và ánh sáng không ổn định – những tình huống mà các giải pháp truyền thống thường không thành công. Hơn nữa, nó mở rộng tính linh hoạt chức năng bằng cách tích hợp Nhận diện Seal và Xác định Văn bản. Với việc cung cấp một nền tảng dữ liệu có độ chính xác cao, PaddleOCR-VL-1.5 sẽ cải thiện đáng kể độ tin cậy và hiệu suất của các hệ thống RAG và ứng dụng Mô hình Ngôn ngữ lớn trong các tình huống triển khai thực tế phức tạp.</p>
+</div>
+<div class="paper-page" id="page-15">
+<div class="page-number">Trang 16</div>
+<h2 class="paragraph_title">References</h2>
+<p class="reference_content">[1] Zhang Li, Yuliang Liu, Qiang Liu, Zhiyin Ma, Ziyang Zhang, Shuo Zhang, Zidun Guo, Jiarui Zhang, Xinyu Wang, and Xiang Bai. Monkeyocr: Document parsing with a structure-recognition-relation triplet paradigm. arXiv preprint arXiv:2506.05218, 2025.</p>
+<p class="reference_content">[2] Junbo Niu, Zheng Liu, Zhuangcheng Gu, Bin Wang, Linke Ouyang, Zhiyuan Zhao, Tao Chu, Tianyao He, Fan Wu, Qintong Zhang, et al. Mineru2.5: A decoupled vision-language model for efficient high-resolution document parsing. arXiv preprint arXiv:2509.22186, 2025.</p>
+<p class="reference_content">[3] Hao Feng, Shu Wei, Xiang Fei, Wei Shi, Yingdong Han, Lei Liao, Jinghui Lu, Bingham Wu, Qi Liu, Chunhui Lin, et al. Dolphin: Document image parsing via heterogeneous anchor prompting. arXiv preprint arXiv:2505.14059, 2025.</p>
+<p class="reference_content">[4] Yuan Liu, Zhongyin Zhao, Le Tian, Haicheng Wang, Xubing Ye, Yangxiu You, Zilin Yu, Chuhan Wu, Xiao Zhou, Yang Yu, et al. Points-reader: Distillation-free adaptation of vision-language models for document conversion. arXiv preprint arXiv:2509.01215, 2025.</p>
+<p class="reference_content">[5] Baidu-ERNIE-Team. Ernie 4.5 technical report, 2025.</p>
+<p class="reference_content">[6] An Yang, Anfeng Li, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chang Gao, Chengen Huang, Chenxu Lv, et al. Qwen3 technical report. arXiv preprint arXiv:2505.09388, 2025.</p>
+<p class="reference_content">[7] Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Florencia Leoni Aleman, Diogo Almeida, Janko Altenschmidt, Sam Altman, Shyamal Anadkat, et al. Gpt-4 technical report. arXiv preprint arXiv:2303.08774, 2023.</p>
+<p class="reference_content">[8] Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktäschel, et al. Retrieval-augmented generation for knowledge-intensive nlp tasks. Advances in neural information processing systems, 33:9459–9474, 2020.</p>
+<p class="reference_content">[9] Cheng Cui, Ting Sun, Suyin Liang, Tingquan Gao, Zelun Zhang, Jiaxuan Liu, Xueqing Wang, Changda Zhou, Hongen Liu, Manhui Lin, et al. Paddleocr-vl: Boosting multilingual document parsing via a 0.9 b ultra-compact vision-language model. arXiv preprint arXiv:2510.14528, 2025.</p>
+<p class="reference_content">[10] Haoran Wei, Yaofeng Sun, and Yukun Li. Deepseek-ocr: Contexts optical compression. arXiv preprint arXiv:2510.18234, 2025.</p>
+<p class="reference_content">[11] Jiarui Zhang, Yuliang Liu, Zijun Wu, Guosheng Pang, Zhili Ye, Yupei Zhong, Junteng Ma, Tao Wei, Haiyang Xu, Weikai Chen, et al. Monkeyocr v1.5 technical report: Unlocking robust document parsing for complex patterns. arXiv preprint arXiv:2511.10390, 2025.</p>
+<p class="reference_content">[12] Hunyuan Vision Team, Pengyuan Lyu, Xingyu Wan, Gengluo Li, Shangpin Peng, Weinong Wang, Liang Wu, Huawen Shen, Yu Zhou, Canhui Tang, et al. Hunyuanocr technical report. arXiv preprint arXiv:2511.19575, 2025.</p>
+<p class="reference_content">[13] Ting Sun, Cheng Cui, Yuning Du, and Yi Liu. Pp-doclayout: A unified document layout detection model to accelerate large-scale data construction. arXiv preprint arXiv:2503.17213, 2025.</p>
+</div>
+<div class="paper-page" id="page-16">
+<div class="page-number">Trang 17</div>
+<p class="reference_content">[14] Linke Ouyang, Yuan Qu, Hongbin Zhou, Jiawei Zhu, Rui Zhang, Qunshu Lin, Bin Wang, Zhiyuan Zhao, Man Jiang, Xiaomeng Zhao, et al. Omnidocbench: Benchmarking diverse pdf document parsing with comprehensive annotations. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 24838–24848, 2025.</p>
+<p class="reference_content">[15] Google DeepMind. Gemini 3.0. https://blog.google/products-and-platforms/products/gemini/gemini-3-collection/, 2025.</p>
+<p class="reference_content">[16] Yian Zhao, Wenyu Lv, Shangliang Xu, Jinman Wei, Guanzhong Wang, Qingqing Dang, Yi Liu, and Jie Chen. Detrs beat yolos on real-time object detection. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 16965–16974, 2024.</p>
+<p class="reference_content">[17] Mostafa Dehghani, Basil Mustafa, Josip Djolonga, Jonathan Heek, Matthias Minderer, Mathilde Caron, Andreas Steiner, Joan Puigcerver, Robert Geirhos, Ibrahim M Alabdulmohsin, et al. Patch n'pack: Navit, a vision transformer for any aspect ratio and resolution. Advances in Neural Information Processing Systems, 36:2252–2274, 2023.</p>
+<p class="reference_content">[18] PaddlePaddle Authors. Paddleformers. https://github.com/PaddlePaddle/PaddleFormers, 2025.</p>
+<p class="reference_content">[19] Yanjun Ma, Dianhai Yu, Tian Wu, and Haifeng Wang. Paddlepaddle: An open-source deep learning platform from industrial practice.  $ \underline{\text{Frontiers of Data and Computing}} $, 1(1):105–115, 2019.</p>
+<p class="reference_content">[20] Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, YK Li, Yang Wu, et al. Deepseekmath: Pushing the limits of mathematical reasoning in open language models. arXiv preprint arXiv:2402.03300, 2024.</p>
+<p class="reference_content">[21] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learning transferable visual models from natural language supervision. In International conference on machine learning, pages 8748–8763. PmLR, 2021.</p>
+<p class="reference_content">[22] Cheng Cui, Ting Sun, Manhui Lin, Tingquan Gao, Yubo Zhang, Jiaxuan Liu, Xueqing Wang, Zelun Zhang, Changda Zhou, Hongen Liu, et al. Paddleocr 3.0 technical report. arXiv preprint arXiv:2507.05595, 2025.</p>
+<p class="reference_content">[23] Bin Wang, Fan Wu, Linke Ouyang, Zhuangcheng Gu, Rui Zhang, Renqiu Xia, Botian Shi, Bo Zhang, and Conghui He. Image over text: Transforming formula recognition evaluation with character detection matching. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pages 19681–19690, June 2025.</p>
+<p class="reference_content">[24] Vik Paruchuri. Marker. https://github.com/datalab-to/marker, 2025. Accessed: 2025-09-25.</p>
+<p class="reference_content">[25] opendatalab. Mineru2.0-2505-0.9b. https://huggingface.co/opendatalab/MinerU2.0-2505-0.9B, 2025.</p>
+<p class="reference_content">[26] Jinguo Zhu, Weiyun Wang, Zhe Chen, Zhaoyang Liu, Shenglong Ye, Lixin Gu, Hao Tian, Yuchen Duan, Weijie Su, Jie Shao, et al. Internvl3: Exploring advanced training and test-time recipes for open-source multimodal models. arXiv preprint arXiv:2504.10479, 2025.</p>
+</div>
+<div class="paper-page" id="page-17">
+<div class="page-number">Trang 18</div>
+<p class="reference_content">[27] Weiyun Wang, Zhangwei Gao, Lixin Gu, Hengjun Pu, Long Cui, Xingguang Wei, Zhaoyang Liu, Linglin Jing, Shenglong Ye, Jie Shao, et al. Internvl3.5: Advancing open-source multimodal models in versatility, reasoning, and efficiency. arXiv preprint arXiv:2508.18265, 2025.</p>
+<p class="reference_content">[28] OpenAI. Gpt-5.2 system card, 2025. URL https://cdn.openai.com/pdf/3a4153c8-c748-4b71-8e31-aecbde944f8d/oai_5_2_system-card.pdf.</p>
+<p class="reference_content">[29] Shuai Bai, Keqin Chen, Xuejing Liu, Jialin Wang, Wenbin Ge, Sibo Song, Kai Dang, Peng Wang, Shijie Wang, Jun Tang, et al. Qwen2. 5-vl technical report. arXiv preprint arXiv:2502.13923, 2025.</p>
+<p class="reference_content">[30] Google DeepMind. Gemini 2.5. https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/, 2025.</p>
+<p class="reference_content">[31] chatdoc.com. Ocrflux. https://github.com/chatdoc-com/OCRFlux, 2025. Accessed:2025-09-25.</p>
+<p class="reference_content">[32] Mistral AI Team. Mistral-ocr. https://mistral.ai/news/mistral-ocr?utm_source=ai-bot.cn, 2025.</p>
+<p class="reference_content">[33] Jake Poznanski, Jon Borchardt, Jason Dunkelberger, Regan Huff, Daniel Lin, Aman Rangpur, Christopher Wilhelm, Kyle Lo, and Luca Soldaini. olmocr: Unlocking trillions of tokens in pdfs with vision language models. arXiv preprint arXiv:2502.18443, 2025.</p>
+<p class="reference_content">[34] Souvik Mandal, Ashish Talewar, Paras Ahuja, and Prathamesh Juvatkar. Nanonets-ocr-s: A model for transforming documents into structured markdown with intelligent content recognition and semantic tagging, 2025.</p>
+<p class="reference_content">[35] rednote-hilab. dots.ocr: Multilingual document layout parsing in a single vision-language model, 2025.</p>
+<p class="reference_content">[36] Qing Jiang, Junan Huo, Xingyu Chen, Yuda Xiong, Zhaoyang Zeng, Yihao Chen, Tianhe Ren, Junzhi Yu, and Lei Zhang. Detect anything via next point prediction. arXiv preprint arXiv:2510.12798, 2025.</p>
+<p class="reference_content">[37] PaddlePaddle Authors. Fastdeploy. https://github.com/PaddlePaddle/FastDeploy, 2025.</p>
+<p class="reference_content">[38] Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying Sheng, Lianmin Zheng, Cody Hao Yu, Joseph Gonzalez, Hao Zhang, and Ion Stoica. Efficient memory management for large language model serving with paged attention. In Proceedings of the 29th symposium on operating systems principles, pages 611–626, 2023.</p>
+<p class="reference_content">[39] Lianmin Zheng, Liangsheng Yin, Zhiqiang Xie, Chuyue Livia Sun, Jeff Huang, Cody Hao Yu, Shiyi Cao, Christos Kozyrakis, Ion Stoica, Joseph E Gonzalez, et al. Sglang: Efficient execution of structured language model programs. Advances in neural information processing systems, 37:62557–62583, 2024.</p>
+</div>
+<div class="paper-page" id="page-18">
+<div class="page-number">Trang 19</div>
+<h2 class="paragraph_title">Appendix</h2>
+<p class="figure_title" style="text-align: center;">A. So sánh các mô hình PaddleOCR-VL-1.5 và 1.0</p>
+<div class="table-container"><table><tr><td>Category</td><td>Capability Item</td><td>V1</td><td>V1.5</td><td>V1.5 Description</td></tr><tr><td rowspan="6">Fundamental</td><td>Layout Analysis</td><td>★★☆☆☆</td><td>★★★★☆</td><td>Improved stability for warped/skewed scenes; added CAD and comics.</td></tr><tr><td>Text Recognition</td><td>★★★★☆</td><td>★★★★★</td><td>Gains in vertical text, special characters, and emphasis marks.</td></tr><tr><td>Table Recognition</td><td>★★★☆☆</td><td>★★★★☆</td><td>Improvements for borderless tables and invoices.</td></tr><tr><td>Formula Recognition</td><td>★★★☆☆</td><td>★★★★☆</td><td>Better in skewed formulas and illumination scenarios.</td></tr><tr><td>Chart Recognition</td><td>★★★★☆</td><td>★★★★☆</td><td>Capability remains consistent with the previous version.</td></tr><tr><td>Reading Order</td><td>★★★☆☆</td><td>★★★★☆</td><td>Significant boost for irregular layouts.</td></tr><tr><td rowspan="5">Adaptability</td><td>Skewed Docs</td><td>★☆☆☆☆</td><td>★★★★★</td><td>Dramatic improvement for high-angle tilted documents.</td></tr><tr><td>Scanned Docs</td><td>★★★★☆</td><td>★★★★★</td><td>Stability for low-quality scans is significantly enhanced.</td></tr><tr><td>Warped Docs</td><td>★★☆☆☆</td><td>★★★★★</td><td>Supports complex physical deformation and folded paper.</td></tr><tr><td>Screen Photo</td><td>★★☆☆☆</td><td>★★★★★</td><td>Suppresses interference from reflections and Moiré patterns.</td></tr><tr><td>Illumination</td><td>★★★★☆</td><td>★★★★★</td><td>Superior performance in uneven or weak lighting.</td></tr><tr><td rowspan="4">New Features</td><td>Seal Recognition</td><td>☆☆☆☆☆</td><td>★★★★☆</td><td>Recognition of various official seals and stamps.</td></tr><tr><td>Text Spotting</td><td>☆☆☆☆☆</td><td>★★★★☆</td><td>Localization and recognition of multiple character sets.</td></tr><tr><td>Cross-page Table Merging</td><td>☆☆☆☆☆</td><td>★★★★☆</td><td>Merges split tables while maintaining consistency.</td></tr><tr><td>Heading Hierarchy</td><td>☆☆☆☆☆</td><td>★★★☆☆</td><td>Title hierarchy recognition across multi-page documents.</td></tr></table></div>
+<p class="vision_footnote">Table A1 | Comprehensive functional evolution and robustness comparison between PaddleOCR-VL and PaddleOCR-VL-1.5. The star ratings only indicate the relative performance of the two versions and do not represent their absolute accuracy.</p>
+</div>
+<div class="paper-page" id="page-19">
+<div class="page-number">Trang 20</div>
+<h2 class="paragraph_title">B. Details of the Real5-OmniDocBench Benchmark</h2>
+<p class="text">Real5-OmniDocBench là một bộ đánh giá mới, tập trung vào các tình huống thực tế, được chúng tôi xây dựng dựa trên bộ dữ liệu OmniDocBench v1.5 [14]. PaddleOCR-VL-1.5 đạt được kết quả hàng đầu (SOTA) trên tất cả các tình huống trong Real5-OmniDocBench, cho thấy khả năng phân tích tài liệu thực tế mạnh mẽ. Phần phụ lục này cung cấp so sánh chi tiết giữa PaddleOCR-VL-1.5 với các mô hình phân tích tài liệu tiên tiến khác trên bộ dữ liệu này, dựa trên nhiều tiêu chí khác nhau.</p>
+<p class="text">Như được thể hiện trong Bảng A2, trong kịch bản quét, PaddleOCR-VL-1.5 đạt được hiệu suất hàng đầu trên tất cả các chỉ số quan trọng, liên tục vượt trội so với các công cụ xử lý hiện có, các mô hình thị giác-ngôn ngữ chung và các mô hình phân tích tài liệu chuyên dụng. So với phiên bản trước, PaddleOCR-VL, phiên bản mới duy trì kích thước tham số nhỏ gọn là 0.9B, đồng thời nâng tổng điểm từ 92.11% lên mức hàng đầu là 93.43%. Đặc biệt, PaddleOCR-VL-1.5 thiết lập kỷ lục mới trong tất cả các nhiệm vụ con trong kịch bản này, bao gồm điểm Formula-CDM là 93.04% và điểm Table-TEDS là 90.97%, vượt trội đáng kể so với các mô hình lớn hơn như Qwen3-VL-235B và Gemini-3 Pro. Ngoài ra, mô hình đạt được khoảng cách Text-Edit cực kỳ thấp (0.037) và điểm Reading Order (0.045), chứng minh thêm độ chính xác cao trong nhận dạng văn bản, trích xuất công thức và phân tích cấu trúc bảng phức tạp. Nhìn chung, PaddleOCR-VL-1.5 mang lại một bước đột phá mới trong kịch bản Real5-OmniDocBench-scaning.</p>
+<div class="table-container"><table><tr><td>Model Type</td><td>Methods</td><td>Parameters</td><td>Overall $ \uparrow $</td><td>TextEdit $ \downarrow $</td><td>FormulaCDM $ \uparrow $</td><td>TableTEDS $ \uparrow $</td><td>Reading OrderEdit $ \downarrow $</td></tr><tr><td rowspan="2">Pipeline Tools</td><td>Maker-1.8.2 [24]</td><td>-</td><td>70.27</td><td>0.223</td><td>77.03</td><td>56.05</td><td>0.238</td></tr><tr><td>PP-StructureV3 [22]</td><td>-</td><td>84.68</td><td>0.094</td><td>84.34</td><td>79.06</td><td>0.092</td></tr><tr><td rowspan="5">General VLMs</td><td>GPT-5.2 [28]</td><td>-</td><td>84.43</td><td>0.142</td><td>85.68</td><td>81.78</td><td>0.109</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>86.19</td><td>0.110</td><td>86.14</td><td>83.41</td><td>0.114</td></tr><tr><td>Gemini-2.5 Pro [30]</td><td>-</td><td>89.25</td><td>0.073</td><td>87.44</td><td>87.62</td><td>0.098</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [29]</td><td>235B</td><td>89.43</td><td>0.059</td><td>89.01</td><td>85.19</td><td>0.066</td></tr><tr><td>Gemini-3 Pro [15]</td><td>-</td><td>89.47</td><td>0.071</td><td>88.16</td><td>87.37</td><td>0.078</td></tr><tr><td rowspan="12">Specialized VLMs</td><td>Dolphin [3]</td><td>322M</td><td>72.16</td><td>0.154</td><td>64.58</td><td>67.27</td><td>0.130</td></tr><tr><td>Dolphin-1.5 [3]</td><td>0.3B</td><td>83.39</td><td>0.097</td><td>76.25</td><td>83.65</td><td>0.090</td></tr><tr><td>MinerU2-VLM [25]</td><td>0.9B</td><td>83.60</td><td>0.094</td><td>79.76</td><td>80.44</td><td>0.091</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>1.9B</td><td>84.64</td><td>0.123</td><td>84.17</td><td>82.13</td><td>0.145</td></tr><tr><td>MonkeyOCR-3B [1]</td><td>3.7B</td><td>84.65</td><td>0.100</td><td>84.16</td><td>79.81</td><td>0.143</td></tr><tr><td>Nanonets-OCR-s [34]</td><td>3B</td><td>85.52</td><td>0.106</td><td>88.09</td><td>79.11</td><td>0.106</td></tr><tr><td>Deepseek-OCR [10]</td><td>3B</td><td>86.17</td><td>0.078</td><td>83.59</td><td>82.69</td><td>0.085</td></tr><tr><td>dots.ocr [35]</td><td>3B</td><td>86.87</td><td>0.083</td><td>83.27</td><td>85.68</td><td>0.081</td></tr><tr><td>MonkeyOCR-pro-3B [1]</td><td>3.7B</td><td>86.94</td><td>0.103</td><td>86.29</td><td>84.86</td><td>0.141</td></tr><tr><td>MinerU2.5 [2]</td><td>1.2B</td><td>90.06</td><td>0.052</td><td>88.22</td><td>87.16</td><td>0.050</td></tr><tr><td>PaddleOCR-VL [9]</td><td>0.9B</td><td>92.11</td><td>0.039</td><td>90.35</td><td>89.90</td><td>0.048</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>93.43</td><td>0.037</td><td>93.04</td><td>90.97</td><td>0.045</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng A2 | Đánh giá toàn diện về phân tích tài liệu trên Real5-OmniDocBench-scaning</p>
+<p class="text">Như được thể hiện trong Bảng A3, PaddleOCR-VL-1.5 cho thấy khả năng hoạt động tốt trong tình huống biến dạng, đạt được điểm tổng thể là 91,25%, cao hơn so với mô hình lớn hơn Qwen3-VL-235B (89,99%). Điểm Formula-CDM là 90,94% và điểm Table-TEDS là 88,10% cho thấy khả năng bảo toàn cấu trúc tài liệu tốt ngay cả khi có sự biến dạng hình học đáng kể.</p>
+<p class="footnote">$ ^{2} $https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench</p>
+</div>
+<div class="paper-page" id="page-20">
+<div class="page-number">Trang 21</div>
+<div class="table-container"><table><tr><td>Model Type</td><td>Methods</td><td>Parameters</td><td>Overall $ \uparrow $</td><td>TextEdit $ \downarrow $</td><td>FormulaCDM $ \uparrow $</td><td>TableTEDS $ \uparrow $</td><td>Reading OrderEdit $ \downarrow $</td></tr><tr><td rowspan="2">Pipeline Tools</td><td>Maker-1.8.2 [24]</td><td>-</td><td>58.98</td><td>0.349</td><td>72.71</td><td>39.08</td><td>0.390</td></tr><tr><td>PP-StructureV3 [22]</td><td>-</td><td>59.34</td><td>0.376</td><td>68.22</td><td>47.40</td><td>0.261</td></tr><tr><td rowspan="5">General VLMs</td><td>GPT-5.2 [28]</td><td>-</td><td>76.26</td><td>0.239</td><td>80.90</td><td>71.80</td><td>0.165</td></tr><tr><td>Gemini-2.5 Pro [30]</td><td>-</td><td>87.63</td><td>0.092</td><td>86.50</td><td>85.59</td><td>0.109</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>87.77</td><td>0.086</td><td>88.85</td><td>83.06</td><td>0.102</td></tr><tr><td>Gemini-3 Pro [15]</td><td>-</td><td>88.90</td><td>0.086</td><td>88.10</td><td>87.20</td><td>0.087</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [29]</td><td>235B</td><td>89.99</td><td>0.051</td><td>89.06</td><td>85.95</td><td>0.064</td></tr><tr><td rowspan="12">Specialized VLMs</td><td>Dolphin-1.5 [3]</td><td>0.3B</td><td>50.50</td><td>0.383</td><td>47.24</td><td>42.52</td><td>0.309</td></tr><tr><td>Dolphin [3]</td><td>322M</td><td>60.35</td><td>0.316</td><td>61.06</td><td>51.58</td><td>0.247</td></tr><tr><td>Deepseek-OCR [10]</td><td>3B</td><td>67.20</td><td>0.328</td><td>73.59</td><td>60.80</td><td>0.226</td></tr><tr><td>MinerU2-VLM [25]</td><td>0.9B</td><td>73.73</td><td>0.202</td><td>77.72</td><td>63.65</td><td>0.173</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>1.9B</td><td>76.59</td><td>0.196</td><td>78.85</td><td>70.52</td><td>0.221</td></tr><tr><td>MonkeyOCR-3B [1]</td><td>3.7B</td><td>77.27</td><td>0.164</td><td>79.08</td><td>69.18</td><td>0.211</td></tr><tr><td>MonkeyOCR-pro-3B [1]</td><td>3.7B</td><td>78.90</td><td>0.168</td><td>79.55</td><td>73.94</td><td>0.212</td></tr><tr><td>Nanonets-OCR-s [34]</td><td>3B</td><td>83.56</td><td>0.121</td><td>86.24</td><td>76.57</td><td>0.124</td></tr><tr><td>MinerU2.5 [2]</td><td>1.2B</td><td>83.76</td><td>0.154</td><td>85.92</td><td>80.71</td><td>0.104</td></tr><tr><td>PaddleOCR-VL [9]</td><td>0.9B</td><td>85.97</td><td>0.093</td><td>85.45</td><td>81.77</td><td>0.092</td></tr><tr><td>dots.ocr [35]</td><td>3B</td><td>86.01</td><td>0.087</td><td>85.03</td><td>81.74</td><td>0.093</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>91.25</td><td>0.053</td><td>90.94</td><td>88.10</td><td>0.063</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng A3 | Đánh giá toàn diện về phân tích tài liệu trên Real5-OmniDocBench-warping.</p>
+<p class="text">Trong kịch bản chụp ảnh màn hình được trình bày trong Bảng A4, PaddleOCR-VL-1.5 đạt được điểm tổng là 91,76%, cho thấy hiệu suất cạnh tranh so với các mô hình thị giác-ngôn ngữ chuyên dụng. Mô hình đạt được điểm Formula-CDM là 90,88%, vượt trội hơn MinerU2.5 (87,55%) và dots.ocr (85,34%), đồng thời thể hiện khả năng xử lý hiệu quả các mẫu hình Moire và hiện tượng phản xạ thường gặp trong tài liệu được chụp màn hình.</p>
+<div class="table-container"><table><tr><td>Model Type</td><td>Methods</td><td>Parameters</td><td>Overall $ \uparrow $</td><td>TextEdit $ \downarrow $</td><td>FormulaCDM $ \uparrow $</td><td>TableTEDS $ \uparrow $</td><td>Reading OrderEdit $ \downarrow $</td></tr><tr><td rowspan="2">Pipeline Tools</td><td>Maker-1.8.2 [24]</td><td>-</td><td>63.65</td><td>0.290</td><td>72.73</td><td>47.21</td><td>0.325</td></tr><tr><td>PP-StructureV3 [22]</td><td>-</td><td>66.89</td><td>0.204</td><td>73.26</td><td>47.82</td><td>0.165</td></tr><tr><td rowspan="5">General VLMs</td><td>GPT-5.2 [28]</td><td>-</td><td>76.75</td><td>0.208</td><td>79.27</td><td>71.73</td><td>0.148</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>86.48</td><td>0.100</td><td>87.46</td><td>82.00</td><td>0.102</td></tr><tr><td>Gemini-2.5 Pro [30]</td><td>-</td><td>87.11</td><td>0.103</td><td>85.30</td><td>86.31</td><td>0.117</td></tr><tr><td>Gemini-3 Pro [15]</td><td>-</td><td>88.86</td><td>0.084</td><td>87.33</td><td>87.65</td><td>0.087</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [29]</td><td>235B</td><td>89.27</td><td>0.068</td><td>88.72</td><td>85.85</td><td>0.071</td></tr><tr><td rowspan="12">Specialized VLMs</td><td>Dolphin [3]</td><td>322M</td><td>64.29</td><td>0.232</td><td>58.66</td><td>57.38</td><td>0.195</td></tr><tr><td>Dolphin-1.5 [3]</td><td>0.3B</td><td>69.76</td><td>0.205</td><td>61.80</td><td>68.00</td><td>0.177</td></tr><tr><td>Deepseek-OCR [10]</td><td>3B</td><td>75.31</td><td>0.220</td><td>77.68</td><td>70.26</td><td>0.169</td></tr><tr><td>MinerU2-VLM [25]</td><td>0.9B</td><td>78.77</td><td>0.139</td><td>79.02</td><td>71.17</td><td>0.123</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>1.9B</td><td>80.24</td><td>0.148</td><td>80.78</td><td>74.74</td><td>0.179</td></tr><tr><td>MonkeyOCR-3B [1]</td><td>3.7B</td><td>80.71</td><td>0.122</td><td>81.33</td><td>73.04</td><td>0.177</td></tr><tr><td>MonkeyOCR-pro-3B [1]</td><td>3.7B</td><td>82.44</td><td>0.124</td><td>81.55</td><td>78.13</td><td>0.177</td></tr><tr><td>PaddleOCR-VL [9]</td><td>0.9B</td><td>82.54</td><td>0.103</td><td>83.58</td><td>74.36</td><td>0.107</td></tr><tr><td>Nanonets-OCR-s [34]</td><td>3B</td><td>84.86</td><td>0.112</td><td>86.65</td><td>79.09</td><td>0.117</td></tr><tr><td>dots.ocr [35]</td><td>3B</td><td>87.18</td><td>0.081</td><td>85.34</td><td>84.26</td><td>0.079</td></tr><tr><td>MinerU2.5 [2]</td><td>1.2B</td><td>89.41</td><td>0.062</td><td>87.55</td><td>86.83</td><td>0.053</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>91.76</td><td>0.050</td><td>90.88</td><td>89.38</td><td>0.059</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng A4 | Đánh giá toàn diện về phân tích tài liệu trên Real5-OmniDocBench-screen-photography.</p>
+<p class="text">Bảng A5 đánh giá hiệu suất dưới các điều kiện ánh sáng khác nhau, trong đó PaddleOCR-VL-1.5 đạt được điểm tổng là 92,16%. Kết quả này không chỉ đánh dấu một sự cải thiện đáng kể so với PaddleOCR-VL trước đó (89,61%), mà còn vượt trội so với các mô hình VL tổng thể hàng đầu như Gemini-3 Pro (89,53%). Điểm Formula-CDM của mô hình là 91,80% và điểm Table-TEDS là 89,33%, cho thấy</p>
+</div>
+<div class="paper-page" id="page-21">
+<div class="page-number">Trang 22</div>
+<p class="figure_title" style="text-align: center;">Khả năng phát hiện và đo chính xác ngay cả trong môi trường có độ tương phản thấp hoặc ánh sáng không đồng đều.</p>
+<div class="table-container"><table><tr><td>Model Type</td><td>Methods</td><td>Parameters</td><td>Overall $ \uparrow $</td><td>TextEdit $ \downarrow $</td><td>FormulaCDM $ \uparrow $</td><td>TableTEDS $ \uparrow $</td><td>Reading OrderEdit $ \downarrow $</td></tr><tr><td rowspan="2">Pipeline Tools</td><td>Maker-1.8.2 [24]</td><td>-</td><td>66.31</td><td>0.259</td><td>74.80</td><td>50.03</td><td>0.337</td></tr><tr><td>PP-StructureV3 [22]</td><td>-</td><td>73.38</td><td>0.158</td><td>77.75</td><td>58.19</td><td>0.126</td></tr><tr><td rowspan="5">General VLMs</td><td>GPT-5.2 [28]</td><td>-</td><td>80.88</td><td>0.191</td><td>84.41</td><td>77.37</td><td>0.134</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>87.25</td><td>0.087</td><td>86.44</td><td>84.03</td><td>0.097</td></tr><tr><td>Gemini-2.5 Pro [30]</td><td>-</td><td>87.97</td><td>0.083</td><td>86.13</td><td>86.11</td><td>0.103</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [29]</td><td>235B</td><td>89.27</td><td>0.060</td><td>87.81</td><td>86.05</td><td>0.070</td></tr><tr><td>Gemini-3 Pro [15]</td><td>-</td><td>89.53</td><td>0.073</td><td>87.78</td><td>88.14</td><td>0.080</td></tr><tr><td rowspan="12">Specialized VLMs</td><td>Dolphin [3]</td><td>322M</td><td>67.29</td><td>0.197</td><td>61.42</td><td>60.10</td><td>0.173</td></tr><tr><td>Dolphin-1.5 [3]</td><td>0.3B</td><td>75.61</td><td>0.159</td><td>70.04</td><td>72.69</td><td>0.133</td></tr><tr><td>Deepseek-OCR [10]</td><td>3B</td><td>78.10</td><td>0.192</td><td>81.71</td><td>71.81</td><td>0.156</td></tr><tr><td>MinerU2-VLM [25]</td><td>0.9B</td><td>80.51</td><td>0.135</td><td>80.72</td><td>74.29</td><td>0.123</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>1.9B</td><td>82.11</td><td>0.144</td><td>82.07</td><td>78.67</td><td>0.172</td></tr><tr><td>MonkeyOCR-3B [1]</td><td>3.7B</td><td>83.16</td><td>0.118</td><td>83.63</td><td>77.62</td><td>0.168</td></tr><tr><td>MonkeyOCR-pro-3B [1]</td><td>3.7B</td><td>84.71</td><td>0.120</td><td>84.13</td><td>82.02</td><td>0.171</td></tr><tr><td>Nanonets-OCR-s [34]</td><td>3B</td><td>85.01</td><td>0.099</td><td>87.94</td><td>76.96</td><td>0.112</td></tr><tr><td>dots.ocr [35]</td><td>3B</td><td>87.57</td><td>0.068</td><td>85.07</td><td>84.44</td><td>0.076</td></tr><tr><td>MinerU2.5 [2]</td><td>1.2B</td><td>89.57</td><td>0.065</td><td>88.36</td><td>86.87</td><td>0.062</td></tr><tr><td>PaddleOCR-VL [9]</td><td>0.9B</td><td>89.61</td><td>0.049</td><td>86.66</td><td>87.02</td><td>0.055</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>92.16</td><td>0.046</td><td>91.80</td><td>89.33</td><td>0.051</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng A5 | Đánh giá toàn diện về phân tích tài liệu trên Real5-OmniDocBench-illumination.</p>
+<p class="text">Như những thách thức được mô tả trong Bảng A6, PaddleOCR-VL-1.5 tiếp tục duy trì vị thế dẫn đầu với điểm tổng là 91,66%, vượt trội so với các mô hình VLMs chung, bao gồm Gemini-3 Pro (89,45%). Đặc biệt, nó thể hiện khả năng vượt trội trong việc phục hồi cấu trúc phức tạp, được chứng minh qua điểm Table-TEDS là 91,00% và khoảng cách Text-Edit giảm xuống còn 0,047, cho thấy khả năng vượt trội trong việc sửa và phân tích bố cục tài liệu nghiêng.</p>
+<div class="table-container"><table><tr><td>Model Type</td><td>Methods</td><td>Parameters</td><td>Overall $ \uparrow $</td><td>TextEdit $ \downarrow $</td><td>FormulaCDM $ \uparrow $</td><td>TableTEDS $ \uparrow $</td><td>Reading OrderEdit $ \downarrow $</td></tr><tr><td rowspan="2">Pipeline Tools</td><td>PP-StructureV3 [22]</td><td>-</td><td>37.98</td><td>0.557</td><td>44.37</td><td>25.27</td><td>0.417</td></tr><tr><td>Maker-1.8.2 [24]</td><td>-</td><td>41.27</td><td>0.536</td><td>60.16</td><td>17.23</td><td>0.543</td></tr><tr><td rowspan="5">General VLMs</td><td>GPT-5.2 [28]</td><td>-</td><td>75.00</td><td>0.257</td><td>80.27</td><td>70.47</td><td>0.167</td></tr><tr><td>Qwen3-VL-235B-A22B-Instruct [29]</td><td>235B</td><td>86.56</td><td>0.077</td><td>83.96</td><td>83.41</td><td>0.091</td></tr><tr><td>Qwen2.5-VL-72B [29]</td><td>72B</td><td>86.90</td><td>0.077</td><td>87.26</td><td>81.14</td><td>0.091</td></tr><tr><td>Gemini-2.5 Pro [30]</td><td>-</td><td>89.07</td><td>0.077</td><td>87.89</td><td>86.99</td><td>0.104</td></tr><tr><td>Gemini-3 Pro [15]</td><td>-</td><td>89.45</td><td>0.080</td><td>88.33</td><td>88.06</td><td>0.092</td></tr><tr><td rowspan="12">Specialized VLMs</td><td>Dolphin-1.5 [3]</td><td>0.3B</td><td>28.16</td><td>0.553</td><td>25.60</td><td>14.18</td><td>0.419</td></tr><tr><td>Dolphin [3]</td><td>322M</td><td>44.83</td><td>0.500</td><td>51.34</td><td>33.22</td><td>0.321</td></tr><tr><td>MonkeyOCR-pro-1.2B [1]</td><td>1.9B</td><td>62.18</td><td>0.292</td><td>66.25</td><td>49.46</td><td>0.317</td></tr><tr><td>Deepseek-OCR [10]</td><td>3B</td><td>63.01</td><td>0.327</td><td>73.27</td><td>48.48</td><td>0.231</td></tr><tr><td>MonkeyOCR-pro-3B [1]</td><td>3.7B</td><td>64.47</td><td>0.251</td><td>69.06</td><td>49.42</td><td>0.301</td></tr><tr><td>MonkeyOCR-3B [1]</td><td>3.7B</td><td>65.67</td><td>0.248</td><td>69.23</td><td>52.59</td><td>0.300</td></tr><tr><td>MinerU2-VLM [25]</td><td>0.9B</td><td>68.16</td><td>0.230</td><td>74.45</td><td>53.07</td><td>0.191</td></tr><tr><td>MinerU2.5 [2]</td><td>1.2B</td><td>75.24</td><td>0.305</td><td>81.78</td><td>74.39</td><td>0.151</td></tr><tr><td>PaddleOCR-VL [9]</td><td>0.9B</td><td>77.47</td><td>0.192</td><td>78.81</td><td>72.83</td><td>0.193</td></tr><tr><td>Nanonets-OCR-s [34]</td><td>3B</td><td>81.98</td><td>0.121</td><td>85.78</td><td>72.22</td><td>0.133</td></tr><tr><td>dots.ocr [35]</td><td>3B</td><td>84.27</td><td>0.087</td><td>85.73</td><td>75.74</td><td>0.094</td></tr><tr><td>PaddleOCR-VL-1.5</td><td>0.9B</td><td>91.66</td><td>0.047</td><td>91.00</td><td>88.69</td><td>0.061</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng A6 | Đánh giá toàn diện về phân tích tài liệu trên bộ dữ liệu Real5-OmniDocBench với biến thể bị lệch.</p>
+</div>
+<div class="paper-page" id="page-22">
+<div class="page-number">Trang 23</div>
+<h2 class="paragraph_title">C. Supported Languages</h2>
+<p class="figure_title" style="text-align: center;">PaddleOCR-VL-1.5 hỗ trợ tổng cộng 111 ngôn ngữ. So với PaddleOCR-VL, PaddleOCR-VL-1.5 bổ sung khả năng nhận dạng cho chữ viết tiếng Tibet của Trung Quốc và tiếng Bengali. Bảng A7 liệt kê sự tương ứng giữa mỗi nhóm ngôn ngữ và các ngôn ngữ/kết cấu cụ thể được hỗ trợ.</p>
+<div class="table-container"><table><tr><td>Language Category</td><td>Specific Languages</td></tr><tr><td>Chinese</td><td>Chinese</td></tr><tr><td>English</td><td>English</td></tr><tr><td>Korean</td><td>Korean</td></tr><tr><td>Japanese</td><td>Japanese</td></tr><tr><td>Thai</td><td>Thai</td></tr><tr><td>Greek</td><td>Greek</td></tr><tr><td>Tamil</td><td>Tamil</td></tr><tr><td>Telugu</td><td>Telugu</td></tr><tr><td>Bengali $ ^{*} $</td><td>Bengali $ ^{*} $</td></tr><tr><td>China’s Tibetan script $ ^{*} $</td><td>China’s Tibetan script $ ^{*} $</td></tr><tr><td>Arabic</td><td>Arabic, Persian, Uyghur, Urdu, Pashto, Kurdish, Sindhi, Baloch</td></tr><tr><td>Latin</td><td>French, German, Afrikaans, Italian, Spanish, Bosnian, Portuguese, Czech, Welsh, Danish, Estonian, Irish, Croatian, Uzbek, Hungarian, Serbian (Latin), Indonesian, Occitan, Icelandic, Lithuanian, Maori, Malay, Dutch, Norwegian, Polish, Slovak, Slovenian, Albanian, Swedish, Swahili, Tagalog, Turkish, Latin, Azerbaijan, Kurdish, Latvian, Maltese, Pali, Romanian, Vietnamese, Finnish, Basque, Galician, Luxembourg, Romansh, Catalan, Quechua</td></tr><tr><td>Cyrillic</td><td>Russian, Belarusian, Ukrainian, Serbian (Cyrillic), Bulgarian, Mongolian, Abkhazian, Adyghe, Kabardian, Avar, Dargin, Ingush, Chechen, Lak, Lezgin, Tabasaran, Kazakh, Kyrgyz, Tajik, Macedonian, Tatar, Chuvash, Bashkir, Malian, Moldovan, Udmurt, Komi, Ossetian, Buryat, Kalmyk, Tuvan, Sakha, Karakalpak</td></tr><tr><td>Devanagari</td><td>Hindi, Marathi, Nepali, Bihari, Maithili, Angika, Bhojpuri, Magahi, Santali, Newari, Konkani, Sanskrit, Haryanvi</td></tr></table></div>
+<p class="vision_footnote">Table A7 | Supported Languages/scripts (*indicates newly added languages/scripts)</p>
+</div>
+<div class="paper-page" id="page-23">
+<div class="page-number">Trang 24</div>
+<h2 class="paragraph_title">D. Inference Performance on Different Hardware Configurations</h2>
+<p class="text">Chúng tôi đánh giá hiệu suất và độ trễ của PaddleOCR-VL-1.5 trên nhiều cấu hình phần cứng khác nhau, và kết quả chi tiết được trình bày trong Bảng A8. Trong các thử nghiệm của chúng tôi, tất cả các trang PDF đều được hiển thị với độ phân giải 72 DPI, điều này mang lại sự cân bằng tốt giữa hiệu quả bộ nhớ và độ chính xác hình ảnh cần thiết cho nhận dạng văn bản bằng OCR đáng tin cậy. Chúng tôi lưu ý rằng các thử nghiệm trên các nền tảng phần cứng khác nhau được thực hiện mà không cần điều chỉnh tham số hoặc tối ưu hóa cấp hệ thống; do đó, các con số hiệu suất được báo cáo nên được xem là thận trọng và vẫn còn không gian để cải thiện hơn nữa. Tất cả các mô hình đều được đánh giá bằng ba nền tảng triển khai, bao gồm FastDeploy v2.3.0, vLLM v0.10.2 và SGLang v0.5.2. Trên các khung này, PaddleOCR-VL-1.5 luôn mang lại hiệu suất suy luận cao và ổn định, cho thấy khả năng tổng quát hóa mạnh mẽ trên nhiều cấu hình phần cứng và các động cơ thực thi khác nhau, cũng như khả năng tương thích tốt với các môi trường tính toán đa dạng.</p>
+<div class="table-container"><table><tr><td>Hardware</td><td>Backend</td><td>Total Time (s) $ \downarrow $</td><td>Pages/s $ \uparrow $</td><td>Tokens/s $ \uparrow $</td><td>Avg. VRAM Usage (GB) $ \downarrow $</td></tr><tr><td rowspan="3">H800</td><td>FastDeploy</td><td>556.4</td><td>2.4320</td><td>3404.5</td><td>64.8</td></tr><tr><td>vLLM</td><td>761.8</td><td>1.7772</td><td>2488.0</td><td>46.2</td></tr><tr><td>SGLang</td><td>868.5</td><td>1.5589</td><td>2185.2</td><td>48.9</td></tr><tr><td rowspan="3">A100</td><td>FastDeploy</td><td>671.3</td><td>2.0160</td><td>2826.0</td><td>62.1</td></tr><tr><td>vLLM</td><td>981.4</td><td>1.3797</td><td>1926.1</td><td>43.5</td></tr><tr><td>SGLang</td><td>1100.9</td><td>1.2301</td><td>1722.5</td><td>48.9</td></tr><tr><td rowspan="3">H20</td><td>FastDeploy</td><td>743.7</td><td>1.8206</td><td>2545.0</td><td>77.2</td></tr><tr><td>vLLM</td><td>796.1</td><td>1.7007</td><td>2382.0</td><td>75.0</td></tr><tr><td>SGLang</td><td>862.2</td><td>1.5702</td><td>2204.5</td><td>74.3</td></tr><tr><td rowspan="3">L20</td><td>FastDeploy</td><td>845.0</td><td>1.6023</td><td>2248.4</td><td>41.0</td></tr><tr><td>vLLM</td><td>998.2</td><td>1.3565</td><td>1890.7</td><td>25.1</td></tr><tr><td>SGLang</td><td>1126.8</td><td>1.2018</td><td>1680.7</td><td>30.2</td></tr><tr><td rowspan="3">A10</td><td>FastDeploy</td><td>1179.9</td><td>1.1477</td><td>1607.8</td><td>21.8</td></tr><tr><td>vLLM</td><td>1245.5</td><td>1.0873</td><td>1520.6</td><td>13.5</td></tr><tr><td>SGLang</td><td>1504.3</td><td>0.9003</td><td>1260.1</td><td>19.0</td></tr><tr><td rowspan="2">RTX 3060</td><td>vLLM</td><td>2531.8</td><td>0.5351</td><td>748.1</td><td>11.8</td></tr><tr><td>SGLang</td><td>2587.7</td><td>0.5235</td><td>730.5</td><td>11.7</td></tr><tr><td rowspan="2">RTX 4090D</td><td>vLLM</td><td>923.5</td><td>1.4667</td><td>2040.1</td><td>16.3</td></tr><tr><td>SGLang</td><td>1079.5</td><td>1.2548</td><td>1750.9</td><td>20.0</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">Bảng A8 | Hiệu suất suy luận từ đầu đến cuối</p>
+</div>
+<div class="paper-page" id="page-24">
+<div class="page-number">Trang 25</div>
+<h2 class="paragraph_title">E. Real-world Samples</h2>
+<p class="text">Phụ lục này minh họa khả năng mạnh mẽ và tính linh hoạt của PaddleOCR-VL-1.5 trong việc xử lý các tình huống thực tế đa dạng và phức tạp.</p>
+<p class="text">Phần E.1 minh họa khả năng phân tích tài liệu thực tế của PaddleOCR-VL-1.5. Hình A1–A5 thể hiện hiệu suất mạnh mẽ của PaddleOCR-VL-1.5 trong việc phân tích tài liệu thực tế trong nhiều điều kiện khác nhau, bao gồm ánh sáng khác nhau, độ lệch hình học, nhiễu từ ảnh chụp màn hình và bề mặt quét bị biến dạng.</p>
+<p class="text">Hình A6–A9 trong phần E.2 minh họa khả năng hoạt động mạnh mẽ của PaddleOCR-VL-1.5 trong phân tích bố cục, ngay cả trong các điều kiện thực tế phức tạp, bao gồm hình dạng bị lệch hoặc cong, nhiễu từ ảnh chụp màn hình và sự thay đổi về ánh sáng. Hơn nữa, Hình A10 làm nổi bật khả năng ứng dụng rộng rãi của nó trong các lĩnh vực chuyên biệt – chẳng hạn như truyện tranh, bản vẽ CAD và tài liệu có nhiều dấu – nơi các phiên bản trước của mô hình gặp phải những hạn chế.</p>
+<p class="text">Phần E.3 đánh giá hiệu suất nhận dạng văn bản của PaddleOCR-VL-1.5 trong các điều kiện khác nhau. Như hình A11 cho thấy, mô hình này có khả năng nhận diện tốt hơn các yếu tố trang trí văn bản, bao gồm dấu gạch dưới, dấu nhấn, và các họa tiết uốn lượn, vượt trội so với phiên bản trước. Hình A12 và Hình A13 minh họa khả năng phân biệt tốt hơn các ký tự đặc biệt và các trường hợp phức tạp, chẳng hạn như hướng dọc và sự mơ hồ ở cấp độ ký tự.</p>
+<p class="text">Khả năng nhận dạng bảng của mô hình được minh họa trong phần E.4. Hình A14 cho thấy khả năng xử lý các bố cục phức tạp của mô hình, bao gồm các bảng từ sách giáo khoa và các bảng chứa hình ảnh hoặc công thức toán học. Khả năng nhận dạng bảng đa ngôn ngữ của mô hình được trình bày trong Hình A15. Ngoài ra, Hình A16 cho thấy khả năng mở rộng của mô hình trong việc phát hiện và hợp nhất các bảng trên nhiều trang, giải quyết các thách thức trong việc phân tích tài liệu nhiều trang.</p>
+<p class="text">Phần E.5 cung cấp chi tiết về hiệu suất nhận dạng công thức. Như minh họa trong Hình A17, mô hình đã được cập nhật cho thấy hiệu suất vượt trội trong việc nhận dạng biểu thức toán học, đặc biệt là về độ chính xác của các ký hiệu dưới/trên, phân đoạn công thức nhiều dòng, và tỷ lệ lỗi tổng thể thấp hơn.</p>
+<p class="text">Trong phần E.6, khả năng nhận dạng dấu hiệu là một tính năng mới của bản cập nhật này. Như minh họa trong hình A18-A20, mô hình có thể trích xuất nội dung từ nhiều loại dấu hiệu khác nhau, cho thấy độ chính xác cao ngay cả khi phải đối mặt với các yếu tố gây nhiễu phức tạp và môi trường hỗn loạn.</p>
+<p class="text">Hình A21 trong phần E.7 làm nổi bật khả năng phát hiện văn bản mới được tích hợp vào mô hình, cho phép xác định vị trí và nhận dạng đồng thời. Kết quả cho thấy khả năng hoạt động tốt trong các bố cục phức tạp, từ các trang tạp chí nhiều cột và bảng phức tạp đến nội dung viết tay không đều.</p>
+</div>
+<div class="paper-page" id="page-25">
+<div class="page-number">Trang 26</div>
+<h2 class="paragraph_title">E.1. Real-word Document Parsing</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_191_234_985_1229.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">PaddleOCR-VL-1.5</p>
+<p class="figure_title" style="text-align: center;">Hình A1 | Đầu ra Markdown cho chiếu sáng.</p>
+</div>
+<div class="paper-page" id="page-26">
+<div class="page-number">Trang 27</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_152_167_1030_1138.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A2 | Đầu ra Markdown cho Skew.</p>
+</div>
+<div class="paper-page" id="page-27">
+<div class="page-number">Trang 28</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_172_178_526_745.jpg" alt="image"></div>
+<h2 class="paragraph_title">PaddleOCR-VL-1.5</h2>
+<h2 class="paragraph_title">Automation technologies can be broadly grouped into three categories:</h2>
+<p class="text">1. Tự động hóa quy trình bằng robot (RPA): Đây là hình thức tự động hóa đơn giản nhất. Công nghệ RPA tự động hóa các quy trình lặp đi lặp lại dựa trên các quy tắc. Công nghệ này không thể học hỏi, thích ứng hoặc đưa ra quyết định; một bot RPA chỉ áp dụng một tập hợp các quy tắc nhất quán cho một quy trình để đạt được kết quả nhanh chóng và hiệu quả. Nhiều quy trình hành chính thủ công có thể được tối ưu hóa bằng cách này.</p>
+<p class="text">2. Học máy: Mức độ cao hơn là học máy, trong đó một máy tính có khả năng sử dụng lượng lớn dữ liệu để hiểu và dự đoán hành động mong muốn, và hiệu suất sẽ được cải thiện theo thời gian. Chatbot là một ví dụ điển hình về việc học máy được sử dụng trong lĩnh vực tài chính hiện nay. Các chatbot này sử dụng các công nghệ như xử lý ngôn ngữ tự nhiên (NLP) để giao tiếp theo thời gian thực với khách hàng, sử dụng dữ liệu từ các tương tác trước đó để hiểu rõ hơn về yêu cầu của khách hàng, và cung cấp thông tin hoặc phản hồi mong muốn.</p>
+<p class="text">3. Tăng cường nhận thức: Tăng cường nhận thức là cách tiếp cận gần nhất với trí tuệ nhân tạo thực sự mà chúng ta có hiện nay. Các máy tính nhận thức, như Watson của IBM, có khả năng xử lý dữ liệu phi cấu trúc và cung cấp câu trả lời cho các câu hỏi phức tạp, cho phép chúng thực hiện các nhiệm vụ mà trước đây chỉ có thể được thực hiện bởi con người.</p>
+<p class="text">Mặc dù các phân loại này thể hiện các mức độ phức tạp, nhưng tốt hơn là không nên coi các công nghệ tự động hóa như các giai đoạn mà một tổ chức phải trải qua. Thay vào đó, mỗi công nghệ phù hợp nhất với các loại công việc cụ thể và có thể được sử dụng kết hợp để đạt được các mục tiêu lớn hơn.</p>
+<p class="text">Tự động hóa thông minh (IA) là một thuật ngữ ngày càng được sử dụng để mô tả khái niệm kết hợp nhiều công nghệ tự động hóa để giải quyết các vấn đề kinh doanh phức tạp. Ví dụ, các tổ chức đang tìm cách sử dụng RPA (tự động hóa quy trình) kết hợp với học máy, xử lý ngôn ngữ tự nhiên và nhận dạng ký tự số để giúp giải quyết các thách thức về tuân thủ quy định và xử lý các yêu cầu bảo hiểm với số lượng lớn và độ phức tạp thấp.</p>
+<h2 class="paragraph_title">Jobs changing, not necessarily replaced</h2>
+<p class="text">Những dự đoán về tác động của tự động hóa đối với lực lượng lao động đã được đưa ra trong nhiều năm qua, với việc mất việc làm là một mối quan tâm lớn. Ví dụ, năm 2014, Peter Sondergaard, giám đốc nghiên cứu của Gartner, đã tuyên bố: "Gartner dự đoán rằng một trong ba công việc sẽ được chuyển đổi thành phần mềm, robot và máy móc thông minh vào năm 2025." Tuy nhiên, mặc dù có những khu vực tự động hóa rộng rãi trong ngành, nhưng các ước tính lạc quan cũng không thể đưa ra tỷ lệ tự động hóa trung bình cao hơn 5% – thấp hơn đáng kể so với tỷ lệ cần thiết để thay thế một phần ba lực lượng lao động trong 7 năm.</p>
+<p class="text">Mặc dù dự đoán ban đầu cho rằng tự động hóa sẽ dẫn đến việc thay thế hoàn toàn nhân viên, nhưng điều này không phải là những gì chúng ta đang thấy trong thời gian ngắn. Thay vào đó, các công nghệ này đang được sử dụng để nâng cao hoặc hỗ trợ công việc của nhân viên. Khả năng tự động hóa có thể giúp giảm bớt gánh nặng công việc hành chính lặp đi lặp lại hoặc cung cấp thông tin để giúp cá nhân đưa ra quyết định tốt hơn, cho phép nhân viên tập trung vào</p>
+<h2 class="paragraph_title">Intelligent automation</h2>
+<p class="text">(IA) là một thuật ngữ ngày càng được sử dụng để chỉ khái niệm kết hợp nhiều công nghệ tự động hóa nhằm giải quyết các vấn đề kinh doanh phức tạp.</p>
+<p class="text">Today's organizational challenges</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_775_659_860_731.jpg" alt="image"></div>
+<h2 class="paragraph_title">PaddleOCR-VL-1.5</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_169_775_579_1144.jpg" alt="image"></div>
+<h2 class="paragraph_title">夺冠新课堂 三年级科学下·DX 期末测试卷</h2>
+<p class="text"></p>
+<p class="text">5. 一个开关只能控制一个小灯泡的亮和灭。</p>
+<p class="text">6. 菜</p>
+<p class="text">7. 清洗梨子时，它的大小发生了变化。（）</p>
+<div class="table-container"><table><tr><td>题号</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td><td>总分</td><td>等级</td></tr><tr><td>得分</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<p class="text">8. 在观察土壤的活动中，要戴上手套，完成活动之后，还要及时洗手。()</p>
+<p class="text">9. 把物体的质量称为“重量”，这是一种不规范的说法。</p>
+<p class="text">10. 物体所含物质的多少称为物体的体积。（）</p>
+<h2 class="paragraph_title">一、填空题(每空1分,共23分)</h2>
+<h2 class="paragraph_title">三、选择题（将正确答案的序号填在括号里）（24分）</h2>
+<p class="text">1. 体积相同，质量不同的两种液体，如果把轻的液体倒入重的液体中，它会___；如果把重的液体倒入轻的液体中，它会___（选填“沉”或“浮”）</p>
+<p class="text">1 下班选项中，属于天然材料的是（）</p>
+<p class="text">3. 电是一种___，太阳发出的___、物体发出的___等也都是能量的不同表现形式。</p>
+<p class="text">A. 绝缘体的绝缘性并不是绝对的</p>
+<p class="text">5. 小狗房子的选材要求：要___、___、___等。
+6. 种子能萌发成能帮助植物吸收水分和</p>
+<p class="text">7. 植物茎内有许多“”，它们能够把根吸收的___和___输送到植物的叶等器官里。</p>
+<p class="text">C. 发现有人触电，应直接用手将触电者拉开
+3. 下列植物中，会借助水来传播种子的是()</p>
+<p class="text">8. 人们根据土壤中所含沙粒和黏粒量的多少，把土壤分</p>
+<p class="text">为三类：含黏粒多的土壤叫含沙粒多的土壤叫沙粒和黏粒的含量差不多的土壤叫</p>
+<p class="text">4. 下列植物中，会借助动物来传播种子的是()</p>
+<p class="text">9. 固体有确定的形状, 我们可以用___、___、___等数值来描述它的大小。</p>
+<p class="text">5. 下列说法正确的是（）</p>
+<p class="text">10. 空气没有确定的___，但空气有___。</p>
+<p class="text">A. 所有绿色开花植物都有根、茎、叶、花、果实和种子六大器官</p>
+<h2 class="paragraph_title">二、判断题(对的画“√”，错的画“×”)(10</h2>
+<p class="text">B. 所有绿色开花植物都可以通过根、茎、叶等来繁殖后代</p>
+<p class="text">1. 种子和根是植物的重要器官。（）</p>
+<p class="text">C. 绿色开花植物不一定都用种子来繁殖后代</p>
+<p class="text">2. 要想知道小狗房子的大小是否合适，可以让小狗钻进去试试。（）
+3. 变成油条的面团物质发生变化。（）</p>
+<p class="figure_title" style="text-align: center;">Hình A3 | Đầu ra Markdown cho chụp ảnh trên màn hình.</p>
+</div>
+<div class="paper-page" id="page-28">
+<div class="page-number">Trang 29</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_634_216_999_708.jpg" alt="image"></div>
+<h2 class="paragraph_title">J.A. Schapfer et al. / Journal of Criminal Justice 38 (2018) 310–367</h2>
+<h2 class="paragraph_title">Notes</h2>
+<h2 class="paragraph_title">Refimmos</h2>
+<h2 class="paragraph_title">Image</h2>
+<h2 class="paragraph_title">PaddleOCR-VL-1.5</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_173_819_559_1329.jpg" alt="image"></div>
+<p class="algorithm">= 2  $ \sum_{1 \leq k \leq \sqrt{2}} \left[ \frac{x}{u} \right] - \left[ \sqrt{x} \right]^2 $
+
+= 2  $ \sum_{1 \leq k \leq \sqrt{2}} \left[ \frac{x}{u} - \left[ \frac{x}{u} \right] \right] - \left( \sqrt{x} - \left[ \sqrt{x} \right]^2 \right)^2 $
+
+= 2x  $ \sum_{1 \leq k \leq \sqrt{2}} \frac{1}{u} - 2 \sum_{1 \leq k \leq \sqrt{2}} \left[ \frac{x}{u} - x + O(\sqrt{x}) \right] $
+
+= 2x  $ \left( \log \sqrt{x} + \gamma + O \left( \frac{1}{\sqrt{x}} \right) \right) - x + O(\sqrt{x}) $
+
+= z  $ \log x + (2y - 1)x + O(\sqrt{x}) $
+
+This completes the proof.
+
+Theorem 7.4 For x ≥ 1,
+
+ $ \Delta(x) = \sum_{n \leq x} \left( \log n - d(n) + 2\gamma \right) O \left( x^{1/2} \right) $.
+
+Proof. By Theorem 7.3 we have
+
+ $ \sum_{n \leq x} d(n) = x \log x + (2\gamma - 1)x + O \left( x^{1/2} \right) $.
+
+By Theorem 6.4 we have
+
+ $ \sum_{n \leq x} \log n = z \log x - z + O(\log z) $.
+
+Subtracting the first equation from the second, we obtain
+
+ $ \sum_{n \leq x} \left( \log n - d(n) + 2\gamma \right) O \left( x^{1/2} \right) - 2\gamma(z) + O \left( \log z \right) = O \left( x^{1/2} \right) $.
+
+An ordered factorization of the positive integer n into exactly £ factors is an £-tuple  $ (d_1, \ldots, d_k) $ such that = d_1 = d_k. The division function  $ d(n) $ counts the number of ordered factorizations of n into exactly two factors, since each factorization n = dd' is completely determined by the first factor. For every positive integer £, we define the arithmetic function  $ d_n(n) $ as the number of factorizations of n into exactly £ factors. Then  $ d_1(n) = 1 $ and  $ d_2(n) = d(n) $ for all n.</p>
+<p class="figure_title" style="text-align: center;">Hình A4 | Đầu ra Markdown để quét.</p>
+</div>
+<div class="paper-page" id="page-29">
+<div class="page-number">Trang 30</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_156_167_1030_1242.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A5 | Đầu ra Markdown cho phép điều chỉnh hình dạng.</p>
+</div>
+<div class="paper-page" id="page-30">
+<div class="page-number">Trang 31</div>
+<h2 class="paragraph_title">E.2. Layout Analysis</h2>
+<h2 class="paragraph_title">E.2.1. Layout Analysis for Real-world Documents</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_193_271_997_1004.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A6 | So sánh kết quả phân tích bố cục giữa PaddleOCR-VL và PaddleOCR-VL-1.5 cho phép điều chỉnh hình ảnh.</p>
+</div>
+<div class="paper-page" id="page-31">
+<div class="page-number">Trang 32</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_170_162_1023_1141.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A7 | So sánh kết quả phân tích bố cục giữa PaddleOCR-VL và PaddleOCR-VL-1.5 cho ảnh chụp màn hình.</p>
+</div>
+<div class="paper-page" id="page-32">
+<div class="page-number">Trang 33</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_170_162_1022_1224.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A8 | So sánh kết quả phân tích bố cục giữa PaddleOCR-VL và PaddleOCR-VL-1.5 cho trường hợp dữ liệu bị lệch.</p>
+</div>
+<div class="paper-page" id="page-33">
+<div class="page-number">Trang 34</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_169_164_1021_1140.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A9 | So sánh kết quả phân tích bố cục giữa PaddleOCR-VL và PaddleOCR-VL-1.5 đối với điều kiện ánh sáng.</p>
+</div>
+<div class="paper-page" id="page-34">
+<div class="page-number">Trang 35</div>
+<h2 class="paragraph_title">E.2.2. Layout Analysis for New Scenarios</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_182_241_1009_1378.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A10 | So sánh kết quả phân tích bố cục giữa PaddleOCR-VL và PaddleOCR-VL-1.5 cho các tình huống mới.</p>
+</div>
+<div class="paper-page" id="page-35">
+<div class="page-number">Trang 36</div>
+<h2 class="paragraph_title">E.3. Text Recognition</h2>
+<h2 class="paragraph_title">E.3.1. Text Recognition for Text decoration</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_150_260_1032_1239.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A11 | So sánh kết quả đầu ra Markdown giữa PaddleOCR-VL và PaddleOCR-VL-1.5 trên tài liệu có chú thích.</p>
+</div>
+<div class="paper-page" id="page-36">
+<div class="page-number">Trang 37</div>
+<h2 class="paragraph_title">E.3.2. Text Recognition for Special characters</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_147_230_1037_1324.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A12 | So sánh kết quả đầu ra Markdown giữa PaddleOCR-VL và PaddleOCR-VL-1.5 trên các tài liệu chứa ký tự đặc biệt.</p>
+</div>
+<div class="paper-page" id="page-37">
+<div class="page-number">Trang 38</div>
+<h2 class="paragraph_title">E.3.3. Text Recognition for Long-tail Scenarios</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_220_207_969_1454.jpg" alt="image"></div>
+<h2 class="paragraph_title">PaddleOCR-VL-1.5</h2>
+<h2 class="paragraph_title">Image</h2>
+<h2 class="paragraph_title">PaddleOCR-VL</h2>
+<p class="text">在那个食不裹腹、艰苦卓决的年代，到处都是饥民。他一幅风尘扑扑、衣衫烂楼的样子，不径而来，声音宏亮得像破锣一样宣部：“我们必须破斧沉舟，饮鸠止渴也得干！绝不能让形形式式的敌人嘻笑怒骂、悬梁刺骨地看笑话，不然我们就死不冥目。”众人听了这翻话，一股作气，像疯了一样攻城掠地，每个人都事必恭亲、不敢怠慢。事成后，他迫不急待地搬师回朝，却开始莫名地沾沾自喜，整日里指手划脚，对日常琐事也粗枝大叶、心不在焉，完全没了当初的拼劲。最后，他鬼鬼祟祟地消失在人海，连个招呼都不打，空留一段委糜不振的过往，让人暇想连篇，唏嘘不已。</p>
+<p class="text">在那个食不腹膈、艰苦卓久的年代，到处都是饥民。他一幅风尘扑扑、衣衫褴褛的样子，不径而来，声音宏亮得像破锣一样宣部：“我们必须破斧沉舟，饮鸠止渴也得干！绝不能让形形式式的敌人嘈笑怒骂、悬梁刺骨地看笑话，不然我们就死不买耳。”众人听了这翻话，一股作气，像疯了一样攻城掠地，每个人都事必恭亲、不敢怠慢。事成后，他迫不急待地搬师回朝，却开始莫名地沾沾自喜，整日里指手划脚，对日常琐事也粗枝大叶、心不在焉，完全没了当初的拼劲。最后，他鬼鬼崇崇地消失在人海，连个招呼都不打，空留一段委糜不振的过往，让人暇想连篇，唏嘘不已。
+在那个食不腹膈、艰苦卓久的年代，到处都是饥民。他一幅风尘扑扑、衣衫褴褛的样子，不径而来，声音宏亮得像破锣一样宣部：“我们必须破斧沉舟，饮鸠止渴也得干！绝不能让形形式式的敌人嘈笑怒骂、悬梁刺骨地看笑话，不然我们就死不买耳。”众人听了这翻话，一般人作气，像疯了一样攻城掠地，每个人都事必恭亲、不敢怠慢。事成后，他迫不急待地搬师回朝，却开始莫名地沾沾自喜，整日里指手划脚，对日常琐事也粗枝大叶、心不在焉，完全没了当初的拼劲。最后，他鬼鬼崇崇地消失在人海，连个招呼都不打，空留一段委糜不振的过往，让人暇想连篇，唏嘘不已。</p>
+<p class="text"></p>
+<p class="figure_title" style="text-align: center;">Hình A13 | So sánh kết quả đầu ra Markdown giữa PaddleOCR-VL và PaddleOCR-VL-1.5 trên các tài liệu thuộc loại "dài".</p>
+</div>
+<div class="paper-page" id="page-38">
+<div class="page-number">Trang 39</div>
+<h2 class="paragraph_title">E.4. Table Recognition</h2>
+<h2 class="paragraph_title">E.4.1. Table Recognition for General Tables</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_166_272_1022_1012.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A14 | So sánh kết quả đầu ra Markdown giữa PaddleOCR-VL và PaddleOCR-VL-1.5 trên các bảng tổng hợp.</p>
+</div>
+<div class="paper-page" id="page-39">
+<div class="page-number">Trang 40</div>
+<h2 class="paragraph_title">E.4.2. Table Recognition for Multiple Languages</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_164_227_1021_1110.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A15 | So sánh kết quả đầu ra Markdown giữa PaddleOCR-VL và PaddleOCR-VL-1.5 trên các bảng đa ngôn ngữ.</p>
+</div>
+<div class="paper-page" id="page-40">
+<div class="page-number">Trang 41</div>
+<h2 class="paragraph_title">E.4.3. Table Recognition for Cross-Page Tables</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_155_223_1025_988.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A16 | So sánh kết quả đầu ra Markdown giữa PaddleOCR-VL và PaddleOCR-VL-1.5 trên các bảng liên kết trang.</p>
+</div>
+<div class="paper-page" id="page-41">
+<div class="page-number">Trang 42</div>
+<h2 class="paragraph_title">E.5. Formula Recognition</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_162_229_1022_407.jpg" alt="image"></div>
+<h2 class="paragraph_title">Formula Recognition Error</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_159_442_1024_1385.jpg" alt="image"></div>
+<h2 class="paragraph_title">Image</h2>
+<h2 class="paragraph_title">PaddleOCR-VL-1.5</h2>
+<h2 class="paragraph_title">Formula Recognition Error</h2>
+<h2 class="paragraph_title">Image</h2>
+<h2 class="paragraph_title">PaddleOCR-VL-1.5</h2>
+<p class="figure_title" style="text-align: center;">Hình A17 | So sánh kết quả đầu ra Markdown giữa PaddleOCR-VL và PaddleOCR-VL-1.5 trên các loại công thức khác nhau.</p>
+</div>
+<div class="paper-page" id="page-42">
+<div class="page-number">Trang 43</div>
+<h2 class="paragraph_title">E.6. Seal Recognition</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_169_228_982_1450.jpg" alt="image"></div>
+<p class="seal"></p>
+<p class="seal"></p>
+<p class="seal"></p>
+<p class="text">德阳九鼎电气有限公司
+检验专用章</p>
+<p class="seal"></p>
+<p class="text">全国统一发票监制章
+国家税务总局
+宁波市税务局</p>
+<p class="figure_title" style="text-align: center;">Hình A18 | Đầu ra Markdown cho các loại Seal khác nhau 1.</p>
+</div>
+<div class="paper-page" id="page-43">
+<div class="page-number">Trang 44</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_210_159_960_1384.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A19 | Đầu ra Markdown cho các loại Seal 2 khác nhau.</p>
+</div>
+<div class="paper-page" id="page-44">
+<div class="page-number">Trang 45</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_218_156_964_1413.jpg" alt="image"></div>
+<p class="seal"></p>
+<p class="text">天津市招生委员会
+办公室
+录取专用章</p>
+<p class="seal"></p>
+<p class="text">100 NĂM LÀM THIỆC
+TẠI HASTINGS
+ROBERTSON ST
+2/11/2023
+1923 – 2023</p>
+<p class="figure_title" style="text-align: center;">Hình A20 | Đầu ra Markdown cho các loại Seal 3 khác nhau.</p>
+</div>
+<div class="paper-page" id="page-45">
+<div class="page-number">Trang 46</div>
+<h2 class="paragraph_title">E.7. Text Spotting</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_161_224_1028_1238.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">Hình A21 | Kết quả nhận dạng văn bản trên các loại tài liệu khác nhau.</p>
+</div>
+</body></html>

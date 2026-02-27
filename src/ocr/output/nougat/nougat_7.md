@@ -1,0 +1,17 @@
+<div style="text-align: center;"><img src="imgs/img_in_chart_box_168_160_1026_687.jpg" alt="Image" width="72%" /></div>
+
+
+<div style="text-align: center;">Figure 6: Examples for repetition detection on logits. Top: Sample with repetition, Bottom: Sample without repetition. Left: Highest logit score for each token in the sequence  $ \ell(x) $, Center: Sliding window variance of the logits  $ \text{VarWin}_B[\ell](x) $, Right: Variance of variance from the position to the end  $ \text{VarEnd}_B[\ell](x) $</div>
+
+
+### 5.4 Repetitions during inference
+
+We notice that the model degenerates into repeating the same sentence over and over again. The model can not recover from this state by itself. In its simplest form, the last sentence or paragraph is repeated over and over again. We observed this behavior in 1.5% of pages in the test set, but the frequency increases for out-of-domain documents. Getting stuck in a repetitive loop is a known problem with Transformer-based models, when sampled with greedy decoding [44]. It can also happen that the model alternates between two sentences but sometimes changes some words, so a strict repetition detection will not suffice. Even harder to detect are predictions where the model counts its own repetitions, which sometimes happens in the references section.
+
+In general we notice this kind behavior after a mistake by the model. The model is not able to recover from the collapse.
+
+Anti-repetition augmentation Because of that we introduce a random perturbation during training. This helps the model to learn how to handle a wrongly predicted token. For each training example, there is a fixed probability that a random token will be replaced by any other randomly chosen token. This process continues until the newly sampled number is greater than a specified threshold (in this case, 10%). We did not observe a decrease in performance with this approach, but we did notice a significant reduction in repetitions. Particularly for out-of-domain documents, where we saw a 32% decline in failed page conversions.
+
+Repetition detection Since we are generating a maximum of 4096 tokens the model will stop at some point, however it is very inefficient and resource intensive to wait for a “end of sentence” token, when none will come. To detect the repetition during inference time we look at the largest logit value  $ \ell_i = \max \ell_i $ of the ith token. We found that the logits after a collapse can be separated using the following heuristic. First calculate the variance of the logits for a sliding window of size  $ B = 15 $
+
+ $$ \mathrm{VarWin}_{B}[\ell](x)=\frac{1}{B}\sum_{i=x}^{x+B}\left(\ell_{i}-\frac{1}{B}\sum_{j=x}^{x+B}\ell_{j}\right)^{2}. $$ 

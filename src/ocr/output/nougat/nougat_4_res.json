@@ -1,0 +1,1200 @@
+{
+    "input_path": "/home/bocchi/Downloads/nougat.pdf",
+    "page_index": 4,
+    "page_count": 17,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "header",
+            "block_content": "Nougat",
+            "block_bbox": [
+                122,
+                69,
+                190,
+                93
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    122.0,
+                    69.0
+                ],
+                [
+                    189.0,
+                    69.0
+                ],
+                [
+                    189.0,
+                    92.0
+                ],
+                [
+                    122.0,
+                    92.0
+                ]
+            ]
+        },
+        {
+            "block_label": "header",
+            "block_content": "Blecher et al.",
+            "block_bbox": [
+                954,
+                69,
+                1066,
+                93
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    954.0,
+                    69.0
+                ],
+                [
+                    1065.0,
+                    69.0
+                ],
+                [
+                    1065.0,
+                    92.0
+                ],
+                [
+                    954.0,
+                    92.0
+                ]
+            ]
+        },
+        {
+            "block_label": "chart",
+            "block_content": "",
+            "block_bbox": [
+                373,
+                159,
+                813,
+                419
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    373.0,
+                    159.0
+                ],
+                [
+                    813.0,
+                    159.0
+                ],
+                [
+                    813.0,
+                    419.0
+                ],
+                [
+                    373.0,
+                    419.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure 4: Example for splitting the paragraphs in the source code into different pages. The points in blue denote the page index predicted by the SVM.",
+            "block_bbox": [
+                120,
+                448,
+                1066,
+                497
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    448.0
+                ],
+                [
+                    1066.0,
+                    448.0
+                ],
+                [
+                    1066.0,
+                    497.0
+                ],
+                [
+                    120.0,
+                    497.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "we remove these elements in a pre-processing step using pdffigures2 [38]. The recognized captions are are then compared to the captions in the XML file and matched based on their Levenshtein distance [39]. Once the source document has been split into individual pages, the removed figures and tables are reinserted at the end of each page. For a better matching we also replaced unicode characters in the PDF text with corresponding LaTeX commands using the pylatexenc-library $ ^{8} $.",
+            "block_bbox": [
+                120,
+                538,
+                1067,
+                651
+            ],
+            "block_id": 4,
+            "block_order": 1,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    538.0
+                ],
+                [
+                    1067.0,
+                    538.0
+                ],
+                [
+                    1067.0,
+                    651.0
+                ],
+                [
+                    120.0,
+                    651.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Bag of Words matching First we extract the text lines from the PDF using MuPDF $ ^{9} $ and preprocess them to remove page numbers and potential headers/footers. We then use a Bag of Words model [40] with TF-IDF vectorizer and a linear Support Vector Machine classifier. The model is fitted to the PDF lines with the page number as label. Next we split the LaTeX source into paragraphs and predict the page number for each of them.",
+            "block_bbox": [
+                120,
+                657,
+                1068,
+                749
+            ],
+            "block_id": 5,
+            "block_order": 2,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    657.0
+                ],
+                [
+                    1068.0,
+                    657.0
+                ],
+                [
+                    1068.0,
+                    749.0
+                ],
+                [
+                    120.0,
+                    749.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Ideally, the predictions will form a stair case function but in practice the signal will be noisy. To find the best boundary points we employ a similar logic as decision trees and minimize a measure based on the Gini impurity",
+            "block_bbox": [
+                120,
+                756,
+                1068,
+                803
+            ],
+            "block_id": 6,
+            "block_order": 3,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    756.0
+                ],
+                [
+                    1068.0,
+                    756.0
+                ],
+                [
+                    1068.0,
+                    803.0
+                ],
+                [
+                    120.0,
+                    803.0
+                ]
+            ]
+        },
+        {
+            "block_label": "display_formula",
+            "block_content": " $$ G_{[a,b]}(i)=(b-a)\\cdot\\left(1-p_{[a,b]}^{2}(i)-p_{[a,b]}^{2}(i+1)\\right), $$ ",
+            "block_bbox": [
+                378,
+                816,
+                810,
+                854
+            ],
+            "block_id": 7,
+            "block_order": 4,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    378.0,
+                    816.0
+                ],
+                [
+                    810.0,
+                    816.0
+                ],
+                [
+                    810.0,
+                    854.0
+                ],
+                [
+                    378.0,
+                    854.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "where  $ p_{[a,b]}(i) $ is the probability of choosing an element with the predicted page number i in the interval  $ [a, b] $ that describes which paragraphs (elements) were considered for the split.\nThe best splitting position t in the interval  $ [a, b] $ is then",
+            "block_bbox": [
+                120,
+                866,
+                1067,
+                936
+            ],
+            "block_id": 8,
+            "block_order": 5,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    866.0
+                ],
+                [
+                    1067.0,
+                    866.0
+                ],
+                [
+                    1067.0,
+                    936.0
+                ],
+                [
+                    120.0,
+                    936.0
+                ]
+            ]
+        },
+        {
+            "block_label": "display_formula",
+            "block_content": " $$ \\hat{t}_{i}=\\arg\\min_{t}\\left(G_{[a,t]}(i)+G_{[t,b]}(i)\\right). $$ ",
+            "block_bbox": [
+                439,
+                945,
+                748,
+                986
+            ],
+            "block_id": 9,
+            "block_order": 6,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    439.0,
+                    945.0
+                ],
+                [
+                    748.0,
+                    945.0
+                ],
+                [
+                    748.0,
+                    986.0
+                ],
+                [
+                    439.0,
+                    986.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The search process starts with all paragraphs and for each subsequent page break, the lower bound of the search interval is set to the previous split position. See Fig. 4 for a visualization of an example page.",
+            "block_bbox": [
+                120,
+                998,
+                1066,
+                1045
+            ],
+            "block_id": 10,
+            "block_order": 7,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    998.0
+                ],
+                [
+                    1066.0,
+                    998.0
+                ],
+                [
+                    1066.0,
+                    1045.0
+                ],
+                [
+                    120.0,
+                    1045.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Fuzzy matching After this first coarse document splitting we try to find the exact position within the paragraph. This is done by comparing the source text within the neighborhood of the predicted splitting position to the last sentences of the previous page of the embedded PDF text, and the first sentences of the next page using the fuzzysearch library $ ^{10} $. If the two dividing points are at the same location in the source text, the page break is considered “accurate” and receives a score of 1. On the other hand, if the splitting positions differ, the one with the smallest normalized Levenshtein distance is selected and given a score of 1 minus the distance. To be included in the dataset, a PDF page must have an average score of at least 0.9 for both page breaks. This results in an acceptance rate of about 47% of all pages.",
+            "block_bbox": [
+                120,
+                1053,
+                1070,
+                1209
+            ],
+            "block_id": 11,
+            "block_order": 8,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    1053.0
+                ],
+                [
+                    1070.0,
+                    1053.0
+                ],
+                [
+                    1070.0,
+                    1209.0
+                ],
+                [
+                    120.0,
+                    1209.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "4.2 Ground truth artifacts",
+            "block_bbox": [
+                121,
+                1233,
+                369,
+                1257
+            ],
+            "block_id": 12,
+            "block_order": 9,
+            "group_id": 12,
+            "block_polygon_points": [
+                [
+                    121.0,
+                    1233.0
+                ],
+                [
+                    369.0,
+                    1233.0
+                ],
+                [
+                    369.0,
+                    1257.0
+                ],
+                [
+                    121.0,
+                    1257.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Because the dataset was pre-processed by LaTeXML, the markup version of the source code can contain artifacts and commands from unsupported packages. The HTML file may contain subsection titles with numbering even though they are not numbered in the PDF. There may also be instances where figures or tables are missing from the ground truth due to processing errors.",
+            "block_bbox": [
+                120,
+                1274,
+                1069,
+                1365
+            ],
+            "block_id": 13,
+            "block_order": 10,
+            "group_id": 13,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    1274.0
+                ],
+                [
+                    1069.0,
+                    1274.0
+                ],
+                [
+                    1069.0,
+                    1365.0
+                ],
+                [
+                    120.0,
+                    1365.0
+                ]
+            ]
+        },
+        {
+            "block_label": "footnote",
+            "block_content": " $ ^{8} $https://github.com/phfaist/pylatexenc",
+            "block_bbox": [
+                145,
+                1380,
+                431,
+                1403
+            ],
+            "block_id": 14,
+            "block_order": null,
+            "group_id": 14,
+            "block_polygon_points": [
+                [
+                    145.0,
+                    1380.0
+                ],
+                [
+                    431.0,
+                    1380.0
+                ],
+                [
+                    431.0,
+                    1403.0
+                ],
+                [
+                    145.0,
+                    1403.0
+                ]
+            ]
+        },
+        {
+            "block_label": "footnote",
+            "block_content": " $ ^{9} $https://mupdf.com/",
+            "block_bbox": [
+                145,
+                1402,
+                303,
+                1424
+            ],
+            "block_id": 15,
+            "block_order": null,
+            "group_id": 15,
+            "block_polygon_points": [
+                [
+                    145,
+                    1413
+                ],
+                [
+                    145,
+                    1423
+                ],
+                [
+                    302,
+                    1423
+                ],
+                [
+                    302,
+                    1402
+                ],
+                [
+                    151,
+                    1402
+                ]
+            ]
+        },
+        {
+            "block_label": "footnote",
+            "block_content": " $ ^{10} $https://github.com/taleinat/fuzzysearch",
+            "block_bbox": [
+                143,
+                1423,
+                444,
+                1446
+            ],
+            "block_id": 16,
+            "block_order": null,
+            "group_id": 16,
+            "block_polygon_points": [
+                [
+                    143.0,
+                    1423.0
+                ],
+                [
+                    444.0,
+                    1423.0
+                ],
+                [
+                    444.0,
+                    1446.0
+                ],
+                [
+                    143.0,
+                    1446.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "5",
+            "block_bbox": [
+                587,
+                1484,
+                603,
+                1504
+            ],
+            "block_id": 17,
+            "block_order": null,
+            "group_id": 17,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1484.0
+                ],
+                [
+                    602.0,
+                    1484.0
+                ],
+                [
+                    602.0,
+                    1503.0
+                ],
+                [
+                    587.0,
+                    1503.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.7962349057197571,
+                "coordinate": [
+                    122,
+                    69,
+                    190,
+                    93
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        122.0,
+                        69.0
+                    ],
+                    [
+                        189.0,
+                        69.0
+                    ],
+                    [
+                        189.0,
+                        92.0
+                    ],
+                    [
+                        122.0,
+                        92.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.8439404964447021,
+                "coordinate": [
+                    954,
+                    69,
+                    1066,
+                    93
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        954.0,
+                        69.0
+                    ],
+                    [
+                        1065.0,
+                        69.0
+                    ],
+                    [
+                        1065.0,
+                        92.0
+                    ],
+                    [
+                        954.0,
+                        92.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 3,
+                "label": "chart",
+                "score": 0.9551385045051575,
+                "coordinate": [
+                    373,
+                    159,
+                    813,
+                    419
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        373.0,
+                        159.0
+                    ],
+                    [
+                        813.0,
+                        159.0
+                    ],
+                    [
+                        813.0,
+                        419.0
+                    ],
+                    [
+                        373.0,
+                        419.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9193419218063354,
+                "coordinate": [
+                    120,
+                    448,
+                    1066,
+                    497
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        120.0,
+                        448.0
+                    ],
+                    [
+                        1066.0,
+                        448.0
+                    ],
+                    [
+                        1066.0,
+                        497.0
+                    ],
+                    [
+                        120.0,
+                        497.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9410439729690552,
+                "coordinate": [
+                    120,
+                    538,
+                    1067,
+                    651
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        120.0,
+                        538.0
+                    ],
+                    [
+                        1067.0,
+                        538.0
+                    ],
+                    [
+                        1067.0,
+                        651.0
+                    ],
+                    [
+                        120.0,
+                        651.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9416182637214661,
+                "coordinate": [
+                    120,
+                    657,
+                    1068,
+                    749
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        120.0,
+                        657.0
+                    ],
+                    [
+                        1068.0,
+                        657.0
+                    ],
+                    [
+                        1068.0,
+                        749.0
+                    ],
+                    [
+                        120.0,
+                        749.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9009446501731873,
+                "coordinate": [
+                    120,
+                    756,
+                    1068,
+                    803
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        120.0,
+                        756.0
+                    ],
+                    [
+                        1068.0,
+                        756.0
+                    ],
+                    [
+                        1068.0,
+                        803.0
+                    ],
+                    [
+                        120.0,
+                        803.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 5,
+                "label": "display_formula",
+                "score": 0.9000608921051025,
+                "coordinate": [
+                    378,
+                    816,
+                    810,
+                    854
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        378.0,
+                        816.0
+                    ],
+                    [
+                        810.0,
+                        816.0
+                    ],
+                    [
+                        810.0,
+                        854.0
+                    ],
+                    [
+                        378.0,
+                        854.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9138308167457581,
+                "coordinate": [
+                    120,
+                    866,
+                    1067,
+                    936
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        120.0,
+                        866.0
+                    ],
+                    [
+                        1067.0,
+                        866.0
+                    ],
+                    [
+                        1067.0,
+                        936.0
+                    ],
+                    [
+                        120.0,
+                        936.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 15,
+                "label": "inline_formula",
+                "score": 0.7990010380744934,
+                "coordinate": [
+                    178,
+                    868,
+                    245,
+                    892
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        178,
+                        868
+                    ],
+                    [
+                        178,
+                        891
+                    ],
+                    [
+                        244,
+                        891
+                    ],
+                    [
+                        244,
+                        868
+                    ]
+                ]
+            },
+            {
+                "cls_id": 15,
+                "label": "inline_formula",
+                "score": 0.4100968539714813,
+                "coordinate": [
+                    465,
+                    912,
+                    510,
+                    934
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        465.0,
+                        912.0
+                    ],
+                    [
+                        509.0,
+                        912.0
+                    ],
+                    [
+                        509.0,
+                        933.0
+                    ],
+                    [
+                        465.0,
+                        933.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 5,
+                "label": "display_formula",
+                "score": 0.8862583637237549,
+                "coordinate": [
+                    439,
+                    945,
+                    748,
+                    986
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        439.0,
+                        945.0
+                    ],
+                    [
+                        748.0,
+                        945.0
+                    ],
+                    [
+                        748.0,
+                        986.0
+                    ],
+                    [
+                        439.0,
+                        986.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.906882643699646,
+                "coordinate": [
+                    120,
+                    998,
+                    1066,
+                    1045
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        120.0,
+                        998.0
+                    ],
+                    [
+                        1066.0,
+                        998.0
+                    ],
+                    [
+                        1066.0,
+                        1045.0
+                    ],
+                    [
+                        120.0,
+                        1045.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9569929838180542,
+                "coordinate": [
+                    120,
+                    1053,
+                    1070,
+                    1209
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        120.0,
+                        1053.0
+                    ],
+                    [
+                        1070.0,
+                        1053.0
+                    ],
+                    [
+                        1070.0,
+                        1209.0
+                    ],
+                    [
+                        120.0,
+                        1209.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8482397198677063,
+                "coordinate": [
+                    121,
+                    1233,
+                    369,
+                    1257
+                ],
+                "order": 11,
+                "polygon_points": [
+                    [
+                        121.0,
+                        1233.0
+                    ],
+                    [
+                        369.0,
+                        1233.0
+                    ],
+                    [
+                        369.0,
+                        1257.0
+                    ],
+                    [
+                        121.0,
+                        1257.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9341718554496765,
+                "coordinate": [
+                    120,
+                    1274,
+                    1069,
+                    1365
+                ],
+                "order": 12,
+                "polygon_points": [
+                    [
+                        120.0,
+                        1274.0
+                    ],
+                    [
+                        1069.0,
+                        1274.0
+                    ],
+                    [
+                        1069.0,
+                        1365.0
+                    ],
+                    [
+                        120.0,
+                        1365.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 10,
+                "label": "footnote",
+                "score": 0.759755551815033,
+                "coordinate": [
+                    145,
+                    1380,
+                    431,
+                    1403
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        145.0,
+                        1380.0
+                    ],
+                    [
+                        431.0,
+                        1380.0
+                    ],
+                    [
+                        431.0,
+                        1403.0
+                    ],
+                    [
+                        145.0,
+                        1403.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 10,
+                "label": "footnote",
+                "score": 0.7129938006401062,
+                "coordinate": [
+                    145,
+                    1402,
+                    303,
+                    1424
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        145,
+                        1413
+                    ],
+                    [
+                        145,
+                        1423
+                    ],
+                    [
+                        302,
+                        1423
+                    ],
+                    [
+                        302,
+                        1402
+                    ],
+                    [
+                        151,
+                        1402
+                    ]
+                ]
+            },
+            {
+                "cls_id": 10,
+                "label": "footnote",
+                "score": 0.8330286145210266,
+                "coordinate": [
+                    143,
+                    1423,
+                    444,
+                    1446
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        143.0,
+                        1423.0
+                    ],
+                    [
+                        444.0,
+                        1423.0
+                    ],
+                    [
+                        444.0,
+                        1446.0
+                    ],
+                    [
+                        143.0,
+                        1446.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6871546506881714,
+                "coordinate": [
+                    587,
+                    1484,
+                    603,
+                    1504
+                ],
+                "order": 13,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1484.0
+                    ],
+                    [
+                        602.0,
+                        1484.0
+                    ],
+                    [
+                        602.0,
+                        1503.0
+                    ],
+                    [
+                        587.0,
+                        1503.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

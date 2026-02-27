@@ -1,0 +1,888 @@
+{
+    "input_path": "/home/bocchi/Downloads/nougat.pdf",
+    "page_index": 12,
+    "page_count": 17,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "header",
+            "block_content": "Nougat",
+            "block_bbox": [
+                123,
+                69,
+                190,
+                93
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    123.0,
+                    69.0
+                ],
+                [
+                    189.0,
+                    69.0
+                ],
+                [
+                    189.0,
+                    92.0
+                ],
+                [
+                    123.0,
+                    92.0
+                ]
+            ]
+        },
+        {
+            "block_label": "header",
+            "block_content": "Blecher et al.",
+            "block_bbox": [
+                954,
+                70,
+                1066,
+                93
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    954.0,
+                    70.0
+                ],
+                [
+                    1065.0,
+                    70.0
+                ],
+                [
+                    1065.0,
+                    92.0
+                ],
+                [
+                    954.0,
+                    92.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "A Dataset",
+            "block_bbox": [
+                122,
+                140,
+                273,
+                170
+            ],
+            "block_id": 2,
+            "block_order": 1,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    122.0,
+                    140.0
+                ],
+                [
+                    273.0,
+                    140.0
+                ],
+                [
+                    273.0,
+                    170.0
+                ],
+                [
+                    122.0,
+                    170.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Name</td><td>Number of Pages</td></tr><tr><td>arXiv</td><td>7,511,745</td></tr><tr><td>PMC</td><td>536,319</td></tr><tr><td>IDL</td><td>446,777</td></tr><tr><td>Total</td><td>8,204,754</td></tr></table>",
+            "block_bbox": [
+                475,
+                203,
+                716,
+                337
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    475.0,
+                    203.0
+                ],
+                [
+                    716.0,
+                    203.0
+                ],
+                [
+                    716.0,
+                    337.0
+                ],
+                [
+                    475.0,
+                    337.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Table A.1: Dataset composition",
+            "block_bbox": [
+                462,
+                342,
+                727,
+                364
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    462.0,
+                    342.0
+                ],
+                [
+                    727.0,
+                    342.0
+                ],
+                [
+                    727.0,
+                    364.0
+                ],
+                [
+                    462.0,
+                    364.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The most important data source is arXiv, making up > 91.5% of the corpus. On arXiv most research documents are paired with the LaTeX source code provided by the authors. The LaTeX source offers more information and is left unprocessed, unlike the XML format from PMC where equations and tables are frequently substituted with images. This allows us to select exactly which information we need to build the dataset.",
+            "block_bbox": [
+                121,
+                407,
+                1069,
+                499
+            ],
+            "block_id": 5,
+            "block_order": 2,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    121.0,
+                    407.0
+                ],
+                [
+                    1069.0,
+                    407.0
+                ],
+                [
+                    1069.0,
+                    499.0
+                ],
+                [
+                    121.0,
+                    499.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "B Examples",
+            "block_bbox": [
+                123,
+                526,
+                298,
+                557
+            ],
+            "block_id": 6,
+            "block_order": 3,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    123.0,
+                    526.0
+                ],
+                [
+                    298.0,
+                    526.0
+                ],
+                [
+                    298.0,
+                    557.0
+                ],
+                [
+                    123.0,
+                    557.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "In this section we converted some pages from old text books using the Nougat base model. The text books from the Internet Archive $ ^{11} $ and Project Gutenberg $ ^{12} $ and are in public domain.",
+            "block_bbox": [
+                121,
+                580,
+                1066,
+                623
+            ],
+            "block_id": 7,
+            "block_order": 4,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    121.0,
+                    580.0
+                ],
+                [
+                    1066.0,
+                    580.0
+                ],
+                [
+                    1066.0,
+                    623.0
+                ],
+                [
+                    121.0,
+                    623.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The performance for these scanned pages is noticeable worse than for digital-born documents. However, the model does generate sensible text for each page with few errors. For example see the first row of Fig. B.1. Here the model mistakes the almost illegible exponent n for *. In the second row of the same figure the model falls into a repetitive loop after predicting another comma instead of a dot. Similar problems can be seen in Fig. B.2.",
+            "block_bbox": [
+                121,
+                625,
+                1067,
+                711
+            ],
+            "block_id": 8,
+            "block_order": 5,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    121.0,
+                    625.0
+                ],
+                [
+                    1067.0,
+                    625.0
+                ],
+                [
+                    1067.0,
+                    711.0
+                ],
+                [
+                    121.0,
+                    711.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "In Fig. B.3 we present pages, scanned with a mobile device, from a printed master thesis and the Nougat output. The model is robust to the artifacts that arise when hand-scanning a document.",
+            "block_bbox": [
+                122,
+                709,
+                1066,
+                751
+            ],
+            "block_id": 9,
+            "block_order": 6,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    122,
+                    709
+                ],
+                [
+                    128,
+                    750
+                ],
+                [
+                    1065,
+                    750
+                ],
+                [
+                    1065,
+                    709
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Explore the examples in this section on the project page: https://facebookresearch.github.io/nougat.",
+            "block_bbox": [
+                123,
+                755,
+                923,
+                779
+            ],
+            "block_id": 10,
+            "block_order": 7,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    123.0,
+                    755.0
+                ],
+                [
+                    923.0,
+                    755.0
+                ],
+                [
+                    923.0,
+                    779.0
+                ],
+                [
+                    123.0,
+                    779.0
+                ]
+            ]
+        },
+        {
+            "block_label": "footnote",
+            "block_content": " $ ^{11} $https://archive.org/",
+            "block_bbox": [
+                142,
+                1400,
+                300,
+                1424
+            ],
+            "block_id": 11,
+            "block_order": null,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    142.0,
+                    1400.0
+                ],
+                [
+                    300.0,
+                    1400.0
+                ],
+                [
+                    300.0,
+                    1424.0
+                ],
+                [
+                    142.0,
+                    1424.0
+                ]
+            ]
+        },
+        {
+            "block_label": "footnote",
+            "block_content": " $ ^{12} $https://www.gutenberg.org/",
+            "block_bbox": [
+                143,
+                1424,
+                362,
+                1447
+            ],
+            "block_id": 12,
+            "block_order": null,
+            "group_id": 12,
+            "block_polygon_points": [
+                [
+                    143.0,
+                    1424.0
+                ],
+                [
+                    362.0,
+                    1424.0
+                ],
+                [
+                    362.0,
+                    1447.0
+                ],
+                [
+                    143.0,
+                    1447.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "13",
+            "block_bbox": [
+                583,
+                1482,
+                607,
+                1505
+            ],
+            "block_id": 13,
+            "block_order": null,
+            "group_id": 13,
+            "block_polygon_points": [
+                [
+                    583.0,
+                    1482.0
+                ],
+                [
+                    606.0,
+                    1482.0
+                ],
+                [
+                    606.0,
+                    1504.0
+                ],
+                [
+                    583.0,
+                    1504.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.7830581665039062,
+                "coordinate": [
+                    123,
+                    69,
+                    190,
+                    93
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        123.0,
+                        69.0
+                    ],
+                    [
+                        189.0,
+                        69.0
+                    ],
+                    [
+                        189.0,
+                        92.0
+                    ],
+                    [
+                        123.0,
+                        92.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.8333423137664795,
+                "coordinate": [
+                    954,
+                    70,
+                    1066,
+                    93
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        954.0,
+                        70.0
+                    ],
+                    [
+                        1065.0,
+                        70.0
+                    ],
+                    [
+                        1065.0,
+                        92.0
+                    ],
+                    [
+                        954.0,
+                        92.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8357996940612793,
+                "coordinate": [
+                    122,
+                    140,
+                    273,
+                    170
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        122.0,
+                        140.0
+                    ],
+                    [
+                        273.0,
+                        140.0
+                    ],
+                    [
+                        273.0,
+                        170.0
+                    ],
+                    [
+                        122.0,
+                        170.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9326504468917847,
+                "coordinate": [
+                    475,
+                    203,
+                    716,
+                    337
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        475.0,
+                        203.0
+                    ],
+                    [
+                        716.0,
+                        203.0
+                    ],
+                    [
+                        716.0,
+                        337.0
+                    ],
+                    [
+                        475.0,
+                        337.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8332982659339905,
+                "coordinate": [
+                    462,
+                    342,
+                    727,
+                    364
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        462.0,
+                        342.0
+                    ],
+                    [
+                        727.0,
+                        342.0
+                    ],
+                    [
+                        727.0,
+                        364.0
+                    ],
+                    [
+                        462.0,
+                        364.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9286742806434631,
+                "coordinate": [
+                    121,
+                    407,
+                    1069,
+                    499
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        121.0,
+                        407.0
+                    ],
+                    [
+                        1069.0,
+                        407.0
+                    ],
+                    [
+                        1069.0,
+                        499.0
+                    ],
+                    [
+                        121.0,
+                        499.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8758946657180786,
+                "coordinate": [
+                    123,
+                    526,
+                    298,
+                    557
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        123.0,
+                        526.0
+                    ],
+                    [
+                        298.0,
+                        526.0
+                    ],
+                    [
+                        298.0,
+                        557.0
+                    ],
+                    [
+                        123.0,
+                        557.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8705601692199707,
+                "coordinate": [
+                    121,
+                    580,
+                    1066,
+                    623
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        121.0,
+                        580.0
+                    ],
+                    [
+                        1066.0,
+                        580.0
+                    ],
+                    [
+                        1066.0,
+                        623.0
+                    ],
+                    [
+                        121.0,
+                        623.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.6861358880996704,
+                "coordinate": [
+                    121,
+                    625,
+                    1067,
+                    711
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        121.0,
+                        625.0
+                    ],
+                    [
+                        1067.0,
+                        625.0
+                    ],
+                    [
+                        1067.0,
+                        711.0
+                    ],
+                    [
+                        121.0,
+                        711.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.6290673613548279,
+                "coordinate": [
+                    122,
+                    709,
+                    1066,
+                    751
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        122,
+                        709
+                    ],
+                    [
+                        128,
+                        750
+                    ],
+                    [
+                        1065,
+                        750
+                    ],
+                    [
+                        1065,
+                        709
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.7446026802062988,
+                "coordinate": [
+                    123,
+                    755,
+                    923,
+                    779
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        123.0,
+                        755.0
+                    ],
+                    [
+                        923.0,
+                        755.0
+                    ],
+                    [
+                        923.0,
+                        779.0
+                    ],
+                    [
+                        123.0,
+                        779.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 10,
+                "label": "footnote",
+                "score": 0.700458288192749,
+                "coordinate": [
+                    142,
+                    1400,
+                    300,
+                    1424
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        142.0,
+                        1400.0
+                    ],
+                    [
+                        300.0,
+                        1400.0
+                    ],
+                    [
+                        300.0,
+                        1424.0
+                    ],
+                    [
+                        142.0,
+                        1424.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 10,
+                "label": "footnote",
+                "score": 0.7857482433319092,
+                "coordinate": [
+                    143,
+                    1424,
+                    362,
+                    1447
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        143.0,
+                        1424.0
+                    ],
+                    [
+                        362.0,
+                        1424.0
+                    ],
+                    [
+                        362.0,
+                        1447.0
+                    ],
+                    [
+                        143.0,
+                        1447.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7146261930465698,
+                "coordinate": [
+                    583,
+                    1482,
+                    607,
+                    1505
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        583.0,
+                        1482.0
+                    ],
+                    [
+                        606.0,
+                        1482.0
+                    ],
+                    [
+                        606.0,
+                        1504.0
+                    ],
+                    [
+                        583.0,
+                        1504.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

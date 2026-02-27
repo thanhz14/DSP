@@ -1,0 +1,339 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 18,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "Appendix",
+            "block_bbox": [
+                139,
+                169,
+                265,
+                202
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    169.0
+                ],
+                [
+                    265.0,
+                    169.0
+                ],
+                [
+                    265.0,
+                    202.0
+                ],
+                [
+                    139.0,
+                    202.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "A. Comparison of PaddleOCR-VL-1.5 and 1.0 Models",
+            "block_bbox": [
+                138,
+                220,
+                781,
+                252
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    220.0
+                ],
+                [
+                    781.0,
+                    220.0
+                ],
+                [
+                    781.0,
+                    252.0
+                ],
+                [
+                    138.0,
+                    252.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>Category</td><td>Capability Item</td><td>V1</td><td>V1.5</td><td>V1.5 Description</td></tr><tr><td rowspan=\"6\">Fundamental</td><td>Layout Analysis</td><td>★★☆☆☆</td><td>★★★★☆</td><td>Improved stability for warped/skewed scenes; added CAD and comics.</td></tr><tr><td>Text Recognition</td><td>★★★★☆</td><td>★★★★★</td><td>Gains in vertical text, special characters, and emphasis marks.</td></tr><tr><td>Table Recognition</td><td>★★★☆☆</td><td>★★★★☆</td><td>Improvements for borderless tables and invoices.</td></tr><tr><td>Formula Recognition</td><td>★★★☆☆</td><td>★★★★☆</td><td>Better in skewed formulas and illumination scenarios.</td></tr><tr><td>Chart Recognition</td><td>★★★★☆</td><td>★★★★☆</td><td>Capability remains consistent with the previous version.</td></tr><tr><td>Reading Order</td><td>★★★☆☆</td><td>★★★★☆</td><td>Significant boost for irregular layouts.</td></tr><tr><td rowspan=\"5\">Adaptability</td><td>Skewed Docs</td><td>★☆☆☆☆</td><td>★★★★★</td><td>Dramatic improvement for high-angle tilted documents.</td></tr><tr><td>Scanned Docs</td><td>★★★★☆</td><td>★★★★★</td><td>Stability for low-quality scans is significantly enhanced.</td></tr><tr><td>Warped Docs</td><td>★★☆☆☆</td><td>★★★★★</td><td>Supports complex physical deformation and folded paper.</td></tr><tr><td>Screen Photo</td><td>★★☆☆☆</td><td>★★★★★</td><td>Suppresses interference from reflections and Moiré patterns.</td></tr><tr><td>Illumination</td><td>★★★★☆</td><td>★★★★★</td><td>Superior performance in uneven or weak lighting.</td></tr><tr><td rowspan=\"4\">New Features</td><td>Seal Recognition</td><td>☆☆☆☆☆</td><td>★★★★☆</td><td>Recognition of various official seals and stamps.</td></tr><tr><td>Text Spotting</td><td>☆☆☆☆☆</td><td>★★★★☆</td><td>Localization and recognition of multiple character sets.</td></tr><tr><td>Cross-page Table Merging</td><td>☆☆☆☆☆</td><td>★★★★☆</td><td>Merges split tables while maintaining consistency.</td></tr><tr><td>Heading Hierarchy</td><td>☆☆☆☆☆</td><td>★★★☆☆</td><td>Title hierarchy recognition across multi-page documents.</td></tr></table>",
+            "block_bbox": [
+                139,
+                282,
+                1052,
+                1210
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    282.0
+                ],
+                [
+                    1052.0,
+                    282.0
+                ],
+                [
+                    1052.0,
+                    1210.0
+                ],
+                [
+                    139.0,
+                    1210.0
+                ]
+            ]
+        },
+        {
+            "block_label": "vision_footnote",
+            "block_content": "Table A1 | Comprehensive functional evolution and robustness comparison between PaddleOCR-VL and PaddleOCR-VL-1.5. The star ratings only indicate the relative performance of the two versions and do not represent their absolute accuracy.",
+            "block_bbox": [
+                137,
+                1226,
+                1054,
+                1310
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1226.0
+                ],
+                [
+                    1054.0,
+                    1226.0
+                ],
+                [
+                    1054.0,
+                    1310.0
+                ],
+                [
+                    137.0,
+                    1310.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "19",
+            "block_bbox": [
+                582,
+                1556,
+                609,
+                1578
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    582.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1577.0
+                ],
+                [
+                    582.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.778488278388977,
+                "coordinate": [
+                    139,
+                    169,
+                    265,
+                    202
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        139.0,
+                        169.0
+                    ],
+                    [
+                        265.0,
+                        169.0
+                    ],
+                    [
+                        265.0,
+                        202.0
+                    ],
+                    [
+                        139.0,
+                        202.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.45040613412857056,
+                "coordinate": [
+                    138,
+                    220,
+                    781,
+                    252
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        138.0,
+                        220.0
+                    ],
+                    [
+                        781.0,
+                        220.0
+                    ],
+                    [
+                        781.0,
+                        252.0
+                    ],
+                    [
+                        138.0,
+                        252.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9808361530303955,
+                "coordinate": [
+                    139,
+                    282,
+                    1052,
+                    1210
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        139.0,
+                        282.0
+                    ],
+                    [
+                        1052.0,
+                        282.0
+                    ],
+                    [
+                        1052.0,
+                        1210.0
+                    ],
+                    [
+                        139.0,
+                        1210.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.7530761361122131,
+                "coordinate": [
+                    137,
+                    1226,
+                    1054,
+                    1310
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1226.0
+                    ],
+                    [
+                        1054.0,
+                        1226.0
+                    ],
+                    [
+                        1054.0,
+                        1310.0
+                    ],
+                    [
+                        137.0,
+                        1310.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7297767400741577,
+                "coordinate": [
+                    582,
+                    1556,
+                    609,
+                    1578
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        582.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1577.0
+                    ],
+                    [
+                        582.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

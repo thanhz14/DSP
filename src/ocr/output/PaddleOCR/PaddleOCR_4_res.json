@@ -1,0 +1,686 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 4,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "text",
+            "block_content": "high-fidelity recognition across diverse modalities, including text, complex tables, mathematical formulas, charts and seals. To conclude the pipeline, a lightweight post-processing engine orchestrates these outputs into structured formats such as Markdown and JSON, while providing advanced capabilities such as cross-page table merging and heading hierarchy refinement.",
+            "block_bbox": [
+                135,
+                172,
+                1055,
+                283
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    172.0
+                ],
+                [
+                    1055.0,
+                    172.0
+                ],
+                [
+                    1055.0,
+                    283.0
+                ],
+                [
+                    135.0,
+                    283.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "For the Spotting task, the framework simplifies its workflow by directly utilizing the PaddleOCR-VL-1.5-0.9B model for end-to-end text detection and recognition. This approach enables end-to-end text detection and recognition across a wide spectrum of domains—ranging from standard documents, identification cards, and ancient manuscripts to unconstrained scenarios like advertising posters, dialogue screenshots, signboards, and multilingual texts.",
+            "block_bbox": [
+                135,
+                295,
+                1054,
+                432
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    295.0
+                ],
+                [
+                    1054.0,
+                    295.0
+                ],
+                [
+                    1054.0,
+                    432.0
+                ],
+                [
+                    135.0,
+                    432.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "2.1.1. PP-DocLayoutV3: Unified Layout Analysis",
+            "block_bbox": [
+                136,
+                465,
+                630,
+                492
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    465.0
+                ],
+                [
+                    630.0,
+                    465.0
+                ],
+                [
+                    630.0,
+                    492.0
+                ],
+                [
+                    136.0,
+                    492.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To address the challenges of complex physical distortions—including skew, warping, and illumination—and to overcome the high latency inherent in autoregressive Vision-Language Models (VLMs), we introduce PP-DocLayoutV3. This version represents a significant architectural evolution from its predecessor by transitioning from standard rectangular detection to a robust instance segmentation framework, while simultaneously integrating reading order prediction into a unified, end-to-end Transformer architecture.",
+            "block_bbox": [
+                135,
+                508,
+                1056,
+                674
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    508.0
+                ],
+                [
+                    1056.0,
+                    508.0
+                ],
+                [
+                    1056.0,
+                    674.0
+                ],
+                [
+                    135.0,
+                    674.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Building upon the high-efficiency RT-DETR object detector [16], PP-DocLayoutV3 adopts a mask-based detection head. This allows the model to predict precise, pixel-accurate masks for layout elements rather than simple bounding boxes. Such a capability is critical for isolating document components in non-ideal scenarios, such as skewed or warped pages, where traditional axis-aligned boxes frequently overlap or capture excessive background noise.",
+            "block_bbox": [
+                135,
+                684,
+                1055,
+                823
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    684.0
+                ],
+                [
+                    1055.0,
+                    684.0
+                ],
+                [
+                    1055.0,
+                    823.0
+                ],
+                [
+                    135.0,
+                    823.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Unlike the decoupled pointer network employed in PP-DocLayoutV2 [9], PP-DocLayoutV3 integrates Reading Order Prediction directly into the Transformer decoder layers. By merging detection, segmentation, and ordering into a single vision-centric model, PP-DocLayoutV3 eliminates the need for redundant post-processing and separates feature extraction steps.",
+            "block_bbox": [
+                135,
+                833,
+                1054,
+                944
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    833.0
+                ],
+                [
+                    1054.0,
+                    833.0
+                ],
+                [
+                    1054.0,
+                    944.0
+                ],
+                [
+                    135.0,
+                    944.0
+                ]
+            ]
+        },
+        {
+            "block_label": "image",
+            "block_content": "",
+            "block_bbox": [
+                150,
+                974,
+                1038,
+                1225
+            ],
+            "block_id": 6,
+            "block_order": null,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    150.0,
+                    974.0
+                ],
+                [
+                    1038.0,
+                    974.0
+                ],
+                [
+                    1038.0,
+                    1225.0
+                ],
+                [
+                    150.0,
+                    1225.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure 3 | The unified architecture of PP-DocLayoutV3, featuring parallel heads for instance segmentation and relational reading order prediction.",
+            "block_bbox": [
+                148,
+                1258,
+                1041,
+                1313
+            ],
+            "block_id": 7,
+            "block_order": null,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    148.0,
+                    1258.0
+                ],
+                [
+                    1041.0,
+                    1258.0
+                ],
+                [
+                    1041.0,
+                    1313.0
+                ],
+                [
+                    148.0,
+                    1313.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The core architectural innovation of PP-DocLayoutV3 is the integration of Reading Order Prediction directly into the Transformer decoder. Specifically, our model extends the RT-DETR framework to simultaneously optimize geometric localization and logical sequencing. Following the query-based paradigm, the decoder iteratively refines N object queries  $ Q = \\{q_i\\}_{i=1}^N \\in \\mathbb{R}^{N \\times d} $. The reading order is then derived from the refined query embeddings of the final decoder layer through a Global Pointer Mechanism.",
+            "block_bbox": [
+                136,
+                1338,
+                1053,
+                1503
+            ],
+            "block_id": 8,
+            "block_order": 7,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    1338.0
+                ],
+                [
+                    1053.0,
+                    1338.0
+                ],
+                [
+                    1053.0,
+                    1503.0
+                ],
+                [
+                    136.0,
+                    1503.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "5",
+            "block_bbox": [
+                587,
+                1557,
+                604,
+                1577
+            ],
+            "block_id": 9,
+            "block_order": null,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1576.0
+                ],
+                [
+                    587.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9490369558334351,
+                "coordinate": [
+                    135,
+                    172,
+                    1055,
+                    283
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        135.0,
+                        172.0
+                    ],
+                    [
+                        1055.0,
+                        172.0
+                    ],
+                    [
+                        1055.0,
+                        283.0
+                    ],
+                    [
+                        135.0,
+                        283.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9512922167778015,
+                "coordinate": [
+                    135,
+                    295,
+                    1054,
+                    432
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        135.0,
+                        295.0
+                    ],
+                    [
+                        1054.0,
+                        295.0
+                    ],
+                    [
+                        1054.0,
+                        432.0
+                    ],
+                    [
+                        135.0,
+                        432.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8723710179328918,
+                "coordinate": [
+                    136,
+                    465,
+                    630,
+                    492
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        136.0,
+                        465.0
+                    ],
+                    [
+                        630.0,
+                        465.0
+                    ],
+                    [
+                        630.0,
+                        492.0
+                    ],
+                    [
+                        136.0,
+                        492.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9535096287727356,
+                "coordinate": [
+                    135,
+                    508,
+                    1056,
+                    674
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        135.0,
+                        508.0
+                    ],
+                    [
+                        1056.0,
+                        508.0
+                    ],
+                    [
+                        1056.0,
+                        674.0
+                    ],
+                    [
+                        135.0,
+                        674.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9561828970909119,
+                "coordinate": [
+                    135,
+                    684,
+                    1055,
+                    823
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        135.0,
+                        684.0
+                    ],
+                    [
+                        1055.0,
+                        684.0
+                    ],
+                    [
+                        1055.0,
+                        823.0
+                    ],
+                    [
+                        135.0,
+                        823.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9526881575584412,
+                "coordinate": [
+                    135,
+                    833,
+                    1054,
+                    944
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        135.0,
+                        833.0
+                    ],
+                    [
+                        1054.0,
+                        833.0
+                    ],
+                    [
+                        1054.0,
+                        944.0
+                    ],
+                    [
+                        135.0,
+                        944.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9710724949836731,
+                "coordinate": [
+                    150,
+                    974,
+                    1038,
+                    1225
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        150.0,
+                        974.0
+                    ],
+                    [
+                        1038.0,
+                        974.0
+                    ],
+                    [
+                        1038.0,
+                        1225.0
+                    ],
+                    [
+                        150.0,
+                        1225.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8987723588943481,
+                "coordinate": [
+                    148,
+                    1258,
+                    1041,
+                    1313
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        148.0,
+                        1258.0
+                    ],
+                    [
+                        1041.0,
+                        1258.0
+                    ],
+                    [
+                        1041.0,
+                        1313.0
+                    ],
+                    [
+                        148.0,
+                        1313.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.960290253162384,
+                "coordinate": [
+                    136,
+                    1338,
+                    1053,
+                    1503
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        136.0,
+                        1338.0
+                    ],
+                    [
+                        1053.0,
+                        1338.0
+                    ],
+                    [
+                        1053.0,
+                        1503.0
+                    ],
+                    [
+                        136.0,
+                        1503.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 15,
+                "label": "inline_formula",
+                "score": 0.8010305166244507,
+                "coordinate": [
+                    871,
+                    1418,
+                    1046,
+                    1448
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        871,
+                        1426
+                    ],
+                    [
+                        871,
+                        1447
+                    ],
+                    [
+                        1045,
+                        1447
+                    ],
+                    [
+                        1045,
+                        1418
+                    ],
+                    [
+                        947,
+                        1418
+                    ],
+                    [
+                        917,
+                        1418
+                    ],
+                    [
+                        912,
+                        1418
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7054820656776428,
+                "coordinate": [
+                    587,
+                    1557,
+                    604,
+                    1577
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1576.0
+                    ],
+                    [
+                        587.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

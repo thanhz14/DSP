@@ -1,0 +1,339 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 30,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "E.2. Layout Analysis",
+            "block_bbox": [
+                138,
+                173,
+                355,
+                199
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    173.0
+                ],
+                [
+                    355.0,
+                    173.0
+                ],
+                [
+                    355.0,
+                    199.0
+                ],
+                [
+                    138.0,
+                    199.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "E.2.1. Layout Analysis for Real-world Documents",
+            "block_bbox": [
+                137,
+                218,
+                634,
+                245
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    218.0
+                ],
+                [
+                    634.0,
+                    218.0
+                ],
+                [
+                    634.0,
+                    245.0
+                ],
+                [
+                    137.0,
+                    245.0
+                ]
+            ]
+        },
+        {
+            "block_label": "image",
+            "block_content": "",
+            "block_bbox": [
+                193,
+                271,
+                997,
+                1004
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    193.0,
+                    271.0
+                ],
+                [
+                    997.0,
+                    271.0
+                ],
+                [
+                    997.0,
+                    1004.0
+                ],
+                [
+                    193.0,
+                    1004.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure A6 | Comparison of Layout Analysis Results between PaddleOCR-VL and PaddleOCR-VL-1.5 for Warping.",
+            "block_bbox": [
+                197,
+                1032,
+                990,
+                1087
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    197.0,
+                    1032.0
+                ],
+                [
+                    990.0,
+                    1032.0
+                ],
+                [
+                    990.0,
+                    1087.0
+                ],
+                [
+                    197.0,
+                    1087.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "31",
+            "block_bbox": [
+                581,
+                1555,
+                608,
+                1579
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    581.0,
+                    1555.0
+                ],
+                [
+                    607.0,
+                    1555.0
+                ],
+                [
+                    607.0,
+                    1578.0
+                ],
+                [
+                    581.0,
+                    1578.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8261064887046814,
+                "coordinate": [
+                    138,
+                    173,
+                    355,
+                    199
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        138.0,
+                        173.0
+                    ],
+                    [
+                        355.0,
+                        173.0
+                    ],
+                    [
+                        355.0,
+                        199.0
+                    ],
+                    [
+                        138.0,
+                        199.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8139033317565918,
+                "coordinate": [
+                    137,
+                    218,
+                    634,
+                    245
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        137.0,
+                        218.0
+                    ],
+                    [
+                        634.0,
+                        218.0
+                    ],
+                    [
+                        634.0,
+                        245.0
+                    ],
+                    [
+                        137.0,
+                        245.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9664462804794312,
+                "coordinate": [
+                    193,
+                    271,
+                    997,
+                    1004
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        193.0,
+                        271.0
+                    ],
+                    [
+                        997.0,
+                        271.0
+                    ],
+                    [
+                        997.0,
+                        1004.0
+                    ],
+                    [
+                        193.0,
+                        1004.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9125425219535828,
+                "coordinate": [
+                    197,
+                    1032,
+                    990,
+                    1087
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        197.0,
+                        1032.0
+                    ],
+                    [
+                        990.0,
+                        1032.0
+                    ],
+                    [
+                        990.0,
+                        1087.0
+                    ],
+                    [
+                        197.0,
+                        1087.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7385104894638062,
+                "coordinate": [
+                    581,
+                    1555,
+                    608,
+                    1579
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        581.0,
+                        1555.0
+                    ],
+                    [
+                        607.0,
+                        1555.0
+                    ],
+                    [
+                        607.0,
+                        1578.0
+                    ],
+                    [
+                        581.0,
+                        1578.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

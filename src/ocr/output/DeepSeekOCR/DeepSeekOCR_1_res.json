@@ -1,0 +1,217 @@
+{
+    "input_path": "/home/bocchi/Downloads/DeepSeekOCR.pdf",
+    "page_index": 1,
+    "page_count": 22,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "Contents",
+            "block_bbox": [
+                138,
+                169,
+                253,
+                200
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    169.0
+                ],
+                [
+                    253.0,
+                    169.0
+                ],
+                [
+                    253.0,
+                    200.0
+                ],
+                [
+                    138.0,
+                    200.0
+                ]
+            ]
+        },
+        {
+            "block_label": "content",
+            "block_content": "1 Introduction 3\n\n2 Related Works 4\n2.1 Typical Vision Encoders in VLMs 4\n2.2 End-to-end OCR Models 4\n\n3 Methodology 5\n3.1 Architecture 5\n3.2 DeepEncoder 5\n3.2.1 Architecture of DeepEncoder 5\n3.2.2 Multiple resolution support 6\n3.3 The MoE Decoder 7\n3.4 Data Engine 7\n3.4.1 OCR 1.0 data 7\n3.4.2 OCR 2.0 data 8\n3.4.3 General vision data 9\n3.4.4 Text-only data 9\n3.5 Training Pipelines 9\n3.5.1 Training DeepEncoder 10\n3.5.2 Training DeepSeek-OCR 10\n\n4 Evaluation 10\n4.1 Vision-text Compression Study 10\n4.2 OCR Practical Performance 12\n4.3 Qualitative Study 12\n4.3.1 Deep parsing 12\n4.3.2 Multilingual recognition 16\n4.3.3 General vision understanding 17\n\n5 Discussion 18\n\n6 Conclusion 19",
+            "block_bbox": [
+                134,
+                235,
+                1058,
+                1373
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    235.0
+                ],
+                [
+                    1058.0,
+                    235.0
+                ],
+                [
+                    1058.0,
+                    1373.0
+                ],
+                [
+                    134.0,
+                    1373.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "2",
+            "block_bbox": [
+                587,
+                1556,
+                604,
+                1577
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1556.0
+                ],
+                [
+                    603.0,
+                    1556.0
+                ],
+                [
+                    603.0,
+                    1576.0
+                ],
+                [
+                    587.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.7853423953056335,
+                "coordinate": [
+                    138,
+                    169,
+                    253,
+                    200
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        138.0,
+                        169.0
+                    ],
+                    [
+                        253.0,
+                        169.0
+                    ],
+                    [
+                        253.0,
+                        200.0
+                    ],
+                    [
+                        138.0,
+                        200.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 4,
+                "label": "content",
+                "score": 0.977952778339386,
+                "coordinate": [
+                    134,
+                    235,
+                    1058,
+                    1373
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        134.0,
+                        235.0
+                    ],
+                    [
+                        1058.0,
+                        235.0
+                    ],
+                    [
+                        1058.0,
+                        1373.0
+                    ],
+                    [
+                        134.0,
+                        1373.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6956778168678284,
+                "coordinate": [
+                    587,
+                    1556,
+                    604,
+                    1577
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1556.0
+                    ],
+                    [
+                        603.0,
+                        1556.0
+                    ],
+                    [
+                        603.0,
+                        1576.0
+                    ],
+                    [
+                        587.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

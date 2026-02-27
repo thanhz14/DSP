@@ -1,0 +1,850 @@
+{
+    "input_path": "/home/bocchi/Downloads/DeepSeekOCR.pdf",
+    "page_index": 8,
+    "page_count": 22,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "image",
+            "block_content": "",
+            "block_bbox": [
+                149,
+                183,
+                1038,
+                345
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    149,
+                    209
+                ],
+                [
+                    155,
+                    344
+                ],
+                [
+                    1037,
+                    344
+                ],
+                [
+                    1037,
+                    183
+                ],
+                [
+                    466,
+                    183
+                ],
+                [
+                    442,
+                    183
+                ],
+                [
+                    257,
+                    192
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "(a) Image-text ground truth of chart",
+            "block_bbox": [
+                222,
+                357,
+                517,
+                382
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    222.0,
+                    357.0
+                ],
+                [
+                    517.0,
+                    357.0
+                ],
+                [
+                    517.0,
+                    382.0
+                ],
+                [
+                    222.0,
+                    382.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "(b) Image-text ground truth of geometry",
+            "block_bbox": [
+                656,
+                357,
+                985,
+                382
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    656.0,
+                    357.0
+                ],
+                [
+                    985.0,
+                    357.0
+                ],
+                [
+                    985.0,
+                    382.0
+                ],
+                [
+                    656.0,
+                    382.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure 6 | For charts, we do not use OneChart's [7] dictionary format, but instead use HTML table format as labels, which can save a certain amount of tokens. For plane geometry, we convert the ground truth to dictionary format, where the dictionary contains keys such as line segments, endpoint coordinates, line segment types, etc., for better readability. Each line segment is encoded using the Slow Perception [39] manner.",
+            "block_bbox": [
+                136,
+                408,
+                1054,
+                547
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    408.0
+                ],
+                [
+                    1054.0,
+                    408.0
+                ],
+                [
+                    1054.0,
+                    547.0
+                ],
+                [
+                    136.0,
+                    547.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "to render 10M images, mainly including commonly used line, bar, pie, and composite charts. We define chart parsing as image-to-HTML-table conversion task, as shown in Figure 6(a). For chemical formulas, we utilize SMILES format from PubChem as the data source and render them into images using RDKit, constructing 5M image-text pairs. For plane geometry images, we follow Slow Perception [39] for generation. Specifically, we use perception-ruler size as 4 to model each line segment. To increase the diversity of rendered data, we introduce geometric translation-invariant data augmentation, where the same geometric image is translated in the original image, corresponding to the same ground truth drawn at the centered position in the coordinate system. Based on this, we construct a total of 1M plane geometry parsing data, as illustrated in Figure 6(b).",
+            "block_bbox": [
+                134,
+                586,
+                1057,
+                860
+            ],
+            "block_id": 4,
+            "block_order": 1,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    586.0
+                ],
+                [
+                    1057.0,
+                    586.0
+                ],
+                [
+                    1057.0,
+                    860.0
+                ],
+                [
+                    134.0,
+                    860.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3.4.3. General vision data",
+            "block_bbox": [
+                137,
+                892,
+                399,
+                919
+            ],
+            "block_id": 5,
+            "block_order": 2,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    892.0
+                ],
+                [
+                    399.0,
+                    892.0
+                ],
+                [
+                    399.0,
+                    919.0
+                ],
+                [
+                    137.0,
+                    919.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "DeepEncoder can benefit from CLIP’s pretraining gains and has sufficient parameters to incorporate general visual knowledge. Therefore, we also prepare some corresponding data for DeepSeek-OCR. Following DeepSeek-VL2 [40], we generate relevant data for tasks such as caption, detection, and grounding. Note that DeepSeek-OCR is not a general VLM model, and this portion of data accounts for only 20% of the total data. We introduce such type of data mainly to preserve the general vision interface, so that researchers interested in our model and general vision task can conveniently advance their work in the future.",
+            "block_bbox": [
+                134,
+                937,
+                1057,
+                1128
+            ],
+            "block_id": 6,
+            "block_order": 3,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    937.0
+                ],
+                [
+                    1057.0,
+                    937.0
+                ],
+                [
+                    1057.0,
+                    1128.0
+                ],
+                [
+                    134.0,
+                    1128.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3.4.4. Text-only data",
+            "block_bbox": [
+                137,
+                1159,
+                348,
+                1187
+            ],
+            "block_id": 7,
+            "block_order": 4,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1159.0
+                ],
+                [
+                    348.0,
+                    1159.0
+                ],
+                [
+                    348.0,
+                    1187.0
+                ],
+                [
+                    137.0,
+                    1187.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To ensure the model’s language capabilities, we introduced 10% of in-house text-only pretrain data, with all data processed to a length of 8192 tokens, which is also the sequence length for DeepSeek-OCR. In summary, when training DeepSeek-OCR, OCR data accounts for 70%, general vision data accounts for 20%, and text-only data accounts for 10%.",
+            "block_bbox": [
+                136,
+                1204,
+                1055,
+                1315
+            ],
+            "block_id": 8,
+            "block_order": 5,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    1204.0
+                ],
+                [
+                    1055.0,
+                    1204.0
+                ],
+                [
+                    1055.0,
+                    1315.0
+                ],
+                [
+                    136.0,
+                    1315.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3.5. Training Pipelines",
+            "block_bbox": [
+                137,
+                1351,
+                373,
+                1379
+            ],
+            "block_id": 9,
+            "block_order": 6,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1351.0
+                ],
+                [
+                    373.0,
+                    1351.0
+                ],
+                [
+                    373.0,
+                    1379.0
+                ],
+                [
+                    137.0,
+                    1379.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Our training pipeline is very simple and consists mainly of two stages: a). Training DeepEncoder independently; b). Training the DeepSeek-OCR. Note that the Gundam-master mode is obtained by continuing training on a pre-trained DeepSeek-OCR model with 6M sampled data. Since the training protocol is identical to other modes, we omit the detailed description hereafter.",
+            "block_bbox": [
+                135,
+                1396,
+                1054,
+                1507
+            ],
+            "block_id": 10,
+            "block_order": 7,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    1396.0
+                ],
+                [
+                    1054.0,
+                    1396.0
+                ],
+                [
+                    1054.0,
+                    1507.0
+                ],
+                [
+                    135.0,
+                    1507.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "9",
+            "block_bbox": [
+                587,
+                1557,
+                603,
+                1577
+            ],
+            "block_id": 11,
+            "block_order": null,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1557.0
+                ],
+                [
+                    602.0,
+                    1557.0
+                ],
+                [
+                    602.0,
+                    1576.0
+                ],
+                [
+                    587.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.45732155442237854,
+                "coordinate": [
+                    149,
+                    199,
+                    587,
+                    342
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        149.0,
+                        199.0
+                    ],
+                    [
+                        587.0,
+                        199.0
+                    ],
+                    [
+                        587.0,
+                        342.0
+                    ],
+                    [
+                        149.0,
+                        342.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.38623949885368347,
+                "coordinate": [
+                    149,
+                    183,
+                    1038,
+                    345
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        149,
+                        209
+                    ],
+                    [
+                        155,
+                        344
+                    ],
+                    [
+                        1037,
+                        344
+                    ],
+                    [
+                        1037,
+                        183
+                    ],
+                    [
+                        466,
+                        183
+                    ],
+                    [
+                        442,
+                        183
+                    ],
+                    [
+                        257,
+                        192
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8367542028427124,
+                "coordinate": [
+                    222,
+                    357,
+                    517,
+                    382
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        222.0,
+                        357.0
+                    ],
+                    [
+                        517.0,
+                        357.0
+                    ],
+                    [
+                        517.0,
+                        382.0
+                    ],
+                    [
+                        222.0,
+                        382.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.49831199645996094,
+                "coordinate": [
+                    598,
+                    179,
+                    1039,
+                    342
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        598.0,
+                        179.0
+                    ],
+                    [
+                        1039.0,
+                        179.0
+                    ],
+                    [
+                        1039.0,
+                        342.0
+                    ],
+                    [
+                        598.0,
+                        342.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8420895338058472,
+                "coordinate": [
+                    656,
+                    357,
+                    985,
+                    382
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        656.0,
+                        357.0
+                    ],
+                    [
+                        985.0,
+                        357.0
+                    ],
+                    [
+                        985.0,
+                        382.0
+                    ],
+                    [
+                        656.0,
+                        382.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9278464913368225,
+                "coordinate": [
+                    136,
+                    408,
+                    1054,
+                    547
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        136.0,
+                        408.0
+                    ],
+                    [
+                        1054.0,
+                        408.0
+                    ],
+                    [
+                        1054.0,
+                        547.0
+                    ],
+                    [
+                        136.0,
+                        547.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9620104432106018,
+                "coordinate": [
+                    134,
+                    586,
+                    1057,
+                    860
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        134.0,
+                        586.0
+                    ],
+                    [
+                        1057.0,
+                        586.0
+                    ],
+                    [
+                        1057.0,
+                        860.0
+                    ],
+                    [
+                        134.0,
+                        860.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8422098755836487,
+                "coordinate": [
+                    137,
+                    892,
+                    399,
+                    919
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        137.0,
+                        892.0
+                    ],
+                    [
+                        399.0,
+                        892.0
+                    ],
+                    [
+                        399.0,
+                        919.0
+                    ],
+                    [
+                        137.0,
+                        919.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9565443396568298,
+                "coordinate": [
+                    134,
+                    937,
+                    1057,
+                    1128
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        134.0,
+                        937.0
+                    ],
+                    [
+                        1057.0,
+                        937.0
+                    ],
+                    [
+                        1057.0,
+                        1128.0
+                    ],
+                    [
+                        134.0,
+                        1128.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.844080924987793,
+                "coordinate": [
+                    137,
+                    1159,
+                    348,
+                    1187
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1159.0
+                    ],
+                    [
+                        348.0,
+                        1159.0
+                    ],
+                    [
+                        348.0,
+                        1187.0
+                    ],
+                    [
+                        137.0,
+                        1187.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9498355984687805,
+                "coordinate": [
+                    136,
+                    1204,
+                    1055,
+                    1315
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        136.0,
+                        1204.0
+                    ],
+                    [
+                        1055.0,
+                        1204.0
+                    ],
+                    [
+                        1055.0,
+                        1315.0
+                    ],
+                    [
+                        136.0,
+                        1315.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8444948196411133,
+                "coordinate": [
+                    137,
+                    1351,
+                    373,
+                    1379
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1351.0
+                    ],
+                    [
+                        373.0,
+                        1351.0
+                    ],
+                    [
+                        373.0,
+                        1379.0
+                    ],
+                    [
+                        137.0,
+                        1379.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9445524215698242,
+                "coordinate": [
+                    135,
+                    1396,
+                    1054,
+                    1507
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        135.0,
+                        1396.0
+                    ],
+                    [
+                        1054.0,
+                        1396.0
+                    ],
+                    [
+                        1054.0,
+                        1507.0
+                    ],
+                    [
+                        135.0,
+                        1507.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6978746056556702,
+                "coordinate": [
+                    587,
+                    1557,
+                    603,
+                    1577
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1557.0
+                    ],
+                    [
+                        602.0,
+                        1557.0
+                    ],
+                    [
+                        602.0,
+                        1576.0
+                    ],
+                    [
+                        587.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

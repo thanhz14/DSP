@@ -1,0 +1,1376 @@
+{
+    "input_path": "/home/bocchi/Downloads/HY-MT.pdf",
+    "page_index": 3,
+    "page_count": 13,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "text",
+            "block_content": "• Objectives. These stages are designed to enhance the model’s multilingual domain knowledge, translation capabilities, and adherence to translation instructions. For further details on the data curation and base training protocols, please refer to our previous work (Zheng et al., 2025).",
+            "block_bbox": [
+                187,
+                143,
+                1055,
+                214
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    187.0,
+                    143.0
+                ],
+                [
+                    1055.0,
+                    143.0
+                ],
+                [
+                    1055.0,
+                    214.0
+                ],
+                [
+                    187.0,
+                    214.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "2.2 Reinforcement Learning",
+            "block_bbox": [
+                137,
+                238,
+                412,
+                263
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    238.0
+                ],
+                [
+                    412.0,
+                    238.0
+                ],
+                [
+                    412.0,
+                    263.0
+                ],
+                [
+                    137.0,
+                    263.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To further align the model with human preferences and refine translation quality, we employ Reinforcement Learning. We adopt the GRPO (Group Relative Policy Optimization) (Shao et al., 2024) algorithm, which is also used in Hunyuan-MT-7B. GRPO updates the policy based on relative comparisons within groups of outputs, reducing training complexity while maintaining optimization stability.",
+            "block_bbox": [
+                135,
+                280,
+                1054,
+                372
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    280.0
+                ],
+                [
+                    1054.0,
+                    280.0
+                ],
+                [
+                    1054.0,
+                    372.0
+                ],
+                [
+                    135.0,
+                    372.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "We improve the reward modeling in the RL training of HY-MT1.5. Instead of relying on a single holistic score, we introduce a Rubrics-based Evaluation System. This multi-dimensional evaluation guides the LLM to evaluate translations with greater granularity.",
+            "block_bbox": [
+                136,
+                379,
+                1053,
+                448
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    379.0
+                ],
+                [
+                    1053.0,
+                    379.0
+                ],
+                [
+                    1053.0,
+                    448.0
+                ],
+                [
+                    136.0,
+                    448.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "We construct a structured scoring criterion set where an LLM-based evaluator scores translations across the following key dimensions:",
+            "block_bbox": [
+                136,
+                458,
+                1052,
+                504
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    458.0
+                ],
+                [
+                    1052.0,
+                    458.0
+                ],
+                [
+                    1052.0,
+                    504.0
+                ],
+                [
+                    136.0,
+                    504.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Accuracy: Evaluates whether the translation remains faithful to the original semantics, ensuring there are no omissions, mistranslations, or hallucinations.",
+            "block_bbox": [
+                189,
+                523,
+                1052,
+                570
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    189.0,
+                    523.0
+                ],
+                [
+                    1052.0,
+                    523.0
+                ],
+                [
+                    1052.0,
+                    570.0
+                ],
+                [
+                    189.0,
+                    570.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "- Fluency: Assesses whether the linguistic expression is natural and conforms to the grammar and idiomatic usage of the target language.",
+            "block_bbox": [
+                189,
+                575,
+                1052,
+                621
+            ],
+            "block_id": 6,
+            "block_order": 7,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    189.0,
+                    575.0
+                ],
+                [
+                    1052.0,
+                    575.0
+                ],
+                [
+                    1052.0,
+                    621.0
+                ],
+                [
+                    189.0,
+                    621.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Consistency: Checks for the consistent use of terminology, style, and context throughout the text.",
+            "block_bbox": [
+                188,
+                626,
+                1053,
+                650
+            ],
+            "block_id": 7,
+            "block_order": 8,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    188.0,
+                    626.0
+                ],
+                [
+                    1053.0,
+                    626.0
+                ],
+                [
+                    1053.0,
+                    650.0
+                ],
+                [
+                    188.0,
+                    650.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Cultural Appropriateness: Examines whether the translation adapts appropriately to the cultural background and expression habits of the target language.",
+            "block_bbox": [
+                188,
+                656,
+                1051,
+                703
+            ],
+            "block_id": 8,
+            "block_order": 9,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    188.0,
+                    656.0
+                ],
+                [
+                    1051.0,
+                    656.0
+                ],
+                [
+                    1051.0,
+                    703.0
+                ],
+                [
+                    188.0,
+                    703.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "- Readability: Evaluates how easy the text is to understand, ensuring clear sentence structures and distinct hierarchy.",
+            "block_bbox": [
+                187,
+                709,
+                1052,
+                754
+            ],
+            "block_id": 9,
+            "block_order": 10,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    187.0,
+                    709.0
+                ],
+                [
+                    1052.0,
+                    709.0
+                ],
+                [
+                    1052.0,
+                    754.0
+                ],
+                [
+                    187.0,
+                    754.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Each dimension is assigned specific scoring standards and weights. The scores from these dimensions are aggregated to form the final reward signal. This fine-grained feedback mechanism provides the RL process with richer, more precise signals, enabling the model to improve simultaneously across multiple facets—resulting in translations that are not only correct but also natural, coherent, and culturally context-aware.",
+            "block_bbox": [
+                136,
+                774,
+                1054,
+                887
+            ],
+            "block_id": 10,
+            "block_order": 11,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    774.0
+                ],
+                [
+                    1054.0,
+                    774.0
+                ],
+                [
+                    1054.0,
+                    887.0
+                ],
+                [
+                    136.0,
+                    887.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "2.3 Strong-to-Weak On-Policy Distillation",
+            "block_bbox": [
+                136,
+                912,
+                539,
+                937
+            ],
+            "block_id": 11,
+            "block_order": 12,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    912.0
+                ],
+                [
+                    539.0,
+                    912.0
+                ],
+                [
+                    539.0,
+                    937.0
+                ],
+                [
+                    136.0,
+                    937.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "While CPT and SFT significantly improve the 1.8B model’s performance, a performance gap relative to our larger HY-MT-7B model remains due to the inherent limitations imposed by its parameter size. To bridge this gap, we employ on-policy distillation.",
+            "block_bbox": [
+                135,
+                954,
+                1052,
+                1024
+            ],
+            "block_id": 12,
+            "block_order": 13,
+            "group_id": 12,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    954.0
+                ],
+                [
+                    1052.0,
+                    954.0
+                ],
+                [
+                    1052.0,
+                    1024.0
+                ],
+                [
+                    135.0,
+                    1024.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Recent research (Agarwal et al., 2024; Gu et al., 2025; Lu & Lab, 2025) suggests that on-policy distillation is more effective than off-policy methods for improving student models. Consequently, we adopt this approach after SFT.",
+            "block_bbox": [
+                136,
+                1032,
+                1052,
+                1101
+            ],
+            "block_id": 13,
+            "block_order": 14,
+            "group_id": 13,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    1032.0
+                ],
+                [
+                    1052.0,
+                    1032.0
+                ],
+                [
+                    1052.0,
+                    1101.0
+                ],
+                [
+                    136.0,
+                    1101.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Teacher Model. We utilize the fully trained HY-MT1.5-7B as the teacher model.",
+            "block_bbox": [
+                186,
+                1117,
+                912,
+                1141
+            ],
+            "block_id": 14,
+            "block_order": 15,
+            "group_id": 14,
+            "block_polygon_points": [
+                [
+                    186.0,
+                    1117.0
+                ],
+                [
+                    912.0,
+                    1117.0
+                ],
+                [
+                    912.0,
+                    1141.0
+                ],
+                [
+                    186.0,
+                    1141.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Data. We collect approximately 1 million monolingual samples, covering all 33 supported languages, including specific ethnic minority languages and dialects.",
+            "block_bbox": [
+                188,
+                1148,
+                1052,
+                1195
+            ],
+            "block_id": 15,
+            "block_order": 16,
+            "group_id": 15,
+            "block_polygon_points": [
+                [
+                    188.0,
+                    1148.0
+                ],
+                [
+                    1052.0,
+                    1148.0
+                ],
+                [
+                    1052.0,
+                    1195.0
+                ],
+                [
+                    188.0,
+                    1195.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Loss Function. We employ per-token reverse KL divergence to align the student’s output distribution with the teacher’s. The loss function is defined as:",
+            "block_bbox": [
+                187,
+                1199,
+                1053,
+                1245
+            ],
+            "block_id": 16,
+            "block_order": 17,
+            "group_id": 16,
+            "block_polygon_points": [
+                [
+                    187.3121337890625,
+                    1193.002197265625
+                ],
+                [
+                    1052.3121337890625,
+                    1199.002197265625
+                ],
+                [
+                    1052.0,
+                    1244.0
+                ],
+                [
+                    187.0,
+                    1238.0
+                ]
+            ]
+        },
+        {
+            "block_label": "display_formula",
+            "block_content": " $$ KL(\\pi_{\\theta}\\parallel\\pi_{teacher})=\\mathbb{E}_{x\\sim\\pi_{\\theta}}\\left[\\log\\pi_{\\theta}(x_{t+1}\\mid x_{1..t})-\\log\\pi_{teacher}(x_{t+1}\\mid x_{1..t})\\right] $$ ",
+            "block_bbox": [
+                311,
+                1256,
+                950,
+                1284
+            ],
+            "block_id": 17,
+            "block_order": 18,
+            "group_id": 17,
+            "block_polygon_points": [
+                [
+                    311.0,
+                    1256.0
+                ],
+                [
+                    950.0,
+                    1256.0
+                ],
+                [
+                    950.0,
+                    1284.0
+                ],
+                [
+                    311.0,
+                    1284.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "This process enables the 1.8B model to inherit the 7B model’s superior translation performance. Upon completion of this phase, we employ the same reinforcement learning approach utilized in the third stage to optimize the model, yielding the final model.",
+            "block_bbox": [
+                136,
+                1298,
+                1053,
+                1369
+            ],
+            "block_id": 18,
+            "block_order": 19,
+            "group_id": 18,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    1298.0
+                ],
+                [
+                    1053.0,
+                    1298.0
+                ],
+                [
+                    1053.0,
+                    1369.0
+                ],
+                [
+                    136.0,
+                    1369.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "2.4 Quantization",
+            "block_bbox": [
+                137,
+                1393,
+                310,
+                1417
+            ],
+            "block_id": 19,
+            "block_order": 20,
+            "group_id": 19,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1393.0
+                ],
+                [
+                    310.0,
+                    1393.0
+                ],
+                [
+                    310.0,
+                    1417.0
+                ],
+                [
+                    137.0,
+                    1417.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Recent advancements in large language models (LLMs) have demonstrated remarkable success across a wide range of applications, from conversational chatbots to creative writing. However, growing concerns over data privacy, the need for offline functionality, and the high costs of large-scale cloud deployment necessitate the direct deployment of these models on edge devices, which are typically resource-constrained. Quantization has emerged as a promising technique to achieve this goal by",
+            "block_bbox": [
+                135,
+                1435,
+                1054,
+                1548
+            ],
+            "block_id": 20,
+            "block_order": 21,
+            "group_id": 20,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    1435.0
+                ],
+                [
+                    1054.0,
+                    1435.0
+                ],
+                [
+                    1054.0,
+                    1548.0
+                ],
+                [
+                    135.0,
+                    1548.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "4",
+            "block_bbox": [
+                588,
+                1586,
+                603,
+                1604
+            ],
+            "block_id": 21,
+            "block_order": null,
+            "group_id": 21,
+            "block_polygon_points": [
+                [
+                    588.0,
+                    1586.0
+                ],
+                [
+                    602.0,
+                    1586.0
+                ],
+                [
+                    602.0,
+                    1603.0
+                ],
+                [
+                    588.0,
+                    1603.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9337712526321411,
+                "coordinate": [
+                    187,
+                    143,
+                    1055,
+                    214
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        187.0,
+                        143.0
+                    ],
+                    [
+                        1055.0,
+                        143.0
+                    ],
+                    [
+                        1055.0,
+                        214.0
+                    ],
+                    [
+                        187.0,
+                        214.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8674787282943726,
+                "coordinate": [
+                    137,
+                    238,
+                    412,
+                    263
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        137.0,
+                        238.0
+                    ],
+                    [
+                        412.0,
+                        238.0
+                    ],
+                    [
+                        412.0,
+                        263.0
+                    ],
+                    [
+                        137.0,
+                        263.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9447236061096191,
+                "coordinate": [
+                    135,
+                    280,
+                    1054,
+                    372
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        135.0,
+                        280.0
+                    ],
+                    [
+                        1054.0,
+                        280.0
+                    ],
+                    [
+                        1054.0,
+                        372.0
+                    ],
+                    [
+                        135.0,
+                        372.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9300602674484253,
+                "coordinate": [
+                    136,
+                    379,
+                    1053,
+                    448
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        136.0,
+                        379.0
+                    ],
+                    [
+                        1053.0,
+                        379.0
+                    ],
+                    [
+                        1053.0,
+                        448.0
+                    ],
+                    [
+                        136.0,
+                        448.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8985357880592346,
+                "coordinate": [
+                    136,
+                    458,
+                    1052,
+                    504
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        136.0,
+                        458.0
+                    ],
+                    [
+                        1052.0,
+                        458.0
+                    ],
+                    [
+                        1052.0,
+                        504.0
+                    ],
+                    [
+                        136.0,
+                        504.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9048787355422974,
+                "coordinate": [
+                    189,
+                    523,
+                    1052,
+                    570
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        189.0,
+                        523.0
+                    ],
+                    [
+                        1052.0,
+                        523.0
+                    ],
+                    [
+                        1052.0,
+                        570.0
+                    ],
+                    [
+                        189.0,
+                        570.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9065221548080444,
+                "coordinate": [
+                    189,
+                    575,
+                    1052,
+                    621
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        189.0,
+                        575.0
+                    ],
+                    [
+                        1052.0,
+                        575.0
+                    ],
+                    [
+                        1052.0,
+                        621.0
+                    ],
+                    [
+                        189.0,
+                        621.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8170117735862732,
+                "coordinate": [
+                    188,
+                    626,
+                    1053,
+                    650
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        188.0,
+                        626.0
+                    ],
+                    [
+                        1053.0,
+                        626.0
+                    ],
+                    [
+                        1053.0,
+                        650.0
+                    ],
+                    [
+                        188.0,
+                        650.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8459807634353638,
+                "coordinate": [
+                    188,
+                    656,
+                    1051,
+                    703
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        188.0,
+                        656.0
+                    ],
+                    [
+                        1051.0,
+                        656.0
+                    ],
+                    [
+                        1051.0,
+                        703.0
+                    ],
+                    [
+                        188.0,
+                        703.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.88938307762146,
+                "coordinate": [
+                    187,
+                    709,
+                    1052,
+                    754
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        187.0,
+                        709.0
+                    ],
+                    [
+                        1052.0,
+                        709.0
+                    ],
+                    [
+                        1052.0,
+                        754.0
+                    ],
+                    [
+                        187.0,
+                        754.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9485954642295837,
+                "coordinate": [
+                    136,
+                    774,
+                    1054,
+                    887
+                ],
+                "order": 11,
+                "polygon_points": [
+                    [
+                        136.0,
+                        774.0
+                    ],
+                    [
+                        1054.0,
+                        774.0
+                    ],
+                    [
+                        1054.0,
+                        887.0
+                    ],
+                    [
+                        136.0,
+                        887.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8559507131576538,
+                "coordinate": [
+                    136,
+                    912,
+                    539,
+                    937
+                ],
+                "order": 12,
+                "polygon_points": [
+                    [
+                        136.0,
+                        912.0
+                    ],
+                    [
+                        539.0,
+                        912.0
+                    ],
+                    [
+                        539.0,
+                        937.0
+                    ],
+                    [
+                        136.0,
+                        937.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9410669803619385,
+                "coordinate": [
+                    135,
+                    954,
+                    1052,
+                    1024
+                ],
+                "order": 13,
+                "polygon_points": [
+                    [
+                        135.0,
+                        954.0
+                    ],
+                    [
+                        1052.0,
+                        954.0
+                    ],
+                    [
+                        1052.0,
+                        1024.0
+                    ],
+                    [
+                        135.0,
+                        1024.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9319920539855957,
+                "coordinate": [
+                    136,
+                    1032,
+                    1052,
+                    1101
+                ],
+                "order": 14,
+                "polygon_points": [
+                    [
+                        136.0,
+                        1032.0
+                    ],
+                    [
+                        1052.0,
+                        1032.0
+                    ],
+                    [
+                        1052.0,
+                        1101.0
+                    ],
+                    [
+                        136.0,
+                        1101.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8682541847229004,
+                "coordinate": [
+                    186,
+                    1117,
+                    912,
+                    1141
+                ],
+                "order": 15,
+                "polygon_points": [
+                    [
+                        186.0,
+                        1117.0
+                    ],
+                    [
+                        912.0,
+                        1117.0
+                    ],
+                    [
+                        912.0,
+                        1141.0
+                    ],
+                    [
+                        186.0,
+                        1141.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9263182282447815,
+                "coordinate": [
+                    188,
+                    1148,
+                    1052,
+                    1195
+                ],
+                "order": 16,
+                "polygon_points": [
+                    [
+                        188.0,
+                        1148.0
+                    ],
+                    [
+                        1052.0,
+                        1148.0
+                    ],
+                    [
+                        1052.0,
+                        1195.0
+                    ],
+                    [
+                        188.0,
+                        1195.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9209862351417542,
+                "coordinate": [
+                    187,
+                    1199,
+                    1053,
+                    1245
+                ],
+                "order": 17,
+                "polygon_points": [
+                    [
+                        187.3121337890625,
+                        1193.002197265625
+                    ],
+                    [
+                        1052.3121337890625,
+                        1199.002197265625
+                    ],
+                    [
+                        1052.0,
+                        1244.0
+                    ],
+                    [
+                        187.0,
+                        1238.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 5,
+                "label": "display_formula",
+                "score": 0.8807507157325745,
+                "coordinate": [
+                    311,
+                    1256,
+                    950,
+                    1284
+                ],
+                "order": 18,
+                "polygon_points": [
+                    [
+                        311.0,
+                        1256.0
+                    ],
+                    [
+                        950.0,
+                        1256.0
+                    ],
+                    [
+                        950.0,
+                        1284.0
+                    ],
+                    [
+                        311.0,
+                        1284.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9444992542266846,
+                "coordinate": [
+                    136,
+                    1298,
+                    1053,
+                    1369
+                ],
+                "order": 19,
+                "polygon_points": [
+                    [
+                        136.0,
+                        1298.0
+                    ],
+                    [
+                        1053.0,
+                        1298.0
+                    ],
+                    [
+                        1053.0,
+                        1369.0
+                    ],
+                    [
+                        136.0,
+                        1369.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8521508574485779,
+                "coordinate": [
+                    137,
+                    1393,
+                    310,
+                    1417
+                ],
+                "order": 20,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1393.0
+                    ],
+                    [
+                        310.0,
+                        1393.0
+                    ],
+                    [
+                        310.0,
+                        1417.0
+                    ],
+                    [
+                        137.0,
+                        1417.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9518834352493286,
+                "coordinate": [
+                    135,
+                    1435,
+                    1054,
+                    1548
+                ],
+                "order": 21,
+                "polygon_points": [
+                    [
+                        135.0,
+                        1435.0
+                    ],
+                    [
+                        1054.0,
+                        1435.0
+                    ],
+                    [
+                        1054.0,
+                        1548.0
+                    ],
+                    [
+                        135.0,
+                        1548.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6989911198616028,
+                "coordinate": [
+                    588,
+                    1586,
+                    603,
+                    1604
+                ],
+                "order": 22,
+                "polygon_points": [
+                    [
+                        588.0,
+                        1586.0
+                    ],
+                    [
+                        602.0,
+                        1586.0
+                    ],
+                    [
+                        602.0,
+                        1603.0
+                    ],
+                    [
+                        588.0,
+                        1603.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

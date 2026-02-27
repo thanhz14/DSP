@@ -1,0 +1,796 @@
+{
+    "input_path": "/home/bocchi/Downloads/DeepSeekOCR.pdf",
+    "page_index": 21,
+    "page_count": 22,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "reference_content",
+            "block_content": "[32] A. Singh, V. Natarajan, M. Shah, Y. Jiang, X. Chen, D. Batra, D. Parikh, and M. Rohrbach. Towards vqa models that can read. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 8317–8326, 2019.",
+            "block_bbox": [
+                139,
+                173,
+                1055,
+                254
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    139,
+                    173
+                ],
+                [
+                    139,
+                    253
+                ],
+                [
+                    1054,
+                    253
+                ],
+                [
+                    1054,
+                    173
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[33] T. Sun, C. Cui, Y. Du, and Y. Liu. Pp-doclayout: A unified document layout detection model to accelerate large-scale data construction. arXiv preprint arXiv:2503.17213, 2025.",
+            "block_bbox": [
+                139,
+                271,
+                1051,
+                325
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    271.0
+                ],
+                [
+                    1051.0,
+                    271.0
+                ],
+                [
+                    1051.0,
+                    325.0
+                ],
+                [
+                    139.0,
+                    325.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[34] B. Wang, C. Xu, X. Zhao, L. Ouyang, F. Wu, Z. Zhao, R. Xu, K. Liu, Y. Qu, F. Shang, et al. Mineru: An open-source solution for precise document content extraction.  $ \\underline{\\text{arXiv preprint}} $ arXiv:2409.18839, 2024.",
+            "block_bbox": [
+                139,
+                343,
+                1053,
+                426
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    343.0
+                ],
+                [
+                    1053.0,
+                    343.0
+                ],
+                [
+                    1053.0,
+                    426.0
+                ],
+                [
+                    139.0,
+                    426.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[35] P. Wang, S. Bai, S. Tan, S. Wang, Z. Fan, J. Bai, K. Chen, X. Liu, J. Wang, W. Ge, et al. Qwen2-vl: Enhancing vision-language model's perception of the world at any resolution. arXiv preprint arXiv:2409.12191, 2024.",
+            "block_bbox": [
+                139,
+                443,
+                1053,
+                525
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    443.0
+                ],
+                [
+                    1053.0,
+                    443.0
+                ],
+                [
+                    1053.0,
+                    525.0
+                ],
+                [
+                    139.0,
+                    525.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[36] H. Wei, L. Kong, J. Chen, L. Zhao, Z. Ge, J. Yang, J. Sun, C. Han, and X. Zhang. Vary: Scaling up the vision vocabulary for large vision-language model. In  $ \\underline{\\text{European Conference on Computer Vision}} $, pages 408–424. Springer, 2024.",
+            "block_bbox": [
+                139,
+                543,
+                1053,
+                625
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    543.0
+                ],
+                [
+                    1053.0,
+                    543.0
+                ],
+                [
+                    1053.0,
+                    625.0
+                ],
+                [
+                    139.0,
+                    625.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[37] H. Wei, L. Kong, J. Chen, L. Zhao, Z. Ge, E. Yu, J. Sun, C. Han, and X. Zhang. Small language model meets with reinforced vision vocabulary. arXiv preprint arXiv:2401.12503, 2024.",
+            "block_bbox": [
+                139,
+                641,
+                1053,
+                720
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    641.0
+                ],
+                [
+                    1053.0,
+                    641.0
+                ],
+                [
+                    1053.0,
+                    720.0
+                ],
+                [
+                    139.0,
+                    720.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[38] H. Wei, C. Liu, J. Chen, J. Wang, L. Kong, Y. Xu, Z. Ge, L. Zhao, J. Sun, Y. Peng, et al. General ocr theory: Towards ocr-2.0 via a unified end-to-end model.  $ \\underline{\\text{arXiv preprint}} $ arXiv:2409.01704, 2024.",
+            "block_bbox": [
+                138,
+                740,
+                1053,
+                822
+            ],
+            "block_id": 6,
+            "block_order": 7,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    740.0
+                ],
+                [
+                    1053.0,
+                    740.0
+                ],
+                [
+                    1053.0,
+                    822.0
+                ],
+                [
+                    138.0,
+                    822.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[39] H. Wei, Y. Yin, Y. Li, J. Wang, L. Zhao, J. Sun, Z. Ge, X. Zhang, and D. Jiang. Slow perception: Let's perceive geometric figures step-by-step. arXiv preprint arXiv:2412.20631, 2024.",
+            "block_bbox": [
+                138,
+                840,
+                1053,
+                895
+            ],
+            "block_id": 7,
+            "block_order": 8,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    840.0
+                ],
+                [
+                    1053.0,
+                    840.0
+                ],
+                [
+                    1053.0,
+                    895.0
+                ],
+                [
+                    138.0,
+                    895.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[40] Z. Wu, X. Chen, Z. Pan, X. Liu, W. Liu, D. Dai, H. Gao, Y. Ma, C. Wu, B. Wang, et al. Deepseek-vl2: Mixture-of-experts vision-language models for advanced multimodal understanding. arXiv preprint arXiv:2412.10302, 2024.",
+            "block_bbox": [
+                139,
+                913,
+                1054,
+                993
+            ],
+            "block_id": 8,
+            "block_order": 9,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    913.0
+                ],
+                [
+                    1054.0,
+                    913.0
+                ],
+                [
+                    1054.0,
+                    993.0
+                ],
+                [
+                    139.0,
+                    993.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[41] W. Yu, Z. Yang, L. Li, J. Wang, K. Lin, Z. Liu, X. Wang, and L. Wang. Mm-vet: Evaluating large multimodal models for integrated capabilities. arXiv preprint arXiv:2308.02490, 2023.",
+            "block_bbox": [
+                139,
+                1011,
+                1054,
+                1066
+            ],
+            "block_id": 9,
+            "block_order": 10,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    139.0,
+                    1011.0
+                ],
+                [
+                    1054.0,
+                    1011.0
+                ],
+                [
+                    1054.0,
+                    1066.0
+                ],
+                [
+                    139.0,
+                    1066.0
+                ]
+            ]
+        },
+        {
+            "block_label": "reference_content",
+            "block_content": "[42] J. Zhu, W. Wang, Z. Chen, Z. Liu, S. Ye, L. Gu, H. Tian, Y. Duan, W. Su, J. Shao, et al. Internvl3: Exploring advanced training and test-time recipes for open-source multimodal models. arXiv preprint arXiv:2504.10479, 2025.",
+            "block_bbox": [
+                138,
+                1084,
+                1054,
+                1162
+            ],
+            "block_id": 10,
+            "block_order": 11,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    1084.0
+                ],
+                [
+                    1054.0,
+                    1084.0
+                ],
+                [
+                    1054.0,
+                    1162.0
+                ],
+                [
+                    138.0,
+                    1162.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "22",
+            "block_bbox": [
+                581,
+                1556,
+                610,
+                1578
+            ],
+            "block_id": 11,
+            "block_order": null,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    581.0,
+                    1556.0
+                ],
+                [
+                    609.0,
+                    1556.0
+                ],
+                [
+                    609.0,
+                    1577.0
+                ],
+                [
+                    581.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 18,
+                "label": "reference",
+                "score": 0.9769655466079712,
+                "coordinate": [
+                    139,
+                    167,
+                    1057,
+                    1158
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        139.0,
+                        167.0
+                    ],
+                    [
+                        1057.0,
+                        167.0
+                    ],
+                    [
+                        1057.0,
+                        1158.0
+                    ],
+                    [
+                        139.0,
+                        1158.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9528014659881592,
+                "coordinate": [
+                    139,
+                    173,
+                    1055,
+                    254
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        139,
+                        173
+                    ],
+                    [
+                        139,
+                        253
+                    ],
+                    [
+                        1054,
+                        253
+                    ],
+                    [
+                        1054,
+                        173
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9319409132003784,
+                "coordinate": [
+                    139,
+                    271,
+                    1051,
+                    325
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        139.0,
+                        271.0
+                    ],
+                    [
+                        1051.0,
+                        271.0
+                    ],
+                    [
+                        1051.0,
+                        325.0
+                    ],
+                    [
+                        139.0,
+                        325.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9484215974807739,
+                "coordinate": [
+                    139,
+                    343,
+                    1053,
+                    426
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        139.0,
+                        343.0
+                    ],
+                    [
+                        1053.0,
+                        343.0
+                    ],
+                    [
+                        1053.0,
+                        426.0
+                    ],
+                    [
+                        139.0,
+                        426.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9389141201972961,
+                "coordinate": [
+                    139,
+                    443,
+                    1053,
+                    525
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        139.0,
+                        443.0
+                    ],
+                    [
+                        1053.0,
+                        443.0
+                    ],
+                    [
+                        1053.0,
+                        525.0
+                    ],
+                    [
+                        139.0,
+                        525.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9466228485107422,
+                "coordinate": [
+                    139,
+                    543,
+                    1053,
+                    625
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        139.0,
+                        543.0
+                    ],
+                    [
+                        1053.0,
+                        543.0
+                    ],
+                    [
+                        1053.0,
+                        625.0
+                    ],
+                    [
+                        139.0,
+                        625.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9549949765205383,
+                "coordinate": [
+                    139,
+                    641,
+                    1053,
+                    720
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        139.0,
+                        641.0
+                    ],
+                    [
+                        1053.0,
+                        641.0
+                    ],
+                    [
+                        1053.0,
+                        720.0
+                    ],
+                    [
+                        139.0,
+                        720.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9579248428344727,
+                "coordinate": [
+                    138,
+                    740,
+                    1053,
+                    822
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        138.0,
+                        740.0
+                    ],
+                    [
+                        1053.0,
+                        740.0
+                    ],
+                    [
+                        1053.0,
+                        822.0
+                    ],
+                    [
+                        138.0,
+                        822.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9334796071052551,
+                "coordinate": [
+                    138,
+                    840,
+                    1053,
+                    895
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        138.0,
+                        840.0
+                    ],
+                    [
+                        1053.0,
+                        840.0
+                    ],
+                    [
+                        1053.0,
+                        895.0
+                    ],
+                    [
+                        138.0,
+                        895.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9425647854804993,
+                "coordinate": [
+                    139,
+                    913,
+                    1054,
+                    993
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        139.0,
+                        913.0
+                    ],
+                    [
+                        1054.0,
+                        913.0
+                    ],
+                    [
+                        1054.0,
+                        993.0
+                    ],
+                    [
+                        139.0,
+                        993.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9208402633666992,
+                "coordinate": [
+                    139,
+                    1011,
+                    1054,
+                    1066
+                ],
+                "order": 11,
+                "polygon_points": [
+                    [
+                        139.0,
+                        1011.0
+                    ],
+                    [
+                        1054.0,
+                        1011.0
+                    ],
+                    [
+                        1054.0,
+                        1066.0
+                    ],
+                    [
+                        139.0,
+                        1066.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 19,
+                "label": "reference_content",
+                "score": 0.9488216638565063,
+                "coordinate": [
+                    138,
+                    1084,
+                    1054,
+                    1162
+                ],
+                "order": 12,
+                "polygon_points": [
+                    [
+                        138.0,
+                        1084.0
+                    ],
+                    [
+                        1054.0,
+                        1084.0
+                    ],
+                    [
+                        1054.0,
+                        1162.0
+                    ],
+                    [
+                        138.0,
+                        1162.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7356092929840088,
+                "coordinate": [
+                    581,
+                    1556,
+                    610,
+                    1578
+                ],
+                "order": 13,
+                "polygon_points": [
+                    [
+                        581.0,
+                        1556.0
+                    ],
+                    [
+                        609.0,
+                        1556.0
+                    ],
+                    [
+                        609.0,
+                        1577.0
+                    ],
+                    [
+                        581.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

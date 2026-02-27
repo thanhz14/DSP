@@ -1,0 +1,23 @@
+reducing model size and computational requirements through the use of lower-precision representations of model weights.
+
+For HY-MT1.5-1.8B, the adoption of the W8A8C8-FP8 strategy effectively meets accuracy requirements, as FP8 provides strong support for LLM precision. For even lower bit-widths, the Weight-Int4 quantization strategy can further compress the 1.8B model to occupy less memory, catering to more demanding edge device constraints—though this comes at the cost of significant accuracy degradation. After comparing various quantization algorithms, we selected GPTQ (Frantar et al., 2023b) as the post-training quantization (PTQ) calibration strategy to minimize quantization error. This algorithm processes model weights layer by layer, leveraging a small amount of calibration data to minimize the reconstruction error of quantized weights, adjusting weights via an optimization process that approximates the inverse Hessian matrix. The workflow does not require model retraining; only a small calibration dataset is needed to quantize the weights, thereby improving inference efficiency and lowering the barrier to deployment.
+
+Extremely low-bit quantization (e.g., 2-bit, 1.58-bit) has recently attracted considerable interest from researchers and shows great potential. While ultra-low-bit quantization can compress models to an extreme degree, it also leads to substantial performance degradation. To mitigate this accuracy loss, we employ quantization-aware training (QAT) to reduce precision-related degradation through training. Unlike traditional QAT approaches, and considering the distribution characteristics of smaller models, we introduce an offset to better align the distribution of quantized weights with the original pre-quantization distribution. For 2-bit quantization, we apply symmetric quantization with a bias to achieve better results, while adopting per-channel granularity to ensure both inference performance and quantization accuracy. The weights for the model HY-MT1.5-1.8B-2BIT will be released in the near future.
+
+## 3 Experiments
+
+### 3.1 Automatic Metrics
+
+To comprehensively evaluate the multilingual translation capabilities, we conducted extensive experiments using the following test sets:
+
+• Flores-200³ (Team et al., 2022). We select 1,056 language pairs across 33 different languages from the Flores-200 dataset. These pairs are systematically categorized into three groups: Chinese ⇔ XX, English ⇔ XX, and XX ⇔ XX translations.
+
+• WMT25 $ ^{4} $ (Kocmi et al., 2025). We incorporate human evaluation sets from WMT25 with 13 language pairs (Czech to German, Ukrainian and English to Bhojpuri, Czech, Egyptian Arabic, Estonian, Icelandic, Japanese, Maasai (Kenya), Russian, Serbian (Cyrillic script), Simplified Chinese, Ukrainian).
+
+• Mandarin⇒Minority Testset. This test set comprises translations between Chinese and minority languages, namely Tibetan, Mongolian, Uyghur, and Kazakh.
+
+For automatic evaluation, we use the neural metrics XCOMET-XXL (Guerreiro et al., 2023) and CometKiwi (Rei et al., 2022), which generally correlate with human judgments.
+
+As presented in Table 1, our experimental results indicate that the proposed HY-MT1.5-1.8B and HY-MT1.5-7B models achieve competitive performance across the XCOMET-XXL and CometKiwi evaluation metrics. On FLORES-200, HY-MT1.5-7B performs well across translation directions: it scores 0.8690 in ZH ⇔ XX, outperforming translation-specialized models like iFLYTEK-Translator (0.8196) and Doubao-Translator (0.8091), and matching medium-sized general models such as Qwen3-235B-A22B (0.8539). Its 0.9093 score in EN ⇔ XX surpasses most translation-specialized models and matches Qwen3-235B-A22B (0.9029), while its 0.8098 in XX ⇔ XX outperforms all evaluated translation-specialized models. On the WMT25 benchmark, HY-MT1.5-7B achieves an XCOMET-XXL score of 0.6159, significantly outperforming all compared models across all three baseline categories. This result is 0.0654 higher than that of the top-performing ultra-large general model, Gemini 3.0 Pro (0.5505), and far exceeds that of translation-specialized models such as Seed-X-PPO-7B (0.4783) and Tower-Plus-72B (0.4100). Even the smaller HY-MT1.5-1.8B model achieves an XCOMET-XXL score of 0.5308 on WMT25, outperforming many medium to small-sized general models (e.g., Qwen3-32B: 0.3605) and translation-specialized models.
+
+A particularly noteworthy advantage is the exceptional performance of the HY-MT1.5 models on Mand. ⇔ Min. translation pairs, a critical task for Chinese-centric multilingual translation. HY-MT1.5-7B

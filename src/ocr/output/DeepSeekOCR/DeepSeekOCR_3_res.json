@@ -1,0 +1,522 @@
+{
+    "input_path": "/home/bocchi/Downloads/DeepSeekOCR.pdf",
+    "page_index": 3,
+    "page_count": 22,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "image",
+            "block_content": "",
+            "block_bbox": [
+                151,
+                170,
+                1031,
+                379
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    151.0,
+                    170.0
+                ],
+                [
+                    1031.0,
+                    170.0
+                ],
+                [
+                    1031.0,
+                    379.0
+                ],
+                [
+                    151.0,
+                    379.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure 2 | Typical vision encoders in popular VLMs. Here are three types of encoders commonly used in current open-source VLMs, all of which suffer from their respective deficiencies.",
+            "block_bbox": [
+                136,
+                399,
+                1053,
+                454
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    399.0
+                ],
+                [
+                    1053.0,
+                    399.0
+                ],
+                [
+                    1053.0,
+                    454.0
+                ],
+                [
+                    136.0,
+                    454.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "2. Related Works",
+            "block_bbox": [
+                136,
+                494,
+                351,
+                522
+            ],
+            "block_id": 2,
+            "block_order": 1,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    494.0
+                ],
+                [
+                    351.0,
+                    494.0
+                ],
+                [
+                    351.0,
+                    522.0
+                ],
+                [
+                    136.0,
+                    522.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "2.1. Typical Vision Encoders in VLMs",
+            "block_bbox": [
+                136,
+                549,
+                524,
+                577
+            ],
+            "block_id": 3,
+            "block_order": 2,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    549.0
+                ],
+                [
+                    524.0,
+                    549.0
+                ],
+                [
+                    524.0,
+                    577.0
+                ],
+                [
+                    136.0,
+                    577.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Current open-source VLMs employ three main types of vision encoders, as illustrated in Figure 2. The first type is a dual-tower architecture represented by Vary [36], which utilizes parallel SAM [17] encoder to increase visual vocabulary parameters for high-resolution image processing. While offering controllable parameters and activation memory, this approach suffers from significant drawbacks: it requires dual image preprocessing that complicates deployment and makes encoder pipeline parallelism challenging during training. The second type is tile-based method exemplified by InternVL2.0 [8], which processes images by dividing them into small tiles for parallel computation, reducing activation memory under high-resolution settings. Although capable of handling extremely high resolutions, this approach has notable limitations due to its typically low native encoder resolution (below 512×512), causing large images to be excessively fragmented and resulting in numerous vision tokens. The third type is adaptive resolution encoding represented by Qwen2-VL [35], which adopts the NaViT [10] paradigm to directly process full images through patch-based segmentation without tile parallelization. While this encoder can handle diverse resolutions flexibly, it faces substantial challenges with large images due to massive activation memory consumption that can cause GPU memory overflow, and sequence packing requires extremely long sequence lengths during training. Long vision tokens will slow down both prefill and generation phases of inference.",
+            "block_bbox": [
+                133,
+                594,
+                1057,
+                1057
+            ],
+            "block_id": 4,
+            "block_order": 3,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    133.0,
+                    594.0
+                ],
+                [
+                    1057.0,
+                    594.0
+                ],
+                [
+                    1057.0,
+                    1057.0
+                ],
+                [
+                    133.0,
+                    1057.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "2.2. End-to-end OCR Models",
+            "block_bbox": [
+                137,
+                1095,
+                437,
+                1120
+            ],
+            "block_id": 5,
+            "block_order": 4,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1095.0
+                ],
+                [
+                    437.0,
+                    1095.0
+                ],
+                [
+                    437.0,
+                    1120.0
+                ],
+                [
+                    137.0,
+                    1120.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "OCR, particularly document parsing task, has been a highly active topic in the image-to-text domain. With the advancement of VLMs, a large number of end-to-end OCR models have emerged, fundamentally transforming the traditional pipeline architecture (which required separate detection and recognition expert models) by simplifying OCR systems. Nougat [6] first employs end-to-end framework for academic paper OCR on arXiv, demonstrating the potential of models in handling dense perception tasks. GOT-OCR2.0 [38] expands the scope of OCR2.0 to include more synthetic image parsing tasks and designs an OCR model with performance-efficiency trade-offs, further highlighting the potential of end-to-end OCR researches. Additionally, general vision models such as Qwen-VL series [35], InternVL series [8], and many their derivatives continuously enhance their document OCR capabilities to explore dense visual perception boundaries. However, a crucial research question that current models have not addressed is: for a document containing 1000 words, how many vision tokens are at least needed for decoding? This question holds significant importance for research in the principle that \"a picture is worth a thousand words.\"",
+            "block_bbox": [
+                133,
+                1138,
+                1057,
+                1521
+            ],
+            "block_id": 6,
+            "block_order": 5,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    133.0,
+                    1138.0
+                ],
+                [
+                    1057.0,
+                    1138.0
+                ],
+                [
+                    1057.0,
+                    1521.0
+                ],
+                [
+                    133.0,
+                    1521.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "4",
+            "block_bbox": [
+                587,
+                1557,
+                604,
+                1577
+            ],
+            "block_id": 7,
+            "block_order": null,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1576.0
+                ],
+                [
+                    587.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9345903396606445,
+                "coordinate": [
+                    151,
+                    170,
+                    1031,
+                    379
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        151.0,
+                        170.0
+                    ],
+                    [
+                        1031.0,
+                        170.0
+                    ],
+                    [
+                        1031.0,
+                        379.0
+                    ],
+                    [
+                        151.0,
+                        379.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9176902770996094,
+                "coordinate": [
+                    136,
+                    399,
+                    1053,
+                    454
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        136.0,
+                        399.0
+                    ],
+                    [
+                        1053.0,
+                        399.0
+                    ],
+                    [
+                        1053.0,
+                        454.0
+                    ],
+                    [
+                        136.0,
+                        454.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8587102293968201,
+                "coordinate": [
+                    136,
+                    494,
+                    351,
+                    522
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        136.0,
+                        494.0
+                    ],
+                    [
+                        351.0,
+                        494.0
+                    ],
+                    [
+                        351.0,
+                        522.0
+                    ],
+                    [
+                        136.0,
+                        522.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8511338829994202,
+                "coordinate": [
+                    136,
+                    549,
+                    524,
+                    577
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        136.0,
+                        549.0
+                    ],
+                    [
+                        524.0,
+                        549.0
+                    ],
+                    [
+                        524.0,
+                        577.0
+                    ],
+                    [
+                        136.0,
+                        577.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9655882716178894,
+                "coordinate": [
+                    133,
+                    594,
+                    1057,
+                    1057
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        133.0,
+                        594.0
+                    ],
+                    [
+                        1057.0,
+                        594.0
+                    ],
+                    [
+                        1057.0,
+                        1057.0
+                    ],
+                    [
+                        133.0,
+                        1057.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8418041467666626,
+                "coordinate": [
+                    137,
+                    1095,
+                    437,
+                    1120
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1095.0
+                    ],
+                    [
+                        437.0,
+                        1095.0
+                    ],
+                    [
+                        437.0,
+                        1120.0
+                    ],
+                    [
+                        137.0,
+                        1120.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9685843586921692,
+                "coordinate": [
+                    133,
+                    1138,
+                    1057,
+                    1521
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        133.0,
+                        1138.0
+                    ],
+                    [
+                        1057.0,
+                        1138.0
+                    ],
+                    [
+                        1057.0,
+                        1521.0
+                    ],
+                    [
+                        133.0,
+                        1521.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6764087677001953,
+                "coordinate": [
+                    587,
+                    1557,
+                    604,
+                    1577
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1576.0
+                    ],
+                    [
+                        587.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

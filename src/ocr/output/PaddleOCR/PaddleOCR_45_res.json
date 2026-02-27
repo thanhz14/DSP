@@ -1,0 +1,278 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 45,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "E.7. Text Spotting",
+            "block_bbox": [
+                138,
+                173,
+                323,
+                200
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    173.0
+                ],
+                [
+                    323.0,
+                    173.0
+                ],
+                [
+                    323.0,
+                    200.0
+                ],
+                [
+                    138.0,
+                    200.0
+                ]
+            ]
+        },
+        {
+            "block_label": "image",
+            "block_content": "",
+            "block_bbox": [
+                161,
+                224,
+                1028,
+                1238
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    161.0,
+                    224.0
+                ],
+                [
+                    1028.0,
+                    224.0
+                ],
+                [
+                    1028.0,
+                    1238.0
+                ],
+                [
+                    161.0,
+                    1238.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure A21 | Text spotting results on various types of documents.",
+            "block_bbox": [
+                275,
+                1265,
+                912,
+                1295
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    275.0,
+                    1265.0
+                ],
+                [
+                    912.0,
+                    1265.0
+                ],
+                [
+                    912.0,
+                    1295.0
+                ],
+                [
+                    275.0,
+                    1295.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "46",
+            "block_bbox": [
+                581,
+                1556,
+                609,
+                1579
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    581.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1556.0
+                ],
+                [
+                    608.0,
+                    1578.0
+                ],
+                [
+                    581.0,
+                    1578.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8007758855819702,
+                "coordinate": [
+                    138,
+                    173,
+                    323,
+                    200
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        138.0,
+                        173.0
+                    ],
+                    [
+                        323.0,
+                        173.0
+                    ],
+                    [
+                        323.0,
+                        200.0
+                    ],
+                    [
+                        138.0,
+                        200.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9749786257743835,
+                "coordinate": [
+                    161,
+                    224,
+                    1028,
+                    1238
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        161.0,
+                        224.0
+                    ],
+                    [
+                        1028.0,
+                        224.0
+                    ],
+                    [
+                        1028.0,
+                        1238.0
+                    ],
+                    [
+                        161.0,
+                        1238.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.8826581835746765,
+                "coordinate": [
+                    275,
+                    1265,
+                    912,
+                    1295
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        275.0,
+                        1265.0
+                    ],
+                    [
+                        912.0,
+                        1265.0
+                    ],
+                    [
+                        912.0,
+                        1295.0
+                    ],
+                    [
+                        275.0,
+                        1295.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7489161491394043,
+                "coordinate": [
+                    581,
+                    1556,
+                    609,
+                    1579
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        581.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1556.0
+                    ],
+                    [
+                        608.0,
+                        1578.0
+                    ],
+                    [
+                        581.0,
+                        1578.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

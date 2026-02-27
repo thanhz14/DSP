@@ -1,0 +1,17 @@
+precision and enlarging the functional scope. This includes systematically correcting formula representations and line-breaking logic, alongside extending support for education-specific markings like emphasis dots and underlines to capture instructional semantics. Furthermore, the integration of Bengali and China’s Tibetan scripts broadens the model’s linguistic versatility, ensuring robust performance across diverse writing systems and educational contexts.
+
+Formula: Formula dataset incorporates CV-simulated artifacts, such as Gaussian illumination and harmonic moiré, to replicate physical conditions like scanning, warping, screen-capture, and geometric skewing. These samples encompass a wide spectrum of environmental variables, including light fluctuations and complex document distortions encountered in realistic scenarios.
+
+Table: Tables has been expanded to cover an extensive range of scenarios, including financial reports, academic papers, and complex industrial forms. Integration of diverse structures, such as registration and catalog tables. A key focus is placed on the precise recognition of cell-level formulas and multilingual content within dense table environments. These advancements ensure high-fidelity conversion into structured formats, even when handling intricate cell structures and professional notations.
+
+### 4. Evaluation
+
+To thoroughly assess the effectiveness of PaddleOCR-VL-1.5, we conducted evaluations on the document parsing benchmark OmniDocBench v1.5 and its derived real-world dataset, Real5OmniDocBench. Furthermore, we expanded the evaluation scope by incorporating text spotting and seal recognition tasks to provide a more comprehensive analysis of the model's performance in practical and complex scenarios.
+
+#### 4.1. Document Parsing
+
+This section details the evaluation of end-to-end document parsing capabilities using the following two benchmarks, aiming to measure its overall performance in real-world document scenarios.
+
+OmniDocBench v1.5 To comprehensively evaluate the document parsing capabilities, we conducted extensive experiments on the OmniDocBench v1.5 [2] benchmark. It is an expansion of version v1.0, adding 374 new documents for a total of 1,355 document pages. It features a more balanced distribution of data in both Chinese and English, as well as a richer inclusion of formulas and other elements. Compared to version v1.0, the evaluation method has been updated. While text and reading order are still evaluated using Edit Distance, and tables are evaluated using Tree-Edit-Distance-based Similarity (TEDS), formulas are now assessed using the Character Detection Matching (CDM) [23] method. This metric provides a more objective and robust evaluation of the correctness of predicted formulas. The overall metric is a weighted combination of the metrics for text, formulas, and tables.
+
+Table 2 demonstrates that PaddleOCR-VL-1.5 achieves SOTA performance, consistently outperforming existing pipeline tools, general VLMs, and specialized document parsing models across all key metrics. Notably, PaddleOCR-VL-1.5 exhibits a substantial performance leap over its predecessor, PaddleOCR-VL, raising the overall score from 92.86% to a top-ranking 94.50%. Specifically, it achieves increases of 2.99%, 1.87%, and 0.1% in the CDM Score, Table-TEDS, and Reading Order scores, respectively. Furthermore, our model establishes new SOTA results in all sub-tasks, including a reduced Text-Edit distance of 0.035, an improved Formula-CDM

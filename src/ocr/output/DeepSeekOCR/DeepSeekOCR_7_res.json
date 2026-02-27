@@ -1,0 +1,583 @@
+{
+    "input_path": "/home/bocchi/Downloads/DeepSeekOCR.pdf",
+    "page_index": 7,
+    "page_count": 22,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "image",
+            "block_content": "",
+            "block_bbox": [
+                158,
+                160,
+                1029,
+                711
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    158.0,
+                    160.0
+                ],
+                [
+                    1029.0,
+                    160.0
+                ],
+                [
+                    1029.0,
+                    711.0
+                ],
+                [
+                    158.0,
+                    711.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "(a) Ground truth image",
+            "block_bbox": [
+                276,
+                716,
+                471,
+                740
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    276.0,
+                    716.0
+                ],
+                [
+                    471.0,
+                    716.0
+                ],
+                [
+                    471.0,
+                    740.0
+                ],
+                [
+                    276.0,
+                    740.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "(b) Fine annotations with layouts",
+            "block_bbox": [
+                680,
+                716,
+                954,
+                740
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    680.0,
+                    716.0
+                ],
+                [
+                    954.0,
+                    716.0
+                ],
+                [
+                    954.0,
+                    740.0
+                ],
+                [
+                    680.0,
+                    740.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure 5 | OCR 1.0 fine annotations display. We format the ground truth into an interleaved layout and text format, where each paragraph of text is preceded by the coordinates and label of it in the original image. All coordinates are normalized into 1000 bins.",
+            "block_bbox": [
+                135,
+                767,
+                1055,
+                850
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    767.0
+                ],
+                [
+                    1055.0,
+                    767.0
+                ],
+                [
+                    1055.0,
+                    850.0
+                ],
+                [
+                    135.0,
+                    850.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "directly from the full dataset using fitz, aimed at teaching the model to recognize optical text, especially in minority languages. Fine annotations include 2M pages each for Chinese and English, labeled using advanced layout models (such as PP-DocLayout [33]) and OCR models (such as MinuerU [34] and GOT-OCR2.0 [38]) to construct detection and recognition interleaved data. For minority languages, in the detection part, we find that the layout model enjoys certain generalization capabilities. In the recognition part, we use fitz to create small patch data to train a GOT-OCR2.0, then use the trained model to label small patches after layout processing, employing a model flywheel to create 600K data samples. During the training of DeepSeek-OCR, coarse labels and fine labels are distinguished using different prompts. The ground truth for fine annotation image-text pairs can be seen in Figure 5. We also collect 3M Word data, constructing high-quality image-text pairs without layout by directly extracting content. This data mainly brings benefits to formulas and HTML-formatted tables. Additionally, we select some open-source data [28, 37] as supplements.",
+            "block_bbox": [
+                134,
+                891,
+                1057,
+                1247
+            ],
+            "block_id": 4,
+            "block_order": 1,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    891.0
+                ],
+                [
+                    1057.0,
+                    891.0
+                ],
+                [
+                    1057.0,
+                    1247.0
+                ],
+                [
+                    134.0,
+                    1247.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "For natural scene OCR, our model mainly supports Chinese and English. The image data sources come from LAION [31] and Wukong [13], labeled using PaddleOCR [9], with 10M data samples each for Chinese and English. Like document OCR, natural scene OCR can also control whether to output detection boxes through prompts.",
+            "block_bbox": [
+                134,
+                1257,
+                1054,
+                1366
+            ],
+            "block_id": 5,
+            "block_order": 2,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    1257.0
+                ],
+                [
+                    1054.0,
+                    1257.0
+                ],
+                [
+                    1054.0,
+                    1366.0
+                ],
+                [
+                    134.0,
+                    1366.0
+                ]
+            ]
+        },
+        {
+            "block_label": "paragraph_title",
+            "block_content": "3.4.2. OCR 2.0 data",
+            "block_bbox": [
+                137,
+                1399,
+                338,
+                1425
+            ],
+            "block_id": 6,
+            "block_order": 3,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    1399.0
+                ],
+                [
+                    338.0,
+                    1399.0
+                ],
+                [
+                    338.0,
+                    1425.0
+                ],
+                [
+                    137.0,
+                    1425.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Following GOT-OCR2.0 [38], we refer to chart, chemical formula, and plane geometry parsing data as OCR 2.0 data. For chart data, following OneChart [7], we use pyecharts and matplotlib",
+            "block_bbox": [
+                135,
+                1444,
+                1054,
+                1500
+            ],
+            "block_id": 7,
+            "block_order": 4,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    1444.0
+                ],
+                [
+                    1054.0,
+                    1444.0
+                ],
+                [
+                    1054.0,
+                    1500.0
+                ],
+                [
+                    135.0,
+                    1500.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "8",
+            "block_bbox": [
+                587,
+                1556,
+                603,
+                1577
+            ],
+            "block_id": 8,
+            "block_order": null,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1556.0
+                ],
+                [
+                    602.0,
+                    1556.0
+                ],
+                [
+                    602.0,
+                    1576.0
+                ],
+                [
+                    587.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9135884046554565,
+                "coordinate": [
+                    158,
+                    160,
+                    1029,
+                    711
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        158.0,
+                        160.0
+                    ],
+                    [
+                        1029.0,
+                        160.0
+                    ],
+                    [
+                        1029.0,
+                        711.0
+                    ],
+                    [
+                        158.0,
+                        711.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.38826802372932434,
+                "coordinate": [
+                    276,
+                    716,
+                    471,
+                    740
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        276.0,
+                        716.0
+                    ],
+                    [
+                        471.0,
+                        716.0
+                    ],
+                    [
+                        471.0,
+                        740.0
+                    ],
+                    [
+                        276.0,
+                        740.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.44579070806503296,
+                "coordinate": [
+                    680,
+                    716,
+                    954,
+                    740
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        680.0,
+                        716.0
+                    ],
+                    [
+                        954.0,
+                        716.0
+                    ],
+                    [
+                        954.0,
+                        740.0
+                    ],
+                    [
+                        680.0,
+                        740.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9333140254020691,
+                "coordinate": [
+                    135,
+                    767,
+                    1055,
+                    850
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        135.0,
+                        767.0
+                    ],
+                    [
+                        1055.0,
+                        767.0
+                    ],
+                    [
+                        1055.0,
+                        850.0
+                    ],
+                    [
+                        135.0,
+                        850.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9652238488197327,
+                "coordinate": [
+                    134,
+                    891,
+                    1057,
+                    1247
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        134.0,
+                        891.0
+                    ],
+                    [
+                        1057.0,
+                        891.0
+                    ],
+                    [
+                        1057.0,
+                        1247.0
+                    ],
+                    [
+                        134.0,
+                        1247.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9462836980819702,
+                "coordinate": [
+                    134,
+                    1257,
+                    1054,
+                    1366
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        134.0,
+                        1257.0
+                    ],
+                    [
+                        1054.0,
+                        1257.0
+                    ],
+                    [
+                        1054.0,
+                        1366.0
+                    ],
+                    [
+                        134.0,
+                        1366.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8416985869407654,
+                "coordinate": [
+                    137,
+                    1399,
+                    338,
+                    1425
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        137.0,
+                        1399.0
+                    ],
+                    [
+                        338.0,
+                        1399.0
+                    ],
+                    [
+                        338.0,
+                        1425.0
+                    ],
+                    [
+                        137.0,
+                        1425.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.906751275062561,
+                "coordinate": [
+                    135,
+                    1444,
+                    1054,
+                    1500
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        135.0,
+                        1444.0
+                    ],
+                    [
+                        1054.0,
+                        1444.0
+                    ],
+                    [
+                        1054.0,
+                        1500.0
+                    ],
+                    [
+                        135.0,
+                        1500.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7114289402961731,
+                "coordinate": [
+                    587,
+                    1556,
+                    603,
+                    1577
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1556.0
+                    ],
+                    [
+                        602.0,
+                        1556.0
+                    ],
+                    [
+                        602.0,
+                        1576.0
+                    ],
+                    [
+                        587.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,501 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bản dịch nougat</title>
+        
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      }
+    };
+    </script>
+    
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+    <style>
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background: #e0e0e0; }
+        .paper-page { background: white; padding: 60px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-bottom: 30px; position: relative; min-height: 1100px; }
+        .page-number { position: absolute; top: 20px; right: 20px; font-size: 12px; color: #ccc; }
+        .doc_title { font-size: 26px; font-weight: bold; text-align: center; margin-bottom: 25px; color: #000; }
+        .paragraph_title { font-size: 18px; font-weight: bold; margin-top: 25px; margin-bottom: 10px; color: #111; border-bottom: 1px solid #eee; }
+        .figure_title, .table_caption { font-size: 13px; font-weight: bold; margin: 10px 0; font-style: italic; color: #444; }
+        .abstract { font-style: italic; margin: 20px 40px; text-align: justify; border-left: 4px solid #ddd; padding-left: 15px; background: #fdfdfd; padding: 10px; }
+        .text { text-align: justify; margin-bottom: 10px; text-indent: 1.5em; }
+        .reference_content, .footnote, .vision_footnote { font-size: 12px; margin-bottom: 5px; padding-left: 25px; text-indent: -25px; color: #333; }
+        .table-container { margin: 20px 0; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; font-size: 12px; }
+        th, td { border: 1px solid #444; padding: 6px; text-align: left; }
+        .image-container, .chart-container { margin: 20px 0; }
+        img { max-width: 100%; height: auto; }
+        .display_formula { margin: 15px 0; }
+    </style>
+    
+    </head>
+    <body>
+        <div class="paper-page" id="page-0">
+<div class="page-number">Trang 1</div>
+<h1 class="doc_title">Nougat: Neural Optical Understanding for Academic Documents</h1>
+<p class="text">Lukas Blecher $ ^{*} $</p>
+<p class="text">Guillem Cucurull</p>
+<p class="text">Thomas Scialom</p>
+<p class="text">Robert Stojnic</p>
+<p class="text">Meta AI</p>
+<h2 class="paragraph_title">Abstract</h2>
+<div class="abstract">科学知識主要保存在書籍和科學期刊中。通常，這些知識都是以PDF格式存在的。然而，PDF格式會導致語義信息的損失，尤其是對於數學表達式來說更是如此。因此，我們提出了Nougat模型，該模型是一種視覺轉換模型，它可以用來執行光學字符識別任務，從而將科學文本識別成標記語言的內容，進而提升數字時代下科學知識的可及性。</div>
+<h2 class="paragraph_title">1 Introduction</h2>
+<p class="text">大多數科學知識都儲存在書籍中，或者發表在科學期刊上。最常見的是以PDF格式保存的資料。除了HTML之外，PDF格式也是網路上第二常用的資料格式。不過，這些文件中儲存的資訊，很難以其他格式來提取出來。這種情況尤其適用於那些高度專業化的文件，比如科學研究論文之類的文件。</p>
+<p class="text">现有的光学字符识别（OCR）引擎，比如Tesseract OCR [2])，在检测和对图像中的单个字符和单词进行分类方面表现得非常出色。但是，由于它们采用逐行处理的方式，因此它们无法理解字符之间的相对位置关系。这对于数学表达式来说是一个很大的缺点。在数学符号中，比如分数、指数和矩阵等，字符之间的相对位置关系是非常重要的。</p>
+<p class="text">将学术研究论文转换为机器可读取的文本，还可以使得整个科学领域的资料能够被轻松访问。虽然现有的语料库，比如S2ORC数据集[3]，能够利用GROBID[4]来提取出这些论文中的数学方程的内容。不过，现有的语料库仍然缺乏对数学方程的完整且有意义的表示方式。</p>
+<p class="text">为了达成这一目标，我们引入了“Nougat”模型。该模型是一种基于变压器的模型。它可以将文档页面上的图像转换为格式化的标记文本。</p>
+<p class="text">In this paper, the main contributions are…</p>
+<p class="text">我們釋放了這個預訓練模型。該模型能夠將PDF格式的文件轉換成簡單的標記語言。我們已經在GitHub上發布了這些代碼和模型。</p>
+<p class="text">We introduce a pipeline to create datasets. These datasets are used to pair PDFs with their corresponding source codes.</p>
+<p class="text">Our method relies solely on the image of a page. This allows us to access scanned documents and books.</p>
+<p class="footnote">$ ^{*} $Correspondence to: lblecher@meta.com</p>
+<p class="footnote">$ ^{2} $The paper reports 8.1M papers but the authors recently updated the numbers on the GitHub page https://github.com/allenai/s2orc  
+ $ ^{3} $https://github.com/facebookresearch/nougat</p>
+</div>
+<div class="paper-page" id="page-1">
+<div class="page-number">Trang 2</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_147_148_1040_334.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">그림 1: 우리의 간단한 엔드-투-엔드 아키텍처는 Donut[28]을 따릅니다. Swin Transformer Encoder는 문서의 이미지를 받아 그것을 잠재적인 임베딩 형태로 변환합니다. 그런 다음 그 잠재적인 임베딩 형태를 자동회귀 방식으로 일련의 토큰 형태로 변환합니다.</p>
+<h2 class="paragraph_title">2 Related Work</h2>
+<p class="text">光学字符识别（OCR）是一个在计算机视觉领域中被广泛研究的领域。这项技术被应用于各种领域，例如文档的数字化处理[2, 5]、手写文字的识别以及场景文本的识别[6–8]。</p>
+<p class="text">更具体地说，识别数学表达式是一个已经被广泛研究的子领域。基于语法的计算方法[9–11]]可以用来处理手写形式的数学表达式。不过，这些计算方法已经得到了改进，现在可以使用各种RNN解码器模型[13–17]]来处理手写形式的数学表达式。最近，解码器[18, 19]]以及编码器[20]]都已经被替换为Transformer[21]]架构。</p>
+<p class="text">视觉文档理解（VDU）是深度学习研究中的另一个相关主题。该领域的主要目标是从各种文档类型中提取相关的信息。以往的研究主要依赖于预训练的模型，这些模型通过联合建模文本和布局信息，从而能够提取出相关的信息。LayoutLM模型家族[22–24]则采用了一种带有掩码的结构的布局预测任务，以此来捕捉不同文档元素之间的空间关系。</p>
+<p class="text">那些具有与我们相同的目标的开源解决方案包括GROBID[4]。该解决方案能够将数字生成的科学文档转换为XML格式，同时重点关注文献资料信息。此外，还有pdf2htmlEX[25]这一解决方案。该解决方案能够将数字生成的PDF文档转换为HTML格式，同时能够保留文档的布局和外观。不过，这两种解决方案都无法恢复数学表达式中语义信息的内容。</p>
+<h2 class="paragraph_title">3 Model</h2>
+<p class="text">先前的VDU方法，要么依赖于第三方工具提供的OCR文本数据[22, 23, 26]，要么专注于处理各种类型的文档，比如收据、发票或者类似表格的文档[27]。最近的一些研究[28, 29]表明，为了获得在VDU领域具有竞争力的结果，并不一定需要依赖外部OCR引擎所提供的文本数据。</p>
+<p class="text">該架構是一種編碼器-解碼器轉換器架構[21]。這種架構使得端到端的訓練過程得以實現。我們的架構是建立在Donut架構[28]之上的。該模型不需要任何與OCR相關的輸入或模塊。文本是由網絡自動識別的。請參見圖1，以了解該方法的具體實施方式。</p>
+<p class="text">编码器接收文档图像$x \in \mathbb{R}^{3 \times H_0 \times W_0}}$。编码器将图像的边缘部分进行裁剪，然后将图像的大小进行调整，使其能够适应一个固定大小的矩形区域。</p>
+<p class="text">解码器：编码后的图像z，通过带有交叉注意力机制的变换器解码器结构，被解码成一系列标记。这些标记是以自回归的方式生成的。在生成过程中，使用了自注意力机制以及交叉注意力机制。通过这些机制，能够关注到输入序列中的不同部分，从而将编码器输出分别解码为一系列标记。</p>
+<p class="text">根据Kim等人[28]的研究方法，我们采用了mBART[32]]解码器的实现方式。我们使用与Taylor等人[33]]相同的分词器。因为他们的模型也是专门用于处理科学文本领域的。</p>
+</div>
+<div class="paper-page" id="page-2">
+<div class="page-number">Trang 3</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_139_130_1047_633.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">चित्र 2: प्रशिक्षण के दौरान उपयोग की जाने वाली विभिन्न छवि-संवर्धन विधियों की सूची है.</p>
+<h2 class="paragraph_title">3.1 Setup</h2>
+<p class="text">我们将文档图像以96 DPI的分辨率进行调整。整个架构总共有350百万个参数。我们还尝试使用一个较小的模型（250百万个参数）来进行实验，其中序列长度略微减小，为3584，并且只有4个解码器层，我们是从预训练的基础模型开始。</p>
+<p class="text">During the process of inference, the text is generated using a greedy decoding method.</p>
+<p class="text">我们使用了AdamW优化器[34]]来进行训练。训练周期共分为3个阶段。每个阶段的批量大小均为192。由于训练过程中的不稳定性，我们选择了学习率为5×10^-5的速率。这个速率在每15次更新后就会减少一个因子，即0.9996。这个过程会一直持续下去，直到达到最终的学习率。</p>
+<h2 class="paragraph_title">3.2 Data Augmentation</h2>
+<p class="text">在图像识别任务中，经常需要使用数据增强来提高泛化能力。由于我们只使用数字化的学术研究论文，因此我们需要采用多种变换来模拟扫描文档中的各种缺陷和变异性。这些变换在Albumentations[36]库中得到了实现。关于每种变换的效果概述，请参见图2。</p>
+<p class="text">在训练期间，我们还会对真实文本进行扰动处理。具体来说，我们会随机替换文本中的某些字符或单词。我们发现，这样做可以显著减少文本陷入重复循环的情况。有关更多细节，请参阅第5.4节。</p>
+</div>
+<div class="paper-page" id="page-3">
+<div class="page-number">Trang 4</div>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_149_148_1039_387.jpg" alt="image"></div>
+<p class="figure_title" style="text-align: center;">b) HTML</p>
+<p class="figure_title" style="text-align: center;">圖3：數據處理。原始文件被轉換成HTML格式，然後再轉換成Markdown格式。a) 作者提供的LaTeX原始文件。b) 使用LaTeXML工具，從LaTeX原始文件中生成出HTML文件。c) 從HTML文件中，使用Markdown工具，生成出Markdown格式的文件。d) 作者提供的PDF格式的文件。</p>
+<h2 class="paragraph_title">4 Datasets</h2>
+<p class="text">據我們所知，目前還沒有將PDF頁面與相應的源碼對應起來的數據集。在預訓練階段，也包含了Industry Documents Library中的一部分數據。詳見表A.1，以了解該數據集的組成情況。</p>
+<p class="text">我们在arXiv上收集了1,748,201篇文章的源代码，并将它们编译成PDF文件。为了确保格式的一致性，我们首先使用LaTeXML工具来处理源文件，将其中的用户定义的宏替换掉，同时标准化空白字符的位置，添加可选的括号，使表格的排列更加规范，最后将参考文献和引用内容替换为正确的编号。</p>
+<p class="text">เราจึงแยกข้อมูลจากไฟล์ HTML ออกมา และเปลี่ยนข้อมูลเหล่านั้นให้กลายเป็นภาษาการเขียนที่เรียบง่าย และสามารถใช้งานได้อย่างมีประสิทธิภาพ
+
+กระบวนการนี้สามารถมองเห็นได้ในรูปที่ 3.</p>
+<p class="text">我们还处理了来自PMC的文章。在这些文章中，除了PDF文件之外，还有包含语义信息的XML文件。我们选择将PMC文章的使用范围限制在预训练阶段。</p>
+<p class="text">The XML files are parsed into the same markup language as described above.</p>
+<p class="text">IDL是一系列由各工业领域产生的文档的集合。这些文档与公共健康息息相关，因此这些文档被保存在加利福尼亚大学旧金山分校图书馆中。Biten等人[37]提供了来自IDL数据集的高质量OCR文本。不过，这些文本并没有包含文本格式化的内容，因此这些文本仅用于预训练，以教会模型对扫描文档进行基本的OCR处理的能力。</p>
+<h2 class="paragraph_title">4.1 Splitting the pages</h2>
+<p class="text">เราแบ่งไฟล์ Markdown ออกเป็นส่วนๆ ตามจุดที่มีการแบ่งหน้าในไฟล์ PDF นั้นเอง。</p>
+<p class="text">However, the figures and tables in the PDF may not correspond to their positions in the source code. To address this issue…</p>
+<p class="footnote">$ ^{4} $https://arxiv.org/</p>
+<p class="footnote">$ ^{5} $https://www.ncbi.nlm.nih.gov/pmc/</p>
+<p class="footnote">$ ^{6} $https://www.industrydocuments.ucsf.edu/</p>
+<p class="footnote">$ ^{7} $http://dlmf.nist.gov/LaTeXML/</p>
+</div>
+<div class="paper-page" id="page-4">
+<div class="page-number">Trang 5</div>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_373_159_813_419.jpg" alt="chart"></div>
+<p class="figure_title" style="text-align: center;">चित्र 4: स्रोत कोड में पैराग्राफों को विभिन्न पृष्ठों पर विभाजित करने का उदाहरण है.</p>
+<p class="text">在预处理步骤中，我们会移除这些元素。然后，我们会将那些被移除的图表和表格重新插入到每页的末尾。为了更好地进行匹配，我们还会用相应的LaTeX命令来替换PDF文本中的Unicode字符。</p>
+<p class="text">首先，我们使用MuPDF工具从PDF文件中提取出文本行。然后，我们对这些文本行进行预处理，去除页面编号以及可能的标题或尾注。接下来，我们使用“词袋”模型来对提取出的文本行进行建模处理。在建模过程中，我们使用了TF-IDF向量化方法来进行建模处理。最后，我们使用线性支持向量机分类器来对建模处理后的结果进行进一步的处理，从而得出最终的预测结果。</p>
+<p class="text">Idealmente, las predicciones deberían formar una función en forma de escalera. Pero en la práctica, la señal será ruidosa. Para encontrar los puntos de frontera más adecuados, utilizamos una lógica similar a la de los árboles de decisión. De esta manera, podemos minimizar una medida basada en la variabilidad de Gini.</p>
+<div class="display_formula" style="text-align: center;">$$$$ G_{[a,b]}(i)=(b-a)\cdot\left(1-p_{[a,b]}^{2}(i)-p_{[a,b]}^{2}(i+1)\right), $$$$</div>
+<p class="text">Where $p_{[a,b]}(i))$ is the probability of choosing an element with the predicted page number $i$ within the interval $[a, b)]$.</p>
+<div class="display_formula" style="text-align: center;">$$$$ \hat{t}_{i}=\arg\min_{t}\left(G_{[a,t]}(i)+G_{[t,b]}(i)\right). $$$$</div>
+<p class="text">The search process begins with all paragraphs. For each subsequent page break, the lower bound of the search interval is set to the previous page break position. See Figure 4 for a visual representation of an example page.</p>
+<p class="text">模糊匹配。在进行了第一次粗略的文档分割之后，我们尝试找到段落内精确的位置。如果两个分割点位于源文本中相同的位置，那么页面断点就被认为是“准确”的，并且会得到1的分数。为了被包含进数据集中，一个PDF页面必须至少得到0.9的分数，以便被认为是“准确”的。</p>
+<h2 class="paragraph_title">4.2 Ground truth artifacts</h2>
+<p class="text">由于数据集已经通过LaTeXML进行了预处理，因此源代码的标记版本可能会包含来自不受支持包中的元素和命令。HTML文件中可能包含带有编号的小节标题，尽管在PDF中这些标题并没有编号。此外，由于处理错误，地真相中可能缺少某些图表或表格。</p>
+<p class="footnote">$ ^{8} $https://github.com/phfaist/pylatexenc</p>
+<p class="footnote">$ ^{9} $https://mupdf.com/</p>
+<p class="footnote">$ ^{10} $https://github.com/taleinat/fuzzysearch</p>
+</div>
+<div class="paper-page" id="page-5">
+<div class="page-number">Trang 6</div>
+<p class="text">此外，源代码的分割算法在某些情况下会包含来自前一页的文本，或者从末尾截取的词语。这种情况尤其适用于那些用于格式化的“不可见”字符，比如斜体、粗体文本，或者部分标题。</p>
+<p class="text">สำหรับเอกสารที่เป็น PMC papers นั้น،สมการทางคณิตศาสตร์ที่แสดงอยู่ในเอกสารเหล่านี้ มักจะถูกแสดงในรูปแบบของรูปภาพ ดังนั้น รูปภาพเหล่านี้ก็จะถูกเพิกเฉยไปในที่สุด.</p>
+<p class="text">這些問題都會降低整體數據的質量。然而，大量的訓練樣本可以彌補這些小錯誤。</p>
+<h2 class="paragraph_title">5 Results & Evaluation</h2>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_128_416_1040_978.jpg" alt="image"></div>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{R-\rho\cos\theta}{\sin^{2}\theta}=\frac{\alpha}{\pi\Lambda}\Biggl\langle\int_{-\infty}^{\infty}d t\;\exp\left(-\frac{\Delta(t,z)}{2\Lambda^{2}}\right)\left(\kappa-t\right)\Biggr\rangle_{s} $$$$</div>
+<span class="formula_number">(1)</span>
+<div class="display_formula" style="text-align: center;">$$$$ 1-\frac{\rho^{2}+R^{2}-2\rho R\cos\theta}{\sin^{2}\theta}=2\alpha\Biggl\langle\int_{-\infty}^{\infty}d t\frac{e^{-\frac{(\alpha-\mu_{0})^{2}}{2}}}{\sqrt{2\pi}\sqrt{1-\rho^{2}}}H\left(\frac{\Gamma(t,z)}{\sqrt{1-\rho^{2}}\Lambda}\right)(\kappa-t)^{2}\Biggr\rangle, $$$$</div>
+<span class="formula_number">(2)</span>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{\rho-R\cos\theta}{\sin^{2}\theta}=2\alpha\bigg(\int_{-\infty}^{\infty}dt\frac{e^{-\frac{t-p\alpha}{2(1-p\alpha)^{2}}}}{\sqrt{2\pi}\sqrt{1-p^{2}}}H\bigg(\frac{\Gamma(t,z)}{\sqrt{1-p^{2}}\Lambda}\bigg)\bigg(\frac{z-\rho t}{1-\rho^{2}}\bigg)(\kappa-t) $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ +\frac{1}{2\pi\Lambda}\exp\left(-\frac{\Delta(t,z)}{2\Lambda^{2}}\right)\left(\frac{\rho R-\cos\theta}{1-\rho^{2}}\right)\left(\kappa-t\right)\Biggr)_{s} $$$$</div>
+<span class="formula_number">(3)</span>
+<span class="formula_number">(4)</span>
+<p class="figure_title" style="text-align: center;">चित्र 5: ऐसी पृष्ठों का उदाहरण है; इस पृष्ठ में कई गणितीय समीकन दिए गए हैं; ये समीकन [41] नामक दस्तावेज़ से लिए गए हैं.  
+बाएँ: दस्तावेज़ [41] में दिए गए गणितीय समीकनों का उदाहरण है.  
+दाएँ: दस्तावेज़ [41] में दिए गए गणितीय समीकनों का उदाहरण है.</p>
+<p class="text">在本节中，我们将讨论该模型的结果以及其性能。有关示例，请参见图5，或者请参阅第B节的内容。该模型仅关注于页面上那些重要的内容以及相关的特征。至于那些围绕方程式的方框部分，则被省略了。</p>
+<h2 class="paragraph_title">5.1 Metrics</h2>
+<p class="text">เราได้รายงานตัวชี้วัดต่อไปนี้ ณ ชุดข้อมูลทดสอบของเรา.</p>
+<p class="text">编辑距离：编辑距离，也被称为Levenshtein距离[39])，用于衡量将一条字符串转换为另一条字符串所需的字符操作次数。在本研究中，我们考虑了经过标准化的编辑距离，即我们将结果除以字符串中字符的总数。</p>
+<p class="text">BLEU：BLEU[42]這個指標最初是為了衡量文本質量的而提出的。這個指標會根據候選句子和參考句子之間的n-gram對的匹配數量來計算出一個得分值。</p>
+<p class="text">METEOR – Another machine that translates metrical expressions. This approach focuses on recall rather than precision. This concept was introduced in [43].</p>
+<p class="text">F-measure: We also calculate the F1-score. We also report the precision and recall.</p>
+</div>
+<div class="paper-page" id="page-6">
+<div class="page-number">Trang 7</div>
+<div class="table-container"><table><tr><td>Method</td><td>Modality</td><td>Edit distance  $ \downarrow $</td><td>BLEU  $ \uparrow $</td><td>METEOR  $ \uparrow $</td><td>Precision  $ \uparrow $</td><td>Recall  $ \uparrow $</td><td>F1  $ \uparrow $</td></tr><tr><td>PDF</td><td>All</td><td>0.255</td><td>65.8</td><td>82.1</td><td>77.1</td><td>81.4</td><td>79.2</td></tr><tr><td rowspan="2">GROBID</td><td>All</td><td>0.312</td><td>55.6</td><td>71.9</td><td>74.0</td><td>72.1</td><td>73.0</td></tr><tr><td>Tables</td><td>0.626</td><td>25.1</td><td>64.5</td><td>61.4</td><td>80.7</td><td>69.7</td></tr><tr><td rowspan="2">+ LaTeX OCR</td><td>Plain text</td><td>0.363</td><td>57.4</td><td>69.2</td><td>82.1</td><td>70.5</td><td>75.9</td></tr><tr><td>Math</td><td>0.727</td><td>0.3</td><td>5.0</td><td>11.0</td><td>8.6</td><td>9.7</td></tr><tr><td rowspan="4">Nougat small (250M $ ^{*} $)</td><td>All</td><td>0.073</td><td>88.9</td><td>92.8</td><td>93.6</td><td>92.2</td><td>92.9</td></tr><tr><td>Tables</td><td>0.220</td><td>68.5</td><td>78.6</td><td>75.0</td><td>79.8</td><td>77.3</td></tr><tr><td>Plain text</td><td>0.058</td><td>91.0</td><td>94.3</td><td>96.1</td><td>95.3</td><td>95.7</td></tr><tr><td>Math</td><td>0.117</td><td>56.0</td><td>74.7</td><td>77.1</td><td>76.8</td><td>76.9</td></tr><tr><td rowspan="4">Nougat base (350M $ ^{*} $)</td><td>All</td><td>0.071</td><td>89.1</td><td>93.0</td><td>93.5</td><td>92.8</td><td>93.1</td></tr><tr><td>Tables</td><td>0.211</td><td>69.7</td><td>79.1</td><td>75.4</td><td>80.7</td><td>78.0</td></tr><tr><td>Plain text</td><td>0.058</td><td>91.2</td><td>94.6</td><td>96.2</td><td>95.3</td><td>95.7</td></tr><tr><td>Math</td><td>0.128</td><td>56.9</td><td>75.4</td><td>76.5</td><td>76.6</td><td>76.5</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">표 1: arXiv 테스트 세트에 대한 결과. PDF는 PDF 파일에 포함된 텍스트입니다. “All”이라는 모달리티는 어떠한 분할도 없이 출력되는 텍스트를 의미합니다. *파라미터의 수.</p>
+<h2 class="paragraph_title">5.2 Text modalities</h2>
+<p class="text">在科学研究的文章中，有三种不同类型的文本：1）普通文本，这类文本占据了文档的大部分内容；2）数学表达式，这类文本通常用于表示复杂的数学运算；3）表格，这类文本通常用于展示数据或信息。因此，在预测结果和实际结果之间，可能会出现差异，即使渲染后的公式看起来是相同的。</p>
+<p class="text">此外，在编写数字和标点符号时，总是难以确定“内联数学环境”的结束位置，以及普通文本的开始位置。这种模糊性会降低数学和内联文本的得分。</p>
+<p class="text">For mathematical expressions, the expected score is lower compared to plain text.</p>
+<h2 class="paragraph_title">5.3 Comparison</h2>
+<p class="text">我们在表1中展示了我们的结果。正如预期的那样，数学表达式的表示方式与实际的公式数量之间存在很大的差异。此外，方程预测的准确性也会受到边界框质量的影响。单独使用嵌入式PDF文本的性能比GROBID要好，这是因为标题页或参考部分之间的格式差异所导致的。</p>
+<p class="text">Both the Nougat small model and the base model can outperform other approaches. As a result, these models can achieve high scores in all metrics. It’s worth noting that the performance of the smaller model is on par with the larger base model.</p>
+</div>
+<div class="paper-page" id="page-7">
+<div class="page-number">Trang 8</div>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_168_160_1026_687.jpg" alt="chart"></div>
+<p class="figure_title" style="text-align: center;">圖6：用於檢測在logits上的重複性示例。上方：包含重複性的樣本。下方：不包含重複性的樣本。左側：序列中每個令牌的最高logit得分。中間部分：从位置到末尾的logits的方差。右側：从位置到末尾的logits的方差。</p>
+<h2 class="paragraph_title">5.4 Repetitions during inference</h2>
+<p class="text">我们注意到，该模型会陷入一种重复的模式。在测试集中，有1.5%的页面出现了这种重复模式的情况。不过，对于不属于该领域的文档来说，这种重复模式的频率会更高。因此，仅仅依靠严格的重复检测是不够的。而更难以检测的，是那些模型会计算自己重复情况的预测结果。这种情况有时会在参考文献部分出现。</p>
+<p class="text">一般来说，我们会注意到这种行为，通常是在模型犯下错误之后出现的。在这种情况下，模型无法从这种崩溃状态中恢复过来。</p>
+<p class="text">为了防止重复出现的错误，我们在训练过程中引入了随机扰动。这样做有助于模型学会如何处理那些预测错误的token。对于每一个训练样本，都有一个固定的概率，即一个随机token会被替换为另一个随机选择的token。这个过程会一直持续下去，直到新采样出的数字大于一个指定的阈值为止。我们没有观察到使用这种方法后性能有所下降的情况，但是我们注意到重复次数的显著减少。特别是对于超出领域范围的文档来说，我们看到失败页面转换的次数减少了32%。</p>
+<p class="text">重复检测  
+由于我们最多只能生成4096个标记，因此模型会在某个时候停止。然而，这种处理方式效率非常低，而且需要大量的资源来等待“句子结束”的标记出现。为了在推理过程中检测重复现象，我们可以使用以下启发式方法来处理这个问题。首先，计算滑动窗口大小为$B = 15$时，logits的方差情况。</p>
+<div class="display_formula" style="text-align: center;">$$$$ \mathrm{VarWin}_{B}[\ell](x)=\frac{1}{B}\sum_{i=x}^{x+B}\left(\ell_{i}-\frac{1}{B}\sum_{j=x}^{x+B}\ell_{j}\right)^{2}. $$$$</div>
+</div>
+<div class="paper-page" id="page-8">
+<div class="page-number">Trang 9</div>
+<p class="text">여기서, $\ell$은 로그 이진 코드의 신호입니다. 그리고 $x$는 인덱스를 나타냅니다. 이 새로운 신호를 사용하여, 우리는 다시 분산을 계산합니다. 하지만 이번에는 점 $x$에서부터 시퀀의 끝까지를 고려합니다.</p>
+<div class="display_formula" style="text-align: center;">$$$$ \mathrm{Var}\mathrm{End}_{B}[\ell](x)=\frac{1}{S-x}\sum_{i=x}^{S}\left(\mathrm{Var}\mathrm{Win}_{B}[\ell](i)-\frac{1}{S-x}\sum_{j=x}^{S}\mathrm{Var}\mathrm{Win}_{B}[\ell](i)\right)^{2}. $$$$</div>
+<p class="text">如果这个信号低于某个阈值（我们选择6.75），并且持续低于该阈值，那么我们可以认为这个序列中存在重复现象。</p>
+<p class="text">在推理过程中，显然不可能计算出整个序列的末尾情况。因为我们的目标是在更早的时间点停止生成过程。所以在这里，我们只是处理最后200个标记中的一个子集，以及阈值的一半。在生成过程完成后，上述步骤会重复一次，以便能够处理整个序列的情况。</p>
+<h2 class="paragraph_title">5.5 Limitations & Future work</h2>
+<p class="text">模型的实用性受到多种因素的影响。首先，正如第5.4节中所提到的，模型在处理重复内容时存在问题。该模型是在基于研究论文的数据上训练的，这意味着该模型在处理结构相似的文档时表现良好。不过，该模型仍然能够准确地处理其他类型的文档。</p>
+<p class="text">幾乎所有的數據集樣本都是用英語表示的。對一小部分樣本進行的初步測試表明，該模型在處理其他拉丁語系語言時的表現是令人滿意的。不過，那些來自這些語言中的特殊字符，都會被替換成從拉丁字母表中找到的最接近的等效字符。</p>
+<p class="text">生成速度：在配备NVIDIA A10G图形卡的机器上，拥有24GB的VRAM。在这样的条件下，我们可以并行处理6页的文本。不过，生成速度实际上会受到页面上文本数量的影响。</p>
+<p class="text">未來的工作：該模型是在單一頁面上進行訓練的。在訓練過程中，模型會學習到不同風格或章節標題的數字規則。雖然將每個頁面分開處理，可以顯著提高並行化與可擴展性，但這種做法可能會降低合併後的文檔質量。</p>
+<p class="text">The main challenge that needs to be solved is the tendency of the model to collapse into a repeating loop. This issue remains to be addressed in future work.</p>
+<h2 class="paragraph_title">6 Conclusion</h2>
+<p class="text">在这项研究中，我们提出了“Nougat”模型。该模型是一种基于端到端训练方法的编码器-解码器变换模型。该模型具有强大的文本处理能力，可以成功地将科学文档转换为标记格式。总体而言，我们的方法显示出巨大的潜力，不仅可以成功地从数字生成的PDF文件中提取文本，还可以成功地将扫描后的纸张和教科书转换为标记格式。我们希望这项工作能够成为未来相关领域研究的一个起点。</p>
+<p class="text">所有用于模型评估、训练和数据集生成的代码，都可以访问于https://github.com/facebookresearch/nougat。</p>
+<h2 class="paragraph_title">7 Acknowledgments</h2>
+<p class="text">感谢罗斯·泰勒、马辛·卡达斯、伊利亚尼·扎罗夫、凯文·斯通、詹·香·关、安德鲁·普尔顿以及雨果·图夫龙。他们的宝贵讨论和反馈对我们来说非常有价值。</p>
+<p class="text">感谢Faisal Azhar在整个项目过程中的支持。</p>
+<h2 class="paragraph_title">References</h2>
+<p class="reference_content">[1] Sebastian Spiegler. Statistics of the Common Crawl Corpus 2012, June 2013. URL https://docs.google.com/file/d/1_9698uglerxB9nAglvaHkEgU-iZNm1TvVGucW7245-WGvZq47teNpb_uL5N9.</p>
+</div>
+<div class="paper-page" id="page-9">
+<div class="page-number">Trang 10</div>
+<p class="reference_content">[2] R. Smith. An Overview of the Tesseract OCR Engine. In Ninth International Conference on Document Analysis and Recognition (ICDAR 2007) Vol 2, pages 629–633, Curitiba, Parana, Brazil, September 2007. IEEE. ISBN 978-0-7695-2822-9. doi: 10.1109/ICDAR.2007.4376991. URL http://ieeexplore.ieee.org/document/4376991/. ISSN: 1520-5363.</p>
+<p class="reference_content">[3] Kyle Lo, Lucy Lu Wang, Mark Neumann, Rodney Kinney, and Daniel Weld. S2ORC: The Semantic Scholar Open Research Corpus. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pages 4969–4983, Online, July 2020. Association for Computational Linguistics. doi: 10.18653/v1/2020.acl-main.447. URL https://aclanthology.org/2020.acl-main.447.</p>
+<p class="reference_content">[4] Patrice Lopez. GROBID, February 2023. URL https://github.com/kermitt2/grobid. original-date: 2012-09-13T15:48:54Z.</p>
+<p class="reference_content">[5] Bastien Moysset, Christopher Kermorvant, and Christian Wolf. Full-Page Text Recognition: Learning Where to Start and When to Stop, April 2017. URL http://arxiv.org/abs/1704.08628. arXiv:1704.08628 [cs].</p>
+<p class="reference_content">[6] Darwin Bautista and Rowel Atienza. Scene Text Recognition with Permuted Autoregressive Sequence Models, July 2022. URL http://arxiv.org/abs/2207.06966. arXiv:2207.06966 [cs] version: 1.</p>
+<p class="reference_content">[7] Minghao Li, Tengchao Lv, Jingye Chen, Lei Cui, Yijuan Lu, Dinei Florencio, Cha Zhang, Zhoujun Li, and Furu Wei. TrOCR: Transformer-based Optical Character Recognition with Pre-trained Models, September 2022. URL http://arxiv.org/abs/2109.10282. arXiv:2109.10282 [cs].</p>
+<p class="reference_content">[8] Daniel Hernandez Diaz, Siyang Qin, Reeve Ingle, Yasuha Fujii, and Alessandro Bissacco. Rethinking Text Line Recognition Models, April 2021. URL http://arxiv.org/abs/2104.07787. arXiv:2104.07787 [cs].</p>
+<p class="reference_content">[9] Scott MacLean and George Labahn. A new approach for recognizing handwritten mathematics using relational grammars and fuzzy sets. International Journal on Document Analysis and Recognition (IJDAR), 16(2):139–163, June 2013. ISSN 1433-2825. doi: 10.1007/s10032-012-0184-x. URL https://doi.org/10.1007/s10032-012-0184-x.</p>
+<p class="reference_content">[10] Ahmad-Montaser Awal, Harold Mouchre, and Christian Viard-Gaudin. A global learning approach for an online handwritten mathematical expression recognition system. Pattern Recognition Letters, 35(C):68–77, January 2014. ISSN 0167-8655.</p>
+<p class="reference_content">[11] Francisco Álvaro, Joan-Andreu Sánchez, and José-Miguel Benedict. Recognition of on-line handwritten mathematical expressions using 2D stochastic context-free grammars and hidden Markov models. Pattern Recognition Letters, 35:58–67, January 2014. ISSN 0167-8655. doi: 10.1016/j.patrec.2012.09.023. URL https://www.sciencedirect.com/science/article/pii/S016786551200308X.</p>
+<p class="reference_content">[12] Zuoyu Yan, Xiaode Zhang, Liangcai Gao, Ke Yuan, and Zhi Tang. ConvMath: A Convolutional Sequence Network for Mathematical Expression Recognition, December 2020. URL http://arxiv.org/abs/2012.12619. arXiv:2012.12619 [cs].</p>
+<p class="reference_content">[13] Yuntian Deng, Anssi Kanervisto, Jeffrey Ling, and Alexander M. Rush. Image-to-Markup Generation with Coarse-to-Fine Attention, September 2016. URL http://arxiv.org/abs/1609.04938. arXiv:1609.04938 [cs] version: 1.</p>
+<p class="reference_content">[14] Anh Duc Le and Masaki Nakagawa. Training an End-to-End System for Handwritten Mathematical Expression Recognition by Generated Patterns. In 2017 14th IAPR International Conference on Document Analysis and Recognition (ICDAR), volume 01, pages 1056–1061, November 2017. doi: 10.1109/ICDAR.2017.175. ISSN: 2379-2140.</p>
+<p class="reference_content">[15] Sumeet S. Singh. Teaching Machines to Code: Neural Markup Generation with Visual Attention, June 2018. URL http://arxiv.org/abs/1802.05415. arXiv:1802.05415 [cs].</p>
+<p class="reference_content">[16] Jianshu Zhang, Jun Du, and Lirong Dai. Multi-Scale Attention with Dense Encoder for Handwritten Mathematical Expression Recognition, January 2018. URL http://arxiv.org/abs/1801.03530. arXiv:1801.03530 [cs].</p>
+<p class="reference_content">[17] Zelun Wang and Jyh-Charn Liu. Translating Math Formula Images to LaTeX Sequences Using Deep Neural Networks with Sequence-level Training, September 2019. URL http://arxiv.org/abs/1908.11415. arXiv:1908.11415 [cs, stat].</p>
+<p class="reference_content">[18] Wenqi Zhao, Liangcai Gao, Zuoyu Yan, Shuai Peng, Lin Du, and Ziyin Zhang. Handwritten Mathematical Expression Recognition with Bidirectionally Trained Transformer, May 2021. URL http://arxiv.org/abs/2105.02412. arXiv:2105.02412 [cs].</p>
+<p class="reference_content">[19] Mahshad Mahdavi, Richard Zanibbi, Harold Mouchere, Christian Viard-Gaudin, and Utpal Garain. ICDAR 2019 CROHME + TFD: Competition on Recognition of Handwritten Mathematical Expressions and Typeset Formula Detection. In 2019 International Conference on Document Analysis and Recognition (ICDAR), pages 1533–1538, Sydney, Australia, September 2019. IEEE. ISBN 978-1-72813-014-9. doi: 10.1109/ICDAR.2019.00247. URL https://ieeexplore.ieee.org/document/8978036/.</p>
+</div>
+<div class="paper-page" id="page-10">
+<div class="page-number">Trang 11</div>
+<p class="reference_content">[20] Lukas Blecher. pix2tex - LaTeX OCR, February 2023. URL https://github.com/lukas-blecher/LaTeX-OCR. original-date: 2020-12-11T16:35:13Z.</p>
+<p class="reference_content">[21] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention Is All You Need, December 2017. URL http://arxiv.org/abs/1706.03762. arXiv:1706.03762 [cs].</p>
+<p class="reference_content">[22] Yiheng Xu, Minghao Li, Lei Cui, Shaohan Huang, Furu Wei, and Ming Zhou. LayoutLM: Pre-training of Text and Layout for Document Image Understanding. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining, pages 1192–1200, August 2020. doi: 10.1145/3394486.3403172. URL http://arxiv.org/abs/1912.13318. arXiv:1912.13318 [cs].</p>
+<p class="reference_content">[23] Yang Xu, Yiheng Xu, Tengchao Lv, Lei Cui, Furu Wei, Guoxin Wang, Yijuan Lu, Dinei Florencio, Cha Zhang, Wanxiang Che, Min Zhang, and Lidong Zhou. LayoutLMv2: Multi-modal Pre-training for Visually-Rich Document Understanding, January 2022. URL http://arxiv.org/abs/2012.14740. arXiv:2012.14740 [cs].</p>
+<p class="reference_content">[24] Yupan Huang, Tengchao Lv, Lei Cui, Yutong Lu, and Furu Wei. LayoutLMv3: Pre-training for Document AI with Unified Text and Image Masking, July 2022. URL http://arxiv.org/abs/2204.08387. arXiv:2204.08387 [cs].</p>
+<p class="reference_content">[25] Lu Wang and Wanmin Liu. Online publishing via pdf2htmlEX, 2013. URL https://www.tug.org/TUGboat/tb34-3/tb108wang.pdf.</p>
+<p class="reference_content">[26] Srikar Appalaraju, Bhavan Jasani, Bhargava Urala Kota, Yusheng Xie, and R. Manmatha. DocFormer: End-to-End Transformer for Document Understanding, September 2021. URL http://arxiv.org/abs/2106.11539. arXiv:2106.11539 [cs].</p>
+<p class="reference_content">[27] Bodhisattwa Prasad Majumder, Navneet Potti, Sandeep Tata, James Bradley Wendt, Qi Zhao, and Marc Najork. Representation Learning for Information Extraction from Form-like Documents. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pages 6495–6504, Online, July 2020. Association for Computational Linguistics. doi: 10.18653/v1/2020.acl-main.580. URL https://aclanthology.org/2020.acl-main.580.</p>
+<p class="reference_content">[28] Geewook Kim, Teakgyu Hong, Moonbin Yim, Jeongyeon Nam, Jinyoung Park, Jinyeong Yim, Wonseok Hwang, Sangdoo Yun, Dongyoon Han, and Seunghyun Park. OCR-free Document Understanding Transformer, October 2022. URL http://arxiv.org/abs/2111.15664. arXiv:2111.15664 [cs].</p>
+<p class="reference_content">[29] Brian Davis, Bryan Morse, Bryan Price, Chris Tensmeyer, Curtis Wigington, and Vlad Morariu. End-to-end Document Recognition and Understanding with Dessurt, June 2022. URL http://arxiv.org/abs/2203.16618. arXiv:2203.16618 [cs].</p>
+<p class="reference_content">[30] Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, and Baining Guo. Swin Transformer: Hierarchical Vision Transformer using Shifted Windows, August 2021. URL http://arxiv.org/abs/2103.14030. arXiv:2103.14030 [cs].</p>
+<p class="reference_content">[31] Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, and Neil Houlsby. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale, June 2021. URL http://arxiv.org/abs/2010.11929. arXiv:2010.11929 [cs].</p>
+<p class="reference_content">[32] Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazvininejad, Abdelrahman Mohamed, Omer Levy, Ves Stoyanov, and Luke Zettlemoyer. BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension, October 2019. URL http://arxiv.org/abs/1910.13461. arXiv:1910.13461 [cs, stat].</p>
+<p class="reference_content">[33] Ross Taylor, Marcin Kardas, Guillem Cucurull, Thomas Scialom, Anthony Hartshorn, Elvis Saravia, Andrew Poulton, Viktor Kerkez, and Robert Stojnic. Galactica: A Large Language Model for Science, November 2022. URL http://arxiv.org/abs/2211.09085. arXiv:2211.09085 [cs, stat].</p>
+<p class="reference_content">[34] Ilya Loshchilov and Frank Hutter. Decoupled Weight Decay Regularization, January 2019. URL http://arxiv.org/abs/1711.05101. arXiv:1711.05101 [cs, math] version: 3.</p>
+<p class="reference_content">[35] P.Y. Simard, D. Steinkraus, and J.C. Platt. Best practices for convolutional neural networks applied to visual document analysis. In Seventh International Conference on Document Analysis and Recognition, 2003. Proceedings., volume 1, pages 958–963, Edinburgh, UK, 2003. IEEE Comput. Soc. ISBN 978-0-7695-1960-9. doi:10.1109/ICDAR.2003.1227801. URL http://ieeexplore.ieee.org/document/1227801/.</p>
+<p class="reference_content">[36] Alexander Buslaev, Vladimir I. Iglovikov, Eugene Khvedchenya, Alex Parinov, Mikhail Druzhinin, and Alexandr A. Kalinin. Albumentations: Fast and Flexible Image Augmentations. Information, 11(2):125, February 2020. ISSN 2078-2489. doi: 10.3390/info11020125. URL https://www.mdpi.com/2078-2489/11/2/125.</p>
+</div>
+<div class="paper-page" id="page-11">
+<div class="page-number">Trang 12</div>
+<p class="reference_content">[37] Ali Furkan Biten, Rubèn Tito, Lluis Gomez, Ernest Valveny, and Dimosthenis Karatzas. OCR-IDL: OCR Annotations for Industry Document Library Dataset, February 2022. URL http://arxiv.org/abs/2202.12985. arXiv:2202.12985 [cs].</p>
+<p class="reference_content">[38] Christopher Clark and Santosh Divvala. PDFFigures 2.0: Mining Figures from Research Papers. In Proceedings of the 16th ACM/IEEE-CS on Joint Conference on Digital Libraries, pages 143–152, Newark New Jersey USA, June 2016. ACM. ISBN 978-1-4503-4229-2. doi: 10.1145/2910896.2910904. URL https://dl.acm.org/doi/10.1145/2910896.2910904.</p>
+<p class="reference_content">[39] V. Levenshtein. Binary codes capable of correcting deletions, insertions, and reversals. Soviet physics. Doklady, 1965. URL https://www.semanticscholar.org/paper/Binary-codes-capable-of-correcting-deletions%2C-and-Levenshtein/b2f8876482c97e804bb50a5e2433881ae31d0cdd.</p>
+<p class="reference_content">[40] Zellig S. Harris. Distributional Structure. WORD, 10(2-3):146–162, 1954. doi: 10.1080/00437956.1954.11659520. URL https://doi.org/10.1080/00437956.1954.11659520. Publisher: Routledge_eprint: https://doi.org/10.1080/00437956.1954.11659520.</p>
+<p class="reference_content">[41] Ben Sorscher, Robert Geirhos, Shashank Shekhar, Surya Ganguli, and Ari S. Morcos. Beyond neural scaling laws: beating power law scaling via data pruning, November 2022. URL http://arxiv.org/abs/2206.14486. arXiv:2206.14486 [cs, stat].</p>
+<p class="reference_content">[42] Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing Zhu. Bleu: a Method for Automatic Evaluation of Machine Translation. In Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics, pages 311–318, Philadelphia, Pennsylvania, USA, July 2002. Association for Computational Linguistics. doi:10.3115/1073083.1073135. URL https://aclanthology.org/P02-1040.</p>
+<p class="reference_content">[43] Satanjeev Banerjee and Alon Lavie. METEOR: An Automatic Metric for MT Evaluation with Improved Correlation with Human Judgments. In Proceedings of the ACL Workshop on Intrinsic and Extrinsic Evaluation Measures for Machine Translation and/or Summarization, pages 65–72, Ann Arbor, Michigan, June 2005. Association for Computational Linguistics. URL https://aclanthology.org/W05-0909.</p>
+<p class="reference_content">[44] Ari Holtzman, Jan Buys, Li Du, Maxwell Forbes, and Yejin Choi. The Curious Case of Neural Text Degeneration, February 2020. URL http://arxiv.org/abs/1904.09751. arXiv:1904.09751 [cs].</p>
+<p class="reference_content">[45] Herman W. (Herman William) March and Henry C. (Henry Charles) Wolff. Calculus. New York : McGraw-Hill, 1917. URL http://archive.org/details/calculus00marciala.</p>
+<p class="reference_content">[46] Kinetics and Thermodynamics in High-Temperature Gases, January 1970. URL https://ntrs.nasa.gov/citations/19700022795. NTRS Report/Patent Number: N70-32106-116 NTRS Document ID: 19700022795 NTRS Research Center: Glenn Research Center (GRC).</p>
+<p class="reference_content">[47] Angela Fan, Mike Lewis, and Yann Dauphin. Hierarchical Neural Story Generation. In Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 889–898, Melbourne, Australia, July 2018. Association for Computational Linguistics. doi: 10.18653/v1/P18-1082. URL https://aclanthology.org/P18-1082.</p>
+<p class="reference_content">[48] Meet Shah, Xinlei Chen, Marcus Rohrbach, and Devi Parikh. Cycle-Consistency for Robust Visual Question Answering, February 2019. URL http://arxiv.org/abs/1902.05660. arXiv:1902.05660 [cs].</p>
+</div>
+<div class="paper-page" id="page-12">
+<div class="page-number">Trang 13</div>
+<h2 class="paragraph_title">A Dataset</h2>
+<div class="table-container"><table><tr><td>Name</td><td>Number of Pages</td></tr><tr><td>arXiv</td><td>7,511,745</td></tr><tr><td>PMC</td><td>536,319</td></tr><tr><td>IDL</td><td>446,777</td></tr><tr><td>Total</td><td>8,204,754</td></tr></table></div>
+<p class="figure_title" style="text-align: center;">அட்டவணை A.1: தரவுத்தொகுப்பு</p>
+<p class="text">最重要的数据来源是arXiv。在arXiv上，超过91.5%的研究文档都附带了作者提供的LaTeX源代码。这些LaTeX源代码提供了更多的信息，而且这些代码不会被处理，这与PMC提供的XML格式不同，在XML格式中，方程和表格通常会被替换为图像。这样，我们就可以精确地选择出我们需要的信息，从而构建出数据集。</p>
+<h2 class="paragraph_title">B Examples</h2>
+<p class="text">ใน bagian ini, kami telah mengonversi beberapa halaman dari buku teks lama, menggunakan model dasar Nougat. Buku-buku teks tersebut berasal dari Internet Archive $^{11}$ dan Project Gutenberg $^{12}$. Buku-buku teks tersebut merupakan hak cipta yang sudah tidak lagi menjadi hak cipta.</p>
+<p class="text">这些扫描出来的页面，其表现效果明显不如数字生成的文档。不过，该模型确实能够生成出相当不错的文本，而且错误率也很低。在图B.2中，也可以看到类似的问题。</p>
+<p class="text">在图B.3中，我们展示了从打印好的硕士论文以及Nougat输出文件中提取出来的页面内容。该模型对于因手动扫描文档而产生的各种问题具有很好的鲁棒性。</p>
+<p class="text">請參考本節中的示例，這些示例適用於項目頁面：https://facebookresearch.github.io/nougat</p>
+<p class="footnote">$ ^{11} $https://archive.org/</p>
+<p class="footnote">$ ^{12} $https://www.gutenberg.org/</p>
+</div>
+<div class="paper-page" id="page-13">
+<div class="page-number">Trang 14</div>
+<p class="text">$35</p>
+<h2 class="paragraph_title">THE POWER FUNCTION</h2>
+<h2 class="paragraph_title">and the rule is proved that</h2>
+<p class="text">And it can be proven that this rule holds true.</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_845_239_898_258.jpg" alt="image"></div>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{d u^{s}}{d z}=n u^{s-1}\frac{d u}{d z}, $$$$</div>
+<p class="text">Where n is a positive fraction. In this case, both the numerator and the denominator are integers. This rule has already been used in the solution of numerous exercises.</p>
+<p class="text">Where n is a positive fraction. In this case, both the numerator and the denominator are integers. This rule has already been used in the solution of numerous exercises.</p>
+<h2 class="paragraph_title">34 The Derivative of a Constant</h2>
+<p class="text">Let y = c, where c is a constant. Corresponding to any Dz, Dy = 0.</p>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{\Delta y}{\Delta x}=0, $$$$</div>
+<p class="text">34. 상수의 도함수. $y = c$라고 합시다. 여기서 $c$는 상수입니다. 어떤 $\Delta x$에 대해서도, $\Delta y = 0$이므로, 결국…</p>
+<p class="text">and</p>
+<div class="display_formula" style="text-align: center;">$$$$ \lim_{\Delta x\rightarrow0}\frac{\Delta y}{\Delta x}=0, $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{\Delta y}{\Delta x}=0, $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{\mathrm{d}y}{\mathrm{d}x}=0. $$$$</div>
+<p class="text">and</p>
+<div class="display_formula" style="text-align: center;">$$$$ \lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=0, $$$$</div>
+<p class="text">一個常数的導數等於零。請從幾何學的角度來解釋這個結果。</p>
+<p class="text">or</p>
+<p class="text">35. 두 함수의 합의 도함수</p>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{d y}{d z}=0. $$$$</div>
+<p class="text">A konstanta má derivaci rovnu nule.</p>
+<p class="text">여기서, u와 v는 x의 함수입니다. D_u, D_v, 그리고 D_y는 각각 u, v, 그리고 y의 증분값입니다. 이 증분값들은 D_x라는 증분값에 해당합니다.</p>
+<p class="text">35. दो फंक्शनों के योग का व्युत्पन्न राशि।</p>
+<p class="text">$ y + \Delta y = u + \Delta u + v + \Delta v $</p>
+<div class="display_formula" style="text-align: center;">$$$$ y=u+v, $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ \Delta g=\Delta w+\Delta v $$$$</div>
+<p class="text">여기서, u와 v는 x의 함수입니다. Δu, Δv, 그리고 Δy는 각각 u, v, 그리고 y의 증분을 나타냅니다. 이 증분들은 Δx라는 증분과 관련이 있습니다.</p>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{\Delta y}{\Delta x}=\frac{\Delta x}{\Delta x}+\frac{\Delta v}{\Delta x} $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{d y}{d x}=\frac{d x}{d x}+\frac{d v}{d x}, $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ y+\Delta y=u+\Delta u+v+\Delta v $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{d(u+v)}{dx}=\frac{du}{dx}+\frac{dv}{dx}. $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ \Delta y=\Delta u+\Delta v $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{\Delta y}{\Delta x}=\frac{\Delta u}{\Delta z}+\frac{\Delta v}{\Delta x} $$$$</div>
+<p class="text">兩個函數的和的導數，等於這兩個函數的導數之和。</p>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{a}{b}=\frac{c}{d}+\frac{e}{f} $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{dy}{dx}=\frac{du}{dx}+\frac{dv}{dx}, $$$$</div>
+<p class="text">or</p>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{\mathrm{d}(\mathrm{u}+\mathrm{v})}{\mathrm{d}\mathrm{x}}=\frac{\mathrm{d}\mathrm{u}}{\mathrm{d}\mathrm{x}}+\frac{\mathrm{d}\mathrm{v}}{\mathrm{d}\mathrm{x}}. $$$$</div>
+<p class="text">兩個函數的和的導數，等於這兩個函數的導數之和。</p>
+<h2 class="paragraph_title">CALCULUS</h2>
+<p class="text">The center, the axis of $z$, is horizontal. The axis of $y$, which points positively downward. The element of pressure is…</p>
+<div class="display_formula" style="text-align: center;">$$$$ 2k y x d y $$$$</div>
+<div class="display_formula" style="text-align: center;">$$$$ P=2k\int_{0}^{6}y x d y. $$$$</div>
+<p class="text">And the total pressure is…</p>
+<div class="display_formula" style="text-align: center;">$$$$ P=2k\int_{0}^{6}y x dy. $$$$</div>
+<p class="text">z는 yの関数として表されます。これは、楕円の方程式を使って表されます。</p>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{x^{2}}{64}+\frac{y^{2}}{36}=1. $$$$</div>
+<p class="text">z는 yの関数として表されます。これは、楕円の方程式を使って表されます。</p>
+<p class="text">Then</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_831_948_915_969.jpg" alt="image"></div>
+<div class="display_formula" style="text-align: center;">$$$$ \frac{z^{2}}{64}\div\frac{y^{2}}{36}=1. $$$$</div>
+<p class="text">Then</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_267_996_410_1030.jpg" alt="image"></div>
+<p class="text">請找出圖51中，垂直拋物線形狀上的壓力：(a)如果邊AB位於水面的情況下；(b)如果邊AB位於水面以下5英尺的位置上。</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_243_1092_424_1202.jpg" alt="image"></div>
+<p class="text">2. கண்டுபிடிக்கவேண்டியது என்னவென்று தெரிந்துகொள்ளலாம்.</p>
+<p class="text">73. 산술 평균. 산술 평균, A,는 n개의 숫자들, $ a_{1}, a_{2}, a_{3}, \cdots, a_{n} $,에 대한 산술 평균입니다.</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_251_1287_422_1313.jpg" alt="image"></div>
+<p class="text">In other words, A is a number that satisfies the condition mentioned above.</p>
+<p class="figure_title" style="text-align: center;">चित्र B.1: पुरानी गणित संबंधी पुस्तकों का उदाहरण [45].</p>
+</div>
+<div class="paper-page" id="page-14">
+<div class="page-number">Trang 15</div>
+<p class="text">因此，指数增长常数$\lambda$取决于气体成分以及反应I到V的速率常数。本文报道了对所选混合物的测量结果，这些混合物被选中是为了能够确定反应I、II、III和V的速率常数。通过分析方程(1)，从而选择了这些混合物流体。</p>
+<p class="text">因此，指数增长常数$\lambda$取决于气体成分以及反应I到V的速率常数。本文报道了对所选混合物的测量结果，这些混合物被选中是为了能够确定反应I、II、III和V的速率常数。通过分析方程(1)，从而选择了这些混合物流体。</p>
+<h2 class="paragraph_title">EXPERIMENTAL ASPECTS</h2>
+<h2 class="paragraph_title">EXPERIMENTAL ASPECTS</h2>
+<p class="text">生长常数是通过测量蓝色碳一氧化物火焰带的发射强度来获得的。这种辐射的强度与碳一氧化物和氧原子浓度的乘积成正比（参考文献3）。由于碳一氧化物的消耗量非常少，因此光监测器可以实时监测氧原子浓度随时间的变化情况。</p>
+<p class="text">生长常数是通过测量蓝色碳一氧化物火焰带的发射强度来获得的。这种辐射的强度与碳一氧化物和氧原子浓度的乘积成正比（参考文献3）。由于碳一氧化物的消耗量非常少，因此光监测器可以实时监测氧原子浓度随时间的变化情况。</p>
+<p class="text">这些气体混合物中，氢、一氧化碳、氧气的含量各不相同。在某些混合物中，还含有二氧化碳。这些二氧化碳被稀释了五到十倍，然后与氩气一起使用。在液态氮的温度下，将一部分二氧化碳冷凝下来，而剩下的部分则被丢弃。剩下的那一半则被用于混合物的制备。</p>
+<p class="text">这些气体混合物中，氢、一氧化碳、氧气的含量各不相同。在某些混合物中，还含有二氧化碳。这些气体都是高纯度的，因此可以直接使用它们，而无需进行进一步的净化处理。</p>
+<p class="text">最近我们发现，在分析在激波后方获得的数据时，必须考虑边界层的影响。一般来说，化学反应的程度很小，而气体性质的变化则主要是由与边界层增长相关的气体动力学所引起的。</p>
+<p class="text">最近我们发现，在分析在激波后方获得的数据时，必须考虑边界层的影响。一般来说，化学反应的程度很小，而气体性质的变化则主要是由与边界层增长相关的气体动力学所引起的。</p>
+<p class="text">指數型增长常數是通過對觀測到的光強對數值與氣體處理時間之間的關系進行計算而得到的。</p>
+<h2 class="paragraph_title">SELECTION OF GAS MIXTURES</h2>
+<p class="text">Now let’s turn our attention to the rationale used to select gas mixtures through analysis.</p>
+<p class="text">指數型增长常數是通過對觀測到的光強對數值與氣體處理時間之間的關系進行計算而得到的。</p>
+<h2 class="paragraph_title">SELECTION OF GAS MIXTURES</h2>
+<p class="text">Now let’s turn our attention to the rationale used to select gas mixtures through analysis.</p>
+<p class="text">因此，我们忽略$\lambda^{3}}$，因为与其他项相比，$\lambda^{3}}$的值很小。于是，我们将方程(1)重新写成：</p>
+<p class="text">方程(1)。首先，在我们的实验条件下，$v_{4}$通常是一个较小的正数根——其阶数小于较小的$v$值，并且与较大的$v$值相比，它仍然是一个较小的数值。因此，我们将$\lambda^{2}}$忽略不计，因为它与其他项相比，仍然是一个相对较小的数值。所以，我们将方程(1)重新写成如下形式：</p>
+<div class="display_formula" style="text-align: center;">$$$$ \left[(\nu_{1}+\nu_{5})+\nu_{2}+\nu_{3}\right]\lambda^{2}+\nu_{3}(\nu_{1}+\nu_{5})\lambda\equiv2\nu_{2}\nu_{3}(\nu_{1}+\nu_{5}) $$$$</div>
+<span class="formula_number">(2)</span>
+<h2 class="paragraph_title">$ \left[(v_1 + v_2) + v_2 + v_3\right]\lambda^2 + v_3(v_1 + v_5)\lambda \approx 2v_2v_3(v_1 + v_5) $</h2>
+<p class="text">如果混合物中氢的含量相对于氧来说很大，那么$ \nu_1 $和$ \nu_3 $都会很大。在这种情况下，可以忽略包含$ \lambda^2 $的项。</p>
+<p class="text">如果混合物中氢的含量相对于氧来说很大，那么$O_{2}$的含量也会很大。在这种情况下，可以忽略与$A^{2}$相关的项。</p>
+<div class="display_formula" style="text-align: center;">$$$$ \lambda\approx2\nu_{2} $$$$</div>
+<span class="formula_number">(3)</span>
+<p class="text">On the other hand, if there is only a trace of hydrogen present, then $a_{2}}$ is small. The term involving $\lambda$ can be neglected.</p>
+<p class="text">On the other hand, if there is only a trace of hydrogen present, then $ \nu_{3} $ is small. The term involving $ \lambda $ can be neglected.</p>
+<p class="text">$ \lambda^2 = \frac{2v_2v_3(v_1 + v_3))}{v_2 + (v_1 + v_3))) $</p>
+<div class="display_formula" style="text-align: center;">$$$$ \lambda^{2}\simeq\frac{2\nu_{2}\nu_{3}(\nu_{1}+\nu_{5})}{\nu_{2}+(\nu_{1}+\nu_{5})} $$$$</div>
+<p class="text">If we choose a mixture that contains a large amount of carbon monoxide.</p>
+<span class="formula_number">(4)</span>
+<div class="display_formula" style="text-align: center;">$$$$ \lambda\sim\sqrt{2\nu_{2}\nu_{3}} $$$$</div>
+<p class="text">如果我选择一种含有大量一氧化碳的混合物，那么$ \nu_{5} $的值就会很大。</p>
+<p class="text">In the case where there is a large amount of oxygen, then $a_{2}}$ becomes very large.</p>
+<p class="text">$ \lambda \sim \sqrt{2\nu_2(v_1 + v_5))}} $</p>
+<div class="display_formula" style="text-align: center;">$$$$ \lambda\sim\sqrt{2\nu_{2}\nu_{3}} $$$$</div>
+<span class="formula_number">(5)</span>
+<p class="text">And if there is a large amount of oxygen, then $ \nu_{2} $ will be large.</p>
+<p class="text">$ \left[\mathrm{H}_{2}}\right] > \left[\mathrm{CO}}\right]$</p>
+<div class="display_formula" style="text-align: center;">$$$$ \begin{aligned}&\lambda\sim\sqrt{2\nu_{3}(\nu_{1}+\nu_{5})}\\ &\begin{cases}\\ &{\rightarrow\sqrt{2\nu_{3}\nu_{1}}\quad&[\mathrm{H}_{2}]>[\mathrm{CO}]\\&{\rightarrow\sqrt{2\nu_{3}\nu_{5}}\quad&[\mathrm{CO}]>[\mathrm{H}_{2}]\\ &\end{cases}\\ \end{aligned} $$$$</div>
+<span class="formula_number">(8)</span>
+<div class="display_formula" style="text-align: center;">$$$$ \left|CO\right|>\left|H_{2}\right| $$$$</div>
+<p class="text">In summary, this approach outlines a strategy for determining the reaction rates I, II, III, and V. First, a mixture rich in hydrogen is used to determine k2. Next, with k2 known, a mixture with a trace of hydrogen and rich in carbon monoxide is used to determine k3. Finally, with k3 known, mixtures with excess oxygen and varying proportions of other substances are used to determine k4.</p>
+<p class="text">In conclusion, this approach outlines a strategy for determining reaction rates I, II, III, and V. First, a mixture rich in hydrogen is used to determine $k_{2}}$. Next, with $k_{2}$ known, a mixture with excess oxygen and varying proportions of other components is used to determine $k_{3}}$. Finally, with $k_{3}$ known, a mixture with excess oxygen and varying proportions of other components is used to determine $k_{4}}$.</p>
+<p class="figure_title" style="text-align: center;">चित्र B.2: 1970 में नासा द्वारा आयोजित सम्मेलन से संबंधित कुछ पृष्ठों का चयन।</p>
+</div>
+<div class="paper-page" id="page-15">
+<div class="page-number">Trang 16</div>
+<h2 class="paragraph_title">2.1. Molecules in Cavities</h2>
+<h2 class="paragraph_title">transverse self-polarization or diamagnetic term. $ ^{[24]} $</h2>
+<p class="text">分子哈密顿量描述了两个独立模式（q, Q）的振动模式。这些模式可以被看作是谐振子。而分子哈密顿量则描述了这些谐振子的振动模式。</p>
+<p class="text">分子哈密顿量描述了两个独立模式（q, Q）的振动模式。这些模式可以被看作是谐振子。而分子哈密顿量则描述了这些谐振子的振动模式。</p>
+<div class="display_formula" style="text-align: center;">$$$$ \dot{H}_{m o d}=\hbar\omega_{q}(\dot{\hat{b}}^{\dagger}\dot{\hat{b}})+\hbar\omega_{Q}(\dot{c}^{\dagger}\dot{c})+\sum_{n,s}^{s}x_{n,s}^{q Q}\left(\dot{\hat{b}}^{\dagger}+\dot{\hat{b}}\right)^{s}\left(\dot{c}^{\dagger}+\dot{c}\right)^{s}. $$$$</div>
+<span class="formula_number">(2.3)</span>
+<p class="text">在这里，$\omega_{q}}$描述了分子模式$q$的基本频率。而$\omega_{Q}}$则描述了第三阶耦合关系中的基本频率。
+
+为了得到上、下极子态对应的特征向量，需要对哈密顿矩阵进行对角化。通过这样做，就可以得到关于极子态的特征向量表达式：[22, 25]]</p>
+<div class="display_formula" style="text-align: center;">$$$$ \hat{H}_{m o l}=\hbar\omega_{q}(\hat{b}^{\dagger}\hat{b})+\hbar\omega_{Q}(\hat{c}^{\dagger}\hat{c})+\sum_{\tau,s}^{3}\eta_{\tau,s}^{e Q}\left(\hat{b}^{\dagger}+\hat{b}\right)^{\tau}\left(\hat{c}^{\dagger}+\hat{c}\right)^{\tau}. $$$$</div>
+<span class="formula_number">(2.3)</span>
+<p class="text">在这里，$\omega_{i}}$描述了分子模式$q$的基本频率。而第二个部分，则描述了第三阶耦合的一般形式。在这里，$n_{k,i}}$描述了非谐性的耦合常数，这些常数将会被表示为$\hat{W}^{i,j}}$。为了获得上下的极化子的相应特征向量，需要对哈密顿矩阵进行对角化。通过这样做，就可以得到极化子的相应特征向量。</p>
+<div class="display_formula" style="text-align: center;">$$$$ [\psi_{(U P,L P)};0)=\frac{|1_{v},0,0)\pm|0_{v},1,0\rangle}{\sqrt{2}}. $$$$</div>
+<span class="formula_number">(2.4)</span>
+<p class="text">在这里，那些未受激发的状态，可以通过“kots”来表示。其中，第一项描述了在腔体状态下发生的激发现象；第二项则描述了在高频模式下发生的激发现象；最后一项则描述了在Q模式下发生的激发现象。</p>
+<h2 class="paragraph_title">2.1.2. Anharmonic Coupling Terms</h2>
+<p class="text">在特定的对称性考虑下，并非所有的分子内耦合阶数$(r, s)$都是相关的。在这种情况下，只有那些满足$r + s \leq 3$的耦合阶数才被认为是相关的。通常情况下，势能中的所有项都需要根据分子的点群的完全对称表示来进行变换。因此，根据以下方程：</p>
+<div class="display_formula" style="text-align: center;">$$$$ |\psi_{(U P,L P)};0\rangle=\frac{|1_{c},0,0\rangle\pm|0_{c},1,0\rangle}{\sqrt{2}}. $$$$</div>
+<span class="formula_number">(2.4)</span>
+<p class="text">Here, the uncoupled states are described using kets. The first term of the kets describes the excitation in the cavity state. The second term describes the excitation in the high-frequency mode. The last term represents the excitation in the Q-mode.</p>
+<div class="display_formula" style="text-align: center;">$$$$ \left(\Gamma^{(q)}\right)^{r}\times\left(\Gamma^{(Q)}\right)^{s}\subset\Gamma_{A}. $$$$</div>
+<span class="formula_number">(2.5)</span>
+<p class="text">Since the models discussed in this work are based on the octahedral W(CO)$_{6}$ molecule, then these models exhibit non-Abelian point group symmetry. The various possible couplings that can occur in these models are also discussed.</p>
+<h2 class="paragraph_title">2.1.2 Anharmonic Coupling Terms</h2>
+<p class="text">在特定的对称性考虑下，并非所有的分子内耦合阶数$(r, s)$都是相关的。在这种情况下，只有那些满足$r + s \leq 3$的耦合阶数才被认为是相关的。通常情况下，势能中的所有项都需要根据分子的点群所呈现的全对称表示来进行变换。</p>
+<div class="display_formula" style="text-align: center;">$$$$ \left(\Gamma^{(i)}\right)^{r}\times\left(\Gamma^{(Q)}\right)^{s}\subset\Gamma_{A}. $$$$</div>
+<p class="text">Since the models discussed in this work are based on the octahedral W(CO)$_{6}$ molecule, then these models exhibit non-Abelian point group symmetry. The various possible couplings that can occur in these models are also discussed.</p>
+<span class="formula_number">10</span>
+<p class="text">time-independent basis-set functions.</p>
+<div class="display_formula" style="text-align: center;">$$$$ \Phi\left(\boldsymbol{q}_{1},--,\boldsymbol{q}_{f},t\right)=\sum_{j_{k}=1}^{N_{i}}-\sum_{j_{f}=1}^{N_{f}}C_{j_{k},-j_{f}}\left(t\right)\prod_{n=1}^{f}\chi_{j_{k}}^{n}\left(\boldsymbol{q}_{k}\right) $$$$</div>
+<span class="formula_number">(2.6)</span>
+<p class="text">因此，函数$f$表示自由度的数量。$C_{2i-j_f}(t))$表示时间依赖的扩展系数。而$N_s$则表示用于表示第$t$个自由度的基函数的数量。那些正交归一化的、时间独立的基函数，可以用$\chi_{2i}^n(q_n))$来表示。而只有那些时间依赖的扩展系数，才会被进行变异性的优化处理[31, 32]。</p>
+<p class="text">time-independent basis-set functions.</p>
+<p class="text">標準方法的問題在於，當係數的數量增加時，指數級的縮放就會出現問題。因此，標準方法只適用於那些自由度少於6的情況。</p>
+<div class="display_formula" style="text-align: center;">$$$$ \Psi\left(q_{1},...,q_{f},t\right)=\sum_{j_{1}=1}^{N_{1}}...\sum_{j_{f}=1}^{N_{f}}C_{j_{1}...j_{f}}(t)\prod_{s=1}^{f}\chi_{j_{k}}^{s}\left(q_{s}\right) $$$$</div>
+<span class="formula_number">(2.6)</span>
+<p class="text">在多配置时间依赖的Hartree方法（MCTDH方法）中，通过引入一个较小但现在是时间依赖的基组，从而使得缩放效果更加柔和。这种基组被称为单粒子函数（SPFs）。</p>
+<p class="text">在此，f表示自由度的数量。而$C_{j_1 \ldots j_t}(t))$则表示时间依赖的扩展系数。而$N_\kappa$则表示用于表示第$\kappa$个自由度的基函数的数量。而正交时间依赖的基函数则通过$^{\chi}_{\kappa}^\kappa(g_\kappa))$来表示。而只有那些时间依赖的扩展系数才会被进行变异性的优化处理。$^{\chi}_{\kappa}^\kappa(g_\kappa))$</p>
+<div class="display_formula" style="text-align: center;">$$$$ \left|\varphi_{2k}^{n}\left(\mathfrak{g}_{k},t\right)\right\rangle=\sum_{i_{k}=1}^{N_{n}}c_{i_{k},j_{k}}^{(n)}\left(t\right)\left|\chi_{i_{k}}^{(n)}\left(\mathfrak{g}_{k}\right)\right\rangle. $$$$</div>
+<span class="formula_number">(2.7)</span>
+<p class="text">SPFs被表示为时间独立的原始基函数之间的线性组合。现在，MCTDH方法的参数可以表示为如下形式：</p>
+<p class="text">標準方法的問題在於，當係數的數量增加時，指數級的縮放就會出現問題。因此，標準方法只適用於那些自由度少於6的情況。</p>
+<div class="display_formula" style="text-align: center;">$$$$ \begin{align*}\Psi\left(q_{1},...,q_{f},t\right)=\sum_{j=1}^{n_{1}}-\sum_{j f=1}^{n f}A_{j1...j f}(t)\prod_{n=1}^{f}\varphi_{2h}^{n}\left(q_{k},t\right)\\=\sum A_{j}\Phi,\end{align*} $$$$</div>
+<span class="formula_number">(2.8)</span>
+<p class="text">在多配置时间依赖的Hartree方法（MCTDH方法）中，通过引入一个较小但现在是时间依赖的基组，从而使得缩放效果更加柔和。这种基组被称为单粒子函数（SPFs）。</p>
+<span class="formula_number">(2.9)</span>
+<p class="text">在这里，$\Phi_{j}$ 描述了 SPFs 的 f 维乘积，也就是 Hartree 乘积。而复数展开系数 $A_{j}$ 以及基函数 $\varphi_{j_{k}}^{n}}(q_{k},t))$ 都是时间依赖的，并且是经过优化后的变量[31, 32]。</p>
+<div class="display_formula" style="text-align: center;">$$$$ \left|\varphi_{j_{k}}^{n}\left(q_{k},t\right)\right\rangle=\sum_{i_{n}=1}^{N_{n}}c_{i_{n},j_{n}}^{(s)}\left(t\right)\left|\chi_{i_{n}}^{(s)}\left(q_{n}\right)\right\rangle $$$$</div>
+<p class="reference_content">Due to the fact that a two layer scheme was used here (the time-dependent SPFs and the primitive basis), the exponential scaling of the DOFs, as  $ n_{k} $, is smaller compared to the one layer method like the standard method.</p>
+<span class="formula_number">(2.7)</span>
+<p class="reference_content">By now applying the Direct-Frenchle variational principle to the asmatz (eq. (2.9)), we obtain the respective Equations of Motion and therefore a set of coupled differential</p>
+<p class="text">SPFs被表示为时间独立的原始基函数之间的线性组合。现在，MCTDH方法的假设可以表示为如下形式：</p>
+<div class="display_formula" style="text-align: center;">$$$$ \begin{align*}\Psi\left(q_{1},\ldots,q_{f},t\right)&=\sum_{j_{1}=1}^{n_{1}}-\sum_{j_{f}=1}^{n_{f}}A_{j_{1}\ldots j_{f}}(t)\prod_{n=1}^{f}\varphi_{jk}^{n}\left(q_{n},t\right)\\&=\sum_{J}A_{J}\Phi_{J}.\end{align*} $$$$</div>
+<span class="formula_number">(2.8)</span>
+<span class="formula_number">(2.9)</span>
+<p class="text">在这里，$\Phi_{J}$ 描述了 SPFs 的 f 维乘积，也就是 Hartree 乘积。而复数展开系数 $A_{J}$ 以及基函数 $\varphi_{jk}^{s}(q_{k},t))$ 都是时间依赖的，并且是经过优化的变量。[31,32]</p>
+<p class="text">由于这里采用了双层方案（即时间依赖的SPFs以及原始基础），因此DOFs的指数级缩放，如$n_{k}$所示，其数值比使用层状方法的数值要小。</p>
+<p class="text">At this point, by applying the Dirac-Frenchle variational principle to the ansatz given in equation (2.9)), we can obtain the respective equations of motion. Therefore, we have a set of coupled differential equations.</p>
+<p class="figure_title" style="text-align: center;">चित्र B.3: आधुनिक थीसिस का स्कैन; इस स्कैन को मोबाइल डिवाइस की कैमरे से लिया गया। इस स्कैन को लेने के लिए, लेखक की अनुमति आवश्यक है।</p>
+</div>
+<div class="paper-page" id="page-16">
+<div class="page-number">Trang 17</div>
+<h2 class="paragraph_title">model from the VQA Challenge in 2007 and achieves 66.25% accuracy on VQA v2.0 test-data.</h2>
+<p class="text">在研究中，有兩種情況下使用了Pythia模型。第一種情況是，在研究中，有兩種情況下使用了Pythia模型。第二種情況是，在研究中，有兩種情況下使用了Pythia模型。</p>
+<div class="table-container"><table><tr><td rowspan="2">Model</td><td colspan="4">CS(k)</td><td colspan="2">VQA Accuracy</td></tr><tr><td>k=1</td><td>k=2</td><td>k=3</td><td>k=4</td><td>ORE</td><td>REP</td></tr><tr><td>MUTAN  $ [5] $</td><td>56.68</td><td>43.63</td><td>38.94</td><td>32.76</td><td>59.08</td><td>46.87</td></tr><tr><td>BUTD  $ [3] $</td><td>60.55</td><td>46.96</td><td>40.54</td><td>34.47</td><td>61.51</td><td>51.22</td></tr><tr><td>BUTD + CC</td><td>61.66</td><td>50.79</td><td>44.68</td><td>42.55</td><td>62.44</td><td>52.58</td></tr><tr><td>Pythia  $ [41] $</td><td>63.43</td><td>52.03</td><td>45.94</td><td>39.49</td><td>64.08</td><td>54.20</td></tr><tr><td>Pythia + CC</td><td>64.36</td><td>55.45</td><td>50.92</td><td>44.30</td><td>64.52</td><td>55.65</td></tr><tr><td>BAN  $ [19] $</td><td>64.88</td><td>53.08</td><td>47.45</td><td>39.87</td><td>64.97</td><td>55.87</td></tr><tr><td>BAN + CC</td><td>65.77</td><td>56.94</td><td>51.76</td><td>48.18</td><td>65.87</td><td>56.99</td></tr></table></div>
+<div class="table-container"><table><tr><td>Model</td><td>val</td><td>test-dev</td></tr><tr><td>MUTAN  $ [5] $</td><td>61.04</td><td>63.20</td></tr><tr><td>BUTD  $ [3] $</td><td>65.05</td><td>66.25</td></tr><tr><td>+ Q-consistency</td><td>65.38</td><td>66.83</td></tr><tr><td>+ A-consistency</td><td>60.84</td><td>62.18</td></tr><tr><td>+ Gating</td><td>65.53</td><td>67.55</td></tr><tr><td>Pythia  $ [41] $</td><td>65.78</td><td>68.43</td></tr><tr><td>+ Q-consistency</td><td>65.39</td><td>68.58</td></tr><tr><td>+ A-consistency</td><td>62.08</td><td>63.77</td></tr><tr><td>+ Gating</td><td>66.03</td><td>68.88</td></tr><tr><td>BAN  $ [19] $</td><td>66.04</td><td>69.64</td></tr><tr><td>+ Q-consistency</td><td>66.27</td><td>69.69</td></tr><tr><td>+ A-consistency</td><td>64.96</td><td>66.31</td></tr><tr><td>+ Gating</td><td>66.77</td><td>69.87</td></tr></table></div>
+<h2 class="paragraph_title">Fourtacte) letters without a five-day-term-to-year-term</h2>
+<p class="text">亿万富翁分配网络（BAN）[19]结合了整体模型的概念，以及图像区域与问题中的单词之间的共同关注。[27]在我们所有的实验中，为了进行公平的比较，我们使用BAN模型，该模型不使用来自VisualGamma的额外训练数据。BAN达到了当前最先进的单模型精度，即89.64%，这是在没有使用来自VisualGamma的额外训练数据的情况下获得的。</p>
+<p class="text">对于所有使用单一循环一致框架进行训练的模型来说，我们在训练集上进行训练。而在对测试集进行结果报告时，我们同样在训练集和验证集上进行训练。需要注意的是，我们从来不会明确地在收集到的VQA-Rephasings数据集上进行训练，而是仅仅将其用于评估目的。我们使用公开可用的实现方式，来对每个基于VQA模型的骨干网络进行训练。</p>
+<p class="figure_title" style="text-align: center;">表1：在VQA-Rephrasings数据集上的共识性能。CStk)是根据方程2定义的共识得分。只有当至少有k次重新表述被正确回答时，该得分才非零；否则，该得分为零。所有问题组的平均得分。ORI表示从VQA-Rephrasings数据集中分离出来的问题组。使用我们的循环一致性(CC)框架训练的模型，在所有k值下，都表现出比其基线对应模型更高的性能。</p>
+<p class="text">我們測量了這些模型在我們提出的循環一致訓練框架下的一致性。我們發現，使用我們提出的循環一致訓練框架所訓練的RAN = CC模型，其表現優於其他所有模型。</p>
+<p class="figure_title" style="text-align: center;">表2：VQA模型的性能以及针对VQA模型v2.0的消融研究。其中，每一行都代表了我们的循环一致性框架下的模型性能。这些模型的表现始终优于基线模型。</p>
+<p class="text">圖4定性地比較了在4次重複实验中，文本和视觉信息所吸引的注意力。上排数据显示了使用Python模型所做出的预测结果。而下排数据则显示了使用同一Python模型所做出的预测结果。不过，这些模型的训练是采用我们的框架来完成的。</p>
+<p class="text">该模型在2017年赢得了VQA挑战赛。在VQA v2.0测试阶段中，该模型的准确率达到了66.25%。</p>
+<div class="table-container"><table><tr><td rowspan="2">Model</td><td colspan="3">CS(k)</td><td colspan="3">VQA Accuracy</td></tr><tr><td>k=1</td><td>k=2</td><td>k=3</td><td>k=4</td><td>ORI</td><td>RCEP</td></tr><tr><td>MU/DAN [5]</td><td>56.68</td><td>43.63</td><td>38.94</td><td>32.76</td><td>59.08</td><td>46.87</td></tr><tr><td>RUTD [3]</td><td>60.55</td><td>46.86</td><td>40.54</td><td>34.47</td><td>61.51</td><td>51.22</td></tr><tr><td>RUTD + CC</td><td>61.66</td><td>50.79</td><td>41.68</td><td>42.88</td><td>62.44</td><td>52.98</td></tr><tr><td>Pythia [40]</td><td>63.43</td><td>52.83</td><td>45.94</td><td>39.49</td><td>64.08</td><td>54.20</td></tr><tr><td>Pythia + CC</td><td>64.36</td><td>58.45</td><td>58.92</td><td>44.38</td><td>64.52</td><td>58.68</td></tr><tr><td>RAN [19]</td><td>64.88</td><td>53.08</td><td>47.45</td><td>39.87</td><td>64.97</td><td>55.87</td></tr><tr><td>RAN + CC</td><td>65.77</td><td>56.94</td><td>51.76</td><td>48.18</td><td>65.87</td><td>56.99</td></tr></table></div>
+<p class="text">在研究中，我们使用的是Pythia模型。这些模型并不使用Resnet特征。</p>
+<p class="text">双线性注意力网络（BAN）[19]将双线性模型的概念与共同注意力机制相结合[27]。这种机制能够同时处理图像中的不同区域以及问题中的不同词语。</p>
+<p class="text">我們發現，使用我們提出的循環一致性訓練框架所訓練的BAN + CC模型，其性能優於其對應的模型BAN，以及所有其他模型。無論$k$的值如何，這些模型的性能都是優於其他模型的。</p>
+<p class="vision_footnote">Table 1: Common performance on VQA-Rephrenings dataset. CSI(k) as defined in Fig. 2 is consistent score which is now zero only if all hours k rephrenings are antirational correctly, zero otherwise, a wronged across all group of questions. OBI represent a split of questions from VQA-Rephrenings which are original questions from VQA v2.0 and their corresponding rephrenings are represented by the split RIP. Models trained with our cycle-consistent (CC) framework consistently outperform those baseline counterparts at all values of k.</p>
+<div class="image-container" style="text-align: center;"><img src="imgs/img_in_image_box_833_540_913_661.jpg" alt="image"></div>
+<p class="text">对于使用我们的循环一致框架进行训练的所有模型，我们在训练集上进行训练。而在测试集上报告结果时，我们同时在训练集和验证集上进行训练。这些训练都是基于VQA v2.0的公开可用的实现方式进行的。</p>
+<p class="text">圖4定性地比較了對於某個問題的4種不同的表述方式。上排數據展示了使用Pythia模型得出的注意力信息和預測結果。而下排數據則展示了使用同一個Pythia模型，但通過我們的框架來進行訓練時所得到的注意力信息和預測結果。我們的模型會在相關的圖像區域上進行注意力的分配。</p>
+<p class="vision_footnote">Table 2: VQA Performance and ablation studies on VQA v2.8 validation and text-driven splits. Each step in blocks represents a component of one cycle-consistent framework, added to the previous runs. First step in each block represents the baseline VQA model F. (1) consistency implies addition of a VQA module Q to generate replacements Q from the image I and the predicted anchor A's with an associated VQQ loss  $ C_{ref}(Q, Q) $. A consistency implies passing all the generated questions Q to the VQA model P and an associated loss  $ C_{ref}(A, A) $. Gating implies the use of gating mechanisms to filter undecisable generated questions in Q and passing the remaining to VQA model P. Models trained with one cycle-consistent (last step in each block) framework consistently outperform baselines.</p>
+<p class="text">We measure the robustness of each of these models.</p>
+<p class="text">http://github.com/gdzkinkun-tqa</p>
+<div class="table-container"><table><tr><td>Model</td><td># Parameters (mil)</td><td>Valid Perplexity</td><td>Test Perplexity</td></tr><tr><td>GCNN LM</td><td>123.4</td><td>54.50</td><td>54.79</td></tr><tr><td>GCNN + self-attention LM</td><td>126.4</td><td>51.84</td><td>51.18</td></tr><tr><td>LSTM seq2seq</td><td>110.3</td><td>46.83</td><td>46.79</td></tr><tr><td>Conv seq2seq</td><td>113.0</td><td>45.27</td><td>45.54</td></tr><tr><td>Conv seq2seq + self-attention</td><td>134.7</td><td>37.37</td><td>37.94</td></tr><tr><td>Ensemble: Conv seq2seq + self-attention</td><td>270.3</td><td>36.63</td><td>36.93</td></tr><tr><td>Fusion: Conv seq2seq + self-attention</td><td>255.4</td><td>36.08</td><td>36.56</td></tr></table></div>
+<p class="text">由光束搜索法产生的样本通常比较短且缺乏多样性。而完全随机采样则有可能产生非常不可能的样本，这可能会损害模型的生成效果，因为模型在训练过程中并没有遇到过这样的错误。因此，从最有可能出现的10个候选者中进行抽样，这样可以降低这些低概率样本所带来的风险。</p>
+<p class="text">对于每个模型，我们会调整一个温度参数，这个参数用于调整softmax函数的行为。为了便于人类进行评估，我们会生成每篇150字的文章，同时不会生成任何未知的单词。</p>
+<p class="figure_title" style="text-align: center;">表3：在处理写作提示时遇到的困惑程度。与标准的seq2seq模型相比，我们的表现有了显著的改善。</p>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_181_927_334_1017.jpg" alt="chart"></div>
+<p class="text">为了快速生成提示语，我们使用了一种自注意力的GCNN语言模型。该语言模型的验证困惑度为63.06。提示语的生成是通过从10个最有可能被选择的候选者中，随机选取前k个来完成的。当语言模型生成了提示语的结尾标记时，提示语的生成过程就完成了。</p>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_342_933_493_1020.jpg" alt="chart"></div>
+<h2 class="paragraph_title">Evaluation</h2>
+<p class="text">We propose a number of evaluation metrics, in order to quantify the performance of our models. There are many commonly used metrics, such as BLEU, which is used for evaluating the performance of machine learning models.</p>
+<p class="text">चित्र 5: मानवीय सटीकता – जब कहानियों को प्रॉम्प्टों के साथ जोड़ा जाता है। लोगों को पता है कि हमारा फ्यूजन मॉडल, प्रॉम्प्टों और उनके द्वारा உருவாகும் கதைகளுக்கு இடையிலான संबंधों को समझने में मदद करता है.</p>
+<p class="vision_footnote">Figure 6: Accuracy of prompt ranking. The fusion model most accurately pairs prompt and stories.</p>
+<div class="table-container"><table><tr><td>Model</td><td>Human Preference</td></tr><tr><td>Language model</td><td>32.68%</td></tr><tr><td>Hierarchical Model</td><td>67.32%</td></tr></table></div>
+<div class="chart-container" style="text-align: center;"><img src="imgs/img_in_chart_box_339_1046_496_1146.jpg" alt="chart"></div>
+<p class="text">由光束搜索法产生的样本通常比较短且缺乏多样性。而完全随机采样则有可能产生非常不可能的样本，这可能会损害模型的生成效果，因为模型在训练过程中并没有遇到过这样的错误。因此，从最有可能出现的10个候选者中进行抽样，这样可以降低这些低概率样本所带来的风险。</p>
+<p class="text">표 4: 계층적 방식으로 생성된 이야기의 효과. 인간 심판자들은 계층적 방식으로 생성된 이야기들을 선호합니다. 이 과정에서는 먼저 전제를 설정하고, 그에 따라 완전한 이야기를 만들어냅니다. 이 과정에는 seq2seq 모델이 사용됩니다.</p>
+<p class="text">对于每个模型，我们会调整一个温度参数，这个参数用于调整softmax函数的行为。为了便于人类进行评估，我们会生成每篇150字的文章，同时不会生成任何未知的单词。</p>
+<p class="text">चित्र 5: मानवीय सटीकता – जब कहानियों को प्रॉम्प्टों के साथ जोड़ा जाता है। लोगों को पता है कि हमारा फ्यूजन मॉडल, प्रॉम्प्टों और उनके द्वारा உருவாகும் கதைகளுக்கு இடையிலான संबंधों को समझने में मदद करता है.</p>
+<p class="text">圖7：在提示/故事配对任务中，准确性与生成的故事数量之间的关系。我们的生成融合模型能够生成大量故事，而不会导致性能下降。而KNN模型则只能生成有限数量的相关故事。</p>
+<div class="table-container"><table><tr><td>Model</td><td># Parameters (mil)</td><td>Valid Perplexity</td><td>Test Perplexity</td></tr><tr><td>GCNN LM</td><td>123.4</td><td>54.50</td><td>54.79</td></tr><tr><td>GCNN + self-attention LM</td><td>126.4</td><td>51.84</td><td>51.18</td></tr><tr><td>LSTM seq2seq</td><td>110.3</td><td>46.83</td><td>46.79</td></tr><tr><td>Conv seq2seq</td><td>113.0</td><td>45.27</td><td>45.54</td></tr><tr><td>Conv seq2seq + self-attention</td><td>134.7</td><td>37.37</td><td>37.94</td></tr><tr><td>Ensemble: Conv seq2seq + self-attention</td><td>270.3</td><td>36.63</td><td>36.93</td></tr><tr><td>Fusion: Conv seq2seq + self-attention</td><td>255.4</td><td>36.08</td><td>36.56</td></tr></table></div>
+<p class="text">为了快速生成提示语，我们使用了一种自注意力的GCNN语言模型。该语言模型的验证困惑度为63.06。提示语的生成是通过从10个最有可能被选择的候选者中，随机选取前k个来完成的。当语言模型生成了提示语的结尾标记时，提示语的生成过程就完成了。</p>
+<div class="table-container"><table><tr><td>Model</td><td>Human Preference</td></tr><tr><td>Language model</td><td>32.68%</td></tr><tr><td>Hierarchical Model</td><td>67.32%</td></tr></table></div>
+<p class="text">표 4: 계층적 방식으로 생성된 이야기의 효과. 인간 심판자들은 계층적 방식으로 생성된 이야기들을 선호합니다. 이 과정에서는 먼저 전제를 설정하고, 그에 따라 완전한 이야기를 만들어냅니다. 이 과정에는 seq2seq 모델이 사용됩니다.</p>
+<h2 class="paragraph_title">5.5 Evaluation</h2>
+<p class="text">We propose a number of evaluation metrics, in order to quantify the performance of our models. There are many commonly used metrics, such as BLEU, which is used for evaluating the performance of machine learning models.</p>
+<p class="vision_footnote">Table 3: Perplexity on WritingPrompts. We dramatically improve over standard seq2seq models.</p>
+<p class="figure_title" style="text-align: center;">चित्र B.4: ऐसी पृष्ठें, जिनमें तालिकाएँ हैं। ऊपर: फैन एट अल., [47] पृष्ठ 6। नीचे: शाह एट अल., [48] पृष्ठ 6।</p>
+</div>
+
+    </body>
+    </html>
+    

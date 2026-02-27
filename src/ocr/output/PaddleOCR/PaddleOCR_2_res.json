@@ -1,0 +1,644 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 2,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "1. Introduction",
+            "block_bbox": [
+                138,
+                171,
+                326,
+                198
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    171.0
+                ],
+                [
+                    326.0,
+                    171.0
+                ],
+                [
+                    326.0,
+                    198.0
+                ],
+                [
+                    138.0,
+                    198.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "As the primary repository of human knowledge, documents are growing exponentially in both volume and complexity, establishing document parsing as a pivotal technology in the era of artificial intelligence. The ultimate objective of document parsing [1,2,3,4] extends beyond mere text recognition; it aims to reconstruct the deep structural and semantic layout of a document. By meticulously distinguishing text blocks, decoding complex formulas and tables, and deducing the logical reading order, advanced parsing lays the groundwork for Large Language Models (LLMs) [5,6,7]. Crucially, this capability empowers Retrieval-Augmented Generation (RAG) systems [8] to ingest high-fidelity knowledge, thereby enhancing their reliability in downstream applications.",
+            "block_bbox": [
+                136,
+                224,
+                1054,
+                469
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    224.0
+                ],
+                [
+                    1054.0,
+                    224.0
+                ],
+                [
+                    1054.0,
+                    469.0
+                ],
+                [
+                    136.0,
+                    469.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The field has witnessed a surge of innovation following October 2025, with several significant document parsing solutions emerging to push the boundaries of document intelligence. Notably, PaddleOCR-VL [9] established a high performance baseline, surpassing contemporary SOTA metrics with only 0.9 billion parameters and demonstrating strong multi-scenario generalization. Concurrently, DeepSeek-OCR [10] leverages an optical 2D mapping methodology to enable high-ratio vision-to-text compression, offering robust end-to-end parsing capabilities. MonkeyOCR v1.5 [11] further enhances the three-stage parsing framework, while HunyuanOCR [12] extends expert OCR capabilities through a unified architecture supporting translation and extraction.",
+            "block_bbox": [
+                134,
+                481,
+                1056,
+                701
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    481.0
+                ],
+                [
+                    1056.0,
+                    481.0
+                ],
+                [
+                    1056.0,
+                    701.0
+                ],
+                [
+                    134.0,
+                    701.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Despite these advancements, a critical gap remains: most existing models are primarily optimized for \"digital-born\" or cleanly scanned documents. Real-world scenarios involving extreme physical distortions—such as aggressive skewing, non-rigid warping of pages, screen-capture moiré patterns, and erratic lighting—remain significant hurdles that even state-of-the-art solutions have yet to fully overcome.",
+            "block_bbox": [
+                135,
+                711,
+                1055,
+                848
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    711.0
+                ],
+                [
+                    1055.0,
+                    711.0
+                ],
+                [
+                    1055.0,
+                    848.0
+                ],
+                [
+                    135.0,
+                    848.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To bridge this gap, we present PaddleOCR-VL-1.5, a high-performance, resource-efficient document parsing solution that significantly enhances both general precision and real-world robustness. Building upon the proven 0.9B ultra-compact architecture, PaddleOCR-VL-1.5 introduces several critical advancements:",
+            "block_bbox": [
+                136,
+                861,
+                1054,
+                970
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    861.0
+                ],
+                [
+                    1054.0,
+                    861.0
+                ],
+                [
+                    1054.0,
+                    970.0
+                ],
+                [
+                    136.0,
+                    970.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Firstly, we upgrade the layout engine to PP-DocLayoutV3. Unlike previous Layout Analysis methods (e.g., Dolphin [3], MinerU2.5 [2], or even PP-DocLayoutV2 [13]), PP-DocLayoutV3 is specifically engineered to handle non-planar document images. It can directly predict multi-point bounding boxes for layout elements—as opposed to standard two-point boxes—and determine logical reading orders for skewed and warped surfaces within a single forward pass, significantly reducing cascading errors.",
+            "block_bbox": [
+                168,
+                1001,
+                1054,
+                1163
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    168.0,
+                    1001.0
+                ],
+                [
+                    1054.0,
+                    1001.0
+                ],
+                [
+                    1054.0,
+                    1163.0
+                ],
+                [
+                    168.0,
+                    1163.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "- Secondly, we expand the model's core capabilities. While maintaining the efficient NaViT-style dynamic resolution encoder and the ERNIE-4.5-0.3B [5] language backbone, we have integrated new tasks including seal recognition and text spotting. Systematic optimizations in text, table, and formula recognition have further propelled the model to a new performance milestone.",
+            "block_bbox": [
+                169,
+                1164,
+                1057,
+                1299
+            ],
+            "block_id": 6,
+            "block_order": 7,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    169.0,
+                    1164.0
+                ],
+                [
+                    1057.0,
+                    1164.0
+                ],
+                [
+                    1057.0,
+                    1299.0
+                ],
+                [
+                    169.0,
+                    1299.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "- Thirdly, we construct Real5-OmniDocBench to evaluate in-the-wild robustness. Recognizing the lack of benchmarks for physical distortions, we curated this dataset based on OmniDocBench v1.5 [14]. It comprises five distinct scenarios: scanning, warping, screen photography, illumination, and skew. By maintaining a strict one-to-one correspondence with the original ground-truth annotations, Real5-OmniDocBench serves as a rigorous benchmark for assessing model resilience in practical applications.",
+            "block_bbox": [
+                169,
+                1300,
+                1056,
+                1463
+            ],
+            "block_id": 7,
+            "block_order": 8,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    169.0,
+                    1300.0
+                ],
+                [
+                    1056.0,
+                    1300.0
+                ],
+                [
+                    1056.0,
+                    1463.0
+                ],
+                [
+                    169.0,
+                    1463.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Comprehensive benchmarking confirms that PaddleOCR-VL-1.5 establishes a new state-",
+            "block_bbox": [
+                169,
+                1495,
+                1057,
+                1522
+            ],
+            "block_id": 8,
+            "block_order": 9,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    169.0,
+                    1495.0
+                ],
+                [
+                    1057.0,
+                    1495.0
+                ],
+                [
+                    1057.0,
+                    1522.0
+                ],
+                [
+                    169.0,
+                    1522.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "3",
+            "block_bbox": [
+                587,
+                1557,
+                604,
+                1577
+            ],
+            "block_id": 9,
+            "block_order": null,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1576.0
+                ],
+                [
+                    587.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8555099368095398,
+                "coordinate": [
+                    138,
+                    171,
+                    326,
+                    198
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        138.0,
+                        171.0
+                    ],
+                    [
+                        326.0,
+                        171.0
+                    ],
+                    [
+                        326.0,
+                        198.0
+                    ],
+                    [
+                        138.0,
+                        198.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9601714611053467,
+                "coordinate": [
+                    136,
+                    224,
+                    1054,
+                    469
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        136.0,
+                        224.0
+                    ],
+                    [
+                        1054.0,
+                        224.0
+                    ],
+                    [
+                        1054.0,
+                        469.0
+                    ],
+                    [
+                        136.0,
+                        469.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.960486650466919,
+                "coordinate": [
+                    134,
+                    481,
+                    1056,
+                    701
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        134.0,
+                        481.0
+                    ],
+                    [
+                        1056.0,
+                        481.0
+                    ],
+                    [
+                        1056.0,
+                        701.0
+                    ],
+                    [
+                        134.0,
+                        701.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9532040953636169,
+                "coordinate": [
+                    135,
+                    711,
+                    1055,
+                    848
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        135.0,
+                        711.0
+                    ],
+                    [
+                        1055.0,
+                        711.0
+                    ],
+                    [
+                        1055.0,
+                        848.0
+                    ],
+                    [
+                        135.0,
+                        848.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9419012069702148,
+                "coordinate": [
+                    136,
+                    861,
+                    1054,
+                    970
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        136.0,
+                        861.0
+                    ],
+                    [
+                        1054.0,
+                        861.0
+                    ],
+                    [
+                        1054.0,
+                        970.0
+                    ],
+                    [
+                        136.0,
+                        970.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9577222466468811,
+                "coordinate": [
+                    168,
+                    1001,
+                    1054,
+                    1163
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        168.0,
+                        1001.0
+                    ],
+                    [
+                        1054.0,
+                        1001.0
+                    ],
+                    [
+                        1054.0,
+                        1163.0
+                    ],
+                    [
+                        168.0,
+                        1163.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.954975426197052,
+                "coordinate": [
+                    169,
+                    1164,
+                    1057,
+                    1299
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        169.0,
+                        1164.0
+                    ],
+                    [
+                        1057.0,
+                        1164.0
+                    ],
+                    [
+                        1057.0,
+                        1299.0
+                    ],
+                    [
+                        169.0,
+                        1299.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9609732031822205,
+                "coordinate": [
+                    169,
+                    1300,
+                    1056,
+                    1463
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        169.0,
+                        1300.0
+                    ],
+                    [
+                        1056.0,
+                        1300.0
+                    ],
+                    [
+                        1056.0,
+                        1463.0
+                    ],
+                    [
+                        169.0,
+                        1463.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.7667714357376099,
+                "coordinate": [
+                    169,
+                    1495,
+                    1057,
+                    1522
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        169.0,
+                        1495.0
+                    ],
+                    [
+                        1057.0,
+                        1495.0
+                    ],
+                    [
+                        1057.0,
+                        1522.0
+                    ],
+                    [
+                        169.0,
+                        1522.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7079005837440491,
+                "coordinate": [
+                    587,
+                    1557,
+                    604,
+                    1577
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1576.0
+                    ],
+                    [
+                        587.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

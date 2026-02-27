@@ -1,0 +1,217 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 1,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "Contents",
+            "block_bbox": [
+                138,
+                167,
+                264,
+                200
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    167.0
+                ],
+                [
+                    264.0,
+                    167.0
+                ],
+                [
+                    264.0,
+                    200.0
+                ],
+                [
+                    138.0,
+                    200.0
+                ]
+            ]
+        },
+        {
+            "block_label": "content",
+            "block_content": "1 Introduction 3\n2 PaddleOCR-VL-1.5 4\n2.1 Architecture 4\n2.2 Training Recipe 6\n3 Dataset 9\n3.1 Layout Analysis 9\n3.2 PaddleOCR-VL-1.5-0.9B 9\n4 Evaluation 11\n4.1 Document Parsing 11\n4.2 New Capabilities 14\n4.3 Inference Performance 14\n5 Conclusion 15\nA Comparison of PaddleOCR-VL-1.5 and 1.0 Models 19\nB Details of the Real5-OmniDocBench Benchmark 20\nC Supported Languages 23\nD Inference Performance on Different Hardware Configurations 24\nE Real-world Samples 25\nE.1 Real-word Document Parsing 26\nE.2 Layout Analysis 31\nE.3 Text Recognition 36\nE.4 Table Recognition 39\nE.5 Formula Recognition 42\nE.6 Seal Recognition 43\nE.7 Text Spotting 46",
+            "block_bbox": [
+                134,
+                208,
+                1056,
+                1092
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    208.0
+                ],
+                [
+                    1056.0,
+                    208.0
+                ],
+                [
+                    1056.0,
+                    1092.0
+                ],
+                [
+                    134.0,
+                    1092.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "2",
+            "block_bbox": [
+                587,
+                1557,
+                604,
+                1577
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1576.0
+                ],
+                [
+                    587.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.7752519249916077,
+                "coordinate": [
+                    138,
+                    167,
+                    264,
+                    200
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        138.0,
+                        167.0
+                    ],
+                    [
+                        264.0,
+                        167.0
+                    ],
+                    [
+                        264.0,
+                        200.0
+                    ],
+                    [
+                        138.0,
+                        200.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 4,
+                "label": "content",
+                "score": 0.9813360571861267,
+                "coordinate": [
+                    134,
+                    208,
+                    1056,
+                    1092
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        134.0,
+                        208.0
+                    ],
+                    [
+                        1056.0,
+                        208.0
+                    ],
+                    [
+                        1056.0,
+                        1092.0
+                    ],
+                    [
+                        134.0,
+                        1092.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6847892999649048,
+                "coordinate": [
+                    587,
+                    1557,
+                    604,
+                    1577
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1576.0
+                    ],
+                    [
+                        587.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,1498 @@
+{
+    "input_path": "/home/bocchi/Downloads/TranslateGemma.pdf",
+    "page_index": 5,
+    "page_count": 12,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "header",
+            "block_content": "TranslateGemma Technical Report",
+            "block_bbox": [
+                472,
+                109,
+                719,
+                130
+            ],
+            "block_id": 0,
+            "block_order": null,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    472.0,
+                    109.0
+                ],
+                [
+                    718.0,
+                    109.0
+                ],
+                [
+                    718.0,
+                    129.0
+                ],
+                [
+                    472.0,
+                    129.0
+                ]
+            ]
+        },
+        {
+            "block_label": "table",
+            "block_content": "<table><tr><td>You are a professional {source_lang} ({src_lang_code}) to {target_lang}</td></tr><tr><td>({tgt_lang_code}) translator. Your goal is to accurately convey the meaning and nuances of the original {source_lang} text while adhering to {target_lang} grammar, vocabulary, and cultural sensitivities. Produce only the {target_lang} translation, without any additional explanations or commentary. Please translate the following {source_lang} text into {target_lang}: \\n\\n\\n\\n\\n\\n</td></tr></table>",
+            "block_bbox": [
+                138,
+                175,
+                1053,
+                344
+            ],
+            "block_id": 1,
+            "block_order": null,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    138.0,
+                    175.0
+                ],
+                [
+                    1053.0,
+                    175.0
+                ],
+                [
+                    1053.0,
+                    344.0
+                ],
+                [
+                    138.0,
+                    344.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure 3 | Preferred prompt when using the model. source_lang refers to the source language name, e.g. English, src_lang_code to the source language code, e.g. en-US, target_lang to the target language, e.g. German, and tgt_lang_code to the target language code, i.e. de-DE.",
+            "block_bbox": [
+                119,
+                389,
+                1071,
+                473
+            ],
+            "block_id": 2,
+            "block_order": null,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    119.0,
+                    389.0
+                ],
+                [
+                    1071.0,
+                    389.0
+                ],
+                [
+                    1071.0,
+                    473.0
+                ],
+                [
+                    119.0,
+                    473.0
+                ]
+            ]
+        },
+        {
+            "block_label": "image",
+            "block_content": "",
+            "block_bbox": [
+                124,
+                511,
+                579,
+                848
+            ],
+            "block_id": 3,
+            "block_order": null,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    124.0,
+                    511.0
+                ],
+                [
+                    579.0,
+                    511.0
+                ],
+                [
+                    579.0,
+                    848.0
+                ],
+                [
+                    124.0,
+                    848.0
+                ]
+            ]
+        },
+        {
+            "block_label": "figure_title",
+            "block_content": "Figure 4 | Example of the pictures included in the Vistra benchmark.",
+            "block_bbox": [
+                119,
+                869,
+                583,
+                923
+            ],
+            "block_id": 4,
+            "block_order": null,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    119.0,
+                    869.0
+                ],
+                [
+                    583.0,
+                    869.0
+                ],
+                [
+                    583.0,
+                    923.0
+                ],
+                [
+                    119.0,
+                    923.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "the errors with a weighting scheme. We collected the annotations using the open-source Anthea tool. $ ^{3} $ We evaluate the models in 10 language pairs, from 3 distinct source languages:",
+            "block_bbox": [
+                118,
+                964,
+                585,
+                1076
+            ],
+            "block_id": 5,
+            "block_order": 1,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    118.0,
+                    964.0
+                ],
+                [
+                    585.0,
+                    964.0
+                ],
+                [
+                    585.0,
+                    1076.0
+                ],
+                [
+                    118.0,
+                    1076.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• English to German",
+            "block_bbox": [
+                141,
+                1105,
+                350,
+                1130
+            ],
+            "block_id": 6,
+            "block_order": 2,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    141.0,
+                    1105.0
+                ],
+                [
+                    350.0,
+                    1105.0
+                ],
+                [
+                    350.0,
+                    1130.0
+                ],
+                [
+                    141.0,
+                    1130.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• English to Chinese (Simplified)",
+            "block_bbox": [
+                142,
+                1131,
+                466,
+                1158
+            ],
+            "block_id": 7,
+            "block_order": 3,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    142.0,
+                    1131.0
+                ],
+                [
+                    466.0,
+                    1131.0
+                ],
+                [
+                    466.0,
+                    1158.0
+                ],
+                [
+                    142.0,
+                    1158.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• English to Italian",
+            "block_bbox": [
+                142,
+                1160,
+                335,
+                1183
+            ],
+            "block_id": 8,
+            "block_order": 4,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    142.0,
+                    1160.0
+                ],
+                [
+                    335.0,
+                    1160.0
+                ],
+                [
+                    335.0,
+                    1183.0
+                ],
+                [
+                    142.0,
+                    1183.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• English to Serbian (Cyrillic)",
+            "block_bbox": [
+                142,
+                1185,
+                435,
+                1211
+            ],
+            "block_id": 9,
+            "block_order": 5,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    142.0,
+                    1185.0
+                ],
+                [
+                    435.0,
+                    1185.0
+                ],
+                [
+                    435.0,
+                    1211.0
+                ],
+                [
+                    142.0,
+                    1211.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• English to Korean",
+            "block_bbox": [
+                143,
+                1213,
+                341,
+                1237
+            ],
+            "block_id": 10,
+            "block_order": 6,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    143.0,
+                    1213.0
+                ],
+                [
+                    341.0,
+                    1213.0
+                ],
+                [
+                    341.0,
+                    1237.0
+                ],
+                [
+                    143.0,
+                    1237.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• English to Swahili (Kenyan)",
+            "block_bbox": [
+                142,
+                1240,
+                436,
+                1265
+            ],
+            "block_id": 11,
+            "block_order": 7,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    142.0,
+                    1240.0
+                ],
+                [
+                    436.0,
+                    1240.0
+                ],
+                [
+                    436.0,
+                    1265.0
+                ],
+                [
+                    142.0,
+                    1265.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• English to Marathi",
+            "block_bbox": [
+                142,
+                1267,
+                351,
+                1292
+            ],
+            "block_id": 12,
+            "block_order": 8,
+            "group_id": 12,
+            "block_polygon_points": [
+                [
+                    142.0,
+                    1267.0
+                ],
+                [
+                    351.0,
+                    1267.0
+                ],
+                [
+                    351.0,
+                    1292.0
+                ],
+                [
+                    142.0,
+                    1292.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Czech to Ukrainian",
+            "block_bbox": [
+                142,
+                1295,
+                355,
+                1318
+            ],
+            "block_id": 13,
+            "block_order": 9,
+            "group_id": 13,
+            "block_polygon_points": [
+                [
+                    142.0,
+                    1295.0
+                ],
+                [
+                    355.0,
+                    1295.0
+                ],
+                [
+                    355.0,
+                    1318.0
+                ],
+                [
+                    142.0,
+                    1318.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Czech to German",
+            "block_bbox": [
+                142,
+                1322,
+                337,
+                1346
+            ],
+            "block_id": 14,
+            "block_order": 10,
+            "group_id": 14,
+            "block_polygon_points": [
+                [
+                    142.0,
+                    1322.0
+                ],
+                [
+                    337.0,
+                    1322.0
+                ],
+                [
+                    337.0,
+                    1346.0
+                ],
+                [
+                    142.0,
+                    1346.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "• Japanese to English",
+            "block_bbox": [
+                141,
+                1349,
+                358,
+                1375
+            ],
+            "block_id": 15,
+            "block_order": 11,
+            "group_id": 15,
+            "block_polygon_points": [
+                [
+                    141.0,
+                    1349.0
+                ],
+                [
+                    358.0,
+                    1349.0
+                ],
+                [
+                    358.0,
+                    1375.0
+                ],
+                [
+                    141.0,
+                    1375.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "We selected this set to have a mix of high- and low-resource languages, in addition to having different language families and writing systems. The source data is all taken from the WMT25 translation task, using the literary, news, and social domains. For all language pairs, we evaluated TranslateGemma 12B and 27B, as well as Gemma 3 27B.",
+            "block_bbox": [
+                119,
+                1404,
+                585,
+                1462
+            ],
+            "block_id": 16,
+            "block_order": 12,
+            "group_id": 16,
+            "block_polygon_points": [
+                [
+                    119.0,
+                    1404.0
+                ],
+                [
+                    585.0,
+                    1404.0
+                ],
+                [
+                    585.0,
+                    1462.0
+                ],
+                [
+                    119.0,
+                    1462.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "",
+            "block_bbox": [
+                602,
+                512,
+                1073,
+                676
+            ],
+            "block_id": 17,
+            "block_order": 13,
+            "group_id": 16,
+            "block_polygon_points": [
+                [
+                    602.0,
+                    512.0
+                ],
+                [
+                    1073.0,
+                    512.0
+                ],
+                [
+                    1073.0,
+                    676.0
+                ],
+                [
+                    602.0,
+                    676.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To avoid issues with rater fatigue, each document in the dataset was truncated at paragraph boundaries to have no more than 12 source sentences, skipping documents with more than 12 sentences in the first paragraph. However, for the literary domain, where each document is an entire book chapter, documents were split into “chunks” of 1 or more paragraphs up to the 12-sentence limit, with each chunk being human-evaluated in isolation. Following Riley et al. (2024), we used a “pseudo-SxS” rater assignment, where all system outputs for a particular source document were evaluated by the same rater.",
+            "block_bbox": [
+                603,
+                689,
+                1074,
+                1069
+            ],
+            "block_id": 18,
+            "block_order": 14,
+            "group_id": 18,
+            "block_polygon_points": [
+                [
+                    603.0,
+                    689.0
+                ],
+                [
+                    1074.0,
+                    689.0
+                ],
+                [
+                    1074.0,
+                    1069.0
+                ],
+                [
+                    603.0,
+                    1069.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The results can be found in Table 3. For most language pairs, the human evaluation confirms the trend we see on the automatic metrics, with TranslateGemma clearly outperforming Gemma 3. There are two exceptions: when the target language is German, where both models are on par, and Japanese→English where TranslateGemma actually suffers a regression. Looking into the error categorization, we found that this is due to mistranslation of named entities, while other error categories did improve.",
+            "block_bbox": [
+                603,
+                1082,
+                1074,
+                1382
+            ],
+            "block_id": 19,
+            "block_order": 15,
+            "group_id": 19,
+            "block_polygon_points": [
+                [
+                    603.0,
+                    1082.0
+                ],
+                [
+                    1074.0,
+                    1082.0
+                ],
+                [
+                    1074.0,
+                    1382.0
+                ],
+                [
+                    603.0,
+                    1382.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "The improvements for TranslateGemma are especially relevant for low-resource language pairs. E.g. for English to Marathi we obtain an improvement of 1.6 points, or 1.0 for English to Swahili or",
+            "block_bbox": [
+                604,
+                1394,
+                1074,
+                1505
+            ],
+            "block_id": 20,
+            "block_order": 16,
+            "group_id": 20,
+            "block_polygon_points": [
+                [
+                    604.0,
+                    1394.0
+                ],
+                [
+                    1074.0,
+                    1394.0
+                ],
+                [
+                    1074.0,
+                    1505.0
+                ],
+                [
+                    604.0,
+                    1505.0
+                ]
+            ]
+        },
+        {
+            "block_label": "footnote",
+            "block_content": " $ ^{3} $https://github.com/google-research/",
+            "block_bbox": [
+                144,
+                1474,
+                477,
+                1498
+            ],
+            "block_id": 21,
+            "block_order": null,
+            "group_id": 21,
+            "block_polygon_points": [
+                [
+                    144.0,
+                    1474.0
+                ],
+                [
+                    477.0,
+                    1474.0
+                ],
+                [
+                    477.0,
+                    1498.0
+                ],
+                [
+                    144.0,
+                    1498.0
+                ]
+            ]
+        },
+        {
+            "block_label": "footnote",
+            "block_content": "google-research/tree/master/anthea",
+            "block_bbox": [
+                120,
+                1499,
+                438,
+                1520
+            ],
+            "block_id": 22,
+            "block_order": null,
+            "group_id": 22,
+            "block_polygon_points": [
+                [
+                    120.0,
+                    1499.0
+                ],
+                [
+                    432.0,
+                    1499.0
+                ],
+                [
+                    432.0,
+                    1519.0
+                ],
+                [
+                    120.0,
+                    1519.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "6",
+            "block_bbox": [
+                1055,
+                1559,
+                1069,
+                1578
+            ],
+            "block_id": 23,
+            "block_order": null,
+            "group_id": 23,
+            "block_polygon_points": [
+                [
+                    1055.0,
+                    1559.0
+                ],
+                [
+                    1068.0,
+                    1559.0
+                ],
+                [
+                    1068.0,
+                    1577.0
+                ],
+                [
+                    1055.0,
+                    1577.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.8601710796356201,
+                "coordinate": [
+                    472,
+                    109,
+                    719,
+                    130
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        472.0,
+                        109.0
+                    ],
+                    [
+                        718.0,
+                        109.0
+                    ],
+                    [
+                        718.0,
+                        129.0
+                    ],
+                    [
+                        472.0,
+                        129.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.8583438992500305,
+                "coordinate": [
+                    138,
+                    175,
+                    1053,
+                    344
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        138.0,
+                        175.0
+                    ],
+                    [
+                        1053.0,
+                        175.0
+                    ],
+                    [
+                        1053.0,
+                        344.0
+                    ],
+                    [
+                        138.0,
+                        344.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9279472827911377,
+                "coordinate": [
+                    119,
+                    389,
+                    1071,
+                    473
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        119.0,
+                        389.0
+                    ],
+                    [
+                        1071.0,
+                        389.0
+                    ],
+                    [
+                        1071.0,
+                        473.0
+                    ],
+                    [
+                        119.0,
+                        473.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9762850403785706,
+                "coordinate": [
+                    124,
+                    511,
+                    579,
+                    848
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        124.0,
+                        511.0
+                    ],
+                    [
+                        579.0,
+                        511.0
+                    ],
+                    [
+                        579.0,
+                        848.0
+                    ],
+                    [
+                        124.0,
+                        848.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.903160810470581,
+                "coordinate": [
+                    119,
+                    869,
+                    583,
+                    923
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        119.0,
+                        869.0
+                    ],
+                    [
+                        583.0,
+                        869.0
+                    ],
+                    [
+                        583.0,
+                        923.0
+                    ],
+                    [
+                        119.0,
+                        923.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9450846314430237,
+                "coordinate": [
+                    118,
+                    964,
+                    585,
+                    1076
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        118.0,
+                        964.0
+                    ],
+                    [
+                        585.0,
+                        964.0
+                    ],
+                    [
+                        585.0,
+                        1076.0
+                    ],
+                    [
+                        118.0,
+                        1076.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8149381875991821,
+                "coordinate": [
+                    141,
+                    1105,
+                    350,
+                    1130
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        141.0,
+                        1105.0
+                    ],
+                    [
+                        350.0,
+                        1105.0
+                    ],
+                    [
+                        350.0,
+                        1130.0
+                    ],
+                    [
+                        141.0,
+                        1130.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.816438615322113,
+                "coordinate": [
+                    142,
+                    1131,
+                    466,
+                    1158
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        142.0,
+                        1131.0
+                    ],
+                    [
+                        466.0,
+                        1131.0
+                    ],
+                    [
+                        466.0,
+                        1158.0
+                    ],
+                    [
+                        142.0,
+                        1158.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.80515456199646,
+                "coordinate": [
+                    142,
+                    1160,
+                    335,
+                    1183
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        142.0,
+                        1160.0
+                    ],
+                    [
+                        335.0,
+                        1160.0
+                    ],
+                    [
+                        335.0,
+                        1183.0
+                    ],
+                    [
+                        142.0,
+                        1183.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8030534982681274,
+                "coordinate": [
+                    142,
+                    1185,
+                    435,
+                    1211
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        142.0,
+                        1185.0
+                    ],
+                    [
+                        435.0,
+                        1185.0
+                    ],
+                    [
+                        435.0,
+                        1211.0
+                    ],
+                    [
+                        142.0,
+                        1211.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.7929741144180298,
+                "coordinate": [
+                    143,
+                    1213,
+                    341,
+                    1237
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        143.0,
+                        1213.0
+                    ],
+                    [
+                        341.0,
+                        1213.0
+                    ],
+                    [
+                        341.0,
+                        1237.0
+                    ],
+                    [
+                        143.0,
+                        1237.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8211345672607422,
+                "coordinate": [
+                    142,
+                    1240,
+                    436,
+                    1265
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        142.0,
+                        1240.0
+                    ],
+                    [
+                        436.0,
+                        1240.0
+                    ],
+                    [
+                        436.0,
+                        1265.0
+                    ],
+                    [
+                        142.0,
+                        1265.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8025957345962524,
+                "coordinate": [
+                    142,
+                    1267,
+                    351,
+                    1292
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        142.0,
+                        1267.0
+                    ],
+                    [
+                        351.0,
+                        1267.0
+                    ],
+                    [
+                        351.0,
+                        1292.0
+                    ],
+                    [
+                        142.0,
+                        1292.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.7829028964042664,
+                "coordinate": [
+                    142,
+                    1295,
+                    355,
+                    1318
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        142.0,
+                        1295.0
+                    ],
+                    [
+                        355.0,
+                        1295.0
+                    ],
+                    [
+                        355.0,
+                        1318.0
+                    ],
+                    [
+                        142.0,
+                        1318.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.7759965658187866,
+                "coordinate": [
+                    142,
+                    1322,
+                    337,
+                    1346
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        142.0,
+                        1322.0
+                    ],
+                    [
+                        337.0,
+                        1322.0
+                    ],
+                    [
+                        337.0,
+                        1346.0
+                    ],
+                    [
+                        142.0,
+                        1346.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.792316734790802,
+                "coordinate": [
+                    141,
+                    1349,
+                    358,
+                    1375
+                ],
+                "order": 11,
+                "polygon_points": [
+                    [
+                        141.0,
+                        1349.0
+                    ],
+                    [
+                        358.0,
+                        1349.0
+                    ],
+                    [
+                        358.0,
+                        1375.0
+                    ],
+                    [
+                        141.0,
+                        1375.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9024088978767395,
+                "coordinate": [
+                    119,
+                    1404,
+                    585,
+                    1462
+                ],
+                "order": 12,
+                "polygon_points": [
+                    [
+                        119.0,
+                        1404.0
+                    ],
+                    [
+                        585.0,
+                        1404.0
+                    ],
+                    [
+                        585.0,
+                        1462.0
+                    ],
+                    [
+                        119.0,
+                        1462.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9558377265930176,
+                "coordinate": [
+                    602,
+                    512,
+                    1073,
+                    676
+                ],
+                "order": 13,
+                "polygon_points": [
+                    [
+                        602.0,
+                        512.0
+                    ],
+                    [
+                        1073.0,
+                        512.0
+                    ],
+                    [
+                        1073.0,
+                        676.0
+                    ],
+                    [
+                        602.0,
+                        676.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9701375961303711,
+                "coordinate": [
+                    603,
+                    689,
+                    1074,
+                    1069
+                ],
+                "order": 14,
+                "polygon_points": [
+                    [
+                        603.0,
+                        689.0
+                    ],
+                    [
+                        1074.0,
+                        689.0
+                    ],
+                    [
+                        1074.0,
+                        1069.0
+                    ],
+                    [
+                        603.0,
+                        1069.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.963577389717102,
+                "coordinate": [
+                    603,
+                    1082,
+                    1074,
+                    1382
+                ],
+                "order": 15,
+                "polygon_points": [
+                    [
+                        603.0,
+                        1082.0
+                    ],
+                    [
+                        1074.0,
+                        1082.0
+                    ],
+                    [
+                        1074.0,
+                        1382.0
+                    ],
+                    [
+                        603.0,
+                        1382.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9452372193336487,
+                "coordinate": [
+                    604,
+                    1394,
+                    1074,
+                    1505
+                ],
+                "order": 16,
+                "polygon_points": [
+                    [
+                        604.0,
+                        1394.0
+                    ],
+                    [
+                        1074.0,
+                        1394.0
+                    ],
+                    [
+                        1074.0,
+                        1505.0
+                    ],
+                    [
+                        604.0,
+                        1505.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 10,
+                "label": "footnote",
+                "score": 0.7987045049667358,
+                "coordinate": [
+                    144,
+                    1474,
+                    477,
+                    1498
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        144.0,
+                        1474.0
+                    ],
+                    [
+                        477.0,
+                        1474.0
+                    ],
+                    [
+                        477.0,
+                        1498.0
+                    ],
+                    [
+                        144.0,
+                        1498.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 10,
+                "label": "footnote",
+                "score": 0.8030228018760681,
+                "coordinate": [
+                    120,
+                    1499,
+                    438,
+                    1520
+                ],
+                "order": null,
+                "polygon_points": [
+                    [
+                        120.0,
+                        1499.0
+                    ],
+                    [
+                        432.0,
+                        1499.0
+                    ],
+                    [
+                        432.0,
+                        1519.0
+                    ],
+                    [
+                        120.0,
+                        1519.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6464152336120605,
+                "coordinate": [
+                    1055,
+                    1559,
+                    1069,
+                    1578
+                ],
+                "order": 17,
+                "polygon_points": [
+                    [
+                        1055.0,
+                        1559.0
+                    ],
+                    [
+                        1068.0,
+                        1559.0
+                    ],
+                    [
+                        1068.0,
+                        1577.0
+                    ],
+                    [
+                        1055.0,
+                        1577.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

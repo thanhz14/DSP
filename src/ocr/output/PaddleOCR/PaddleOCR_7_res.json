@@ -1,0 +1,891 @@
+{
+    "input_path": "/home/bocchi/Downloads/PaddleOCR.pdf",
+    "page_index": 7,
+    "page_count": 46,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "text",
+            "block_content": "large-scale pre-training data related to seal recognition and text spotting during this alignment phase. Specifically, the maximum resolution for the spotting task is increased to  $ 2048 \\times 28 \\times 28 $ pixels, enabling the model to achieve more precise localization and recognition of text. By introducing these task-specific priors early in the training pipeline, the model establishes a robust foundation capable of capturing intricate visual patterns and effectively supporting the fine-grained localization and recognition tasks required in subsequent stages.",
+            "block_bbox": [
+                135,
+                173,
+                1054,
+                339
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    173.0
+                ],
+                [
+                    1054.0,
+                    173.0
+                ],
+                [
+                    1054.0,
+                    339.0
+                ],
+                [
+                    135.0,
+                    339.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Post-training: Instruction Fine-tuning with New Capabilities. In this stage, we inherit the four fundamental instruction tasks from PaddleOCR-VL-0.9B—OCR, Table, Formula, and Chart Recognition—ensuring backward compatibility and high performance on standard document elements. The key innovation in PaddleOCR-VL-1.5-0.9B lies in the addition of two specialized tasks:",
+            "block_bbox": [
+                136,
+                349,
+                1055,
+                485
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    349.0
+                ],
+                [
+                    1055.0,
+                    349.0
+                ],
+                [
+                    1055.0,
+                    485.0
+                ],
+                [
+                    136.0,
+                    485.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "1. Seal Recognition: We introduce a specific instruction to handle official seals and stamps, addressing challenges such as curved text, blur images and background interference.",
+            "block_bbox": [
+                162,
+                521,
+                1054,
+                575
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    162.0,
+                    521.0
+                ],
+                [
+                    1054.0,
+                    521.0
+                ],
+                [
+                    1054.0,
+                    575.0
+                ],
+                [
+                    162.0,
+                    575.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "2. Text Spotting (Grounded OCR): Unlike standard OCR, which solely outputs textual content, the text spotting task requires the model to simultaneously predict the text and its precise spatial location following the natural reading order. To accommodate complex layouts found in real-world scenarios (e.g., rotated text, common scene, or dense forms), we adopt a 4-point quadrilateral representation rather than the traditional 2-point bounding box. The 4-point format defines a text region using four vertices: Top-Left (TL), Top-Right (TR), Bottom-Right (BR), and Bottom-Left (BL). This formulation provides superior flexibility in localizing inclined and irregular text shapes that a standard axis-aligned rectangle cannot tightly enclose.",
+            "block_bbox": [
+                163,
+                577,
+                1055,
+                819
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    163.0,
+                    577.0
+                ],
+                [
+                    1055.0,
+                    577.0
+                ],
+                [
+                    1055.0,
+                    819.0
+                ],
+                [
+                    163.0,
+                    819.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Formally, for a given text instance, the target sequence is constructed by appending eight location tokens to the text tokens:",
+            "block_bbox": [
+                190,
+                820,
+                1053,
+                873
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    190.0,
+                    820.0
+                ],
+                [
+                    1053.0,
+                    820.0
+                ],
+                [
+                    1053.0,
+                    873.0
+                ],
+                [
+                    190.0,
+                    873.0
+                ]
+            ]
+        },
+        {
+            "block_label": "display_formula",
+            "block_content": " $$ Y=Text\\oplus<LOC\\_{x}_{TL}><LOC\\_{y}_{TL}>\\cdots<LOC\\_{y}_{BL}> $$ ",
+            "block_bbox": [
+                387,
+                895,
+                855,
+                924
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    387.0,
+                    895.0
+                ],
+                [
+                    855.0,
+                    895.0
+                ],
+                [
+                    855.0,
+                    924.0
+                ],
+                [
+                    387.0,
+                    924.0
+                ]
+            ]
+        },
+        {
+            "block_label": "formula_number",
+            "block_content": "(3)",
+            "block_bbox": [
+                1024,
+                896,
+                1052,
+                922
+            ],
+            "block_id": 6,
+            "block_order": 7,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    1024.0,
+                    896.0
+                ],
+                [
+                    1051.0,
+                    896.0
+                ],
+                [
+                    1051.0,
+                    921.0
+                ],
+                [
+                    1024.0,
+                    921.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Here, we introduce a set of tokens { $ <LOC\\_0> $,...,  $ <LOC\\_1000> $} to the model's vocabulary to represent normalized coordinates. Unlike treating coordinates as plain numerical text, these dedicated special tokens allow the model to learn specific embeddings for spatial information and prevent tokenization fragmentation.",
+            "block_bbox": [
+                191,
+                944,
+                1054,
+                1052
+            ],
+            "block_id": 7,
+            "block_order": 8,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    191.0,
+                    944.0
+                ],
+                [
+                    1054.0,
+                    944.0
+                ],
+                [
+                    1054.0,
+                    1052.0
+                ],
+                [
+                    191.0,
+                    1052.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "For example, a recognized instance of the word \"DREAM\" is represented as:",
+            "block_bbox": [
+                191,
+                1053,
+                933,
+                1081
+            ],
+            "block_id": 8,
+            "block_order": 9,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    191.0,
+                    1053.0
+                ],
+                [
+                    933.0,
+                    1053.0
+                ],
+                [
+                    933.0,
+                    1081.0
+                ],
+                [
+                    191.0,
+                    1081.0
+                ]
+            ]
+        },
+        {
+            "block_label": "display_formula",
+            "block_content": " $$ \\begin{array}{l} DREAM<LOC\\_{2}53><LOC\\_{2}86><LOC\\_{3}46><LOC\\_{2}98><LOC\\_{3}45><LOC\\_{3}39><LOC\\_{2}52>\\\\<LOC\\_{3}30>\\end{array} $$ ",
+            "block_bbox": [
+                235,
+                1086,
+                1055,
+                1137
+            ],
+            "block_id": 9,
+            "block_order": 10,
+            "group_id": 9,
+            "block_polygon_points": [
+                [
+                    235.0,
+                    1086.0
+                ],
+                [
+                    1055.0,
+                    1086.0
+                ],
+                [
+                    1055.0,
+                    1137.0
+                ],
+                [
+                    235.0,
+                    1137.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "This unified representation enables the model to perform end-to-end recognition and fine-grained localization within a single generation pass.",
+            "block_bbox": [
+                190,
+                1146,
+                1053,
+                1203
+            ],
+            "block_id": 10,
+            "block_order": 11,
+            "group_id": 10,
+            "block_polygon_points": [
+                [
+                    190.0,
+                    1146.0
+                ],
+                [
+                    1053.0,
+                    1146.0
+                ],
+                [
+                    1053.0,
+                    1203.0
+                ],
+                [
+                    190.0,
+                    1203.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "To enhance generalization and unify diverse label styles, we introduce a Reinforcement Learning stage leveraging Group Relative Policy Optimization(GRPO) [20]. By executing parallel rollouts and calculating relative advantages within each group, GRPO facilitates robust policy updates and mitigates style inconsistency. This process is supported by a dynamic data screening protocol that prioritizes challenging samples with high reward potential and entropy uncertainty, ensuring the model focuses on non-trivial, high-value learning cases.",
+            "block_bbox": [
+                135,
+                1237,
+                1054,
+                1403
+            ],
+            "block_id": 11,
+            "block_order": 12,
+            "group_id": 11,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    1237.0
+                ],
+                [
+                    1054.0,
+                    1237.0
+                ],
+                [
+                    1054.0,
+                    1403.0
+                ],
+                [
+                    135.0,
+                    1403.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "8",
+            "block_bbox": [
+                587,
+                1556,
+                603,
+                1577
+            ],
+            "block_id": 12,
+            "block_order": null,
+            "group_id": 12,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1556.0
+                ],
+                [
+                    602.0,
+                    1556.0
+                ],
+                [
+                    602.0,
+                    1576.0
+                ],
+                [
+                    587.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9569568037986755,
+                "coordinate": [
+                    135,
+                    173,
+                    1054,
+                    339
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        135.0,
+                        173.0
+                    ],
+                    [
+                        1054.0,
+                        173.0
+                    ],
+                    [
+                        1054.0,
+                        339.0
+                    ],
+                    [
+                        135.0,
+                        339.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 15,
+                "label": "inline_formula",
+                "score": 0.7527015805244446,
+                "coordinate": [
+                    914,
+                    200,
+                    1049,
+                    224
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        914,
+                        200
+                    ],
+                    [
+                        914,
+                        215
+                    ],
+                    [
+                        920,
+                        223
+                    ],
+                    [
+                        1048,
+                        223
+                    ],
+                    [
+                        1048,
+                        200
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9478452801704407,
+                "coordinate": [
+                    136,
+                    349,
+                    1055,
+                    485
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        136.0,
+                        349.0
+                    ],
+                    [
+                        1055.0,
+                        349.0
+                    ],
+                    [
+                        1055.0,
+                        485.0
+                    ],
+                    [
+                        136.0,
+                        485.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9195845127105713,
+                "coordinate": [
+                    162,
+                    521,
+                    1054,
+                    575
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        162.0,
+                        521.0
+                    ],
+                    [
+                        1054.0,
+                        521.0
+                    ],
+                    [
+                        1054.0,
+                        575.0
+                    ],
+                    [
+                        162.0,
+                        575.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9645569324493408,
+                "coordinate": [
+                    163,
+                    577,
+                    1055,
+                    819
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        163.0,
+                        577.0
+                    ],
+                    [
+                        1055.0,
+                        577.0
+                    ],
+                    [
+                        1055.0,
+                        819.0
+                    ],
+                    [
+                        163.0,
+                        819.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9093294739723206,
+                "coordinate": [
+                    190,
+                    820,
+                    1053,
+                    873
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        190.0,
+                        820.0
+                    ],
+                    [
+                        1053.0,
+                        820.0
+                    ],
+                    [
+                        1053.0,
+                        873.0
+                    ],
+                    [
+                        190.0,
+                        873.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 5,
+                "label": "display_formula",
+                "score": 0.880898118019104,
+                "coordinate": [
+                    387,
+                    895,
+                    855,
+                    924
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        387.0,
+                        895.0
+                    ],
+                    [
+                        855.0,
+                        895.0
+                    ],
+                    [
+                        855.0,
+                        924.0
+                    ],
+                    [
+                        387.0,
+                        924.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 11,
+                "label": "formula_number",
+                "score": 0.8220841884613037,
+                "coordinate": [
+                    1024,
+                    896,
+                    1052,
+                    922
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        1024.0,
+                        896.0
+                    ],
+                    [
+                        1051.0,
+                        896.0
+                    ],
+                    [
+                        1051.0,
+                        921.0
+                    ],
+                    [
+                        1024.0,
+                        921.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.936879575252533,
+                "coordinate": [
+                    191,
+                    944,
+                    1054,
+                    1052
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        191.0,
+                        944.0
+                    ],
+                    [
+                        1054.0,
+                        944.0
+                    ],
+                    [
+                        1054.0,
+                        1052.0
+                    ],
+                    [
+                        191.0,
+                        1052.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 15,
+                "label": "inline_formula",
+                "score": 0.7936626672744751,
+                "coordinate": [
+                    518,
+                    946,
+                    799,
+                    970
+                ],
+                "order": 10,
+                "polygon_points": [
+                    [
+                        518,
+                        946
+                    ],
+                    [
+                        518,
+                        969
+                    ],
+                    [
+                        798,
+                        969
+                    ],
+                    [
+                        798,
+                        946
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.850243330001831,
+                "coordinate": [
+                    191,
+                    1053,
+                    933,
+                    1081
+                ],
+                "order": 11,
+                "polygon_points": [
+                    [
+                        191.0,
+                        1053.0
+                    ],
+                    [
+                        933.0,
+                        1053.0
+                    ],
+                    [
+                        933.0,
+                        1081.0
+                    ],
+                    [
+                        191.0,
+                        1081.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 5,
+                "label": "display_formula",
+                "score": 0.6936100125312805,
+                "coordinate": [
+                    235,
+                    1086,
+                    1055,
+                    1137
+                ],
+                "order": 12,
+                "polygon_points": [
+                    [
+                        235.0,
+                        1086.0
+                    ],
+                    [
+                        1055.0,
+                        1086.0
+                    ],
+                    [
+                        1055.0,
+                        1137.0
+                    ],
+                    [
+                        235.0,
+                        1137.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9236679077148438,
+                "coordinate": [
+                    190,
+                    1146,
+                    1053,
+                    1203
+                ],
+                "order": 13,
+                "polygon_points": [
+                    [
+                        190.0,
+                        1146.0
+                    ],
+                    [
+                        1053.0,
+                        1146.0
+                    ],
+                    [
+                        1053.0,
+                        1203.0
+                    ],
+                    [
+                        190.0,
+                        1203.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9518419504165649,
+                "coordinate": [
+                    135,
+                    1237,
+                    1054,
+                    1403
+                ],
+                "order": 14,
+                "polygon_points": [
+                    [
+                        135.0,
+                        1237.0
+                    ],
+                    [
+                        1054.0,
+                        1237.0
+                    ],
+                    [
+                        1054.0,
+                        1403.0
+                    ],
+                    [
+                        135.0,
+                        1403.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.7070528864860535,
+                "coordinate": [
+                    587,
+                    1556,
+                    603,
+                    1577
+                ],
+                "order": 15,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1556.0
+                    ],
+                    [
+                        602.0,
+                        1556.0
+                    ],
+                    [
+                        602.0,
+                        1576.0
+                    ],
+                    [
+                        587.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,583 @@
+{
+    "input_path": "/home/bocchi/Downloads/DeepSeekOCR.pdf",
+    "page_index": 2,
+    "page_count": 22,
+    "width": 1191,
+    "height": 1684,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "paragraph_title",
+            "block_content": "1. Introduction",
+            "block_bbox": [
+                137,
+                170,
+                327,
+                198
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    137.0,
+                    170.0
+                ],
+                [
+                    327.0,
+                    170.0
+                ],
+                [
+                    327.0,
+                    198.0
+                ],
+                [
+                    137.0,
+                    198.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Current Large Language Models (LLMs) face significant computational challenges when processing long textual content due to quadratic scaling with sequence length. We explore a potential solution: leveraging visual modality as an efficient compression medium for textual information. A single image containing document text can represent rich information using substantially fewer tokens than the equivalent digital text, suggesting that optical compression through vision tokens could achieve much higher compression ratios.",
+            "block_bbox": [
+                135,
+                223,
+                1057,
+                388
+            ],
+            "block_id": 1,
+            "block_order": 2,
+            "group_id": 1,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    223.0
+                ],
+                [
+                    1057.0,
+                    223.0
+                ],
+                [
+                    1057.0,
+                    388.0
+                ],
+                [
+                    135.0,
+                    388.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "This insight motivates us to reexamine vision-language models (VLMs) from an LLM-centric perspective, focusing on how vision encoders can enhance LLMs' efficiency in processing textual information rather than basic VQA [12, 16, 24, 32, 41] what humans excel at. OCR tasks, as an intermediate modality bridging vision and language, provide an ideal testbed for this vision-text compression paradigm, as they establish a natural compression-decompression mapping between visual and textual representations while offering quantitative evaluation metrics.",
+            "block_bbox": [
+                134,
+                400,
+                1055,
+                563
+            ],
+            "block_id": 2,
+            "block_order": 3,
+            "group_id": 2,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    400.0
+                ],
+                [
+                    1055.0,
+                    400.0
+                ],
+                [
+                    1055.0,
+                    563.0
+                ],
+                [
+                    134.0,
+                    563.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Accordingly, we present DeepSeek-OCR, a VLM designed as a preliminary proof-of-concept for efficient vision-text compression. Our work makes three primary contributions:",
+            "block_bbox": [
+                136,
+                577,
+                1054,
+                631
+            ],
+            "block_id": 3,
+            "block_order": 4,
+            "group_id": 3,
+            "block_polygon_points": [
+                [
+                    136.0,
+                    577.0
+                ],
+                [
+                    1054.0,
+                    577.0
+                ],
+                [
+                    1054.0,
+                    631.0
+                ],
+                [
+                    136.0,
+                    631.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "First, we provide comprehensive quantitative analysis of vision-text token compression ratios. Our method achieves 96%+ OCR decoding precision at 9-10× text compression, ~90% at 10-12× compression, and ~60% at 20× compression on Fox [21] benchmarks featuring diverse document layouts (with actual accuracy being even higher when accounting for formatting differences between output and ground truth), as shown in Figure 1(a). The results demonstrate that compact language models can effectively learn to decode compressed visual representations, suggesting that larger LLMs could readily acquire similar capabilities through appropriate pretraining design.",
+            "block_bbox": [
+                135,
+                645,
+                1055,
+                862
+            ],
+            "block_id": 4,
+            "block_order": 5,
+            "group_id": 4,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    645.0
+                ],
+                [
+                    1055.0,
+                    645.0
+                ],
+                [
+                    1055.0,
+                    862.0
+                ],
+                [
+                    135.0,
+                    862.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Second, we introduce DeepEncoder, a novel architecture that maintains low activation memory and minimal vision tokens even with high-resolution inputs. It serially connects window attention and global attention encoder components through a 16× convolutional compressor. This design ensures that the window attention component processes a large number of vision tokens, while the compressor reduces vision tokens before they enter the dense global attention component, achieving effective memory and token compression.",
+            "block_bbox": [
+                135,
+                874,
+                1057,
+                1040
+            ],
+            "block_id": 5,
+            "block_order": 6,
+            "group_id": 5,
+            "block_polygon_points": [
+                [
+                    135.0,
+                    874.0
+                ],
+                [
+                    1056.0,
+                    874.0
+                ],
+                [
+                    1056.0,
+                    1031.0
+                ],
+                [
+                    135.0,
+                    1031.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "Third, we develop DeepSeek-OCR based on DeepEncoder and DeepSeek3B-MoE [19, 20]. As shown in Figure 1(b), it achieves state-of-the-art performance within end-to-end models on OmniDocBench while using the fewest vision tokens. Additionally, we equip the model with capabilities for parsing charts, chemical formulas, simple geometric figures, and natural images to enhance its practical utility further. In production, DeepSeek-OCR can generate 33 million pages of data per day for LLMs or VLMs using 20 nodes (each with 8 A100-40G GPUs).",
+            "block_bbox": [
+                134,
+                1049,
+                1055,
+                1216
+            ],
+            "block_id": 6,
+            "block_order": 7,
+            "group_id": 6,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    1049.0
+                ],
+                [
+                    1055.0,
+                    1049.0
+                ],
+                [
+                    1055.0,
+                    1216.0
+                ],
+                [
+                    134.0,
+                    1216.0
+                ]
+            ]
+        },
+        {
+            "block_label": "text",
+            "block_content": "In summary, this work presents a preliminary exploration of using visual modality as an efficient compression medium for textual information processing in LLMs. Through DeepSeek-OCR, we demonstrate that vision-text compression can achieve significant token reduction (7-20×) for different historical context stages, offering a promising direction for addressing long-context challenges in large language models. Our quantitative analysis provides empirical guidelines for VLM token allocation optimization, while the proposed DeepEncoder architecture showcases practical feasibility with real-world deployment capabilities. Although focused on OCR as a proof-of-concept, this paradigm opens new possibilities for rethinking how vision and language modalities can be synergistically combined to enhance computational efficiency in large-scale text processing and agent systems.",
+            "block_bbox": [
+                134,
+                1227,
+                1055,
+                1500
+            ],
+            "block_id": 7,
+            "block_order": 8,
+            "group_id": 7,
+            "block_polygon_points": [
+                [
+                    134.0,
+                    1227.0
+                ],
+                [
+                    1055.0,
+                    1227.0
+                ],
+                [
+                    1055.0,
+                    1500.0
+                ],
+                [
+                    134.0,
+                    1500.0
+                ]
+            ]
+        },
+        {
+            "block_label": "number",
+            "block_content": "3",
+            "block_bbox": [
+                587,
+                1557,
+                604,
+                1577
+            ],
+            "block_id": 8,
+            "block_order": null,
+            "group_id": 8,
+            "block_polygon_points": [
+                [
+                    587.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1557.0
+                ],
+                [
+                    603.0,
+                    1576.0
+                ],
+                [
+                    587.0,
+                    1576.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "input_path": null,
+        "page_index": null,
+        "boxes": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.850629448890686,
+                "coordinate": [
+                    137,
+                    170,
+                    327,
+                    198
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        137.0,
+                        170.0
+                    ],
+                    [
+                        327.0,
+                        170.0
+                    ],
+                    [
+                        327.0,
+                        198.0
+                    ],
+                    [
+                        137.0,
+                        198.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.946244478225708,
+                "coordinate": [
+                    135,
+                    223,
+                    1057,
+                    388
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        135.0,
+                        223.0
+                    ],
+                    [
+                        1057.0,
+                        223.0
+                    ],
+                    [
+                        1057.0,
+                        388.0
+                    ],
+                    [
+                        135.0,
+                        388.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9529563784599304,
+                "coordinate": [
+                    134,
+                    400,
+                    1055,
+                    563
+                ],
+                "order": 3,
+                "polygon_points": [
+                    [
+                        134.0,
+                        400.0
+                    ],
+                    [
+                        1055.0,
+                        400.0
+                    ],
+                    [
+                        1055.0,
+                        563.0
+                    ],
+                    [
+                        134.0,
+                        563.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9080229997634888,
+                "coordinate": [
+                    136,
+                    577,
+                    1054,
+                    631
+                ],
+                "order": 4,
+                "polygon_points": [
+                    [
+                        136.0,
+                        577.0
+                    ],
+                    [
+                        1054.0,
+                        577.0
+                    ],
+                    [
+                        1054.0,
+                        631.0
+                    ],
+                    [
+                        136.0,
+                        631.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9580793976783752,
+                "coordinate": [
+                    135,
+                    645,
+                    1055,
+                    862
+                ],
+                "order": 5,
+                "polygon_points": [
+                    [
+                        135.0,
+                        645.0
+                    ],
+                    [
+                        1055.0,
+                        645.0
+                    ],
+                    [
+                        1055.0,
+                        862.0
+                    ],
+                    [
+                        135.0,
+                        862.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9557566046714783,
+                "coordinate": [
+                    135,
+                    874,
+                    1057,
+                    1040
+                ],
+                "order": 6,
+                "polygon_points": [
+                    [
+                        135.0,
+                        874.0
+                    ],
+                    [
+                        1056.0,
+                        874.0
+                    ],
+                    [
+                        1056.0,
+                        1031.0
+                    ],
+                    [
+                        135.0,
+                        1031.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.958387553691864,
+                "coordinate": [
+                    134,
+                    1049,
+                    1055,
+                    1216
+                ],
+                "order": 7,
+                "polygon_points": [
+                    [
+                        134.0,
+                        1049.0
+                    ],
+                    [
+                        1055.0,
+                        1049.0
+                    ],
+                    [
+                        1055.0,
+                        1216.0
+                    ],
+                    [
+                        134.0,
+                        1216.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9650274515151978,
+                "coordinate": [
+                    134,
+                    1227,
+                    1055,
+                    1500
+                ],
+                "order": 8,
+                "polygon_points": [
+                    [
+                        134.0,
+                        1227.0
+                    ],
+                    [
+                        1055.0,
+                        1227.0
+                    ],
+                    [
+                        1055.0,
+                        1500.0
+                    ],
+                    [
+                        134.0,
+                        1500.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.6976558566093445,
+                "coordinate": [
+                    587,
+                    1557,
+                    604,
+                    1577
+                ],
+                "order": 9,
+                "polygon_points": [
+                    [
+                        587.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1557.0
+                    ],
+                    [
+                        603.0,
+                        1576.0
+                    ],
+                    [
+                        587.0,
+                        1576.0
+                    ]
+                ]
+            }
+        ]
+    }
+}
